@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Second Context</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="canonical" href="https://second-context.com/en/second-context-contact.html">
+<link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-contact.html">
+<link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-contact.html">
+<link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-contact.html">
+<script src="../assets/lang.js"></script>
+<meta name="description" content="Send Second Context a project inquiry or book a 30-minute consultation.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Second Context">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:title" content="Contact — Second Context">
+<meta property="og:description" content="Send Second Context a project inquiry or book a 30-minute consultation.">
+<meta property="og:url" content="https://second-context.com/en/second-context-contact.html">
+<meta property="og:image" content="https://second-context.com/assets/og/contact-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Second Context logo with the text “Tell us about the product challenge on your mind.”">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/second-context.css">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<header>
+  <div class="wrap">
+    <a href="./" class="logo" aria-label="Second Context home"><img src="../assets/second-context-logo.png" alt="second context"></a>
+    <nav aria-label="Main menu">
+      <a href="./#why">Why Us</a>
+      <a href="./#services">Services</a>
+      <a href="./#work">Work</a>
+      <a href="second-context-approach.html">Approach</a>
+      <a href="second-context-contact.html" aria-current="page">Contact</a>
+      <a class="btn btn-primary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-min call<span class="sr-only"> (opens in a new tab)</span></a>
+    </nav>
+    <nav class="lang" aria-label="Language">
+      <a href="../second-context-contact.html" lang="ko" hreflang="ko">한국어</a>
+      <span aria-hidden="true">/</span>
+      <a href="second-context-contact.html" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-intro contact-page">
+    <div class="wrap">
+      <div class="page-header">
+        <p class="label">Contact</p>
+        <h1>Tell us about the product challenge on your mind.</h1>
+        <p class="lead">Tell us briefly about your product and what you’re working through. It’s fine if the scope isn’t defined yet.</p>
+      </div>
+      <div class="contact-layout">
+        <form class="inquiry-form" id="inquiry" data-endpoint="https://formspree.io/f/mwllbenr" novalidate aria-labelledby="inquiry-title">
+          <div class="form-head">
+            <h2 id="inquiry-title">Send an inquiry</h2>
+            <p class="form-note"><span aria-hidden="true">*</span> Required</p>
+          </div>
+          <input type="hidden" name="_subject" value="Second Context website inquiry">
+          <input type="hidden" name="language" value="English page">
+          <div class="field-grid">
+            <div class="field">
+              <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g., Alex Kim" required aria-describedby="f-name-error">
+              <p class="field-error" id="f-name-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@company.com" required aria-describedby="f-email-error">
+              <p class="field-error" id="f-email-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="f-company">Company or product name</label>
+              <input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Company or product name" aria-describedby="f-company-error">
+              <p class="field-error" id="f-company-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="f-url">Product URL</label>
+              <input id="f-url" name="product_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://yourproduct.com" aria-describedby="f-url-error">
+              <p class="field-error" id="f-url-error" hidden></p>
+            </div>
+            <div class="field field-wide">
+              <label for="f-message">Message <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="f-message" name="message" rows="6" placeholder="Briefly describe your product, what’s difficult right now, and the help you need." required aria-describedby="f-message-error"></textarea>
+              <p class="field-error" id="f-message-error" hidden></p>
+            </div>
+          </div>
+          <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Send inquiry</button>
+          </div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <aside class="contact-aside" aria-labelledby="other-ways">
+          <h2 class="label" id="other-ways">Other ways to reach us</h2>
+          <div class="contact-way" id="email-contact">
+            <p class="way-title">Email</p>
+            <p><a class="email-link" href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></p>
+            <button class="mini-btn" type="button" data-copy-email="rachel.cho5257@gmail.com">Copy email</button>
+            <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+            <div class="copy-fallback" id="copy-fallback" hidden>
+              <label for="email-manual">Email address (select to copy)</label>
+              <input id="email-manual" type="text" readonly value="rachel.cho5257@gmail.com">
+            </div>
+          </div>
+          <div class="contact-way" id="booking">
+            <p class="way-title">30-minute call</p>
+            <p>Prefer to talk first? Book a time.</p>
+            <a class="btn btn-secondary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-minute consultation<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Second Context — Product design across markets.</span>
+    <span>© 2026 Second Context</span>
+  </div>
+</footer>
+
+<script src="../assets/contact-form.js" defer></script>
+
+</body>
+</html>

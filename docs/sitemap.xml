@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://second-context.com/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/second-context-approach.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-approach.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-approach.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-approach.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/en/second-context-approach.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-approach.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-approach.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-approach.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/second-context-work.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-work.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-work.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-work.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/en/second-context-work.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-work.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-work.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-work.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/second-context-contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-contact.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/en/second-context-contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-contact.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-contact.html"/>
+  </url>
+</urlset>
