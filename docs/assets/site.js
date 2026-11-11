@@ -97,7 +97,7 @@
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape' && header.classList.contains('is-open')) setMenu(false, true);
       });
-      window.matchMedia('(min-width: 1201px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
+      window.matchMedia(document.documentElement.lang === 'en' ? '(min-width: 1240px)' : '(min-width: 1120px)').addEventListener('change', function (m) { if (m.matches) setMenu(false); });
     }
 
     // 홈에서는 화면에 보이는 섹션의 메뉴를 현재 위치로 표시한다(하위 페이지는 HTML에 고정)
@@ -221,6 +221,13 @@
       var nlBtn = nl.querySelector('button[type="submit"]');
       var busy = false;
       var say = function (msg, state) { nlStatus.textContent = msg; nlStatus.setAttribute('data-state', state); };
+      /* 2026-11-11: 구독 서비스가 연결되지 않았으면(data-endpoint 비어 있음) 입력·버튼을 비활성으로 두어
+         신청할 수 있는 것처럼 보이지 않게 한다. 연결하면 data-endpoint에 주소만 넣으면 다시 켜진다 */
+      if (!nl.getAttribute('data-endpoint')) {
+        nl.setAttribute('data-state', 'off');
+        nlInput.disabled = true;
+        nlBtn.disabled = true;
+      }
       nl.addEventListener('submit', function (e) {
         e.preventDefault();
         if (busy) return;

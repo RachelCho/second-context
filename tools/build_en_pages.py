@@ -120,8 +120,10 @@ COMMON = [
     ('aria-label="Second Context 홈"', 'aria-label="Second Context home"'),
     ('aria-label="주요 메뉴"', 'aria-label="Main menu"'),
     ('(새 탭에서 열림)', '(opens in a new tab)'),
-    ('30분 상담 예약하기', 'Book a 30-minute call'),
-    ('30분 상담 예약', 'Book a 30-min call'),
+    # 2026-11-11: 한국어 페이지의 상담 버튼은 모두 "30분 상담 예약", 영어는 "Book a 30-minute consultation"으로 통일
+    ('30분 상담 예약하기', 'Book a 30-minute consultation'),
+    ('30분 상담 예약', 'Book a 30-minute consultation'),
+    ('<span class="nl-badge">준비 중</span>', '<span class="nl-badge">Coming soon</span>'),
     ('프로젝트 문의하기', 'Send a project inquiry'),
     ('30분 상담으로 시작합니다.', 'Start with a 30-minute call.'),
     # 2026-10-29 사진·비주얼 재구성
@@ -212,6 +214,11 @@ HOME = [
     ('<h3>프로덕트 디자인</h3>', '<h3>Product design</h3>'),
     ('합의한 문제를 사용자 흐름과 화면으로 설계하고, 프로토타입과 개발 협업까지 이어갑니다. 디자인 의도와 요구사항, 고려할 예외 상황을 함께 정리해 구현 과정의 해석 차이를 줄입니다.', 'We design agreed problems as user flows and screens, then carry them through prototyping and development collaboration. Documenting design intent, requirements, and edge cases together reduces differences in interpretation during implementation.'),
     ('<h3>AI 기반 프로토타이핑</h3>', '<h3>AI-assisted prototyping</h3>'),
+    # 2026-11-11: 사례 01 오른쪽 카드(한국어는 한국어 문구, 영어는 기존 영어 문구 유지)
+    ('<p class="cap-title">AI 기반 일정 재배정</p>', '<p class="cap-title">AI-assisted Re-assignment</p>'),
+    ('일정 충돌을 확인하고, 가능한 대체 방문 시간을 추천합니다.', 'Automatically resolves scheduling conflicts and suggests the best available time.'),
+    ('네 단계는 협업의 큰 흐름입니다. 진행 방식 페이지에서는 이를 여섯 단계의 실행 과정과 단계별 산출물로 나눠 설명합니다.',
+     'These four steps outline how we work together. The Approach page breaks them into six working steps, each with its own deliverable.'),
     ('AI 도구로 아이디어를 실제로 동작하는 프로토타입으로 빠르게 만들어, 개발에 들어가기 전에 팀과 사용자에게 확인합니다.', 'We use AI tools to quickly turn ideas into working prototypes, so your team and users can check them before development begins.'),
     ('노트북을 사이에 두고 웃으며 제품 이야기를 나누는 세 사람', 'Three people smiling as they talk about a product over a laptop'),
     ('화이트보드에 그린 화면 흐름을 가리키며 팀에게 설명하는 사람', 'A person pointing to a screen flow drawn on a whiteboard while explaining it to the team'),
@@ -268,12 +275,12 @@ CASE_TEXT = [
     ('예약 가능한 날짜를 보여주는 달력과 일정 상태 표시', 'A calendar of bookable dates and schedule status indicators'),
     ('내부 코드를 대신하는 화면 문구', 'UI wording that replaces internal codes'),
     ('AI 일정 추천을 확인·검증·조정하는 흐름', 'A flow for reviewing, validating, and adjusting AI schedule recommendations'),
-    ('파일럿에서 일정 계획 자신감 5.8 → 8.2', 'Schedule-planning confidence 5.8 → 8.2 in the pilot'),
-    ('여러 개선이 함께 적용된 후 작업 시간 180초 → 60초', 'Task time 180 sec → 60 sec after several improvements were applied together'),
-    ('AI 보조 일정 워크플로에서 수동 검증 35% 감소', 'Manual validation reduced by 35% in the AI-assisted scheduling workflow'),
-    ('임상의 3,000명 이상이 사용하는 일정 추천 경험', 'Scheduling recommendation experience used by 3,000+ clinicians'),
-    ('디자인 시스템을 개발자 23명 전원이 조직 표준으로 채택', 'Design system adopted by all 23 developers as the org-wide standard'),
-    ('디자인 시스템 도입 후 릴리스 주기 50% 이상 단축', 'Release cycles accelerated by 50%+ after the design system was adopted'),
+    ('파일럿에서 일정 계획 자신감 <strong class="metric-num">5.8 → 8.2</strong>', 'Schedule-planning confidence <strong class="metric-num">5.8 → 8.2</strong> in the pilot'),
+    ('여러 개선이 함께 적용된 후 작업 시간 <strong class="metric-num">180초 → 60초</strong>', 'Task time <strong class="metric-num">180 sec → 60 sec</strong> after several improvements were applied together'),
+    ('AI 보조 일정 워크플로에서 수동 검증 <strong class="metric-num">35% 감소</strong>', 'Manual validation <strong class="metric-num">reduced by 35%</strong> in the AI-assisted scheduling workflow'),
+    ('임상의 <strong class="metric-num">3,000명 이상</strong>이 사용하는 일정 추천 경험', 'Scheduling recommendation experience used by <strong class="metric-num">3,000+</strong> clinicians'),
+    ('디자인 시스템을 개발자 <strong class="metric-num">23명 전원</strong>이 조직 표준으로 채택', 'Design system adopted by <strong class="metric-num">all 23 developers</strong> as the org-wide standard'),
+    ('디자인 시스템 도입 후 릴리스 주기 <strong class="metric-num">50% 이상 단축</strong>', 'Release cycles <strong class="metric-num">accelerated by 50%+</strong> after the design system was adopted'),
     # 02 운영 모니터링
     ('글로벌 제약사의 운영 모니터링·인시던트 관리 UX', 'Operations monitoring and incident management UX for a global pharmaceutical company'),
     ('글로벌 제약사의 <span class="tl">운영 모니터링·</span><span class="tl">인시던트 관리 UX</span>', 'Operations monitoring and incident management UX <span class="tl">for a global pharmaceutical company</span>'),
@@ -286,7 +293,7 @@ CASE_TEXT = [
     ('의사결정 지원 흐름과 신호 표시를 다시 설계한 뒤의 인시던트 분류(triage) 시간',
      'Incident triage time after redesigning decision-support workflows and signal display'),
     ('<p class="metric-value">40% 단축</p>', '<p class="metric-value">40% faster</p>'),
-    ('개발자 내부 도구의 티켓 처리 시간 40% 단축', 'Developer internal-tool ticket processing time reduced by 40%'),
+    ('개발자 내부 도구의 티켓 처리 시간 <strong class="metric-num">40% 단축</strong>', 'Developer internal-tool ticket processing time <strong class="metric-num">reduced by 40%</strong>'),
     ('개발자 내부 도구의 티켓 처리 시간', 'Ticket processing time in developers’ internal tools'),
     ('백신 운영을 지원하는 엔터프라이즈 모니터링 플랫폼으로, 제약사 엔지니어링팀이 사용했습니다. 운영 담당자는 인시던트를 조사하기 위해 8개 대시보드를 오가며 심각도와 영향을 파악해야 했습니다.',
      'An enterprise monitoring platform supporting vaccine operations, used by the company’s engineering teams. To investigate an incident, operators had to move between 8 dashboards to work out severity and impact.'),
@@ -303,10 +310,11 @@ CASE_TEXT = [
     ('심각도와 후속 영향을 중심으로 한 인시던트 조사 흐름', 'An incident investigation flow centered on severity and downstream impact'),
     ('AI 인사이트를 우선순위에 따라 보여주는 의사결정 지원 화면', 'Decision-support screens that surface AI insights by priority'),
     ('성능을 고려한 인시던트 목록 탐색', 'Performance-aware incident list browsing'),
-    ('프로젝트에서 보고된 인시던트 조사 시간 30분 → 3분', 'Incident investigation time 30 min → 3 min, as reported in the project'),
+    ('프로젝트에서 보고된 인시던트 조사 시간 <strong class="metric-num">30분 → 3분</strong>', 'Incident investigation time <strong class="metric-num">30 min → 3 min</strong>, as reported in the project'),
     ('프로젝트에서 보고된 인시던트 조사 시간', 'Incident investigation time reported in the project'),
-    ('의사결정 지원 흐름 재설계와 신호 명확화 후 인시던트 분류(triage) 시간 80% 단축',
-     'Incident triage time reduced by 80% after redesigning decision-support workflows and clarifying signals'),
+    ('의사결정 지원 흐름 재설계와 신호 명확화 후 인시던트 분류(triage) 시간 <strong class="metric-num">80% 단축</strong>',
+     'Incident triage time <strong class="metric-num">reduced by 80%</strong> after redesigning decision-support workflows and clarifying signals'),
+    ('이해관계자 인터뷰 <strong class="metric-num">15회</strong>', '<strong class="metric-num">15</strong> stakeholder interviews'),
     ('이해관계자 인터뷰 15회', '15 stakeholder interviews'),
     # 03 한국어 현지화
     ('글로벌 테크 기업의 한국어 제품 현지화', 'Korean product localization for a global tech company'),
@@ -536,7 +544,8 @@ APPROACH = [
     # 2026-10-29 사진·비주얼 재구성
     ('<h1>맥락을 이해하고, 실행 가능한 다음 단계를 만듭니다.</h1>', '<h1>Understand the context. Create next steps your team can act on.</h1>'),
     ('유리벽에 손으로 그린 화면 흐름을 설명하는 사람과 이를 지켜보는 동료 세 명', 'A person explaining a hand-drawn screen flow on a glass wall as three colleagues look on'),
-    ('각 단계의 산출물이 다음 단계의 판단 근거가 됩니다. 단계를 누르면 자세한 설명으로 이동합니다.', 'Each step’s deliverable informs the decisions in the next. Select a step to jump to its details.'),
+    ('홈에서 소개한 네 단계(맥락 이해 → 문제 정의 → 디자인 및 검증 → 실행 지원)를 실제 진행 순서대로 나눈 여섯 단계입니다. 1·2단계는 맥락 이해, 3단계는 문제 정의, 4단계는 디자인 및 검증, 5단계는 실행 지원이고, 6단계는 출시 뒤 검증과 다음 개선입니다. 각 단계의 산출물이 다음 단계의 판단 근거가 되며, 단계를 누르면 자세한 설명으로 이동합니다.',
+     'These six steps break the four steps on the home page (Understand context → Define the problem → Design and validate → Support delivery) into the order we actually work in. Steps 1–2 cover context, step 3 defines the problem, step 4 is design and validation, step 5 supports delivery, and step 6 validates after launch and sets up the next improvement. Each step’s deliverable informs the decisions in the next. Select a step to jump to its details.'),
     ('<span class="pr-out-k">산출물</span>', '<span class="pr-out-k">Deliverable</span>'),
     ('06단계의 검증 결과는 다음 개선 과제로 이어집니다.', 'Validation results from step 06 feed the next round of improvements.'),
     ('<h2 id="priority-title">먼저 해결할 문제와 판단 기준을 함께 정합니다.</h2>', '<h2 id="priority-title">We agree together on what to solve first, and how to decide.</h2>'),
@@ -621,7 +630,7 @@ CONTACT = [
     ('이메일 주소 (선택해서 복사)', 'Email address (select to copy)'),
     ('<p class="way-title">30분 상담</p>', '<p class="way-title">30-minute call</p>'),
     ('대화로 먼저 이야기 나누고 싶다면 예약해 주세요.', 'Prefer to talk first? Book a time.'),
-    ('30분 상담 예약하기<span class="sr-only"> (새 탭에서 열림)</span></a>\n          </div>',
+    ('30분 상담 예약<span class="sr-only"> (새 탭에서 열림)</span></a>\n          </div>',
      'Book a 30-minute consultation<span class="sr-only"> (새 탭에서 열림)</span></a>\n          </div>'),
     # 2026-10-29 사진·비주얼 재구성
     ('<h1>지금 고민 중인 제품 이야기를 들려주세요.</h1>', '<h1>Tell us about the product challenge on your mind.</h1>'),
@@ -675,6 +684,8 @@ KEEP = re.compile(r'<!--i18n:keep-->.*?<!--/i18n:keep-->', re.S)  # 비교 자�
 
 for page in PAGES:
     s = prep_korean(page)
+    # 한국어 원본의 줄바꿈 없는 공백(고유명사 Y Combinator·Flexwork Pro 등)은 번역 표와 맞추기 위해 일반 공백으로 읽는다
+    s = s.replace('\u00a0', ' ')
     e = s.replace(f'<link rel="canonical" href="{url(page)}">', f'<link rel="canonical" href="{url(page, "en")}">')
     e = e.replace(lang_nav(page, "ko"), lang_nav(page, "en"))
     e = e.replace(footer_lang(page, "ko"), footer_lang(page, "en"))
@@ -699,6 +710,9 @@ for page in PAGES:
         e = e.replace(ko, en)
     if page == PAGES[2]:
         e = e.replace('Rachel과 Book a 30-minute call', 'Book a 30-minute call with Rachel')
+    # 짧은 고유명사는 영어 문장에서도 줄 끝에서 갈리지 않게(2026-11-11: "Y / Combinator" 방지)
+    for name in ('Y Combinator', 'Flexwork Pro'):
+        e = e.replace(name, name.replace(' ', '\u00a0'))
     # 반응형 이미지(srcset)의 후보 경로도 en/ 기준으로 바꾼다
     e = re.sub(r'srcset="([^"]*)"', lambda m: 'srcset="' + re.sub(r'(^|, )assets/', r'\1../assets/', m.group(1)) + '"', e)
     # 한국어 작업 메모 주석은 영어 페이지에 옮기지 않는다 (화면에 보이지 않음)
