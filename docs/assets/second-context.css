@@ -1058,6 +1058,8 @@ html[lang="ko"] .sc-dark .work-detail dd{margin-top:12px}
 @media(max-width:600px){.sc-hero--full .sc-hero-media{aspect-ratio:4/3;max-height:none}}
 /* 사례 03 오른쪽 카드(2026-11-10): 사용자가 준 가로 3:2 사진(노트북 영어 · 휴대폰 한국어 예약 화면)을 자르지 않도록 원본 비율 */
 .cap-card--landscape .cap-media{aspect-ratio:3/2}
+/* 사례 01 오른쪽 카드(2026-11-11): 사용자가 준 16:9 노트북 화면(AI 재배정 추천)을 자르지 않도록 원본 비율 */
+.cap-card--wide169 .cap-media,.cap-card--wide169.cap-card--tall .cap-media{aspect-ratio:1672/941}
 /* 흰 섹션(2026-11-10, edenspiekermann.com처럼 검정·흰색 교차): 홈 Services·Approach, About 멘토링.
    제목 #000(21:1), 본문 #4D4D4D(8.45:1), 작은 글 #666(5.74:1), 선 검정 14% */
 .sc-dark .sc-light{--body:#4D4D4D;--muted:#666666;--line:rgba(0,0,0,.14);background:#fff;color:var(--body);border-top:0}
