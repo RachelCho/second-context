@@ -1333,3 +1333,25 @@ html[lang="en"] .sc-dark .step dl{--dl-label:9em}
 /* Why Us: 검정과 살짝 다른 다크 플럼(#1B1419, 브랜드 플럼 #30232E를 어둡게).
    본문 #B3B3B3 8.67:1 · 작은 글 #999 6.37:1 · 강조 #F0845C 6.9:1 · 흰 제목 17.6:1 */
 .sc-dark #why-us{background:#1B1419}
+/* 홈 Selected Work(2026-11-11, 사용자 요청): 사례 화면 대부분이 밝은 화이트 모드 기기라 순백이 아닌 은빛 미색 #EFEDE8.
+   흰 섹션 규칙(.sc-light)을 그대로 쓰고 바탕만 바꾼다. 대비: 제목 #000 17.9:1 · 본문 #4D4D4D 7.2:1 · 작은 글 #666 4.9:1 · 번호 원 #A83E20 5.3:1.
+   흰 카드는 옅은 테두리로 구분하고, 카드 포커스는 검정 외곽선 */
+.sc-dark .sc-light.sc-tone-ivory{background:#EFEDE8}
+.sc-tone-ivory .cap-card{box-shadow:0 0 0 1px rgba(0,0,0,.08)}
+.sc-light .cap-card:focus-visible{outline-color:#000}
+/* 홈 "경험한 제품과 맡은 역할"(2026-11-11 2차, 사용자 요청).
+   원인: 공통 읽기 폭 규칙(.row-dl dd → max-width 34em = 612px)이 이 목록에도 걸려, 1440px에서 본문 열이 938px인데 612px에서 줄바꿈됐다.
+   또 900px 이하 한 열 규칙 때문에 768px에서 이미 세로로 쌓였다. 이 섹션만 아래 규칙으로 정리한다(<br> 없음, white-space normal 확인).
+   데스크톱: 연도 160px | 32px | 콘텐츠(제목 → 설명). 설명: 라벨 120px | 본문 나머지(minmax(0,1fr), 폭 제한 없음) */
+.sc-dark .proof-rows .row-list > li{grid-template-columns:160px minmax(0,1fr);column-gap:32px}
+.sc-dark .proof-rows .row-list > li > *,.sc-dark .proof-rows .row-dl > *{min-width:0}
+.sc-dark .proof-rows .row-dl{grid-template-columns:120px minmax(0,1fr);column-gap:var(--s3);row-gap:var(--s2)}
+.sc-dark .proof-rows .row-dl :is(dt,dd){white-space:normal;word-break:keep-all;overflow-wrap:anywhere;line-height:1.7}
+.sc-dark .proof-rows .row-dl dd{max-width:none}
+/* 767px 이하: 연도 → 제목 → 회사 배경 → 본문 → Rachel의 역할 → 본문 (라벨 아래 본문) */
+@media(max-width:767px){
+  .sc-dark .proof-rows .row-list > li{grid-template-columns:minmax(0,1fr);row-gap:var(--s1)}
+  .sc-dark .proof-rows .row-dl{grid-template-columns:minmax(0,1fr);row-gap:0}
+  .sc-dark .proof-rows .row-dl dd{margin-top:4px}
+  .sc-dark .proof-rows .row-dl dd + dt{margin-top:var(--s2)}
+}
