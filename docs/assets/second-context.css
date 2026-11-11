@@ -1394,7 +1394,7 @@ html[lang="ko"] .sc-dark #services .svc-tile{row-gap:var(--s4)}
 }
 @media(max-width:600px){.sc-dark #services .svc-tile{padding:var(--s4) var(--s3)}}
 
-/* Approach 4단계: 1024px 이상 같은 폭 4열. 완성 상태(기본) = 번호 원 조정 오렌지 채움 + 흰 숫자(6.22:1), 연결선 조정 오렌지.
+/* Approach 4단계: 1024px 이상 같은 폭 4열. 완성 상태(기본) = 번호 원·연결선 브랜드 오렌지 #DA613E(로고 색, 2026-11-11 사용자 요청) + 검정 숫자 5.76:1(흰 숫자는 3.65:1이라 쓰지 않음). 선은 흰 바탕 3.65:1(비텍스트 3:1 이상). 시작 상태 숫자는 #A83E20 6.22:1.
    site.js가 data-flow="ready"(시작: 테두리 원 · 선 비어 있음)를 두고, 화면에 들어오면 "play"로 01→04 순서로 채운다.
    선은 transform scaleX(왼쪽 → 오른쪽), 원 채움은 opacity·transform. 총 약 1.5초, 한 번만. 본문은 처음부터 보인다 */
 .sc-dark #approach .flow-steps{--flow-n:64px;--flow-gap:var(--s3);grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s5) var(--flow-gap)}
@@ -1402,9 +1402,9 @@ html[lang="ko"] .sc-dark #services .svc-tile{row-gap:var(--s4)}
 .sc-dark #approach .flow-steps li:not(:last-child)::before,
 .sc-dark #approach .flow-steps li:not(:last-child)::after{content:"";display:block;position:absolute;top:calc(var(--flow-n) / 2 - 1px);left:calc(var(--flow-n) + 12px);right:calc(12px - var(--flow-gap));width:auto;height:2px}
 .sc-dark #approach .flow-steps li:not(:last-child)::after{background:rgba(0,0,0,.14)} /* 바탕선 */
-.sc-dark #approach .flow-steps li:not(:last-child)::before{z-index:1;background:#A83E20;transform-origin:0 50%} /* 채움선 */
-.sc-dark #approach .flow-steps .num-circle{position:relative;isolation:isolate;width:var(--flow-n);height:var(--flow-n);color:#fff;border-color:#A83E20}
-.sc-dark #approach .flow-steps .num-circle::before{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:50%;background:#A83E20}
+.sc-dark #approach .flow-steps li:not(:last-child)::before{z-index:1;background:#DA613E;transform-origin:0 50%} /* 채움선 */
+.sc-dark #approach .flow-steps .num-circle{position:relative;isolation:isolate;width:var(--flow-n);height:var(--flow-n);color:#000;border-color:#DA613E}
+.sc-dark #approach .flow-steps .num-circle::before{content:"";position:absolute;inset:-1px;z-index:-1;border-radius:50%;background:#DA613E}
 @media(min-width:1024px) and (prefers-reduced-motion:no-preference){
   .sc-dark #approach .flow-steps li:nth-child(1){--d-num:0ms;--d-line:150ms}
   .sc-dark #approach .flow-steps li:nth-child(2){--d-num:400ms;--d-line:550ms}
@@ -1430,7 +1430,7 @@ html[lang="ko"] .sc-dark #services .svc-tile{row-gap:var(--s4)}
   .sc-dark #approach .flow-steps h3{grid-column:2;margin-top:12px}
   .sc-dark #approach .flow-steps p{grid-column:2}
   .sc-dark #approach .flow-steps li:not(:last-child)::before{display:none}
-  .sc-dark #approach .flow-steps li:not(:last-child)::after{display:block;left:calc(var(--flow-n) / 2 - 1px);right:auto;top:calc(var(--flow-n) + 8px);bottom:calc(8px - var(--s4));width:2px;height:auto;background:#A83E20}
+  .sc-dark #approach .flow-steps li:not(:last-child)::after{display:block;left:calc(var(--flow-n) / 2 - 1px);right:auto;top:calc(var(--flow-n) + 8px);bottom:calc(8px - var(--s4));width:2px;height:auto;background:#DA613E}
 }
 /* 두 섹션 줄바꿈: 한국어 어절(keep-all), 영어 단어 단위, 긴 연속 문자열만 칸 안에서 나눈다 */
 .sc-dark :is(#services,#approach) :is(h3,p){overflow-wrap:break-word}
