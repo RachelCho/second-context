@@ -122,6 +122,24 @@
 
     Array.prototype.forEach.call(document.querySelectorAll('[data-year]'), function (y) { y.textContent = new Date().getFullYear(); });
 
+    // 홈 Approach 4단계(2026-11-11): 화면에 들어오면 01→04 번호·연결선을 한 번 순서대로 강조한다.
+    // HTML·CSS 기본은 완성된 상태라 JS가 없거나 움직임 줄이기면 그대로 보인다. 시작 상태(ready)는 1024px 이상에서만 CSS가 적용
+    var flow = document.querySelector('#approach .flow-steps');
+    if (flow && !reduce && 'IntersectionObserver' in window) {
+      flow.setAttribute('data-flow', 'ready');
+      var flowIo = new IntersectionObserver(function (entries) {
+        var en = entries[0];
+        if (!en.isIntersecting) {
+          // 이미 지나친 위치(예: #contact로 바로 열기)면 재생 없이 완성 상태로 둔다
+          if (en.boundingClientRect.bottom < 0) { flow.removeAttribute('data-flow'); flowIo.disconnect(); }
+          return;
+        }
+        flow.setAttribute('data-flow', 'play');
+        flowIo.disconnect();
+      }, { rootMargin: '0px 0px -20% 0px' });
+      flowIo.observe(flow);
+    }
+
     /* ---------- 1) 검색 ---------- */
     var openBtn = document.querySelector('.search-open');
     var dlg = document.getElementById('search');
