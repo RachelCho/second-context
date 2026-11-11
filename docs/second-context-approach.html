@@ -22,35 +22,53 @@
 <meta property="og:image" content="https://second-context.com/assets/og/approach-ko.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Second Context 로고와 “맥락을 이해하고, 실행 가능한 다음 단계를 만듭니다.” 문구">
+<meta property="og:image:alt" content="Second Context 로고: 검정 바탕의 흰 두 사각 프레임">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
 <link rel="stylesheet" href="assets/second-context.css">
 </head>
-<body>
+<body class="sc-dark">
 
 <a class="skip" href="#main">본문 바로가기</a>
 
-<header>
+<header class="site-header">
   <div class="wrap">
-    <a href="./" class="logo" aria-label="Second Context 홈"><img src="assets/second-context-logo.png" alt="second context"></a>
-    <nav aria-label="주요 메뉴">
-      <a href="./#why">Why Us</a>
-      <a href="./#services">Services</a>
-      <a href="./#work">Work</a>
-      <a href="second-context-approach.html" aria-current="page">Approach</a>
-      <a href="second-context-contact.html">Contact</a>
-      <a class="btn btn-primary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약<span class="sr-only"> (새 탭에서 열림)</span></a>
+    <a href="./" class="logo" aria-label="Second Context 홈"><img src="assets/second-context-logo-white.png" alt="second context" width="800" height="326"></a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span><span class="menu-toggle-text">Menu</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="주요 메뉴">
+      <a href="./#why-us" data-nav="why-us">Why Us</a>
+      <a href="./#services" data-nav="services">Services</a>
+      <a href="./#work" data-nav="work">Work</a>
+      <a aria-current="true" href="./#approach" data-nav="approach">Approach</a>
+      <a href="./#contact" data-nav="contact">Contact</a>
+      <a class="pill pill-light nav-cta" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener"><span class="nav-cta-text">Book a 30-minute consultation</span><span class="sr-only"> (새 탭에서 열림)</span></a>
     </nav>
     <nav class="lang" aria-label="언어 선택">
       <a href="second-context-approach.html" lang="ko" hreflang="ko" aria-current="true">한국어</a>
       <span aria-hidden="true">/</span>
       <a href="en/second-context-approach.html" lang="en" hreflang="en"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
     </nav>
+    <button type="button" class="search-open" aria-haspopup="dialog" aria-controls="search" aria-expanded="false"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">사이트 검색</span></button>
   </div>
 </header>
+
+<div class="search" id="search" role="dialog" aria-modal="true" aria-labelledby="search-title" hidden>
+  <div class="wrap">
+    <div class="search-top">
+      <p class="search-title" id="search-title">사이트 검색</p>
+      <button type="button" class="search-close"><span>닫기</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <form class="search-form" role="search" aria-label="사이트 검색">
+      <label class="sr-only" for="search-input">사이트 검색어</label>
+      <input id="search-input" type="search" autocomplete="off" placeholder="사례, 서비스, 페이지 검색">
+      <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">검색</span></button>
+    </form>
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <ul class="search-results"></ul>
+  </div>
+</div>
 
 <main id="main">
   <section class="hero hero-full hero-full--low" id="approach-intro">
@@ -178,7 +196,7 @@
       <p class="scope">전체 과정과 제공물은 협업 범위에 따라 달라집니다. 짧은 상담이나 UX 진단은 필요한 단계에 집중하며, 사용자 리서치·프로토타입·개발 지원·후속 검증은 별도 합의된 범위에서 진행합니다.</p>
       <div class="cta-row">
         <a class="btn btn-primary" href="second-context-contact.html#booking">30분 상담 예약하기</a>
-        <a class="btn btn-secondary" href="second-context-contact.html#inquiry">프로젝트 문의하기</a>
+        <a class="btn btn-secondary" href="./#contact">프로젝트 문의하기</a>
       </div>
     </div>
   </section>
@@ -230,18 +248,62 @@
       <h2 id="final-title">30분 상담으로 시작합니다.</h2>
       <div class="cta-row">
         <a class="btn btn-primary" href="second-context-contact.html#booking">30분 상담 예약하기</a>
-        <a class="btn btn-secondary" href="second-context-contact.html#inquiry">프로젝트 문의하기</a>
+        <a class="btn btn-secondary" href="./#contact">프로젝트 문의하기</a>
       </div>
     </div>
   </section>
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
-    <span>Second Context — Product design across markets.</span>
-    <span>© 2026 Second Context</span>
+    <div class="lets" data-rotator data-words="Understand|Design|Build|Collaborate" data-interval="2400">
+      <p class="lets-title"><span class="sr-only">Let’s understand, design, build, and collaborate.</span><span aria-hidden="true"><span class="lets-lead">Let’s</span><span class="lets-word is-in">Understand</span></span></p>
+      <div class="lets-actions">
+        <a class="lets-cta" href="./#contact"><span class="pill pill-light">Send a project inquiry</span><span class="circle-btn circle-btn--light"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <button type="button" class="lets-toggle" aria-pressed="false" hidden><span class="lets-toggle-text">일시정지</span><span class="sr-only"> 움직이는 문구</span></button>
+      </div>
+    </div>
+    <div class="footer-links">
+      <nav class="fl-col" aria-labelledby="fl-company">
+        <p class="fl-title" id="fl-company">Company</p>
+        <ul>
+          <li><a href="./#why-us" data-nav="why-us">Why Us</a></li>
+          <li><a href="./#services" data-nav="services">Services</a></li>
+          <li><a href="./#work" data-nav="work">Work</a></li>
+          <li><a href="./#approach" data-nav="approach">Approach</a></li>
+          <li><a href="./#contact" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="fl-col" aria-labelledby="fl-follow">
+        <p class="fl-title" id="fl-follow">Follow</p>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/second-context/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> — Second Context 회사 페이지</span><span class="sr-only"> (새 탭에서 열림)</span></a></li>
+          <li><a href="https://github.com/RachelCho" target="_blank" rel="noopener">GitHub<span class="sr-only"> — Rachel Cho</span><span class="sr-only"> (새 탭에서 열림)</span></a></li>
+        </ul>
+      </nav>
+      <form class="newsletter" data-endpoint="" novalidate aria-labelledby="nl-title">
+        <p class="fl-title" id="nl-title">Newsletter</p>
+        <label class="newsletter-label" for="nl-email">뉴스레터 구독 이메일</label>
+        <p class="newsletter-note" id="nl-note">구독 서비스 연결 준비 중입니다. 지금은 신청해도 등록되지 않습니다.</p>
+        <div class="newsletter-field">
+          <input id="nl-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@company.com" aria-describedby="nl-note nl-status">
+          <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="sr-only">뉴스레터 구독 신청</span></button>
+        </div>
+        <p class="newsletter-status" id="nl-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      <a href="./" class="footer-logo" aria-label="Second Context 홈"><img src="assets/second-context-logo-white.png" alt="second context" width="800" height="326" loading="lazy"></a>
+      <nav class="lang lang-footer" aria-label="언어 선택">
+        <a href="second-context-approach.html" lang="ko" hreflang="ko" aria-current="true">한국어</a>
+        <span aria-hidden="true">/</span>
+        <a href="en/second-context-approach.html" lang="en" hreflang="en"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+      </nav>
+      <p class="footer-copy">© Second Context <span data-year>2026</span></p>
+    </div>
   </div>
 </footer>
 
+<script src="assets/site.js" defer></script>
 </body>
 </html>

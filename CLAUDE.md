@@ -8,7 +8,7 @@
 ## 폴더 구조
 - docs/ — 배포되는 파일만: 한국어 페이지, en/ 영어 페이지(빌드 결과), assets/(CSS·JS·로고·웹용 사진·OG 이미지), favicon.ico, 404.html, sitemap.xml, robots.txt, CNAME, .nojekyll
 - tools/build_en_pages.py — 한국어 페이지의 canonical·hreflang·OG 태그·언어 전환을 넣고 번역 표로 docs/en/을 만든다(BASE = https://second-context.com/, 홈은 / 와 /en/)
-- tools/make_og_images.py — OG 카드 이미지(하단 표기 second-context.com)
+- tools/sync_from_portfolio.py(2026-11-11) — my-portfolio의 Second Context 페이지(디자인 원본)를 docs/로 옮긴다: second-context.html → index.html, 홈 링크 → ./(#섹션), 페이지가 쓰는 assets만 복사, 안 쓰는 docs/assets 파일 삭제, 마지막에 build_en_pages.py 실행. assets/lang.js는 운영 전용판 유지
 - 사진 원본 PNG와 웹용 사진을 만드는 도구(make_hero_images.py)는 my-portfolio에 남아 있다. 사진을 바꿀 때는 그쪽에서 만든 JPG를 docs/assets/images/로 복사한다
 - 페이지나 경로를 추가하면 docs/sitemap.xml도 함께 고친다
 
@@ -16,6 +16,9 @@
 - 화면 문구는 한국어 HTML과 tools/build_en_pages.py의 번역 표에서만 고치고, docs/en/*.html을 직접 고치지 않는다
 - 작업 후 변경 사항과 실제로 확인한 결과를 설명한다. 실제 문의 전송·상담 예약은 시험하지 않는다(Formspree 요청은 가로채서 확인)
 - 비밀키·토큰을 HTML·JS·Git에 넣지 않는다. Formspree 폼 주소는 공개용 주소다
+
+- 디자인 원본(2026-11-11): 다크 리디자인부터 화면·문구·CSS·JS는 my-portfolio에서 고친다(규칙은 my-portfolio CLAUDE.md의 "Second Context 다크 리디자인"이 최우선). 고친 뒤 my-portfolio에서 `python3 tools/sc_chrome.py . && python3 tools/build_en_pages.py .`, 이 저장소에서 `python3 tools/sync_from_portfolio.py ../my-portfolio docs`. docs/의 페이지를 직접 고치면 다음 동기화 때 덮어쓴다(404.html·sitemap.xml·robots.txt·CNAME만 이 저장소에서 관리)
+- OG 이미지·파비콘은 my-portfolio의 tools/make_brand_icons.py(검정 바탕 + 흰 두 사각 프레임)에서 만든 것을 복사한다. 예전 글자 카드용 make_og_images.py는 지웠다
 
 ## 브랜드·구현 규칙 (my-portfolio CLAUDE.md에서 옮김, 필수)
 - 적용 대상: second-context.html, plan-draft.html, plan-draft.md 등 Second Context 관련 화면과 문서
@@ -86,7 +89,7 @@
 
 ### 페이지 구조와 구현 규칙
 - 정적 HTML, GitHub Pages(저장소 RachelCho/second-context의 docs/ 폴더, 도메인 https://second-context.com). 페이지 링크·이미지는 상대 경로만 쓴다(404.html만 / 기준)
-- 페이지(docs/): index.html(홈), second-context-approach.html, second-context-work.html, second-context-contact.html, 404.html. 영어는 docs/en/ 같은 이름. 홈으로 가는 링크는 ./ (영어 ../ · en/), 섹션은 ./#work 형태. 창업자 소개 안내 페이지(second-context-about.html)는 운영 사이트에 두지 않는다
+- 페이지(docs/): index.html(홈), second-context-approach.html, second-context-work.html, second-context-contact.html, second-context-about.html(2026-11-11부터 실제 About 페이지), 404.html. 영어는 docs/en/ 같은 이름. 홈으로 가는 링크는 ./ (영어 ../ · en/), 섹션은 ./#work 형태
 - 공통 스타일은 assets/second-context.css 하나로 관리하고, 헤더·푸터·본문 바로가기는 세 페이지에 같은 구조로 둔다
 - 현재 페이지 메뉴에는 aria-current="page"를 넣고 밑줄·굵기로도 표시한다
 - 새 탭 링크에는 "(새 탭에서 열림)"을 화면 밖 텍스트(sr-only)로 붙인다

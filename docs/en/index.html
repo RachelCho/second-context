@@ -22,432 +22,402 @@
 <meta property="og:image" content="https://second-context.com/assets/og/home-en.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Second Context logo with the text “New market context, your product’s next step.”">
+<meta property="og:image:alt" content="Second Context logo: two white open frames on black">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
 <link rel="stylesheet" href="../assets/second-context.css">
 </head>
-<body>
+<body class="sc-dark">
 
 <a class="skip" href="#main">Skip to main content</a>
 
-<header>
+<header class="site-header">
   <div class="wrap">
-    <a href="./" class="logo" aria-label="Second Context home" aria-current="page"><img src="../assets/second-context-logo.png" alt="second context"></a>
-    <nav aria-label="Main menu">
-      <a href="#why">Why Us</a>
-      <a href="#services">Services</a>
-      <a href="#work">Work</a>
-      <a href="second-context-approach.html">Approach</a>
-      <a href="second-context-contact.html">Contact</a>
-      <a class="btn btn-primary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-min call<span class="sr-only"> (opens in a new tab)</span></a>
+    <a href="./" class="logo" aria-label="Second Context home"><img src="../assets/second-context-logo-white.png" alt="second context" width="800" height="326"></a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span><span class="menu-toggle-text">Menu</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Main menu">
+      <a href="#why-us" data-nav="why-us">Why Us</a>
+      <a href="#services" data-nav="services">Services</a>
+      <a href="#work" data-nav="work">Work</a>
+      <a href="#approach" data-nav="approach">Approach</a>
+      <a href="#contact" data-nav="contact">Contact</a>
+      <a class="pill pill-light nav-cta" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener"><span class="nav-cta-text">Book a 30-minute consultation</span><span class="sr-only"> (opens in a new tab)</span></a>
     </nav>
     <nav class="lang" aria-label="Language">
       <a href="../" lang="ko" hreflang="ko">한국어</a>
       <span aria-hidden="true">/</span>
       <a href="./" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
     </nav>
+    <button type="button" class="search-open" aria-haspopup="dialog" aria-controls="search" aria-expanded="false"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">Search the site</span></button>
   </div>
 </header>
 
+<div class="search" id="search" role="dialog" aria-modal="true" aria-labelledby="search-title" hidden>
+  <div class="wrap">
+    <div class="search-top">
+      <p class="search-title" id="search-title">Search the site</p>
+      <button type="button" class="search-close"><span>Close</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <form class="search-form" role="search" aria-label="Site search">
+      <label class="sr-only" for="search-input">Search the site</label>
+      <input id="search-input" type="search" autocomplete="off" placeholder="Search case studies, services, pages">
+      <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">Search</span></button>
+    </form>
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <ul class="search-results"></ul>
+  </div>
+</div>
+
 <main id="main">
-  <section class="hero hero-full hero-full--focus" id="top">
-    <picture>
-      <source media="(min-width: 901px)" srcset="../assets/images/home-hero-rachel-design-review-1280.jpg 1280w, ../assets/images/home-hero-rachel-design-review-1774.jpg 1774w" width="1774" height="887" sizes="100vw">
-      <source media="(max-width: 600px)" srcset="../assets/images/home-hero-rachel-design-review-mobile-640.jpg 640w, ../assets/images/home-hero-rachel-design-review-mobile-987.jpg 987w" width="987" height="740" sizes="100vw">
-      <img class="hero-bg" src="../assets/images/home-hero-rachel-design-review-tablet-1152.jpg" srcset="../assets/images/home-hero-rachel-design-review-tablet-768.jpg 768w, ../assets/images/home-hero-rachel-design-review-tablet-1152.jpg 1152w" width="1152" height="864" sizes="100vw" fetchpriority="high" alt="Rachel Cho leading a team design discussion, gesturing as she explains in front of a screen showing a product dashboard">
-    </picture>
-    <div class="hero-shade" aria-hidden="true"></div>
-    <div class="wrap hero-inner">
-      <div class="hero-text">
-        <div class="page-header">
-          <p class="label">Product design across markets.</p>
-          <h1>New <span class="hero-hl">market</span> <span class="hero-hl">context</span>, your product’s next step.</h1>
-          <p class="lead">We understand how your users and their work environments differ, then design the product experience and execution priorities with your team.</p>
+  <section class="sc-hero sc-hero--full" id="top">
+    <div class="wrap sc-hero-grid">
+      <div class="sc-hero-text">
+        <p class="eyebrow">Product design across markets.</p>
+        <h1>New market context, your product’s next step.</h1>
+        <p class="lead">We understand how your users and their work environments differ, then design the product experience and execution priorities with your team.</p>
+        <div class="pill-row">
+          <a class="pill pill-light" href="#contact">Send a project inquiry</a>
+          <a class="pill pill-ghost" href="#work">Explore our work</a>
         </div>
-        <p class="tag">Healthcare · Enterprise · Complex operational workflows</p>
-        <div class="cta">
-          <a class="btn btn-hero-primary" href="second-context-contact.html#inquiry">Send a project inquiry</a>
-          <a class="btn btn-hero-secondary" href="#work">Explore our work</a>
-        </div>
+      </div>
+      <div class="sc-hero-media" data-hero-video="../assets/video/hero-loop.mp4" data-hero-video-sm="../assets/video/hero-loop-960.mp4">
+        <img src="../assets/images/home-hero-video-poster-1916.jpg" srcset="../assets/images/home-hero-video-poster-960.jpg 960w, ../assets/images/home-hero-video-poster-1916.jpg 1916w" width="1916" height="1080" sizes="100vw" fetchpriority="high" alt="Rachel Cho gesturing in front of a large screen showing product slides as she leads a team discussion">
+        <button type="button" class="hero-video-toggle" aria-pressed="false" hidden><span>Pause</span><span class="sr-only"> background video</span></button>
       </div>
     </div>
   </section>
 
-  <section id="why">
+  <section class="sc-section" id="why-us" aria-labelledby="why-title">
     <div class="wrap">
-      <div class="media-split">
-        <div class="page-header media-text">
-          <p class="label">Why Us</p>
-          <h2>We understand products, people, and business—together.</h2>
-          <p class="lead">Translation alone won’t get your product used in a new market. When the market and users change, how people work, how they make sense of a product, and how they judge trust all shift too—and teams that built for the Korean market often find these differences hard to see from the inside.</p>
+      <div class="sc-head">
+        <p class="eyebrow">Why Us</p>
+        <h2 id="why-title">We understand products, people, and business—together.</h2>
+        <p class="lead">Translation alone won’t get your product used in a new market. When the market and users change, how people work, how they make sense of a product, and how they judge trust all shift too—and teams that built for the Korean market often find these differences hard to see from the inside.</p>
+      </div>
+      <div class="photo-pair">
+        <figure class="pp-item"><img src="../assets/images/why-us-meeting-1152.jpg" srcset="../assets/images/why-us-meeting-768.jpg 768w, ../assets/images/why-us-meeting-1152.jpg 1152w, ../assets/images/why-us-meeting-1536.jpg 1536w" sizes="(max-width: 900px) 100vw, 58vw" width="1536" height="1024" loading="lazy" decoding="async" alt="Three people smiling as they talk about a product over a laptop"></figure>
+        <figure class="pp-item pp-item--side"><img src="../assets/images/why-us-leadership-1152.jpg" srcset="../assets/images/why-us-leadership-768.jpg 768w, ../assets/images/why-us-leadership-1152.jpg 1152w, ../assets/images/why-us-leadership-1536.jpg 1536w" sizes="(max-width: 900px) 100vw, 42vw" width="1536" height="1024" loading="lazy" decoding="async" alt="A person pointing to a screen flow drawn on a whiteboard while explaining it to the team"></figure>
+      </div>
+      <div class="diff">
+        <div class="diff-head">
+          <h3 class="diff-title">So good decisions turn into team action.</h3>
+          <p class="diff-lead">Design doesn’t end with screens. We explain design intent and priorities in language the whole team can use, and decide together what happens next.</p>
         </div>
-        <figure class="frame-photo">
-          <img src="../assets/images/why-us-meeting-1152.jpg" srcset="../assets/images/why-us-meeting-768.jpg 768w, ../assets/images/why-us-meeting-1152.jpg 1152w, ../assets/images/why-us-meeting-1536.jpg 1536w" width="1536" height="1024" sizes="(max-width: 900px) 100vw, 536px" loading="lazy" decoding="async" alt="Three people smiling as they talk about a product over a laptop">
-        </figure>
+        <ol class="diff-list">
+          <li><span class="num-circle num-circle--sm" aria-hidden="true">01</span><p>Explain the reasons behind priorities using user impact, business importance, and implementation effort.</p></li>
+          <li><span class="num-circle num-circle--sm" aria-hidden="true">02</span><p>Document design intent, requirements, and edge cases before development.</p></li>
+          <li><span class="num-circle num-circle--sm" aria-hidden="true">03</span><p>Break the agreed direction into next tasks the team can act on.</p></li>
+        </ol>
       </div>
-      <div class="cases">
-        <article class="case">
-          <h3>Translation-first localization</h3>
-          <p>The UI copy is now in English, but onboarding still assumes a Korean user, so first-time users don’t grasp the product’s value.</p>
-          <p class="q">Can a first-time user understand the value and get started?</p>
-        </article>
-        <article class="case">
-          <h3>Different ways of working</h3>
-          <p>Core workflows don’t fit how local teams divide roles and handle approvals, so the product isn’t used in day-to-day work.</p>
-          <p class="q">Do core workflows match how target users actually work?</p>
-        </article>
-        <article class="case">
-          <h3>Structure and wording</h3>
-          <p>Menu structure and button labels don’t make the next step clear.</p>
-          <p class="q">Do the screen structure and wording clearly guide the next action?</p>
-        </article>
-        <article class="case">
-          <h3>No clear priorities</h3>
-          <p>There seems to be a lot to fix, but the team can’t decide what to tackle first before launch.</p>
-          <p class="q">Which UX problems should be fixed first before launch?</p>
-        </article>
-      </div>
-      <p class="note">The examples above illustrate common types of trial and error; they are not specific client cases.</p>
-
-      <div class="media-split" id="leadership">
-        <figure class="frame-photo">
-          <img src="../assets/images/why-us-leadership-1152.jpg" srcset="../assets/images/why-us-leadership-768.jpg 768w, ../assets/images/why-us-leadership-1152.jpg 1152w, ../assets/images/why-us-leadership-1536.jpg 1536w" width="1536" height="1024" sizes="(max-width: 900px) 100vw, 536px" loading="lazy" decoding="async" alt="A person pointing to a screen flow drawn on a whiteboard while explaining it to the team">
-        </figure>
-        <div class="media-text">
-          <h3 class="sub-title">So good decisions turn into team action.</h3>
-          <p>Design doesn’t end with screens. We explain design intent and priorities in language the whole team can use, and decide together what happens next.</p>
-          <ul class="check-list">
-            <li>Explain the reasons behind priorities using user impact, business importance, and implementation effort.</li>
-            <li>Document design intent, requirements, and edge cases before development.</li>
-            <li>Break the agreed direction into next tasks the team can act on.</li>
-          </ul>
+      <div class="why-about" id="founder">
+        <p class="eyebrow eyebrow-center">About Second Context</p>
+        <h3 class="about-statement">Independent product design, shaped by context.</h3>
+        <div class="about-grid">
+          <div class="about-text">
+            <p class="about-lead">Second Context is an independent product design studio led by Rachel Cho. As founding designer at a U.S. home healthcare SaaS, she designed an AI scheduling platform, and she has designed operations monitoring and incident management for a global pharmaceutical company and product localization for global companies. She turns complex rules and workflows into product experiences people can understand and act on right away.</p>
+            <a class="pill pill-light" href="second-context-about.html">About Second Context</a>
+            <ul class="stat-rows" aria-label="Career summary" data-countup>
+              <li><span class="stat-value"><span aria-hidden="true"><span class="stat-num" data-count="40">40</span>+</span><span class="sr-only">40+</span></span><span class="stat-label">Projects completed</span></li>
+              <li><span class="stat-value"><span aria-hidden="true"><span class="stat-num" data-count="12">12</span>+</span><span class="sr-only">12+</span></span><span class="stat-label">Global &amp; multinational companies worked with</span></li>
+              <li><span class="stat-value"><span aria-hidden="true"><span class="stat-num" data-count="27">27</span>+</span><span class="sr-only">27+</span></span><span class="stat-label">Countries visited</span></li>
+            </ul>
+          </div>
+          <figure class="about-photo">
+            <img src="../assets/images/founder-portrait-1122.jpg" srcset="../assets/images/founder-portrait-560.jpg 560w, ../assets/images/founder-portrait-1122.jpg 1122w" sizes="(max-width: 900px) 100vw, 45vw" width="1122" height="1402" loading="lazy" decoding="async" alt="Rachel Cho smiling, seated in a bright room">
+            <figcaption>
+              <span class="name">Rachel Cho</span>
+              <span>Founder &amp; Product UX Consultant</span>
+              <span>Product Designer · Startup Strategy Coach · Career Mentor</span>
+            </figcaption>
+          </figure>
         </div>
       </div>
-
-      <div class="proof" id="experience">
-        <h3 class="sub-title">Products and roles</h3>
-        <p class="proof-intro">Each entry separates the company’s background from Rachel’s role.</p>
-        <ol class="proof-list">
-          <li>
-            <p class="proof-year">2025–2026</p>
-            <p class="proof-field">Healthcare SaaS</p>
-            <dl>
-              <dt>Company background</dt><dd>A venture-backed U.S. home healthcare startup from Y Combinator’s W21 batch</dd>
-              <dt>Rachel’s role</dt><dd>Led product design for the AI scheduling platform as founding designer and built the company’s first design system.</dd>
-            </dl>
-          </li>
-          <li>
-            <p class="proof-year">2024</p>
-            <p class="proof-field">Enterprise monitoring</p>
-            <dl>
-              <dt>Company background</dt><dd>A global pharmaceutical company’s monitoring platform supporting vaccine operations</dd>
-              <dt>Rachel’s role</dt><dd>Designed an AI-based incident management experience as a contract Senior Product Designer through a UX design agency.</dd>
-            </dl>
-          </li>
-          <li>
-            <p class="proof-year">2019</p>
-            <p class="proof-field">Product localization</p>
-            <dl>
-              <dt>Company background</dt><dd>Korean-language products for a global tech company</dd>
-              <dt>Rachel’s role</dt><dd>Localized UX copy and design assets over six weeks with a U.K. production agency and the client’s Korea and U.S. teams.</dd>
-            </dl>
-          </li>
+      <div class="proof-rows" id="experience">
+        <h3 class="diff-title">Products and roles</h3>
+        <p class="diff-lead">Each entry separates the company’s background from Rachel’s role.</p>
+        <ol class="row-list">
+          <li><span class="row-year">2025–2026</span><div><p class="row-what">Healthcare SaaS</p><dl class="row-dl"><dt>Company background</dt><dd>A venture-backed U.S. home healthcare startup from Y Combinator’s W21 batch</dd><dt>Rachel’s role</dt><dd>Led product design for the AI scheduling platform as founding designer and built the company’s first design system.</dd></dl></div></li>
+          <li><span class="row-year">2024</span><div><p class="row-what">Enterprise monitoring</p><dl class="row-dl"><dt>Company background</dt><dd>A global pharmaceutical company’s monitoring platform supporting vaccine operations</dd><dt>Rachel’s role</dt><dd>Designed an AI-based incident management experience as a contract Senior Product Designer through a UX design agency.</dd></dl></div></li>
+          <li><span class="row-year">2019</span><div><p class="row-what">Product localization</p><dl class="row-dl"><dt>Company background</dt><dd>Korean-language products for a global tech company</dd><dt>Rachel’s role</dt><dd>Localized UX copy and design assets over six weeks with a U.K. production agency and the client’s Korea and U.S. teams.</dd></dl></div></li>
         </ol>
       </div>
     </div>
   </section>
 
-  <section class="hero hero-full hero-full--band" id="services">
-    <img class="hero-bg" src="../assets/images/services-product-discussion-1536.jpg" srcset="../assets/images/services-product-discussion-768.jpg 768w, ../assets/images/services-product-discussion-1152.jpg 1152w, ../assets/images/services-product-discussion-1536.jpg 1536w" width="1536" height="1024" sizes="100vw" loading="lazy" decoding="async" alt="A person working on a laptop while sharing a view with colleagues at a meeting table">
-    <div class="hero-shade" aria-hidden="true"></div>
-    <div class="wrap hero-inner">
-      <div class="hero-text">
-        <div class="page-header">
-          <p class="label">Services</p>
-          <h2>Start with the help your product needs now.</h2>
-          <p class="lead">We work at the scope your team needs. From a short review to product design and development collaboration, you can start where you are today.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-after-band" aria-labelledby="services-cards-title">
+  <section class="sc-section sc-light" id="services" aria-labelledby="services-title">
     <div class="wrap">
-      <h3 class="sr-only" id="services-cards-title">Example deliverables by service</h3>
-      <p class="ex-legend"><span class="ex-label">Example deliverable</span> The screens below show what deliverables can look like. They are examples, not actual project results.</p>
-      <ul class="svc-cards">
-        <li class="svc-card">
-          <figure class="vis" aria-labelledby="vis-audit-cap">
-            <div class="mock mock-audit" aria-hidden="true">
-              <span class="m-top"><i></i><i></i><i></i></span>
-              <span class="m-h">Create your workspace<b class="pin">1</b></span>
-              <span class="m-label">Company name</span><span class="m-field"></span>
-              <span class="m-label">Business registration no.<b class="pin">2</b></span><span class="m-field"></span>
-              <span class="m-btn">Submit<b class="pin">3</b></span>
-            </div>
-            <figcaption id="vis-audit-cap">
-              <span class="vis-title">Example UX review</span>
-              <ol class="vis-notes">
-                <li><b class="pin" aria-hidden="true">1</b>Asks for input before explaining the product’s value.</li>
-                <li><b class="pin" aria-hidden="true">2</b>Requires a Korean business registration number that U.S. users don’t have.</li>
-                <li><b class="pin" aria-hidden="true">3</b>“Submit” doesn’t say what happens next.</li>
-              </ol>
-            </figcaption>
-          </figure>
-          <h3>Product UX Review</h3>
-          <dl class="svc-dl">
-            <dt>Scope</dt><dd>Onboarding, core tasks, information architecture, UI copy</dd>
-            <dt>Deliverable</dt><dd>UX review report with priorities</dd>
-          </dl>
-        </li>
-        <li class="svc-card">
-          <figure class="vis" aria-labelledby="vis-l10n-cap">
-<!--i18n:keep-->
-            <div class="l10n-pair">
-              <div class="mock" lang="en"><span class="m-lang">EN</span><span class="m-h">Book a visit</span><span>Tue, Mar 4 · 2:30 PM</span><span>Dr. Jane Kim</span><span class="m-btn">Confirm visit</span></div>
-              <div class="mock" lang="ko"><span class="m-lang">KO</span><span class="m-h">방문 예약</span><span>3월 4일 (화) 오후 2:30</span><span>김제인 선생님</span><span class="m-btn">방문 확정</span></div>
-            </div>
-<!--/i18n:keep-->
-            <figcaption id="vis-l10n-cap">
-              <span class="vis-title">Example localization comparison</span>
-              <ul class="vis-notes vis-notes-plain">
-                <li>Date and time order</li>
-                <li>Name order and honorifics</li>
-                <li>Buttons and spacing sized to the copy</li>
-              </ul>
-            </figcaption>
-          </figure>
-          <h3>Market Context Session</h3>
-          <dl class="svc-dl">
-            <dt>Scope</dt><dd>Target users, ways of working, localization assumptions</dd>
-            <dt>Deliverable</dt><dd>Consultation and a summary of key recommendations</dd>
-          </dl>
-        </li>
-        <li class="svc-card">
-          <figure class="vis" aria-labelledby="vis-flow-cap">
-            <ol class="flow" aria-hidden="true">
-              <li class="mock mini"><i class="hl"></i><i></i><i></i><i></i></li>
-              <li class="mock mini"><i class="t"></i><i class="box"></i><i></i></li>
-              <li class="mock mini"><i class="t"></i><i></i><i class="go"></i></li>
-            </ol>
-            <figcaption id="vis-flow-cap">
-              <span class="vis-title">Example user flow</span>
-              <ol class="vis-notes">
-                <li><b class="pin" aria-hidden="true">1</b>Pick an issue from the list.</li>
-                <li><b class="pin" aria-hidden="true">2</b>Check the cause and impact.</li>
-                <li><b class="pin" aria-hidden="true">3</b>Confirm the next action.</li>
-              </ol>
-            </figcaption>
-          </figure>
-          <h3>Design Partnership</h3>
-          <dl class="svc-dl">
-            <dt>Scope</dt><dd>Design, prototyping, and development collaboration on agreed problems</dd>
-            <dt>Deliverable</dt><dd>Product design deliverables matched to the agreed scope</dd>
-          </dl>
-        </li>
+      <div class="sc-head">
+        <p class="eyebrow">Services</p>
+        <h2 id="services-title">Start with the help your product needs now.</h2>
+        <p class="lead">We work at the scope your team needs. From a short review to product design and development collaboration, you can start where you are today.</p>
+      </div>
+      <ul class="svc-grid">
+        <li class="svc-tile"><span class="num-circle num-circle--sm" aria-hidden="true">01</span><h3>Product strategy</h3><p>We look at your target market, users, and business goals together to set product priorities and next steps.</p></li>
+        <li class="svc-tile"><span class="num-circle num-circle--sm" aria-hidden="true">02</span><h3>UX research</h3><p>We study how target users work and the context they work in through interviews and usability tests, then turn what we learn into evidence you can design from.</p></li>
+        <li class="svc-tile"><span class="num-circle num-circle--sm" aria-hidden="true">03</span><h3>Product design</h3><p>We design agreed problems as user flows and screens, then carry them through prototyping and development collaboration. Documenting design intent, requirements, and edge cases together reduces differences in interpretation during implementation.</p></li>
+        <li class="svc-tile"><span class="num-circle num-circle--sm" aria-hidden="true">04</span><h3>AI-assisted prototyping</h3><p>We use AI tools to quickly turn ideas into working prototypes, so your team and users can check them before development begins.</p></li>
       </ul>
-
-      <div class="media-split" id="collaboration">
-        <div class="media-text">
-          <h3 class="sub-title">From product problems to buildable design.</h3>
-          <p>We design agreed problems as user flows and screens, then carry them through prototyping and development collaboration. Documenting design intent, requirements, and edge cases together reduces differences in interpretation during implementation.</p>
-          <figure class="vis vis-states" aria-labelledby="vis-states-cap">
-            <figcaption id="vis-states-cap"><span class="ex-label">Example deliverable</span> <span class="vis-title">Component state definitions</span></figcaption>
-            <ul class="states">
-              <li>
-                <p class="st-name">Default</p>
-                <div class="st-demo" aria-hidden="true"><span class="st-input">you@team.com</span><span class="st-btn">Send</span></div>
-                <p class="st-note">Input border at 3:1 or more against the background</p>
-              </li>
-              <li class="is-error">
-                <p class="st-name">Error</p>
-                <div class="st-demo" aria-hidden="true"><span class="st-input">you@team</span><span class="st-msg">! Check the email format</span></div>
-                <p class="st-note">Explain the cause in words, not just color</p>
-              </li>
-              <li class="is-disabled">
-                <p class="st-name">Disabled</p>
-                <div class="st-demo" aria-hidden="true"><span class="st-input"></span><span class="st-btn">Send</span></div>
-                <p class="st-note">Explain why it can’t be pressed</p>
-              </li>
-            </ul>
-          </figure>
-        </div>
-        <figure class="frame-photo frame-pos-portrait">
-          <img src="../assets/images/services-collaboration-1122.jpg" srcset="../assets/images/services-collaboration-560.jpg 560w, ../assets/images/services-collaboration-1122.jpg 1122w" width="1122" height="1402" sizes="(max-width: 900px) 100vw, 536px" loading="lazy" decoding="async" alt="Three people at a table talking while looking at a laptop screen together">
-        </figure>
+      <div class="photo-pair">
+        <figure class="pp-item"><img src="../assets/images/services-product-discussion-1152.jpg" srcset="../assets/images/services-product-discussion-768.jpg 768w, ../assets/images/services-product-discussion-1152.jpg 1152w, ../assets/images/services-product-discussion-1536.jpg 1536w" sizes="(max-width: 900px) 100vw, 58vw" width="1536" height="1024" loading="lazy" decoding="async" alt="A person working on a laptop while sharing a view with colleagues at a meeting table"></figure>
+        <figure class="pp-item pp-item--portrait"><img src="../assets/images/services-collaboration-1122.jpg" srcset="../assets/images/services-collaboration-560.jpg 560w, ../assets/images/services-collaboration-1122.jpg 1122w" sizes="(max-width: 900px) 100vw, 42vw" width="1122" height="1402" loading="lazy" decoding="async" alt="Three people at a table talking while looking at a laptop screen together"></figure>
       </div>
     </div>
   </section>
 
-  <section class="hero hero-full hero-full--plain hero-full--band" id="work">
-    <div class="wrap hero-inner">
-      <div class="media-split work-hero">
-        <div class="page-header media-text">
-          <p class="label">Selected Work</p>
-        <h2 class="text-wide">Turning complex work and new contexts of use into clear product experiences.</h2>
-        <p class="lead">Three projects Rachel Cho delivered in previous roles, before starting Second Context. Client names are not disclosed.</p>
-        </div>
-        <div class="work-hero-ui frame-product">
-          <ul class="wh-list">
-          <li><div class="thumb thumb-cal" role="img" aria-label="Recreated scheduling screen preview: a calendar distinguishing available, blocked, and recommended dates"><span class="th-head"></span><span class="th-grid"><i class="ok"></i><i class="ok"></i><i class="no"></i><i class="ok"></i><i class="no"></i><i></i><i></i><i class="ok"></i><i class="no"></i><i class="no"></i><i class="ok"></i><i class="rec"></i><i></i><i></i></span></div><span class="wh-cap">01 Scheduling</span></li>
-          <li><div class="thumb thumb-pri" role="img" aria-label="Recreated incident list preview: the P1 item that needs action first is highlighted at the top"><span class="th-head"></span><span class="th-row is-top"><b>P1</b><i></i></span><span class="th-row"><b>P2</b><i></i></span><span class="th-row"><b>P2</b><i></i></span><span class="th-row"><b>P3</b><i></i></span></div><span class="wh-cap">02 Priority triage</span></li>
-          <li><div class="thumb thumb-l10n" role="img" aria-label="Recreated localization comparison preview: the same screen in the English original and in Korean"><span class="th-col"><b>EN</b><i></i><i class="s"></i><i class="go"></i></span><span class="th-col"><b>KO</b><i></i><i class="s"></i><i class="go"></i></span></div><span class="wh-cap">03 Korean localization</span></li>
-          </ul>
-          <p class="thumb-note">Recreated for illustration · Sample data</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-after-band" aria-labelledby="work-list-title">
+  <section class="sc-section" id="work" aria-labelledby="work-title">
     <div class="wrap">
-      <h3 class="sr-only" id="work-list-title">Case list</h3>
-      <ol class="work-list">
-        <li class="work-item" id="case-healthcare">
-          <div class="work-head">
-            <span class="num" aria-hidden="true">01</span>
-            <h3><span class="work-client">Home Healthcare SaaS · 2025–2026</span><span class="work-title">Scheduling UX for a U.S. home healthcare SaaS</span></h3>
-            <p class="work-strength">Designed complex eligibility conditions, scheduling rules, and exceptions so users could understand them and act right away.</p>
-            <div class="work-thumb"><div class="thumb thumb-cal" role="img" aria-label="Recreated scheduling screen preview: a calendar distinguishing available, blocked, and recommended dates"><span class="th-head"></span><span class="th-grid"><i class="ok"></i><i class="ok"></i><i class="no"></i><i class="ok"></i><i class="no"></i><i></i><i></i><i class="ok"></i><i class="no"></i><i class="no"></i><i class="ok"></i><i class="rec"></i><i></i><i></i></span></div><p class="thumb-note">Recreated for illustration</p></div>
+      <div class="sc-head">
+        <p class="eyebrow">Selected Work</p>
+        <h2 id="work-title">Turning complex work and new contexts of use into clear product experiences.</h2>
+        <p class="lead">Three projects Rachel Cho delivered in previous roles, before starting Second Context. Client names are not disclosed.</p>
+      </div>
+
+      <article class="case-block" id="case-healthcare" aria-labelledby="case-healthcare-title">
+        <div class="case-intro">
+          <span class="num-circle" aria-hidden="true">01</span>
+          <div class="case-intro-text">
+            <p class="case-cat">Healthcare — Clinician Scheduling</p>
+            <h3 class="case-title" id="case-healthcare-title">Scheduling UX <span class="tl">for a U.S. home healthcare SaaS</span></h3>
+            <p class="case-desc">Designed complex eligibility conditions, scheduling rules, and exceptions so users could understand them and act right away.</p>
           </div>
-          <div class="work-body">
-            <p class="work-key"><strong>Key design decision</strong> Instead of exposing internal rules and codes, a calendar of bookable dates and clear status indicators let users decide their next step.</p>
-            <ul class="metrics">
-              <li class="metric">
-                <p class="metric-value">5.8 <span aria-hidden="true">→</span><span class="sr-only"> to </span> 8.2</p>
-                <p class="metric-note"><span class="metric-kind">User rating</span> Confidence in planning schedules, measured in the pilot</p>
-              </li>
-              <li class="metric">
-                <p class="metric-value">180 sec <span aria-hidden="true">→</span><span class="sr-only"> to </span> 60 sec</p>
-                <p class="metric-note"><span class="metric-kind">Work outcome</span> Task time after several improvements were applied together</p>
-              </li>
-              <li class="metric">
-                <p class="metric-value">35% less</p>
-                <p class="metric-note"><span class="metric-kind">Work outcome</span> Manual validation in the AI-assisted scheduling workflow</p>
-              </li>
-              <li class="metric">
-                <p class="metric-value">3,000+</p>
-                <p class="metric-note"><span class="metric-kind">Adoption scope</span> Clinicians using the AI scheduling recommendation experience</p>
-              </li>
-            </ul>
-            <p class="work-link"><a href="second-context-work.html#case-healthcare">Read the full case</a></p>
+        </div>
+        <div class="case-cards">
+          <a class="cap-card cap-card--wide cap-card--landscape cap-card--product" href="second-context-work.html#case-healthcare">
+            <div class="cap-media cap-photo">
+              <span class="concept-tag">Illustrative concept</span>
+              <img src="../assets/images/case-product-healthcare-1152.jpg" srcset="../assets/images/case-product-healthcare-768.jpg 768w, ../assets/images/case-product-healthcare-1152.jpg 1152w, ../assets/images/case-product-healthcare-1536.jpg 1536w" sizes="(max-width: 900px) 100vw, 56vw" width="1536" height="1024" loading="lazy" decoding="async" alt="A visit scheduling screen on a desktop monitor and tablet: the recommended visit for Sample patient A and a confirm button">
+            </div>
+            <div class="cap-panel">
+              <p class="cap-title">Scheduling screen</p>
+              <p class="cap-desc">A calendar that shows available dates and their status first</p>
+            </div>
+          </a>
+          <a class="cap-card cap-card--tall" href="second-context-work.html#case-healthcare">
+            <div class="cap-media cap-photo">
+              <span class="concept-tag" aria-hidden="true">Illustrative concept</span>
+              <img src="../assets/images/case-context-healthcare-1024.jpg" srcset="../assets/images/case-context-healthcare-560.jpg 560w, ../assets/images/case-context-healthcare-1024.jpg 1024w" sizes="(max-width: 900px) 100vw, 40vw" width="1024" height="1536" loading="lazy" decoding="async" alt="">
+            </div>
+            <div class="cap-panel">
+              <p class="cap-title">Checking visit schedules on a tablet</p>
+              <p class="cap-desc">The context where schedulers decide their next step at a glance</p>
+            </div>
+          </a>
+        </div>
+      </article>
+
+      <article class="case-block case-block--flip" id="case-monitoring" aria-labelledby="case-monitoring-title">
+        <div class="case-intro">
+          <span class="num-circle" aria-hidden="true">02</span>
+          <div class="case-intro-text">
+            <p class="case-cat">Enterprise — Incident Management</p>
+            <h3 class="case-title" id="case-monitoring-title">Operations monitoring and incident management UX <span class="tl">for a global pharmaceutical company</span></h3>
+            <p class="case-desc">Connected severity, scope of impact, and investigation priority across a large volume of information.</p>
           </div>
-        </li>
-        <li class="work-item" id="case-monitoring">
-          <div class="work-head">
-            <span class="num" aria-hidden="true">02</span>
-            <h3><span class="work-client">Global Pharma · Enterprise Monitoring · 2024</span><span class="work-title">Operations monitoring and incident management UX for a global pharmaceutical company</span></h3>
-            <p class="work-strength">Connected severity, scope of impact, and investigation priority across a large volume of information.</p>
-            <div class="work-thumb"><div class="thumb thumb-pri" role="img" aria-label="Recreated incident list preview: the P1 item that needs action first is highlighted at the top"><span class="th-head"></span><span class="th-row is-top"><b>P1</b><i></i></span><span class="th-row"><b>P2</b><i></i></span><span class="th-row"><b>P2</b><i></i></span><span class="th-row"><b>P3</b><i></i></span></div><p class="thumb-note">Recreated for illustration</p></div>
+        </div>
+        <div class="case-cards">
+          <a class="cap-card cap-card--wide cap-card--landscape cap-card--product" href="second-context-work.html#case-monitoring">
+            <div class="cap-media cap-photo">
+              <span class="concept-tag">Illustrative concept</span>
+              <img src="../assets/images/case-product-monitoring-1152.jpg" srcset="../assets/images/case-product-monitoring-768.jpg 768w, ../assets/images/case-product-monitoring-1152.jpg 1152w, ../assets/images/case-product-monitoring-1536.jpg 1536w" sizes="(max-width: 900px) 100vw, 56vw" width="1536" height="1024" loading="lazy" decoding="async" alt="An incident management screen on a monitor and laptop: a list with the P1 incident at the top by business impact, and a detail panel">
+            </div>
+            <div class="cap-panel">
+              <p class="cap-title">Incident priority dashboard</p>
+              <p class="cap-desc">Technical signals and business impact put the issue to handle first at the top</p>
+            </div>
+          </a>
+          <a class="cap-card cap-card--tall" href="second-context-work.html#case-monitoring">
+            <div class="cap-media cap-photo">
+              <span class="concept-tag" aria-hidden="true">Illustrative concept</span>
+              <img src="../assets/images/case-context-monitoring-desk-1122.jpg" srcset="../assets/images/case-context-monitoring-desk-560.jpg 560w, ../assets/images/case-context-monitoring-desk-1122.jpg 1122w" sizes="(max-width: 900px) 100vw, 40vw" width="1122" height="1402" loading="lazy" decoding="async" alt="">
+            </div>
+            <div class="cap-panel">
+              <p class="cap-title">Monitoring at an operations desk</p>
+              <p class="cap-desc">The context of deciding what to investigate first amid a lot of information</p>
+            </div>
+          </a>
+        </div>
+      </article>
+
+      <article class="case-block" id="case-localization" aria-labelledby="case-localization-title">
+        <div class="case-intro">
+          <span class="num-circle" aria-hidden="true">03</span>
+          <div class="case-intro-text">
+            <p class="case-cat">Localization — Korean Product Localization</p>
+            <h3 class="case-title" id="case-localization-title">Korean product localization <span class="tl">for a global tech company</span></h3>
+            <p class="case-desc">Adapted the product experience to the language and its context of use.</p>
           </div>
-          <div class="work-body">
-            <p class="work-key"><strong>Key design decision</strong> Restructured information scattered across 8 dashboards around severity and downstream impact, so teams could first decide what to investigate.</p>
-            <ul class="metrics">
-              <li class="metric">
-                <p class="metric-value">30 min <span aria-hidden="true">→</span><span class="sr-only"> to </span> 3 min</p>
-                <p class="metric-note"><span class="metric-kind">Work outcome</span> Incident investigation time reported in the project</p>
-              </li>
-              <li class="metric">
-                <p class="metric-value">80% faster</p>
-                <p class="metric-note"><span class="metric-kind">Work outcome</span> Incident triage time after redesigning decision-support workflows and signal display</p>
-              </li>
-              <li class="metric">
-                <p class="metric-value">40% faster</p>
-                <p class="metric-note"><span class="metric-kind">Work outcome</span> Ticket processing time in developers’ internal tools</p>
-              </li>
-            </ul>
-            <p class="work-link"><a href="second-context-work.html#case-monitoring">Read the full case</a></p>
-          </div>
-        </li>
-        <li class="work-item" id="case-localization">
-          <div class="work-head">
-            <span class="num" aria-hidden="true">03</span>
-            <h3><span class="work-client">Global Tech · Korean Localization · 2019</span><span class="work-title">Korean product localization for a global tech company</span></h3>
-            <p class="work-strength">Adapted the product experience to the language and its context of use.</p>
-            <div class="work-thumb"><div class="thumb thumb-l10n" role="img" aria-label="Recreated localization comparison preview: the same screen in the English original and in Korean"><span class="th-col"><b>EN</b><i></i><i class="s"></i><i class="go"></i></span><span class="th-col"><b>KO</b><i></i><i class="s"></i><i class="go"></i></span></div><p class="thumb-note">Recreated for illustration</p></div>
-          </div>
-          <div class="work-body">
-            <p class="work-key"><strong>Key design decision</strong> Went beyond translated copy, adapting name, date, and time formats as well as typography and spacing to the Korean context of use.</p>
-            <ul class="metrics">
-              <li class="metric">
-                <p class="metric-value">6 weeks</p>
-                <p class="metric-note"><span class="metric-kind">Project length</span> Localization period in 2019, with a production agency and the client’s Korea and U.S. teams</p>
-              </li>
-            </ul>
-            <p class="work-link"><a href="second-context-work.html#case-localization">Read the full case</a></p>
-          </div>
-        </li>
+        </div>
+        <div class="case-cards">
+          <a class="cap-card cap-card--wide cap-card--landscape cap-card--product" href="second-context-work.html#case-localization">
+            <div class="cap-media cap-photo">
+              <span class="concept-tag">Illustrative concept</span>
+              <img src="../assets/images/case-product-localization-1152.jpg" srcset="../assets/images/case-product-localization-768.jpg 768w, ../assets/images/case-product-localization-1152.jpg 1152w, ../assets/images/case-product-localization-1536.jpg 1536w" sizes="(max-width: 900px) 100vw, 56vw" width="1536" height="1024" loading="lazy" decoding="async" alt="English and Korean visit booking screens compared side by side on two monitors">
+            </div>
+            <div class="cap-panel">
+              <p class="cap-title">English and Korean screens compared</p>
+              <p class="cap-desc">Date and time formats, name order and honorifics, and buttons sized to the copy</p>
+            </div>
+          </a>
+          <a class="cap-card cap-card--tall cap-card--landscape" href="second-context-work.html#case-localization">
+            <div class="cap-media cap-photo">
+              <span class="concept-tag" aria-hidden="true">Illustrative concept</span>
+              <img src="../assets/images/case-context-localization-booking-1152.jpg" srcset="../assets/images/case-context-localization-booking-768.jpg 768w, ../assets/images/case-context-localization-booking-1152.jpg 1152w, ../assets/images/case-context-localization-booking-1536.jpg 1536w" sizes="(max-width: 900px) 100vw, 40vw" width="1536" height="1024" loading="lazy" decoding="async" alt="">
+            </div>
+            <div class="cap-panel">
+              <p class="cap-title">Reviewing localization on a laptop and a phone</p>
+              <p class="cap-desc">The context of comparing one screen across two languages and two devices</p>
+            </div>
+          </a>
+        </div>
+      </article>
+      <p class="sc-note">“Illustrative concept” screens and photos were created to explain the design. They are not actual project screens or client sites, and all data is sample data.</p>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light" id="approach" aria-labelledby="approach-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Approach</p>
+        <h2 id="approach-title">From context to delivery, together.</h2>
+        <p class="lead">We work in four steps, matched to where your product and team are today.</p>
+      </div>
+      <figure class="photo-band"><img src="../assets/images/approach-brainstorming-1152.jpg" srcset="../assets/images/approach-brainstorming-768.jpg 768w, ../assets/images/approach-brainstorming-1152.jpg 1152w, ../assets/images/approach-brainstorming-1536.jpg 1536w" sizes="100vw" width="1536" height="1024" loading="lazy" decoding="async" alt="A person explaining a hand-drawn screen flow on a glass wall as three colleagues look on"></figure>
+      <ol class="flow-steps">
+        <li><span class="num-circle" aria-hidden="true">01</span><h3>Understand context</h3><p>We look at your product, target market, users, and work environment to understand where things stand.</p></li>
+        <li><span class="num-circle" aria-hidden="true">02</span><h3>Define the problem</h3><p>We decide which problems to solve first, and in what order, using user impact, business importance, and implementation effort.</p></li>
+        <li><span class="num-circle" aria-hidden="true">03</span><h3>Design and validate</h3><p>We design user flows and screens, then check them with users and your team through prototypes.</p></li>
+        <li><span class="num-circle" aria-hidden="true">04</span><h3>Support delivery</h3><p>We document design intent, requirements, and edge cases to reduce differences in interpretation during development.</p></li>
       </ol>
-      <p class="note">Figures are as measured and reported in each project; measurement methods differ by project.</p>
-      <div class="work-close">
-        <h3>Working through a similar challenge?</h3>
-        <p>Let’s look at your product and where it stands today.</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-minute call<span class="sr-only"> (opens in a new tab)</span></a>
-          <a class="btn btn-secondary" href="second-context-approach.html">See how we work</a>
-        </div>
-      </div>
+      <p class="flow-more"><a class="pill pill-ghost" href="second-context-approach.html">More about our approach</a></p>
     </div>
   </section>
 
-  <section id="founder">
-    <div class="wrap profile-split">
-      <figure class="frame-profile">
-        <img src="../assets/images/founder-portrait-1122.jpg" srcset="../assets/images/founder-portrait-560.jpg 560w, ../assets/images/founder-portrait-1122.jpg 1122w" width="1122" height="1402" sizes="(max-width: 600px) 80vw, 320px" loading="lazy" decoding="async" alt="Rachel Cho smiling, seated in a bright room">
-        <figcaption>
-          <span class="name">Rachel Cho</span>
-          <span>Founder &amp; Product UX Consultant</span>
-          <span>Product Designer · Startup Strategy Coach · Career Mentor</span>
-        </figcaption>
-      </figure>
-      <div class="profile-text">
-        <p class="label">Founder</p>
-        <h2>A design partner for working through complex problems together.</h2>
-        <div class="fp-body">
-          <p>I’m Rachel Cho, the product and UX consultant who leads Second Context. I led product design as a founding designer at a U.S. healthcare startup from Y Combinator that raised $14.2 million. Drawing on my experience with enterprise systems and product localization for global companies, I diagnose complex problems and connect them to clear priorities and real, working design.</p>
-          <p>I funded my own education and built my career as an immigrant, navigating a new language and culture. Traveling as a digital nomad taught me to understand different backgrounds and perspectives—and it shapes how I look at the context a product is used in, and the people within it.</p>
-          <p>Today, I work through challenges with product teams and founders, and help immigrant communities and junior designers make a fresh start. Through mentoring on ADPList and teaching UX and AI product design at Flexwork Pro, I share what I’ve learned and help people find a practical next step, even when the way forward feels unclear.</p>
-        </div>
-        <ul class="founder-stats" aria-label="Career summary" id="founder-stats" data-countup>
-          <li><span class="stat-value"><span aria-hidden="true"><span class="stat-num" data-count="40">40</span>+</span><span class="sr-only">40+</span></span><span class="stat-label">Projects completed</span></li>
-          <li><span class="stat-value"><span aria-hidden="true"><span class="stat-num" data-count="12">12</span>+</span><span class="sr-only">12+</span></span><span class="stat-label">Global &amp; multinational companies worked with</span></li>
-          <li><span class="stat-value"><span aria-hidden="true"><span class="stat-num" data-count="27">27</span></span><span class="sr-only">27</span></span><span class="stat-label">Countries visited</span></li>
-        </ul>
+  <section class="sc-section" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-title">Start with a 30-minute call.</h2>
+        <p class="lead">Tell us about your product, your target market, and the challenges you’re working through. We’ll explore the right scope of collaboration together.</p>
       </div>
-    </div>
-  </section>
-
-  <section id="contact" class="contact-brief">
-    <div class="wrap media-split">
-      <div class="media-text">
-        <div class="page-header">
-          <p class="label">Contact</p>
-          <h2>Start with a 30-minute call.</h2>
-          <p class="lead">Tell us about your product, your target market, and the challenges you’re working through. We’ll explore the right scope of collaboration together.</p>
-        </div>
-        <div class="cta">
-          <a class="btn btn-primary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-minute call<span class="sr-only"> (opens in a new tab)</span></a>
-          <a class="btn btn-secondary" href="second-context-contact.html#inquiry">Send a project inquiry</a>
-        </div>
+      <div class="contact-layout">
+        <form class="inquiry-form" id="inquiry" data-endpoint="https://formspree.io/f/mwllbenr" novalidate aria-labelledby="inquiry-title">
+          <div class="form-head">
+            <h2 id="inquiry-title">Send an inquiry</h2>
+            <p class="form-note"><span aria-hidden="true">*</span> Required</p>
+          </div>
+          <input type="hidden" name="_subject" value="Second Context website inquiry">
+          <input type="hidden" name="language" value="English page">
+          <div class="field-grid">
+            <div class="field">
+              <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g., Alex Kim" required aria-describedby="f-name-error">
+              <p class="field-error" id="f-name-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+              <input id="f-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="name@company.com" required aria-describedby="f-email-error">
+              <p class="field-error" id="f-email-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="f-company">Company or product name</label>
+              <input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Company or product name" aria-describedby="f-company-error">
+              <p class="field-error" id="f-company-error" hidden></p>
+            </div>
+            <div class="field">
+              <label for="f-url">Product URL</label>
+              <input id="f-url" name="product_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="https://yourproduct.com" aria-describedby="f-url-error">
+              <p class="field-error" id="f-url-error" hidden></p>
+            </div>
+            <div class="field field-wide">
+              <label for="f-message">Message <span class="req" aria-hidden="true">*</span></label>
+              <textarea id="f-message" name="message" rows="6" placeholder="Briefly describe your product, what’s difficult right now, and the help you need." required aria-describedby="f-message-error"></textarea>
+              <p class="field-error" id="f-message-error" hidden></p>
+            </div>
+          </div>
+          <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Send inquiry</button>
+          </div>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </form>
+        <aside class="contact-aside" aria-labelledby="other-ways">
+          <h2 class="label" id="other-ways">Other ways to reach us</h2>
+          <div class="contact-way" id="email-contact">
+            <p class="way-title">Email</p>
+            <p><a class="email-link" href="mailto:rachel.cho5257@gmail.com">rachel.cho5257@gmail.com</a></p>
+            <button class="mini-btn" type="button" data-copy-email="rachel.cho5257@gmail.com">Copy email</button>
+            <p class="copy-status" id="copy-status" role="status" aria-live="polite"></p>
+            <div class="copy-fallback" id="copy-fallback" hidden>
+              <label for="email-manual">Email address (select to copy)</label>
+              <input id="email-manual" type="text" readonly value="rachel.cho5257@gmail.com">
+            </div>
+          </div>
+          <div class="contact-way" id="booking">
+            <p class="way-title">30-minute call</p>
+            <p>Prefer to talk first? Book a time.</p>
+            <a class="btn btn-secondary" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-minute consultation<span class="sr-only"> (opens in a new tab)</span></a>
+          </div>
+        </aside>
       </div>
-      <figure class="frame-photo">
-        <img src="../assets/images/about-mentoring-session-1152.jpg" srcset="../assets/images/about-mentoring-session-768.jpg 768w, ../assets/images/about-mentoring-session-1152.jpg 1152w, ../assets/images/about-mentoring-session-1536.jpg 1536w" width="1536" height="1024" sizes="(max-width: 900px) 100vw, 536px" loading="lazy" decoding="async" alt="Two people in conversation at a laptop, one listening closely to the other">
-      </figure>
     </div>
   </section>
 </main>
 
-<footer>
+<footer class="site-footer">
   <div class="wrap">
-    <span>Second Context — Product design across markets.</span>
-    <span>© 2026 Second Context</span>
+    <div class="lets" data-rotator data-words="Understand|Design|Build|Collaborate" data-interval="2400">
+      <p class="lets-title"><span class="sr-only">Let’s understand, design, build, and collaborate.</span><span aria-hidden="true"><span class="lets-lead">Let’s</span><span class="lets-word is-in">Understand</span></span></p>
+      <div class="lets-actions">
+        <a class="lets-cta" href="#contact"><span class="pill pill-light">Send a project inquiry</span><span class="circle-btn circle-btn--light"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <button type="button" class="lets-toggle" aria-pressed="false" hidden><span class="lets-toggle-text">Pause</span><span class="sr-only"> moving text</span></button>
+      </div>
+    </div>
+    <div class="footer-links">
+      <nav class="fl-col" aria-labelledby="fl-company">
+        <p class="fl-title" id="fl-company">Company</p>
+        <ul>
+          <li><a href="#why-us" data-nav="why-us">Why Us</a></li>
+          <li><a href="#services" data-nav="services">Services</a></li>
+          <li><a href="#work" data-nav="work">Work</a></li>
+          <li><a href="#approach" data-nav="approach">Approach</a></li>
+          <li><a href="#contact" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="fl-col" aria-labelledby="fl-follow">
+        <p class="fl-title" id="fl-follow">Follow</p>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/second-context/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> — Second Context company page</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://github.com/RachelCho" target="_blank" rel="noopener">GitHub<span class="sr-only"> — Rachel Cho</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+      <form class="newsletter" data-endpoint="" novalidate aria-labelledby="nl-title">
+        <p class="fl-title" id="nl-title">Newsletter</p>
+        <label class="newsletter-label" for="nl-email">Email for the newsletter</label>
+        <p class="newsletter-note" id="nl-note">The subscription service isn’t connected yet. Signing up now won’t register you.</p>
+        <div class="newsletter-field">
+          <input id="nl-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@company.com" aria-describedby="nl-note nl-status">
+          <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="sr-only">Subscribe to the newsletter</span></button>
+        </div>
+        <p class="newsletter-status" id="nl-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      <a href="./" class="footer-logo" aria-label="Second Context home"><img src="../assets/second-context-logo-white.png" alt="second context" width="800" height="326" loading="lazy"></a>
+      <nav class="lang lang-footer" aria-label="Language">
+        <a href="../" lang="ko" hreflang="ko">한국어</a>
+        <span aria-hidden="true">/</span>
+        <a href="./" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+      </nav>
+      <p class="footer-copy">© Second Context <span data-year>2026</span></p>
+    </div>
   </div>
 </footer>
 
 <script src="../assets/count-up.js" defer></script>
+<script src="../assets/contact-form.js" defer></script>
 
+<script src="../assets/site.js" defer></script>
 </body>
 </html>

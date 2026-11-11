@@ -48,4 +48,16 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-contact.html"/>
   </url>
+  <url>
+    <loc>https://second-context.com/second-context-about.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-about.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/en/second-context-about.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-about.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-about.html"/>
+  </url>
 </urlset>

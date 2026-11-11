@@ -1,11 +1,13 @@
 """Second Context 한국어 페이지에 언어 전환·hreflang을 넣고, 번역 표로 en/ 영어 페이지를 만든다.
 사용: python3 tools/build_en_pages.py docs   (배포 폴더 docs/ 기준, 여러 번 실행해도 결과가 같다)
-운영 도메인(2026-11-09 분리): 한국어 홈 index.html → https://second-context.com/, 영어 홈 en/index.html → /en/"""
+운영 도메인(2026-11-09 분리): 한국어 홈 index.html → https://second-context.com/, 영어 홈 en/index.html → /en/
+원본: my-portfolio의 Second Context 페이지(tools/sync_from_portfolio.py가 docs/로 복사한 뒤 이 스크립트를 실행)"""
 import os, re, sys
 
 R = sys.argv[1]
 BASE = "https://second-context.com/"
-PAGES = ["index.html", "second-context-approach.html", "second-context-contact.html", "second-context-work.html"]
+PAGES = ["index.html", "second-context-approach.html", "second-context-contact.html", "second-context-about.html", "second-context-work.html"]
+
 
 
 def href(page, prefix=""):
@@ -16,7 +18,6 @@ def href(page, prefix=""):
 def url(page, lang="ko"):
     return BASE + ("en/" if lang == "en" else "") + ("" if page == "index.html" else page)
 
-
 def head_links(page):
     ko, en = url(page), url(page, "en")
     return (f'<link rel="alternate" hreflang="ko" href="{ko}">\n'
@@ -24,8 +25,8 @@ def head_links(page):
             f'<link rel="alternate" hreflang="x-default" href="{ko}">\n')
 
 
-# Open Graph 이미지(tools/make_og_images.py로 만든 assets/og/<이름>-<언어>.png)
-OG_IMAGE = {PAGES[0]: "home", PAGES[1]: "approach", PAGES[2]: "contact", PAGES[3]: "work"}
+# Open Graph 이미지(tools/make_og_images.py로 만든 assets/og/<이름>-<언어>.png). 이전 창업자 소개 주소는 홈 이미지를 쓴다
+OG_IMAGE = {PAGES[0]: "home", PAGES[1]: "approach", PAGES[2]: "contact", PAGES[3]: "home", PAGES[4]: "work"}
 OG_RE = re.compile(r'(<meta (?:property="og:|name="twitter:)[^>]*>\n)+')
 DESC_RE = re.compile(r'<meta name="description" content="[^"]*">\n')
 
@@ -37,7 +38,8 @@ def og_tags(page, lang, s):
     img_page = PAGES[0] if OG_IMAGE[page] == "home" else page
     src = s if img_page == page else open(os.path.join(R, ("en/" if lang == "en" else "") + img_page), encoding="utf-8").read()
     h1 = re.sub(r'<[^>]+>', '', re.search(r'(?s)<h1[^>]*>(.*?)</h1>', src).group(1)).strip()
-    alt = f'Second Context 로고와 “{h1}” 문구' if lang == "ko" else f'Second Context logo with the text “{h1}”'
+    # 이미지: 검정 바탕 + 흰 두 사각 프레임 심볼(tools/make_brand_icons.py, 2026-11-10)
+    alt = 'Second Context 로고: 검정 바탕의 흰 두 사각 프레임' if lang == "ko" else 'Second Context logo: two white open frames on black'
     page_url = url(page, lang)
     img = f'{BASE}assets/og/{OG_IMAGE[page]}-{lang}.png'
     locale, other = ("ko_KR", "en_US") if lang == "ko" else ("en_US", "ko_KR")
@@ -75,6 +77,11 @@ def lang_nav(page, cur):
             '    </nav>\n')
 
 
+def footer_lang(page, cur):
+    """푸터 맨 아래의 언어 링크: 헤더와 같은 대상(현재 페이지의 다른 언어판)"""
+    return lang_nav(page, cur).replace('<nav class="lang"', '<nav class="lang lang-footer"', 1).replace('\n    ', '\n      ').replace('    <nav', '      <nav', 1)
+
+
 def prep_korean(page):
     """한국어 원본에 canonical·hreflang·언어 전환만 추가한다. 본문은 건드리지 않는다."""
     p = os.path.join(R, page)
@@ -83,18 +90,31 @@ def prep_korean(page):
     s = add_og(page, "ko", OG_RE.sub("", s))
     s = s.replace('<script src="assets/lang.js"></script>\n', '')
     s = re.sub(r'    <nav class="lang".*?    </nav>\n', "", s, flags=re.S)
+    s = re.sub(r'      <nav class="lang lang-footer".*?      </nav>\n', "", s, flags=re.S)
     anchor = '<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">\n'
     assert s.count(anchor) == 1
     s = s.replace(anchor, anchor + f'<link rel="canonical" href="{url(page)}">\n' + head_links(page)
                   + '<script src="assets/lang.js"></script>\n')
-    end = "    </nav>\n  </div>\n</header>"
+    # 언어 링크는 주요 메뉴와 검색 버튼 사이 (2026-11-10 헤더: 로고 · 메뉴 · 언어 · 검색)
+    end = '    <button type="button" class="search-open"'
     assert s.count(end) == 1
-    s = s.replace(end, "    </nav>\n" + lang_nav(page, "ko") + "  </div>\n</header>")
+    s = s.replace(end, lang_nav(page, "ko") + end)
+    # 푸터에도 같은 언어 링크 (저작권 앞)
+    fend = '      <p class="footer-copy">'
+    assert s.count(fend) == 1
+    s = s.replace(fend, footer_lang(page, "ko") + fend)
     open(p, "w", encoding="utf-8").write(s)
     return s
 
 
 COMMON = [
+    # 2026-11-10 2차: 검색·뉴스레터 라벨, Follow (메뉴 이름은 sc_chrome.py에서 영어로 고정)
+    ('<form class="search-form" role="search" aria-label="사이트 검색">', '<form class="search-form" role="search" aria-label="Site search">'),
+    ('<label class="sr-only" for="search-input">사이트 검색어</label>', '<label class="sr-only" for="search-input">Search the site</label>'),
+    ('<label class="newsletter-label" for="nl-email">뉴스레터 구독 이메일</label>', '<label class="newsletter-label" for="nl-email">Email for the newsletter</label>'),
+    ('<span class="sr-only">뉴스레터 구독 신청</span>', '<span class="sr-only">Subscribe to the newsletter</span>'),
+    ('<span class="sr-only"> — Second Context 회사 페이지</span>', '<span class="sr-only"> — Second Context company page</span>'),
+    ('<span class="fl-off-note">준비 중</span>', '<span class="fl-off-note">Coming soon</span>'),
     ('<html lang="ko">', '<html lang="en">'),
     ('본문 바로가기', 'Skip to main content'),
     ('aria-label="Second Context 홈"', 'aria-label="Second Context home"'),
@@ -106,67 +126,75 @@ COMMON = [
     ('30분 상담으로 시작합니다.', 'Start with a 30-minute call.'),
     # 2026-10-29 사진·비주얼 재구성
     ('<span class="ex-label">예시 산출물</span>', '<span class="ex-label">Example deliverable</span>'),
+    # 2026-11-10 다크 리디자인: 공통 헤더·검색·푸터 (tools/sc_chrome.py)
+    ('<span class="sr-only">사이트 검색</span>', '<span class="sr-only">Search the site</span>'),
+    ('<p class="search-title" id="search-title">사이트 검색</p>', '<p class="search-title" id="search-title">Search the site</p>'),
+    ('<span>닫기</span>', '<span>Close</span>'),
+    ('<label class="sr-only" for="search-input">검색어</label>', '<label class="sr-only" for="search-input">Search terms</label>'),
+    ('placeholder="사례, 서비스, 페이지 검색"', 'placeholder="Search case studies, services, pages"'),
+    ('<span class="sr-only">검색</span>', '<span class="sr-only">Search</span>'),
+    ('<span class="lets-toggle-text">일시정지</span><span class="sr-only"> 움직이는 문구</span>', '<span class="lets-toggle-text">Pause</span><span class="sr-only"> moving text</span>'),
+    ('<label class="fl-title" for="nl-email">뉴스레터</label>', '<label class="fl-title" for="nl-email">Newsletter</label>'),
+    ('구독 서비스 연결 준비 중입니다. 지금은 신청해도 등록되지 않습니다.', 'The subscription service isn’t connected yet. Signing up now won’t register you.'),
+    ('<span class="sr-only">구독 신청</span>', '<span class="sr-only">Subscribe</span>'),
+    ('예시 콘셉트', 'Illustrative concept'),
+    ('맥락으로 완성하는, 독립 프로덕트 디자인.', 'Independent product design, shaped by context.'),
+    ('aria-label="경력 요약"', 'aria-label="Career summary"'),
+    ('<span class="stat-label">완료한 프로젝트</span>', '<span class="stat-label">Projects completed</span>'),
+    ('<span class="stat-label">함께 일한 글로벌·다국적 기업</span>', '<span class="stat-label">Global &amp; multinational companies worked with</span>'),
+    ('<span class="stat-label">여행한 국가</span>', '<span class="stat-label">Countries visited</span>'),
+    ('alt="Rachel Cho 프로필 사진"', 'alt="Portrait of Rachel Cho"'),
+    ('밝은 실내에서 의자에 앉아 미소 짓는 Rachel Cho', 'Rachel Cho smiling, seated in a bright room'),
 ]
 
 HOME = [
     ('<title>Second Context — 시장을 넘나드는 제품 디자인</title>', '<title>Second Context — Product design across markets.</title>'),
     ('미국 시장을 준비하는 한국 B2B SaaS 팀을 위한 제품 UX 진단과 디자인.',
      'Product UX reviews and design for Korean B2B SaaS teams preparing for the U.S. market.'),
-    ('헬스케어 · 엔터프라이즈 · 복잡한 운영 워크플로', 'Healthcare · Enterprise · Complex operational workflows'),
-    ('번역 중심 현지화', 'Translation-first localization'),
-    ('화면 문구는 영어로 바꿨지만 온보딩이 국내 사용자를 전제로 설계되어, 첫 사용자가 제품의 가치를 이해하지 못합니다.',
-     'The UI copy is now in English, but onboarding still assumes a Korean user, so first-time users don’t grasp the product’s value.'),
-    ('처음 방문한 사용자가 가치를 이해하고 시작할 수 있는가?', 'Can a first-time user understand the value and get started?'),
-    ('업무 방식 차이', 'Different ways of working'),
-    ('핵심 워크플로가 현지 팀의 역할 분담과 승인 방식에 맞지 않아, 실제 업무에 쓰이지 않습니다.',
-     'Core workflows don’t fit how local teams divide roles and handle approvals, so the product isn’t used in day-to-day work.'),
-    ('핵심 업무 흐름이 목표 사용자의 실제 업무 방식에 맞는가?', 'Do core workflows match how target users actually work?'),
-    ('<h3>구조와 문구</h3>', '<h3>Structure and wording</h3>'),
-    ('메뉴 구조와 버튼 문구가 다음 행동을 분명하게 안내하지 못합니다.',
-     'Menu structure and button labels don’t make the next step clear.'),
-    ('화면의 구조와 문구가 다음 행동을 명확하게 안내하는가?', 'Do the screen structure and wording clearly guide the next action?'),
-    ('우선순위 부재', 'No clear priorities'),
-    ('고칠 것이 많아 보이지만, 출시 전에 무엇부터 해야 할지 정하지 못합니다.',
-     'There seems to be a lot to fix, but the team can’t decide what to tackle first before launch.'),
-    ('출시 전에 어떤 UX 문제부터 개선해야 하는가?', 'Which UX problems should be fixed first before launch?'),
-    ('위 내용은 자주 나타나는 시행착오 유형을 설명하기 위한 예시입니다.',
-     'The examples above illustrate common types of trial and error; they are not specific client cases.'),
-    ('온보딩·핵심 작업·정보 구조·화면 문구', 'Onboarding, core tasks, information architecture, UI copy'),
-    ('우선순위를 포함한 UX 진단 보고서', 'UX review report with priorities'),
-    ('목표 사용자·업무 방식·현지화 가정', 'Target users, ways of working, localization assumptions'),
-    ('상담 및 핵심 권고 요약', 'Consultation and a summary of key recommendations'),
-    ('합의한 문제의 설계·프로토타입·개발 협업', 'Design, prototyping, and development collaboration on agreed problems'),
-    ('범위에 맞춘 제품 디자인 결과물', 'Product design deliverables matched to the agreed scope'),
-    ('비슷한 과제를 고민하고 계신가요?', 'Working through a similar challenge?'),
-    ('제품과 현재 상황을 함께 살펴보겠습니다.', 'Let’s look at your product and where it stands today.'),
-    ('협업 방식 보기', 'See how we work'),
-    ('aria-label="경력 요약"', 'aria-label="Career summary"'),
-    ('<span class="stat-label">완료한 프로젝트</span>', '<span class="stat-label">Projects completed</span>'),
-    ('<span class="stat-label">함께 일한 글로벌·다국적 기업</span>', '<span class="stat-label">Global &amp; multinational companies worked with</span>'),
-    ('<span class="stat-label">여행한 국가</span>', '<span class="stat-label">Countries visited</span>'),
-    ('<p class="metric-value">35% 감소</p>', '<p class="metric-value">35% less</p>'),
-    ('AI 보조 일정 워크플로에서의 수동 검증', 'Manual validation in the AI-assisted scheduling workflow'),
-    ('제품과 목표 시장, 현재 고민하고 계신 과제를 알려 주세요. <span class="keep">협업할 범위를 함께 살펴보겠습니다.</span>',
-     'Tell us about your product, your target market, and the challenges you’re working through. We’ll explore the right scope of collaboration together.'),
-    # 2026-10-29 사진·비주얼 재구성
-    ('<h1>새로운 <span class="hero-hl">시장</span>의 <span class="hero-hl">맥락</span>을, 제품의 다음 단계로.</h1>', '<h1>New <span class="hero-hl">market</span> <span class="hero-hl">context</span>, your product’s next step.</h1>'),
-    ('사용자와 업무 환경의 차이를 이해하고, 제품 경험과 실행 우선순위를 함께 설계합니다.', 'We understand how your users and their work environments differ, then design the product experience and execution priorities with your team.'),
+    # 2026-11-10 다크 리디자인 홈
+    ('<h1>새로운 시장의 맥락을, 제품의 다음 단계로.</h1>', '<h1>New market context, your product’s next step.</h1>'),
+    ('사용자와 업무 환경의 차이를 이해하고, 제품 경험과 실행 우선순위를 함께 설계합니다.',
+     'We understand how your users and their work environments differ, then design the product experience and execution priorities with your team.'),
     ('>사례 살펴보기</a>', '>Explore our work</a>'),
-    ('제품 대시보드가 띄워진 화면 앞에서 손짓으로 설명하며 팀의 디자인 논의를 이끄는 Rachel Cho', 'Rachel Cho leading a team design discussion, gesturing as she explains in front of a screen showing a product dashboard'),
-    ('<h2>제품과 사람, 비즈니스를 함께 이해합니다.</h2>', '<h2>We understand products, people, and business—together.</h2>'),
+    ('alt="제품 화면이 띄워진 대형 화면 앞에서 손짓으로 설명하며 팀과 논의를 이끄는 Rachel Cho"',
+     'alt="Rachel Cho gesturing in front of a large screen showing product slides as she leads a team discussion"'),
+    ('<span>일시정지</span><span class="sr-only"> 배경 영상</span>', '<span>Pause</span><span class="sr-only"> background video</span>'),
+    # 사례 대표 제품 이미지(2026-11-10)
+    ('데스크톱 모니터와 태블릿에 띄운 방문 일정 관리 화면: 예시 환자 A의 추천 방문 일정과 확인 버튼',
+     'A visit scheduling screen on a desktop monitor and tablet: the recommended visit for Sample patient A and a confirm button'),
+    ('모니터와 노트북에 띄운 인시던트 관리 화면: 업무 영향 기준으로 P1이 맨 위에 오는 목록과 상세 패널',
+     'An incident management screen on a monitor and laptop: a list with the P1 incident at the top by business impact, and a detail panel'),
+    ('두 모니터에 나란히 띄운 영어·한국어 방문 예약 화면 비교',
+     'English and Korean visit booking screens compared side by side on two monitors'),
+    ('<p class="cap-title">일정 관리 화면</p>', '<p class="cap-title">Scheduling screen</p>'),
+    ('예약 가능한 날짜와 상태를 먼저 보여 주는 달력', 'A calendar that shows available dates and their status first'),
+    ('태블릿에서 확인하는 방문 일정', 'Checking visit schedules on a tablet'),
+    ('일정 담당자가 다음 행동을 바로 판단하는 사용 맥락', 'The context where schedulers decide their next step at a glance'),
+    ('인시던트 우선 대응 대시보드', 'Incident priority dashboard'),
+    ('기술 신호와 업무 영향으로, 먼저 대응할 문제를 맨 위에', 'Technical signals and business impact put the issue to handle first at the top'),
+    ('운영팀 데스크의 모니터링 화면', 'Monitoring at an operations desk'),
+    ('많은 정보 속에서 무엇부터 조사할지 판단하는 사용 맥락', 'The context of deciding what to investigate first amid a lot of information'),
+    ('영어·한국어 화면 비교', 'English and Korean screens compared'),
+    ('날짜·시간 표기, 이름 순서와 호칭, 문구 길이에 맞춘 버튼', 'Date and time formats, name order and honorifics, and buttons sized to the copy'),
+    ('노트북과 휴대폰에서 함께 하는 현지화 검토', 'Reviewing localization on a laptop and a phone'),
+    ('같은 화면을 두 언어와 두 기기에서 비교하는 사용 맥락', 'The context of comparing one screen across two languages and two devices'),
+    ('‘예시 콘셉트’ 화면과 사진은 설계를 설명하기 위해 새로 만든 것으로, 실제 프로젝트 화면이나 고객 현장이 아닙니다. 데이터는 모두 예시입니다.',
+     '“Illustrative concept” screens and photos were created to explain the design. They are not actual project screens or client sites, and all data is sample data.'),
+    ('Second Context는 Rachel Cho가 이끄는 독립 프로덕트 디자인 스튜디오입니다. 미국 홈헬스케어 SaaS의 파운딩 디자이너로 AI 일정 플랫폼을 설계했고, 글로벌 제약사의 운영 모니터링·인시던트 관리 경험과 글로벌 기업의 제품 현지화를 맡았습니다. 복잡한 규칙과 업무 흐름을, 사용자가 바로 판단하고 행동할 수 있는 제품 경험으로 바꿉니다.',
+     'Second Context is an independent product design studio led by Rachel Cho. As founding designer at a U.S. home healthcare SaaS, she designed an AI scheduling platform, and she has designed operations monitoring and incident management for a global pharmaceutical company and product localization for global companies. She turns complex rules and workflows into product experiences people can understand and act on right away.'),
+    # 2026-11-10 2차: 선택 이유 · 서비스 · 진행 방식 · 문의 섹션 (이전 홈의 검증된 문구를 다시 쓴다)
+    ('제품과 사람, 비즈니스를 함께 이해합니다.', 'We understand products, people, and business—together.'),
     ('번역만으로는 제품이 현지에서 쓰이지 않습니다. 같은 제품도 시장과 사용자가 달라지면 일하는 방식, 제품을 이해하는 방식, 신뢰를 판단하는 기준이 함께 달라지고, 한국 시장에 맞춰 제품을 만들어 온 팀은 이 차이를 내부에서 발견하기 어렵습니다.', 'Translation alone won’t get your product used in a new market. When the market and users change, how people work, how they make sense of a product, and how they judge trust all shift too—and teams that built for the Korean market often find these differences hard to see from the inside.'),
-    ('노트북을 사이에 두고 웃으며 제품 이야기를 나누는 세 사람', 'Three people smiling as they talk about a product over a laptop'),
-    ('화이트보드에 그린 화면 흐름을 가리키며 팀에게 설명하는 사람', 'A person pointing to a screen flow drawn on a whiteboard while explaining it to the team'),
     ('좋은 판단이 팀의 실행으로 이어지도록.', 'So good decisions turn into team action.'),
     ('디자인은 화면을 만드는 데서 끝나지 않습니다. 설계 의도와 우선순위를 팀이 이해할 수 있는 말로 설명하고, 다음에 무엇을 할지 함께 정합니다.', 'Design doesn’t end with screens. We explain design intent and priorities in language the whole team can use, and decide together what happens next.'),
-    ('사용자 영향·사업 중요도·구현 난이도로 우선순위의 이유를 설명합니다.', 'Explain the reasons behind priorities using user impact, business importance, and implementation effort.'),
-    ('디자인 의도와 요구사항, 예외 상황을 개발 전에 정리합니다.', 'Document design intent, requirements, and edge cases before development.'),
-    ('합의한 방향을 팀이 실행할 수 있는 다음 작업으로 나눕니다.', 'Break the agreed direction into next tasks the team can act on.'),
+    ('<p>사용자 영향·사업 중요도·구현 난이도로 우선순위의 이유를 설명합니다.</p>', '<p>Explain the reasons behind priorities using user impact, business importance, and implementation effort.</p>'),
+    ('<p>디자인 의도와 요구사항, 예외 상황을 개발 전에 정리합니다.</p>', '<p>Document design intent, requirements, and edge cases before development.</p>'),
+    ('<p>합의한 방향을 팀이 실행할 수 있는 다음 작업으로 나눕니다.</p>', '<p>Break the agreed direction into next tasks the team can act on.</p>'),
     ('경험한 제품과 맡은 역할', 'Products and roles'),
     ('회사의 배경과 Rachel이 맡은 역할을 나누어 적었습니다.', 'Each entry separates the company’s background from Rachel’s role.'),
-    ('<p class="proof-field">헬스케어 SaaS</p>', '<p class="proof-field">Healthcare SaaS</p>'),
-    ('<p class="proof-field">엔터프라이즈 모니터링</p>', '<p class="proof-field">Enterprise monitoring</p>'),
-    ('<p class="proof-field">제품 현지화</p>', '<p class="proof-field">Product localization</p>'),
+    ('<p class="row-what">헬스케어 SaaS</p>', '<p class="row-what">Healthcare SaaS</p>'),
+    ('<p class="row-what">엔터프라이즈 모니터링</p>', '<p class="row-what">Enterprise monitoring</p>'),
+    ('<p class="row-what">제품 현지화</p>', '<p class="row-what">Product localization</p>'),
     ('<dt>회사 배경</dt>', '<dt>Company background</dt>'),
     ('<dt>Rachel의 역할</dt>', '<dt>Rachel’s role</dt>'),
     ('Y Combinator W21 출신으로 투자를 유치한 미국 홈헬스케어 스타트업', 'A venture-backed U.S. home healthcare startup from Y Combinator’s W21 batch'),
@@ -175,44 +203,34 @@ HOME = [
     ('UX 디자인 에이전시를 통한 계약 Senior Product Designer로 AI 기반 인시던트 관리 경험을 설계했습니다.', 'Designed an AI-based incident management experience as a contract Senior Product Designer through a UX design agency.'),
     ('<dd>글로벌 테크 기업의 한국어 제품</dd>', '<dd>Korean-language products for a global tech company</dd>'),
     ('영국 제작 에이전시, 고객사의 한국·미국 팀과 6주 동안 UX 문구와 디자인 자산을 현지화했습니다.', 'Localized UX copy and design assets over six weeks with a U.K. production agency and the client’s Korea and U.S. teams.'),
-    ('<h2>지금 제품에 필요한 도움부터 시작합니다.</h2>', '<h2>Start with the help your product needs now.</h2>'),
+    ('지금 제품에 필요한 도움부터 시작합니다.', 'Start with the help your product needs now.'),
     ('팀에 필요한 범위로 함께합니다. 짧은 진단부터 제품 설계와 개발 협업까지, 현재 단계에 맞춰 시작할 수 있습니다.', 'We work at the scope your team needs. From a short review to product design and development collaboration, you can start where you are today.'),
-    ('테이블에 둘러앉아 노트북 화면을 함께 보며 이야기하는 세 사람', 'Three people at a table talking while looking at a laptop screen together'),
-    ('</span> 아래 화면은 서비스 결과물의 형태를 보여 주는 예시이며, 실제 프로젝트 결과가 아닙니다.', '</span> The screens below show what deliverables can look like. They are examples, not actual project results.'),
-    ('UX 진단 예시', 'Example UX review'),
-    ('제품의 가치를 설명하기 전에 입력부터 요청합니다.', 'Asks for input before explaining the product’s value.'),
-    ('미국 사용자에게 없는 사업자등록번호를 요구합니다.', 'Requires a Korean business registration number that U.S. users don’t have.'),
-    ('‘Submit’이 다음에 일어날 일을 알려 주지 않습니다.', '“Submit” doesn’t say what happens next.'),
-    ('현지화 비교 예시', 'Example localization comparison'),
-    ('<li>날짜·시간 표기 순서</li>', '<li>Date and time order</li>'),
-    ('<li>이름 순서와 호칭</li>', '<li>Name order and honorifics</li>'),
-    ('<li>문구 길이에 맞춘 버튼과 여백</li>', '<li>Buttons and spacing sized to the copy</li>'),
-    ('사용자 흐름 설계 예시', 'Example user flow'),
-    ('목록에서 문제를 고릅니다.', 'Pick an issue from the list.'),
-    ('원인과 영향을 확인합니다.', 'Check the cause and impact.'),
-    ('다음 행동을 확정합니다.', 'Confirm the next action.'),
-    ('<dt>검토 범위</dt>', '<dt>Scope</dt>'),
-    ('<dt>결과물</dt>', '<dt>Deliverable</dt>'),
-    ('제품의 문제를, 구현할 수 있는 디자인으로.', 'From product problems to buildable design.'),
+    ('<h3>제품 전략</h3>', '<h3>Product strategy</h3>'),
+    ('목표 시장과 사용자, 사업 목표를 함께 살펴 제품의 우선순위와 다음 단계를 정합니다.', 'We look at your target market, users, and business goals together to set product priorities and next steps.'),
+    ('<h3>UX 리서치</h3>', '<h3>UX research</h3>'),
+    ('목표 사용자의 업무 방식과 사용 맥락을 인터뷰와 사용성 테스트로 확인하고, 설계에 쓸 수 있는 근거로 정리합니다.', 'We study how target users work and the context they work in through interviews and usability tests, then turn what we learn into evidence you can design from.'),
+    ('<h3>프로덕트 디자인</h3>', '<h3>Product design</h3>'),
     ('합의한 문제를 사용자 흐름과 화면으로 설계하고, 프로토타입과 개발 협업까지 이어갑니다. 디자인 의도와 요구사항, 고려할 예외 상황을 함께 정리해 구현 과정의 해석 차이를 줄입니다.', 'We design agreed problems as user flows and screens, then carry them through prototyping and development collaboration. Documenting design intent, requirements, and edge cases together reduces differences in interpretation during implementation.'),
-    ('<span class="vis-title">컴포넌트 상태 정의</span>', '<span class="vis-title">Component state definitions</span>'),
-    ('<p class="st-name">기본</p>', '<p class="st-name">Default</p>'),
-    ('<p class="st-name">오류</p>', '<p class="st-name">Error</p>'),
-    ('<p class="st-name">비활성</p>', '<p class="st-name">Disabled</p>'),
-    ('<span class="st-btn">보내기</span>', '<span class="st-btn">Send</span>'),
-    ('! 이메일 형식을 확인해 주세요', '! Check the email format'),
-    ('입력 테두리는 배경과 3:1 이상', 'Input border at 3:1 or more against the background'),
-    ('색과 함께 문구로 원인 안내', 'Explain the cause in words, not just color'),
-    ('왜 누를 수 없는지 함께 안내', 'Explain why it can’t be pressed'),
+    ('<h3>AI 기반 프로토타이핑</h3>', '<h3>AI-assisted prototyping</h3>'),
+    ('AI 도구로 아이디어를 실제로 동작하는 프로토타입으로 빠르게 만들어, 개발에 들어가기 전에 팀과 사용자에게 확인합니다.', 'We use AI tools to quickly turn ideas into working prototypes, so your team and users can check them before development begins.'),
+    ('노트북을 사이에 두고 웃으며 제품 이야기를 나누는 세 사람', 'Three people smiling as they talk about a product over a laptop'),
+    ('화이트보드에 그린 화면 흐름을 가리키며 팀에게 설명하는 사람', 'A person pointing to a screen flow drawn on a whiteboard while explaining it to the team'),
     ('노트북으로 작업하며 회의 테이블의 동료들에게 의견을 말하는 사람', 'A person working on a laptop while sharing a view with colleagues at a meeting table'),
-    ('밝은 실내에서 의자에 앉아 미소 짓는 Rachel Cho', 'Rachel Cho smiling, seated in a bright room'),
-    ('<h2>복잡한 문제를 함께 풀어가는 디자인 파트너.</h2>', '<h2>A design partner for working through complex problems together.</h2>'),
-    ('Second Context를 이끄는 제품·UX 컨설턴트 Rachel Cho입니다. Y Combinator 출신으로 1,420만 달러의 투자를 유치한 미국 헬스케어 스타트업에서 파운딩 디자이너로 제품 디자인을 이끌었습니다. 글로벌 기업의 업무 시스템과 제품 현지화 경험을 바탕으로, 복잡한 문제를 진단하고 개선 우선순위부터 실제 설계까지 연결합니다.', 'I’m Rachel Cho, the product and UX consultant who leads Second Context. I led product design as a founding designer at a U.S. healthcare startup from Y Combinator that raised $14.2 million. Drawing on my experience with enterprise systems and product localization for global companies, I diagnose complex problems and connect them to clear priorities and real, working design.'),
-    ('직접 학비를 마련하며 공부하고, 이민자로 새로운 언어와 문화 속에서 커리어를 쌓았습니다. 디지털 노매드로 여러 나라를 여행하며 서로 다른 배경과 관점을 이해해온 경험은, 제품이 쓰이는 맥락과 그 안의 사람을 살피는 바탕이 되었습니다.', 'I funded my own education and built my career as an immigrant, navigating a new language and culture. Traveling as a digital nomad taught me to understand different backgrounds and perspectives—and it shapes how I look at the context a product is used in, and the people within it.'),
-    ('지금은 제품팀과 파운더의 고민을 함께 풀며, 이민자 커뮤니티와 주니어 디자이너의 새로운 출발도 돕고 있습니다. ADPList 멘토링과 Flexwork Pro의 UX·AI 제품 디자인 강의를 통해 경험을 나누고, 막막한 상황에서도 실행 가능한 다음 걸음을 함께 찾습니다.', 'Today, I work through challenges with product teams and founders, and help immigrant communities and junior designers make a fresh start. Through mentoring on ADPList and teaching UX and AI product design at Flexwork Pro, I share what I’ve learned and help people find a practical next step, even when the way forward feels unclear.'),
-    ('노트북 앞에서 상대의 이야기를 들으며 대화하는 두 사람', 'Two people in conversation at a laptop, one listening closely to the other'),
-    ('<h3 class="sr-only" id="services-cards-title">서비스별 예시 산출물</h3>', '<h3 class="sr-only" id="services-cards-title">Example deliverables by service</h3>'),
-    ('<h3 class="sr-only" id="work-list-title">사례 목록</h3>', '<h3 class="sr-only" id="work-list-title">Case list</h3>'),
+    ('테이블에 둘러앉아 노트북 화면을 함께 보며 이야기하는 세 사람', 'Three people at a table talking while looking at a laptop screen together'),
+    ('유리벽에 손으로 그린 화면 흐름을 설명하는 사람과 이를 지켜보는 동료 세 명', 'A person explaining a hand-drawn screen flow on a glass wall as three colleagues look on'),
+    ('맥락에서 시작해, 실행까지 함께합니다.', 'From context to delivery, together.'),
+    ('제품과 팀의 현재 단계에 맞춰 네 단계로 진행합니다.', 'We work in four steps, matched to where your product and team are today.'),
+    ('<h3>맥락 이해</h3>', '<h3>Understand context</h3>'),
+    ('제품과 목표 시장, 사용자와 업무 환경을 살펴 현재 상황을 함께 파악합니다.', 'We look at your product, target market, users, and work environment to understand where things stand.'),
+    ('<h3>문제 정의</h3>', '<h3>Define the problem</h3>'),
+    ('사용자 영향·사업 중요도·구현 난이도로 먼저 풀 문제와 우선순위를 정합니다.', 'We decide which problems to solve first, and in what order, using user impact, business importance, and implementation effort.'),
+    ('<h3>디자인 및 검증</h3>', '<h3>Design and validate</h3>'),
+    ('사용자 흐름과 화면을 설계하고, 프로토타입으로 사용자와 팀에게 확인합니다.', 'We design user flows and screens, then check them with users and your team through prototypes.'),
+    ('<h3>실행 지원</h3>', '<h3>Support delivery</h3>'),
+    ('디자인 의도와 요구사항, 예외 상황을 정리해 개발 과정의 해석 차이를 줄입니다.', 'We document design intent, requirements, and edge cases to reduce differences in interpretation during development.'),
+    ('>진행 방식 자세히 보기</a>', '>More about our approach</a>'),
+    ('제품과 목표 시장, 현재 고민하고 계신 과제를 알려 주세요. <span class="keep">협업할 범위를 함께 살펴보겠습니다.</span>',
+     'Tell us about your product, your target market, and the challenges you’re working through. We’ll explore the right scope of collaboration together.'),
 ]
 
 # 사례 문구: 홈 Work 요약과 사례 페이지(second-context-work.html)가 함께 쓰는 번역. 페이지에 있는 것만 적용한다
@@ -222,6 +240,7 @@ CASE_TEXT = [
      'Three projects Rachel Cho delivered in previous roles, before starting Second Context. Client names are not disclosed.'),
     # 01 홈헬스케어
     ('미국 홈헬스케어 SaaS의 일정 관리 UX', 'Scheduling UX for a U.S. home healthcare SaaS'),
+    ('미국 홈헬스케어 SaaS의 <span class="tl">일정 관리 UX</span>', 'Scheduling UX <span class="tl">for a U.S. home healthcare SaaS</span>'),
     ('복잡한 자격 조건·일정 규칙·예외를 사용자가 이해하고 바로 행동할 수 있게 설계했습니다.',
      'Designed complex eligibility conditions, scheduling rules, and exceptions so users could understand them and act right away.'),
     ('내부 규칙과 코드를 그대로 보여주는 대신, 예약 가능한 날짜를 보여주는 달력과 명확한 상태 표시로 다음 행동을 판단할 수 있게 했습니다.',
@@ -257,6 +276,7 @@ CASE_TEXT = [
     ('디자인 시스템 도입 후 릴리스 주기 50% 이상 단축', 'Release cycles accelerated by 50%+ after the design system was adopted'),
     # 02 운영 모니터링
     ('글로벌 제약사의 운영 모니터링·인시던트 관리 UX', 'Operations monitoring and incident management UX for a global pharmaceutical company'),
+    ('글로벌 제약사의 <span class="tl">운영 모니터링·</span><span class="tl">인시던트 관리 UX</span>', 'Operations monitoring and incident management UX <span class="tl">for a global pharmaceutical company</span>'),
     ('많은 정보 속에서 심각도·영향 범위·조사 우선순위를 연결했습니다.',
      'Connected severity, scope of impact, and investigation priority across a large volume of information.'),
     ('8개 대시보드에 흩어진 정보를 심각도와 후속 영향 중심으로 다시 구조화해, 무엇부터 조사할지 먼저 판단할 수 있게 했습니다.',
@@ -290,6 +310,7 @@ CASE_TEXT = [
     ('이해관계자 인터뷰 15회', '15 stakeholder interviews'),
     # 03 한국어 현지화
     ('글로벌 테크 기업의 한국어 제품 현지화', 'Korean product localization for a global tech company'),
+    ('글로벌 테크 기업의 <span class="tl">한국어 제품 현지화</span>', 'Korean product localization <span class="tl">for a global tech company</span>'),
     ('언어와 사용 맥락에 맞춰 제품 경험을 조정했습니다.', 'Adapted the product experience to the language and its context of use.'),
     ('번역된 문구에서 멈추지 않고, 이름·날짜·시간 표기와 타이포그래피·간격까지 한국어 사용 맥락에 맞춰 조정했습니다.',
      'Went beyond translated copy, adapting name, date, and time formats as well as typography and spacing to the Korean context of use.'),
@@ -333,15 +354,12 @@ CASE_TEXT = [
     ('Second Context를 시작하기 전, Rachel Cho가 이전 경력에서 수행한 프로젝트입니다. 고객사 이름은 밝히지 않으며, 화면은 설계 판단을 설명하기 위해 다시 구성했습니다.',
      'Projects Rachel Cho delivered in previous roles, before starting Second Context. Client names are not disclosed, and the screens are recreated to illustrate the design decisions.'),
     ('aria-label="사례 바로가기"', 'aria-label="Jump to a case"'),
-    ('</span> 홈헬스케어 일정 관리</a>', '</span> Home healthcare scheduling</a>'),
-    ('</span> 운영 모니터링</a>', '</span> Operations monitoring</a>'),
-    ('</span> 한국어 현지화</a>', '</span> Korean localization</a>'),
-    ('<dt>문제</dt>', '<dt>Problem</dt>'),
-    ('<dt>내 역할</dt>', '<dt>My role</dt>'),
-    ('<dt>핵심 설계 판단</dt>', '<dt>Key design decisions</dt>'),
-    ('<dt>바뀐 화면과 흐름</dt>', '<dt>Screens and flows changed</dt>'),
-    ('<dt>확인된 결과(산출물)</dt>', '<dt>Confirmed results (deliverables)</dt>'),
-    ('<dt>확인된 결과</dt>', '<dt>Confirmed results</dt>'),
+    ('<dt>과제</dt>', '<dt>Challenge</dt>'),
+    ('<dt>개요 · 내 역할</dt>', '<dt>Overview</dt>'),
+    ('<dt>접근 · 핵심 설계 판단</dt>', '<dt>Approach</dt>'),
+    ('<dt>해결 · 바뀐 화면과 흐름</dt>', '<dt>Solution</dt>'),
+    ('<dt>결과 · 확인된 산출물</dt>', '<dt>Outcomes (deliverables)</dt>'),
+    ('<dt>결과 · 확인된 수치</dt>', '<dt>Outcomes</dt>'),
     ('<p class="work-link"><a href="second-context-work.html#case-healthcare">사례 자세히 보기</a></p>', '<p class="work-link"><a href="second-context-work.html#case-healthcare">Read the full case</a></p>'),
     ('<p class="work-link"><a href="second-context-work.html#case-monitoring">사례 자세히 보기</a></p>', '<p class="work-link"><a href="second-context-work.html#case-monitoring">Read the full case</a></p>'),
     ('<p class="work-link"><a href="second-context-work.html#case-localization">사례 자세히 보기</a></p>', '<p class="work-link"><a href="second-context-work.html#case-localization">Read the full case</a></p>'),
@@ -396,9 +414,6 @@ CASE_TEXT = [
     ('재구성한 인시던트 목록 미리보기: 우선 대응할 P1 항목이 맨 위에 강조된 화면', 'Recreated incident list preview: the P1 item that needs action first is highlighted at the top'),
     ('재구성한 현지화 비교 미리보기: 같은 화면의 영어 원문과 한국어 화면', 'Recreated localization comparison preview: the same screen in the English original and in Korean'),
     ('<p class="thumb-note">설계 설명을 위한 재구성</p>', '<p class="thumb-note">Recreated for illustration</p>'),
-    ('<span class="wh-cap">01 일정 관리</span>', '<span class="wh-cap">01 Scheduling</span>'),
-    ('<span class="wh-cap">02 우선 대응</span>', '<span class="wh-cap">02 Priority triage</span>'),
-    ('<span class="wh-cap">03 한국어 현지화</span>', '<span class="wh-cap">03 Korean localization</span>'),
 ]
 
 WORK = [
@@ -498,9 +513,6 @@ WORK = [
     ('<strong>3. 예측 요약</strong> 분석 결과를 기록 목록 위 AI 요약에서 먼저 보여 줍니다. 관찰된 패턴과 예측을 나누고, ‘관련 기록 보기’로 근거를 확인합니다.',
      '<strong>3. Forecast summary</strong> The AI summary above the records shows the result first. It separates the observed pattern from the forecast, and “View related records” shows the evidence.'),
     # 2026-10-29 사진·비주얼 재구성
-    ('<span class="wh-cap">01 일정 관리</span>', '<span class="wh-cap">01 Scheduling</span>'),
-    ('<span class="wh-cap">02 우선 대응</span>', '<span class="wh-cap">02 Priority triage</span>'),
-    ('<span class="wh-cap">03 한국어 현지화</span>', '<span class="wh-cap">03 Korean localization</span>'),
 ]
 
 STEPS = [
@@ -615,20 +627,57 @@ CONTACT = [
     ('<h1>지금 고민 중인 제품 이야기를 들려주세요.</h1>', '<h1>Tell us about the product challenge on your mind.</h1>'),
 ]
 
+ABOUT = [
+    # 2026-11-10: 창업자 소개를 다시 별도 About 페이지로 (홈 About 섹션의 '소개 자세히 보기'에서 연결)
+    ('헬스케어 제품, 엔터프라이즈 소프트웨어, 복잡한 업무 흐름을 설계해 온 Rachel Cho와 Second Context 소개.',
+     'About Second Context and Rachel Cho, who designs healthcare products, enterprise software, and complex workflows.'),
+    ('Second Context를 이끄는 제품·UX 컨설턴트 Rachel Cho입니다. Y Combinator 출신으로 <span class="nowrap">1,420만 달러</span>의 투자를 유치한 미국 헬스케어 스타트업에서 파운딩 디자이너로 제품 디자인을 이끌었습니다. 글로벌 기업의 업무 시스템과 제품 현지화 경험을 바탕으로, 복잡한 문제를 진단하고 개선 우선순위부터 실제 설계까지 연결합니다.', 'I’m Rachel Cho, the product and UX consultant who leads Second Context. I led product design as a founding designer at a U.S. healthcare startup from Y Combinator that raised <span class="nowrap">$14.2 million</span>. Drawing on my experience with enterprise systems and product localization for global companies, I diagnose complex problems and connect them to clear priorities and real, working design.'),
+    ('직접 학비를 마련하며 공부하고, 이민자로 새로운 언어와 문화 속에서 커리어를 쌓았습니다. 디지털 노매드로 여러 나라를 여행하며 서로 다른 배경과 관점을 이해해온 경험은, 제품이 쓰이는 맥락과 그 안의 사람을 살피는 바탕이 되었습니다.', 'I funded my own education and built my career as an immigrant, navigating a new language and culture. Traveling as a digital nomad taught me to understand different backgrounds and perspectives—and it shapes how I look at the context a product is used in, and the people within it.'),
+    ('지금은 제품팀과 파운더의 고민을 함께 풀며, 이민자 커뮤니티와 주니어 디자이너의 새로운 출발도 돕고 있습니다. ADPList 멘토링과 Flexwork Pro의 UX·AI 제품 디자인 강의를 통해 경험을 나누고, 막막한 상황에서도 실행 가능한 다음 걸음을 함께 찾습니다.', 'Today, I work through challenges with product teams and founders, and help immigrant communities and junior designers make a fresh start. Through mentoring on ADPList and teaching UX and AI product design at Flexwork Pro, I share what I’ve learned and help people find a practical next step, even when the way forward feels unclear.'),
+    ('헬스케어, 엔터프라이즈, 복잡한 업무 흐름.', 'Healthcare, enterprise, and complex workflows.'),
+    ('회사 이름은 밝히지 않고, 회사의 배경과 Rachel이 맡은 역할을 적었습니다.', 'Company names are not disclosed. Each entry describes the company’s background and Rachel’s role.'),
+    ('Toptal을 통해 글로벌 기업들과 협업', 'Collaborating with global companies through Toptal'),
+    ('제품·UX 디자인 컨설팅', 'Product and UX design consulting'),
+    ('Y Combinator W21 출신 미국 홈헬스케어 스타트업', 'A Y Combinator W21 U.S. home healthcare startup'),
+    ('파운딩 디자이너로 AI 일정 플랫폼의 제품 디자인을 이끌고, 회사의 첫 디자인 시스템을 만들었습니다.', 'Led product design for the AI scheduling platform as founding designer and built the company’s first design system.'),
+    ('LA의 물류 SaaS 기업', 'A logistics SaaS company in Los Angeles'),
+    ('파운딩 디자이너로 글로벌 디스플레이 제조사를 위한 선박 추적 대시보드와 React 디자인 시스템을 설계했습니다.', 'As founding designer, designed a vessel tracking dashboard for a global display manufacturer and a React design system.'),
+    ('백신 운영을 지원하는 글로벌 제약사의 모니터링 플랫폼', 'A global pharmaceutical company’s monitoring platform supporting vaccine operations'),
+    ('UX 디자인 에이전시를 통한 계약 Senior Product Designer로 AI 기반 인시던트 관리 경험을 설계했습니다.', 'Designed an AI-powered incident management experience as a contract Senior Product Designer through a UX design agency.'),
+    ('미국의 글로벌 게임 기업', 'A global gaming company in the U.S.'),
+    ('호주 본사와 협업하며 글로벌 애플리케이션을 디자인했습니다.', 'Designed global applications in collaboration with the Australian headquarters.'),
+    ('글로벌 테크 기업의 한국어 제품', 'A global tech company’s Korean product'),
+    ('영국 제작 에이전시, 고객사의 한국·미국 팀과 6주 동안 UX 문구와 디자인 자산을 현지화했습니다.', 'Localized UX copy and design assets over six weeks with a U.K. production agency and the client’s Korea and U.S. teams.'),
+    ('그린피스, University of Florida, Diversity Way Maker, Walmart 등', 'Greenpeace, University of Florida, Diversity Way Maker, Walmart, and others'),
+    ('글로벌 기업·기관과 함께 일했습니다.', 'Worked with global companies and organizations.'),
+    ('경험을 나누고, 다음 걸음을 함께 찾습니다.', 'Sharing experience, finding the next step together.'),
+    ('<p class="row-what">ADPList 멘토</p>', '<p class="row-what">ADPList mentor</p>'),
+    ('40명 이상의 디자이너와 커리어 멘토링', 'Career mentoring with more than 40 designers'),
+    ('Flexwork Pro UX 커리어 세미나', 'Flexwork Pro UX career seminar'),
+    ('150명 이상 신청, 약 60명 참석', 'More than 150 sign-ups, about 60 attendees'),
+    ('Flexwork Pro AI 제품 디자인 과정 강사', 'Instructor, Flexwork Pro AI product design course'),
+    ('UX·AI 제품 디자인 강의', 'Teaching UX and AI product design'),
+    ('멘토링은 디자인 커리어에 관한 것이며, 이민 관련 법률 자문은 제공하지 않습니다.', 'Mentoring covers design careers. It does not include immigration or legal advice.'),
+    ('노트북 앞에서 상대의 이야기를 들으며 대화하는 두 사람', 'Two people in conversation at a laptop, one listening closely to the other'),
+]
 
 PATHS = [
     ('href="favicon.ico"', 'href="../favicon.ico"'),
     ('href="assets/', 'href="../assets/'),
     ('src="assets/', 'src="../assets/'),
+    # Hero 영상 경로(site.js가 읽는 data 속성)도 en/ 기준으로
+    ('data-hero-video="assets/', 'data-hero-video="../assets/'),
+    ('data-hero-video-sm="assets/', 'data-hero-video-sm="../assets/'),
 ]
 
-TABLE = {PAGES[0]: HOME, PAGES[1]: APPROACH, PAGES[2]: CONTACT, PAGES[3]: WORK}
+TABLE = {PAGES[0]: HOME, PAGES[1]: APPROACH, PAGES[2]: CONTACT, PAGES[3]: ABOUT, PAGES[4]: WORK}
 KEEP = re.compile(r'<!--i18n:keep-->.*?<!--/i18n:keep-->', re.S)  # 비교 자료처럼 두 언어에서 그대로 두는 부분
 
 for page in PAGES:
     s = prep_korean(page)
     e = s.replace(f'<link rel="canonical" href="{url(page)}">', f'<link rel="canonical" href="{url(page, "en")}">')
     e = e.replace(lang_nav(page, "ko"), lang_nav(page, "en"))
+    e = e.replace(footer_lang(page, "ko"), footer_lang(page, "en"))
     e = OG_RE.sub("", e)  # 한국어 Open Graph 태그는 빼고, 번역이 끝난 뒤 영어 title·description으로 다시 만든다
     # i18n:keep 영역은 번역하지 않고 그대로 둔다
     kept = KEEP.findall(e)
@@ -636,6 +685,9 @@ for page in PAGES:
         e = e.replace(k, f'@@KEEP{i}@@', 1)
     # 사례 문구는 이 페이지에 있는 것만 페이지 표에 더한다 (홈 요약·사례 상세가 같은 번역을 공유)
     table = TABLE[page] + [(ko, en) for ko, en in CASE_TEXT if ko in s and ko not in dict(TABLE[page])]
+    # 홈 #contact에는 문의 페이지와 같은 문의 폼이 있다: 문의 페이지 번역 중 홈에 있는 문구만 더한다
+    if page == PAGES[0]:
+        table += [(ko, en) for ko, en in CONTACT if ko in s and ko not in dict(table)]
     # 긴 문장부터 바꿔야 짧은 문구가 긴 문장 일부를 먼저 바꾸지 않는다
     table.sort(key=lambda p: -len(p[0]))
     # 페이지 표 먼저(긴 문장), 그다음 공통 문구
