@@ -1299,9 +1299,7 @@ html[lang="en"] .sc-dark .step dl{--dl-label:9em}
 /* 푸터 Let’s: 큰 회전 문구는 장식(aria-hidden), 아래에 완전한 문장을 항상 보인다. 좁은 화면에서 긴 단어가 폭을 넘지 않게 */
 .sc-dark .lets-title{font-size:clamp(44px, 8vw, 128px);overflow-wrap:anywhere}
 .lets-sentence{margin-top:var(--s3);color:var(--body);font-size:var(--fs-small);line-height:var(--lh-small)}
-/* 뉴스레터: 연결 전(site.js가 data-state="off")에는 "준비 중" 표시 + 입력·버튼 비활성 */
-.nl-badge{display:none;margin-left:var(--s1);padding:2px 10px;border:1px solid var(--muted);border-radius:999px;color:#fff;font-size:13px;font-weight:600;vertical-align:2px}
-.newsletter[data-state="off"] .nl-badge{display:inline-block}
+/* 뉴스레터: 연결 전(site.js가 data-state="off")에는 입력·버튼 비활성 (2026-11-12 사용자 요청으로 "준비 중" 배지·안내 문장 없음) */
 .newsletter[data-state="off"] .newsletter-field{background:#1F1F1F;border:1px dashed #8C8C8C}
 .newsletter[data-state="off"] .newsletter-field input{color:#B3B3B3;cursor:not-allowed}
 .newsletter[data-state="off"] .newsletter-field input::placeholder{color:#999}

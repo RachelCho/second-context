@@ -123,7 +123,6 @@ COMMON = [
     # 2026-11-11: 한국어 페이지의 상담 버튼은 모두 "30분 상담 예약", 영어는 "Book a 30-minute consultation"으로 통일
     ('30분 상담 예약하기', 'Book a 30-minute consultation'),
     ('30분 상담 예약', 'Book a 30-minute consultation'),
-    ('<span class="nl-badge">준비 중</span>', '<span class="nl-badge">Coming soon</span>'),
     ('프로젝트 문의하기', 'Send a project inquiry'),
     ('30분 상담으로 시작합니다.', 'Start with a 30-minute call.'),
     # 2026-10-29 사진·비주얼 재구성
