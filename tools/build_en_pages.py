@@ -196,7 +196,7 @@ HOME = [
     ('회사의 배경과 Rachel이 맡은 역할을 나누어 적었습니다.', 'Each entry separates the company’s background from Rachel’s role.'),
     ('<p class="row-what">헬스케어 SaaS</p>', '<p class="row-what">Healthcare SaaS</p>'),
     ('<p class="row-what">엔터프라이즈 모니터링</p>', '<p class="row-what">Enterprise monitoring</p>'),
-    ('<p class="row-what">제품 현지화</p>', '<p class="row-what">Product localization</p>'),
+    ('<p class="row-what">테크 기업의 제품 현지화</p>', '<p class="row-what">Product localization for a tech company</p>'),
     ('<dt>회사 배경</dt>', '<dt>Company background</dt>'),
     ('<dt>Rachel의 역할</dt>', '<dt>Rachel’s role</dt>'),
     ('Y Combinator W21 출신으로 투자를 유치한 미국 홈헬스케어 스타트업', 'A venture-backed U.S. home healthcare startup from Y Combinator’s W21 batch'),
