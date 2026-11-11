@@ -226,7 +226,7 @@ HOME = [
     ('테이블에 둘러앉아 노트북 화면을 함께 보며 이야기하는 세 사람', 'Three people at a table talking while looking at a laptop screen together'),
     ('유리벽에 손으로 그린 화면 흐름을 설명하는 사람과 이를 지켜보는 동료 세 명', 'A person explaining a hand-drawn screen flow on a glass wall as three colleagues look on'),
     ('맥락에서 시작해, 실행까지 함께합니다.', 'From context to delivery, together.'),
-    ('제품과 팀의 현재 단계에 맞춰 네 단계로 진행합니다.', 'We work in four steps, matched to where your product and team are today.'),
+    ('<span class="lead-line">제품과 팀의 현재 단계에 맞춰</span> <span class="lead-line">네 단계로 진행합니다.</span>', '<span class="lead-line">Matched to where your product and team are today,</span> <span class="lead-line">we work in four steps.</span>'),
     ('<h3>맥락 이해</h3>', '<h3>Understand context</h3>'),
     ('제품과 목표 시장, 사용자와 업무 환경을 살펴 현재 상황을 함께 파악합니다.', 'We look at your product, target market, users, and work environment to understand where things stand.'),
     ('<h3>문제 정의</h3>', '<h3>Define the problem</h3>'),
