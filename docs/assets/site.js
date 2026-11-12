@@ -140,6 +140,23 @@
       flowIo.observe(flow);
     }
 
+    // 스크롤 등장(2026-11-12): Hero를 뺀 각 섹션 .wrap의 블록이 화면에 들어오면 0.3초 동안 아래 16px에서 떠오른다.
+    // 처음 화면에 이미 보이는 블록은 건드리지 않고, JS 없음·움직임 줄이기에서는 숨기지 않는다. 지나친 블록(앵커로 바로 열기)은 바로 보이게 한다
+    if (!reduce && 'IntersectionObserver' in window) {
+      var revealIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting && en.boundingClientRect.top > 0) return;
+          en.target.classList.add('is-in');
+          revealIo.unobserve(en.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      Array.prototype.forEach.call(document.querySelectorAll('main section:not(.sc-hero):not(.hero-full):not(.page-intro) > .wrap > *'), function (b) {
+        if (b.getBoundingClientRect().top < window.innerHeight) return;
+        b.classList.add('sc-reveal');
+        revealIo.observe(b);
+      });
+    }
+
     /* ---------- 1) 검색 ---------- */
     var openBtn = document.querySelector('.search-open');
     var dlg = document.getElementById('search');

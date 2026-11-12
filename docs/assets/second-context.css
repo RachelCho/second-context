@@ -1450,3 +1450,9 @@ html[lang="en"] .sc-dark :is(#services,#approach){word-break:normal}
 
 /* 홈 Selected Work 소개 문장: 읽기 폭 제한을 풀어 넓은 화면에서 한 줄로 (2026-11-12) */
 .sc-dark .sc-head .lead.text-wide{max-width:none}
+
+/* 스크롤 등장(2026-11-12): site.js가 처음 화면 밖 블록에만 .sc-reveal을 붙이고, 화면에 들어오면 .is-in. 0.3초 ease-out, 위치·크기는 그대로(transform만) */
+.sc-reveal{opacity:0;transform:translateY(16px);transition:opacity .3s ease-out,transform .3s ease-out}
+.sc-reveal.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){.sc-reveal{opacity:1;transform:none;transition:none}}
+@media print{.sc-reveal{opacity:1;transform:none}}
