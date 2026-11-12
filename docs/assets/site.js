@@ -150,7 +150,13 @@
           revealIo.unobserve(en.target);
         });
       }, { rootMargin: '0px 0px -8% 0px' });
+      var blocks = [];
       Array.prototype.forEach.call(document.querySelectorAll('main section:not(.sc-hero):not(.hero-full):not(.page-intro) > .wrap > *'), function (b) {
+        // 사례 페이지 본문은 한 덩어리가 길어서 데모 화면과 항목(dt·dd)별로 나눠 떠오르게 한다
+        if (b.classList.contains('case-body')) blocks.push.apply(blocks, b.querySelectorAll('.case-facts > *, .case-demo'));
+        else blocks.push(b);
+      });
+      blocks.forEach(function (b) {
         if (b.getBoundingClientRect().top < window.innerHeight) return;
         b.classList.add('sc-reveal');
         revealIo.observe(b);
