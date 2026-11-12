@@ -205,7 +205,7 @@ HOME = [
     ('<dd>글로벌 테크 기업의 한국어 제품</dd>', '<dd>Korean-language products for a global tech company</dd>'),
     ('영국 제작 에이전시, 고객사의 한국·미국 팀과 6주 동안 UX 문구와 디자인 자산을 현지화했습니다.', 'Localized UX copy and design assets over six weeks with a U.K. production agency and the client’s Korea and U.S. teams.'),
     ('지금 제품에 필요한 도움부터 시작합니다.', 'Start with the help your product needs now.'),
-    ('팀에 필요한 범위로 함께합니다. 짧은 진단부터 제품 설계와 개발 협업까지, 현재 단계에 맞춰 시작할 수 있습니다.', 'We work at the scope your team needs. From a short review to product design and development collaboration, you can start where you are today.'),
+    ('팀에 필요한 범위로 함께합니다. 짧은 진단부터 제품 설계와 개발 협업까지, 현재 단계에 맞춰 시작할 수 있습니다.', 'We work at the scope your team needs. From a short review to design and development collaboration, start where you are today.'),
     ('<h3>제품 전략</h3>', '<h3>Product strategy</h3>'),
     ('목표 시장과 사용자, 사업 목표를 함께 살펴 제품의 우선순위와 다음 단계를 정합니다.', 'We look at your target market, users, and business goals together to set product priorities and next steps.'),
     ('<h3>UX 리서치</h3>', '<h3>UX research</h3>'),

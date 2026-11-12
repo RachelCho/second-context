@@ -1447,3 +1447,6 @@ html[lang="ko"] .sc-dark #services .svc-tile{row-gap:var(--s4)}
 /* 두 섹션 줄바꿈: 한국어 어절(keep-all), 영어 단어 단위, 긴 연속 문자열만 칸 안에서 나눈다 */
 .sc-dark :is(#services,#approach) :is(h3,p){overflow-wrap:break-word}
 html[lang="en"] .sc-dark :is(#services,#approach){word-break:normal}
+
+/* 홈 Selected Work 소개 문장: 읽기 폭 제한을 풀어 넓은 화면에서 한 줄로 (2026-11-12) */
+.sc-dark .sc-head .lead.text-wide{max-width:none}
