@@ -154,7 +154,7 @@ HOME = [
      'Product UX reviews and design for Korean B2B SaaS teams preparing for the U.S. market.'),
     # 2026-11-10 다크 리디자인 홈
     ('<h1>새로운 시장의 맥락을, 제품의 다음 단계로.</h1>', '<h1>New market context, your product’s next step.</h1>'),
-    ('사용자와 업무 환경의 차이를 이해하고, 제품 경험과 실행 우선순위를 함께 설계합니다.',
+    ('<span class="lead-line">사용자와 업무 환경의 차이를 이해하고,</span> <span class="lead-line">제품 경험과 실행 우선순위를 함께 설계합니다.</span>',
      'We understand how your users and their work environments differ, then design the product experience and execution priorities with your team.'),
     ('>사례 살펴보기</a>', '>Explore our work</a>'),
     ('alt="제품 화면이 띄워진 대형 화면 앞에서 손짓으로 설명하며 팀과 논의를 이끄는 Rachel Cho"',

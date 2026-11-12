@@ -1443,7 +1443,7 @@ html[lang="ko"] .sc-dark #services .svc-tile{row-gap:var(--s4)}
   .sc-dark #approach .flow-steps[data-flow="play"] .num-circle::before{transition:opacity .26s ease-out var(--d-num),transform .26s ease-out var(--d-num)}
 }
 /* Approach 소개 문장(2026-11-12 사용자 요청): "제품과 팀의 현재 단계에 맞춰" / "네 단계로 진행합니다." 두 줄로, 각 줄은 중간에서 나뉘지 않게 */
-.sc-dark #approach .lead-line{display:block}
+.sc-dark :is(#approach,.sc-hero) .lead-line{display:block}
 /* 두 섹션 줄바꿈: 한국어 어절(keep-all), 영어 단어 단위, 긴 연속 문자열만 칸 안에서 나눈다 */
 .sc-dark :is(#services,#approach) :is(h3,p){overflow-wrap:break-word}
 html[lang="en"] .sc-dark :is(#services,#approach){word-break:normal}
