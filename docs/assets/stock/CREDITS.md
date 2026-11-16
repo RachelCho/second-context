@@ -32,3 +32,4 @@
 - assets/images/ogs-*.jpg, ogs-*.webp: Rachel Cho가 2023년 OGS 프로젝트에서 직접 만든 디자인 파일·프로토타입 녹화·사용성 테스트 사진(원본: storage/portfolio-migration/storage/originals/user-provided/onlinego). 사용자가 2026-11-16 NDA 제한이 없는 공개 프로젝트라고 확인. 기존 공개 포트폴리오(yeagyeong.com/onlinego)에 실린 자료와 같다.
 - GIF 3개는 가로 1200px 애니메이션 WebP로 변환(20MB→2.9MB 등), 움직임 줄이기 설정에서는 첫 프레임 JPG.
 - 게릴라 테스트 사진(ogs-test-1·ogs-test-2, IMG_5287·5288, EXIF 회전을 바로잡음)에는 참가자의 얼굴이 보인다. 기존 공개 포트폴리오에도 실린 사진이지만, 본인 동의 여부는 확인하지 못했다.
+- 2026-11-16 4차: 같은 참가자의 두 번째 사진(IMG_5288)을 빼고, 다양한 인종의 사용자 그룹을 보여 주는 연출 이미지로 바꿨다. assets/images/ogs-test-staged-*.jpg = Unsplash https://unsplash.com/photos/KxJygPwm1kM (Vitaly Gariev @silverkblack, Unsplash License, 2026-09-30 게시). 화면에 "연출 이미지 / Staged image" 표시, 캡션에서 실제 사진과 구분.
