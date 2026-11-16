@@ -60,4 +60,64 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-about.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-about.html"/>
   </url>
+  <url>
+    <loc>https://second-context.com/second-context-case-healthcare.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-healthcare.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-healthcare.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-healthcare.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/en/second-context-case-healthcare.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-healthcare.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-healthcare.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-healthcare.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/second-context-case-monitoring.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-monitoring.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-monitoring.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-monitoring.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/en/second-context-case-monitoring.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-monitoring.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-monitoring.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-monitoring.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/second-context-case-identity.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-identity.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-identity.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-identity.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/en/second-context-case-identity.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-identity.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-identity.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-identity.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/second-context-case-localization.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-localization.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-localization.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-localization.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/en/second-context-case-localization.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-localization.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-localization.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-localization.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/second-context-case-ogs.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-ogs.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-ogs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-ogs.html"/>
+  </url>
+  <url>
+    <loc>https://second-context.com/en/second-context-case-ogs.html</loc>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-ogs.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-ogs.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-ogs.html"/>
+  </url>
 </urlset>

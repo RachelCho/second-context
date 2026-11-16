@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identity Verification — Second Context</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="canonical" href="https://second-context.com/second-context-case-identity.html">
+<link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-identity.html">
+<link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-identity.html">
+<link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-identity.html">
+<script src="assets/lang.js"></script>
+<meta name="description" content="건너뛸 수 없는 본인 인증(KYC)을 이유·현재 상태·다음 행동이 보이는 흐름으로 다시 설계한 모바일 앱 사례.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Second Context">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="Identity Verification — Second Context">
+<meta property="og:description" content="건너뛸 수 없는 본인 인증(KYC)을 이유·현재 상태·다음 행동이 보이는 흐름으로 다시 설계한 모바일 앱 사례.">
+<meta property="og:url" content="https://second-context.com/second-context-case-identity.html">
+<meta property="og:image" content="https://second-context.com/assets/og/work-ko.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Second Context 로고: 검정 바탕의 흰 두 사각 프레임">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="assets/second-context.css">
+</head>
+<body class="sc-dark cs-page">
+
+<a class="skip" href="#main">본문 바로가기</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="./" class="logo" aria-label="Second Context 홈"><img src="assets/second-context-logo-white.png" alt="second context" width="800" height="326"></a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span><span class="menu-toggle-text">Menu</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="주요 메뉴">
+      <a href="./#why-us" data-nav="why-us">Why Us</a>
+      <a aria-current="true" href="./#services" data-nav="services">What we do</a>
+      <a href="./#approach" data-nav="approach">Approach</a>
+      <a href="./#contact" data-nav="contact">Contact</a>
+      <a class="pill pill-light nav-cta" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener"><span class="nav-cta-text">30분 상담 예약</span><span class="sr-only"> (새 탭에서 열림)</span></a>
+    </nav>
+    <nav class="lang" aria-label="언어 선택">
+      <a href="second-context-case-identity.html" lang="ko" hreflang="ko" aria-current="true">한국어</a>
+      <span aria-hidden="true">/</span>
+      <a href="en/second-context-case-identity.html" lang="en" hreflang="en"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+    </nav>
+    <button type="button" class="search-open" aria-haspopup="dialog" aria-controls="search" aria-expanded="false"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">사이트 검색</span></button>
+  </div>
+</header>
+
+<div class="search" id="search" role="dialog" aria-modal="true" aria-labelledby="search-title" hidden>
+  <div class="wrap">
+    <div class="search-top">
+      <p class="search-title" id="search-title">사이트 검색</p>
+      <button type="button" class="search-close"><span>닫기</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <form class="search-form" role="search" aria-label="사이트 검색">
+      <label class="sr-only" for="search-input">사이트 검색어</label>
+      <input id="search-input" type="search" autocomplete="off" placeholder="사례, 서비스, 페이지 검색">
+      <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">검색</span></button>
+    </form>
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <ul class="search-results"></ul>
+  </div>
+</div>
+
+<main id="main">
+  <!-- 사례 상세(2026-11-16): 첫 화면 → 프로젝트 소개 → 문제/설계 대응 → 핵심 설계 판단 → 결과와 배운 점 → 다음 행동.
+       대표 사진은 Unsplash 설명용 사진(assets/stock/CREDITS.md). 고객사 이름·로고·제품명·내부 식별자는 쓰지 않는다 -->
+  <section class="cs-hero sc-light" id="case-identity" aria-labelledby="cs-title">
+    <div class="wrap">
+      <p class="cs-back"><a href="./#service-trust"><span aria-hidden="true">←</span> What we do</a></p>
+      <ul class="cs-tags" aria-label="분야와 역량">
+        <li>규제 산업 모바일 앱</li>
+        <li>시작부터 신뢰할 수 있는 경험으로</li>
+        <li>이전 경력 프로젝트</li>
+      </ul>
+      <h1 id="cs-title">건너뛸 수 없는 본인 인증을, <span class="tl">이해할 수 있는 단계로.</span></h1>
+      <p class="lead">규정상 건너뛸 수 없는 본인 인증(KYC)에서 많은 사용자가 이탈했습니다. 마찰을 없애는 대신, 이유와 현재 상태, 다음 행동이 보이는 흐름으로 다시 설계했습니다.</p>
+      <ul class="cs-hero-metrics" aria-label="주요 결과">
+        <li><span class="cs-hero-num">+95%</span><span class="cs-hero-label">본인 인증 완료 성공률</span></li>
+        <li><span class="cs-hero-num">+25%</span><span class="cs-hero-label">인증 후 첫 거래 완료율</span></li>
+        <li><span class="cs-hero-num">−25%</span><span class="cs-hero-label">본인 인증 관련 고객 문의</span></li>
+      </ul>
+      <figure class="cs-cover">
+        <img src="assets/images/case-identity-fingerprint-1536.jpg" srcset="assets/images/case-identity-fingerprint-768.jpg 768w, assets/images/case-identity-fingerprint-1152.jpg 1152w, assets/images/case-identity-fingerprint-1536.jpg 1536w, assets/images/case-identity-fingerprint-2048.jpg 2048w" sizes="(max-width: 1343px) calc(100vw - 40px), 1280px" width="2400" height="1350" fetchpriority="high" alt="책상 위 키보드 앞에서 두 손으로 휴대폰을 들고 지문 인증 화면에 손가락을 올리려는 모습" style="object-position:55% 50%">
+      </figure>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-intro" id="overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <div class="cs-split">
+        <div class="cs-split-head">
+          <p class="eyebrow">Overview</p>
+          <h2 class="cs-h2" id="overview-title">프로젝트 소개</h2>
+        </div>
+        <div class="cs-split-body">
+          <dl class="cs-facts">
+            <dt>사용 맥락과 과제</dt>
+            <dd>규제를 받는 산업의 모바일 앱에서, 사용자는 서비스를 이용하기 전에 반드시 본인 인증(KYC, Know Your Customer)을 마쳐야 했습니다. 건너뛸 수 없는 단계였고, 많은 사용자가 바로 이 단계에서 이탈했습니다.</dd>
+            <dt>Rachel의 역할</dt>
+            <dd><ul><li>리서치, 인증 흐름의 상태·예외 로직, UI 디자인을 이끌었습니다.</li><li>디자인 시스템을 공동으로 맡아, 컴포넌트와 상태를 주석과 함께 개발팀에 전달했습니다.</li></ul></dd>
+            <dt>공개 가능한 협업 범위</dt>
+            <dd>프로덕트 오너, 프로덕트 매니저, 비즈니스 분석가, 개발자와 함께 일했습니다. 본인 인증 규정이 서로 다른 두 시장에 같은 원칙의 흐름을 적용했습니다.</dd>
+            <dt>프로젝트 성격</dt>
+            <dd>이전 경력 프로젝트 · 고객사와 제품 이름은 공개하지 않습니다</dd>
+          </dl>
+          <p class="cs-disclaimer">Rachel Cho의 이전 경력에서 수행한 프로젝트입니다. 공개 가능한 범위의 경험을 소개하며, 화면과 데이터는 설명을 위해 새롭게 구성한 예시입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-pr" id="problem" aria-label="문제와 설계 대응">
+    <div class="wrap">
+      <div class="cs-pr-grid">
+        <div class="cs-pr-item">
+          <p class="eyebrow">Problem</p>
+          <p class="cs-statement">사용자를 멈추게 한 것은 신분증 촬영이 아니라, 왜 필요한지·지금 어떤 상태인지·실패하면 무엇을 해야 하는지 알 수 없다는 점이었습니다.</p>
+        </div>
+        <div class="cs-pr-item">
+          <p class="eyebrow">Solution</p>
+          <p class="cs-statement">인증이 필요한 이유를 먼저 설명하고, 현재 상태를 항상 보여 주고, 실패할 때마다 한 가지 분명한 다음 행동을 안내했습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-decisions" id="decisions" aria-labelledby="decisions-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Key decisions</p>
+        <h2 id="decisions-title">핵심 설계 판단</h2>
+      </div>
+      <article class="cs-decision" aria-labelledby="decision-1-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">01</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-1-title">왜 필요한지, 무엇 때문인지, 얼마나 걸리는지 먼저.</h3>
+            <p class="cs-desc">인증을 시작하기 전에 인증이 필요한 이유, 어떤 행동 때문에 시작됐는지, 예상 소요 시간을 알려 줍니다. 제출할 수 있는 서류를 모두 나열하지 않고, 지금 쓸 수 있는 권장 경로만 보여 줍니다.</p>
+            <p class="cs-diff"><span class="cs-diff-label">사용자에게 생긴 차이</span> ‘왜 이 정보가 필요하지?’라는 질문에 답을 들은 뒤 인증을 시작합니다.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--mixed">
+          <div class="opsx-stage wl-panel">
+            <figure class="opsx-fig" role="group" aria-label="재구성한 본인 인증 흐름 네 화면">
+              <figcaption class="opsx-cap"><span class="opsx-n">White-label</span><b>Verification flow · 4 steps</b><span class="opsx-capd">이유와 방법 안내 → 신분증 촬영 → 이메일 확인(잘못 입력했을 때 바꾸는 길) → 완료 후 미리 채운 정보까지, 한 흐름으로 이어집니다.</span></figcaption>
+              <!--i18n:keep--><div class="idvx" data-anim>
+              <ol class="idvx-flow">
+                <li class="idvx-step" style="--i:0">
+                  <p class="idvx-k">1 · Why and how</p>
+                  <div class="idvx-phone">
+                    <p class="idvx-bar"><span>9:41</span><span>Registration</span><span></span></p>
+                    <p class="idvx-h">Let’s get you verified</p>
+                    <p class="idvx-s">It only takes a couple of minutes.</p>
+                    <div class="idvx-icons"><span><i class="idvx-ico idvx-ico--id"></i>Government ID</span><span><i class="idvx-ico idvx-ico--face"></i>Selfie</span></div>
+                    <p class="idvx-why">Regulations require us to confirm your identity before you can use your account.</p>
+                    <p class="idvx-opt is-on">Driver’s license / ID card</p>
+                    <p class="idvx-opt">Passport card</p>
+                    <p class="idvx-opt">Passport</p>
+                  </div>
+                </li>
+                <li class="idvx-step" style="--i:1">
+                  <p class="idvx-k">2 · Capture</p>
+                  <div class="idvx-phone idvx-phone--cam">
+                    <p class="idvx-bar"><span>9:41</span><span>Scan ID</span><span>Cancel</span></p>
+                    <div class="idvx-frame"><div class="idvx-card"><i></i><b></b><b></b><b></b></div></div>
+                    <p class="idvx-guide">Hold steady — fit the card inside the frame</p>
+                    <p class="idvx-link">Change document type</p>
+                  </div>
+                </li>
+                <li class="idvx-step" style="--i:2">
+                  <p class="idvx-k">3 · Confirm email</p>
+                  <div class="idvx-phone">
+                    <p class="idvx-bar"><span>9:41</span><span>Register</span><span></span></p>
+                    <p class="idvx-h">Check your email</p>
+                    <p class="idvx-s">Enter the code we sent to s•••@mail.com</p>
+                    <p class="idvx-code"><span>5</span><span>6</span><span>7</span><span>8</span><span>2</span><span>3</span></p>
+                    <p class="idvx-s">Didn’t get a code? <u>Resend</u></p>
+                    <p class="idvx-fix">Used the wrong email? <b>Change email</b></p>
+                  </div>
+                </li>
+                <li class="idvx-step" style="--i:3">
+                  <p class="idvx-k">4 · Done</p>
+                  <div class="idvx-phone">
+                    <p class="idvx-bar"><span>9:41</span><span>Self enrollment</span><span></span></p>
+                    <p class="idvx-ok"><span aria-hidden="true">✓</span>You’re verified</p>
+                    <p class="idvx-s">We filled in what we could. Check and continue.</p>
+                    <p class="idvx-field"><span>Name</span>Sample User</p>
+                    <p class="idvx-field"><span>Email</span>s•••@mail.com</p>
+                    <p class="idvx-field"><span>Mobile</span>(555) 010-0000</p>
+                    <p class="idvx-cta">Continue</p>
+                  </div>
+                </li>
+              </ol>
+            </div><!--/i18n:keep-->
+            </figure>
+            <div class="opsx-foot"><p class="cs-visual-note">원본 프로젝트 화면 구조를 바탕으로 다시 구성한 화이트라벨 화면 · 예시 데이터</p><button type="button" class="opsx-replay" data-anim-replay hidden>다시 보기</button></div>
+          </div>
+          <div class="idv-stage">
+            <div class="idv-phone" role="group" aria-label="재구성한 본인 인증 안내 화면">
+              <p class="idv-title">본인 확인이 필요합니다</p>
+              <dl class="idv-why">
+                <dt>이유</dt><dd>관련 규정에 따라 서비스를 이용하기 전에 본인 확인이 필요합니다.</dd>
+                <dt>시작된 이유</dt><dd>방금 회원가입을 마쳤습니다.</dd>
+                <dt>예상 시간</dt><dd>약 2분 · 신분증과 셀피 1장</dd>
+              </dl>
+              <p class="idv-btn">신분증으로 시작</p>
+              <p class="idv-link">다른 서류로 진행</p>
+            </div>
+            <p class="cs-visual-note">설계 설명을 위한 재구성 · 예시 문구</p>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-2-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">02</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-2-title">지금 어디쯤인지, 항상 보이게.</h3>
+            <p class="cs-desc">인증 상태를 시작 전 · 검토 중 · 승인 · 조치 필요 네 가지로 나누고, 어느 화면에서든 같은 방식으로 보여 줍니다. 처리에 30~60초가 걸리는 동안에는 기다리는 시간을 알려, 조용한 화면이 실패처럼 느껴지지 않게 했습니다.</p>
+            <p class="cs-diff"><span class="cs-diff-label">사용자에게 생긴 차이</span> 제출한 뒤에도 ‘된 건가, 아직인가’를 묻지 않습니다.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--pair">
+          <div class="cs-pair">
+            <figure class="cs-mock" role="group" aria-label="재구성한 인증 상태 표시">
+              <p class="cs-mock-label">네 가지 상태</p>
+              <ol class="idv-status"><li class="idv-st idv-st--idle"><span class="idv-ico" aria-hidden="true"></span>시작 전</li><li class="idv-st idv-st--wait"><span class="idv-ico" aria-hidden="true"></span>검토 중</li><li class="idv-st idv-st--ok"><span class="idv-ico" aria-hidden="true"></span>승인</li><li class="idv-st idv-st--act"><span class="idv-ico" aria-hidden="true"></span>조치 필요</li></ol>
+              <p class="cs-mock-muted">색과 함께 아이콘 모양과 문구로 상태를 구분합니다.</p>
+            </figure>
+            <figure class="cs-mock" role="group" aria-label="재구성한 처리 중 화면">
+              <p class="cs-mock-label">처리 중</p>
+              <div class="idv-wait"><span class="idv-spinner" aria-hidden="true"></span><p><strong>서류를 확인하고 있습니다</strong></p><p>보통 30~60초 걸립니다. 이 화면을 닫아도 확인은 계속됩니다.</p></div>
+            </figure>
+            <p class="cs-visual-note">설계 설명을 위한 재구성 · 예시 문구</p>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-3-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">03</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-3-title">실패해도, 다음 단계는 하나로.</h3>
+            <p class="cs-desc">실패 메시지는 무엇이 일어났는지와 지금 할 수 있는 한 가지 행동을 함께 알려 줍니다. 진행을 막는 오류는 빨간색으로 경고·안내와 구분하고, 색만이 아니라 문구와 아이콘으로도 상태를 알립니다.</p>
+            <p class="cs-diff"><span class="cs-diff-label">사용자에게 생긴 차이</span> 막혀도 처음부터 다시 시작하지 않고, 다음 단계로 이어집니다.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--full">
+          <div class="idv-stage">
+            <ul class="idv-fails">
+              <li><p class="idv-fail-title"><span class="idv-ico idv-ico--err" aria-hidden="true"></span>인터넷 연결이 끊겼습니다</p><p>무엇을 확인할지 알려 주고, 다시 시도할 수 있게 합니다.</p><p class="idv-fail-action">연결 확인 후 다시 시도 <span aria-hidden="true">→</span></p></li>
+              <li><p class="idv-fail-title"><span class="idv-ico idv-ico--err" aria-hidden="true"></span>서버에 일시적인 문제가 있습니다</p><p>사용자 잘못이 아니라는 점을 분명히 합니다.</p><p class="idv-fail-action">잠시 후 다시 시도 <span aria-hidden="true">→</span></p></li>
+              <li><p class="idv-fail-title"><span class="idv-ico idv-ico--err" aria-hidden="true"></span>이미 가입된 계정이 있습니다</p><p>중복 계정이 만들어지기 전에 멈춥니다.</p><p class="idv-fail-action">기존 계정으로 로그인 <span aria-hidden="true">→</span></p></li>
+              <li><p class="idv-fail-title"><span class="idv-ico idv-ico--err" aria-hidden="true"></span>이메일을 잘못 입력했나요?</p><p>인증 코드만 다시 보낼 수 있어 막히던 지점에 출구를 만듭니다.</p><p class="idv-fail-action">이메일 변경 <span aria-hidden="true">→</span></p></li>
+            </ul>
+            <p class="cs-visual-note">설계 설명을 위한 재구성 · 예시 문구</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-results" id="results" aria-labelledby="results-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Results</p>
+        <h2 id="results-title">결과와 배운 점</h2>
+      </div>
+      <div class="cs-results-grid">
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">측정·보고된 결과</h3>
+          <ul class="cs-metrics">
+            <li><span class="metric-kind">사용 지표</span><span class="cs-metric-value">+95%</span><span class="cs-metric-text">본인 인증 완료 성공률</span></li>
+            <li><span class="metric-kind">사용 지표</span><span class="cs-metric-value">+25%</span><span class="cs-metric-text">인증 후 첫 거래 완료율</span></li>
+            <li><span class="metric-kind">운영 지표</span><span class="cs-metric-value">−25%</span><span class="cs-metric-text">본인 인증 관련 고객 문의</span></li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">바뀐 화면과 흐름</h3>
+          <ul class="cs-list">
+            <li>인증 전에 이유·시작 계기·예상 시간을 알려 주는 안내</li>
+            <li>어느 화면에서든 같은 방식으로 보이는 네 가지 인증 상태</li>
+            <li>실패 상황마다 무엇이 일어났는지와 한 가지 다음 행동</li>
+            <li>잘못 입력한 이메일을 고칠 수 있는 변경 경로</li>
+            <li>규정이 다른 두 시장에 같은 원칙으로 적용한 흐름</li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">배운 점</h3>
+          <p class="cs-learned">규정이 요구하는 마찰은 없앨 수 없을 때가 많습니다. 사용자가 이유와 현재 상태, 다음 행동을 알 수 있으면 같은 단계도 납득할 수 있는 과정이 된다는 점을 이 프로젝트의 중심 원칙으로 삼았습니다.</p>
+        </div>
+      </div>
+      <p class="sc-note">수치는 출시 후 프로젝트에서 측정·보고된 값으로, 여러 설계 변화가 함께 적용된 결과입니다. 화면은 설계 설명을 위해 새로 구성한 예시입니다.</p>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-next" id="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">More work</p>
+        <h2 id="next-title">관련 사례</h2>
+      </div>
+      <div class="story-grid">
+          <a class="story-card" href="second-context-case-healthcare.html">
+            <span class="story-media"><img src="assets/images/case-healthcare-corridor-1152.jpg" srcset="assets/images/case-healthcare-corridor-768.jpg 768w, assets/images/case-healthcare-corridor-1152.jpg 1152w, assets/images/case-healthcare-corridor-1536.jpg 1536w, assets/images/case-healthcare-corridor-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1600" loading="lazy" decoding="async" alt="" style="object-position:66% 50%"></span>
+            <span class="story-chip">헬스케어 SaaS</span>
+            <span class="story-text"><span class="story-title">Healthcare Scheduling</span><span class="story-desc">복잡한 방문 일정을 명확한 다음 단계로</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="story-card" href="second-context-case-localization.html">
+            <span class="story-media"><img src="assets/images/case-localization-team-meeting-1152.jpg" srcset="assets/images/case-localization-team-meeting-768.jpg 768w, assets/images/case-localization-team-meeting-1152.jpg 1152w, assets/images/case-localization-team-meeting-1536.jpg 1536w, assets/images/case-localization-team-meeting-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1350" loading="lazy" decoding="async" alt="" style="object-position:45% 50%"></span>
+            <span class="story-chip">제품 현지화</span>
+            <span class="story-text"><span class="story-title">Product Localization</span><span class="story-desc">언어와 사용 맥락에 맞춘 제품 경험</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+      </div>
+      <div class="cs-cta">
+        <a class="pill pill-light" href="./#contact">프로젝트 문의하기</a>
+        <a class="pill pill-ghost" href="./#services">서비스 영역으로 돌아가기</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="lets" data-rotator data-words="Understand|Design|Build|Collaborate" data-interval="2400">
+      <p class="lets-title" aria-hidden="true"><span><span class="lets-lead">Let’s</span><span class="lets-word is-in">Understand</span></span></p>
+      <p class="lets-sentence">Let’s understand, design, build, and collaborate.</p>
+      <div class="lets-actions">
+        <a class="lets-cta" href="./#contact"><span class="pill pill-light">프로젝트 문의하기</span><span class="circle-btn circle-btn--light"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <button type="button" class="lets-toggle" aria-pressed="false" hidden><span class="lets-toggle-text">일시정지</span><span class="sr-only"> 움직이는 문구</span></button>
+      </div>
+    </div>
+    <div class="footer-links">
+      <nav class="fl-col" aria-labelledby="fl-company">
+        <p class="fl-title" id="fl-company">Company</p>
+        <ul>
+          <li><a href="./#why-us" data-nav="why-us">Why Us</a></li>
+          <li><a href="./#services" data-nav="services">What we do</a></li>
+          <li><a href="./#approach" data-nav="approach">Approach</a></li>
+          <li><a href="./#contact" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="fl-col" aria-labelledby="fl-follow">
+        <p class="fl-title" id="fl-follow">Follow</p>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/second-context/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> — Second Context 회사 페이지</span><span class="sr-only"> (새 탭에서 열림)</span></a></li>
+          <li><a href="https://github.com/RachelCho" target="_blank" rel="noopener">GitHub<span class="sr-only"> — Rachel Cho</span><span class="sr-only"> (새 탭에서 열림)</span></a></li>
+        </ul>
+      </nav>
+      <form class="newsletter" data-endpoint="" novalidate aria-labelledby="nl-title">
+        <p class="fl-title" id="nl-title">Newsletter</p>
+        <label class="newsletter-label" for="nl-email">뉴스레터 구독 이메일</label>
+        <div class="newsletter-field">
+          <input id="nl-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@company.com" aria-describedby="nl-status">
+          <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="sr-only">뉴스레터 구독 신청</span></button>
+        </div>
+        <p class="newsletter-status" id="nl-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      <a href="./" class="footer-logo" aria-label="Second Context 홈"><img src="assets/second-context-logo-white.png" alt="second context" width="800" height="326" loading="lazy"></a>
+      <nav class="lang lang-footer" aria-label="언어 선택">
+        <a href="second-context-case-identity.html" lang="ko" hreflang="ko" aria-current="true">한국어</a>
+        <span aria-hidden="true">/</span>
+        <a href="en/second-context-case-identity.html" lang="en" hreflang="en"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+      </nav>
+      <p class="footer-copy">© Second Context <span data-year>2026</span></p>
+    </div>
+  </div>
+</footer>
+
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

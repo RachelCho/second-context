@@ -42,10 +42,12 @@
     ko: [
       { t: '홈', u: './', d: '새로운 시장의 맥락을, 제품의 다음 단계로. 사용자와 업무 환경의 차이를 이해하고 제품 경험과 실행 우선순위를 함께 설계합니다.', k: 'home 메인' },
       { t: '선택 이유 (Why Us)', u: './#why-us', d: '제품과 사람, 비즈니스를 함께 이해합니다. 차별점, 창업자 소개, 경험한 제품과 맡은 역할.', k: 'why us 차별점 창업자 founder 경력 수치 about' },
-      { t: '서비스 (Services)', u: './#services', d: '제품 전략, UX 리서치, 프로덕트 디자인, AI 기반 프로토타이핑.', k: 'services 서비스 전략 리서치 디자인 ai 프로토타입' },
-      { t: '01 Healthcare — Clinician Scheduling', u: 'second-context-work.html#case-healthcare', d: '미국 홈헬스케어 SaaS의 일정 관리 UX. 복잡한 자격 조건·일정 규칙·예외를 이해하고 바로 행동할 수 있게 설계했습니다.', k: '헬스케어 일정 임상의 달력 AI 추천 디자인 시스템 사례 프로젝트 work' },
-      { t: '02 Enterprise — Incident Management', u: 'second-context-work.html#case-monitoring', d: '글로벌 제약사의 운영 모니터링·인시던트 관리 UX. 심각도·영향 범위·조사 우선순위를 연결했습니다.', k: '엔터프라이즈 모니터링 인시던트 대시보드 우선순위 AI 요약 사례 프로젝트 work' },
-      { t: '03 Localization — Korean Product Localization', u: 'second-context-work.html#case-localization', d: '글로벌 테크 기업의 한국어 제품 현지화. 언어와 사용 맥락에 맞춰 제품 경험을 조정했습니다.', k: '현지화 한국어 번역 날짜 이름 타이포그래피 사례 프로젝트 work' },
+      { t: 'What we do', u: './#services', d: '복잡한 업무를 명확한 제품으로 · 시작부터 신뢰할 수 있는 경험으로 · 시장과 사용 맥락에 맞는 경험으로.', k: 'services 서비스 what we do 역량 work 사례 프로젝트' },
+      { t: 'Healthcare Scheduling', u: 'second-context-case-healthcare.html', d: '복잡한 방문 일정을 명확한 다음 단계로. 미국 홈헬스케어 SaaS의 일정 관리 UX.', k: '헬스케어 일정 임상의 달력 AI 추천 디자인 시스템 사례 프로젝트 work' },
+      { t: 'Enterprise Operations', u: 'second-context-case-monitoring.html', d: '많은 신호 속에서 먼저 대응할 문제 찾기. 글로벌 제약사의 운영 모니터링·인시던트 관리 UX.', k: '엔터프라이즈 운영 모니터링 인시던트 대시보드 우선순위 AI 요약 사례 프로젝트 work' },
+      { t: 'Identity Verification', u: 'second-context-case-identity.html', d: '상황이 달라도 이어지는 본인 인증 경험. 이유·현재 상태·다음 행동이 보이는 KYC 흐름.', k: '본인 인증 신원 확인 kyc 온보딩 가입 상태 오류 모바일 사례 프로젝트 work' },
+      { t: 'Product Localization', u: 'second-context-case-localization.html', d: '언어와 사용 맥락에 맞춘 제품 경험. 글로벌 테크 기업의 한국어 제품 현지화.', k: '현지화 한국어 번역 날짜 이름 타이포그래피 사례 프로젝트 work' },
+      { t: 'Online Go Server (OGS)', u: 'second-context-case-ogs.html', d: '문화가 달라도 바둑을 쉽게 시작할 수 있도록. 글로벌 바둑 플랫폼의 온보딩·탐색·매치메이킹 재설계.', k: 'ogs online go 바둑 go baduk globalization 글로벌 온보딩 매치메이킹 사례 프로젝트 work' },
       { t: '진행 방식 (Approach)', u: './#approach', d: '맥락 이해 → 문제 정의 → 디자인 및 검증 → 실행 지원.', k: 'approach 진행 방식 프로세스 단계' },
       { t: '진행 방식 자세히 보기', u: 'second-context-approach.html', d: '진단부터 설계, 개발 협업까지 여섯 단계로 함께 일하는 방식.', k: 'approach 프로세스 우선순위 매트릭스' },
       { t: 'About Second Context', u: 'second-context-about.html', d: '헬스케어 제품, 엔터프라이즈 소프트웨어, 복잡한 업무 흐름을 설계해 온 경력과 멘토링 활동.', k: '소개 창업자 founder 경력 멘토링 about rachel' },
@@ -54,10 +56,12 @@
     en: [
       { t: 'Home', u: './', d: 'New market context, your product’s next step. We understand how your users and their work environments differ, then design the product experience and execution priorities with your team.', k: 'home main' },
       { t: 'Why Us', u: './#why-us', d: 'We understand products, people, and business together. What sets us apart, the founder, and products and roles.', k: 'why us difference founder career figures about' },
-      { t: 'Services', u: './#services', d: 'Product strategy, UX research, product design, and AI-assisted prototyping.', k: 'services strategy research design ai prototype prototyping' },
-      { t: '01 Healthcare — Clinician Scheduling', u: 'second-context-work.html#case-healthcare', d: 'Scheduling UX for a U.S. home healthcare SaaS. Complex eligibility, scheduling rules, and exceptions turned into clear next actions.', k: 'healthcare scheduling clinician calendar ai recommendation design system case study work project' },
-      { t: '02 Enterprise — Incident Management', u: 'second-context-work.html#case-monitoring', d: 'Operations monitoring and incident management UX for a global pharmaceutical company. Severity, impact, and investigation priority connected.', k: 'enterprise monitoring incident dashboard triage priority ai summary case study work project' },
-      { t: '03 Localization — Korean Product Localization', u: 'second-context-work.html#case-localization', d: 'Korean product localization for a global tech company. The product experience adapted to language and context of use.', k: 'localization korean translation date name typography case study work project' },
+      { t: 'What we do', u: './#services', d: 'From complex work to a clear product · An experience people can trust from the start · An experience fitted to the market and its context.', k: 'services what we do capabilities work case study project' },
+      { t: 'Healthcare Scheduling', u: 'second-context-case-healthcare.html', d: 'Turning complex visit scheduling into clear next steps. Scheduling UX for a U.S. home healthcare SaaS.', k: 'healthcare scheduling clinician calendar ai recommendation design system case study work project' },
+      { t: 'Enterprise Operations', u: 'second-context-case-monitoring.html', d: 'Finding the issue to handle first among many signals. Operations monitoring and incident management UX for a global pharmaceutical company.', k: 'enterprise operations monitoring incident dashboard triage priority ai summary case study work project' },
+      { t: 'Identity Verification', u: 'second-context-case-identity.html', d: 'Identity verification that keeps moving, whatever happens. A KYC flow where the reason, status, and next action are visible.', k: 'identity verification kyc onboarding sign up status error mobile case study work project' },
+      { t: 'Product Localization', u: 'second-context-case-localization.html', d: 'A product experience fitted to language and context of use. Korean product localization for a global tech company.', k: 'localization korean translation date name typography case study work project' },
+      { t: 'Online Go Server (OGS)', u: 'second-context-case-ogs.html', d: 'Making Go accessible across cultures. Onboarding, navigation, and matchmaking redesigned for a global Go platform.', k: 'ogs online go baduk globalization onboarding matchmaking case study work project' },
       { t: 'Approach', u: './#approach', d: 'Understand context → Define the problem → Design and validate → Support delivery.', k: 'approach process steps' },
       { t: 'More about our approach', u: 'second-context-approach.html', d: 'Six steps from diagnosis to design and development collaboration.', k: 'approach process priorities matrix' },
       { t: 'About Second Context', u: 'second-context-about.html', d: 'Experience designing healthcare products, enterprise software, and complex workflows, plus mentoring.', k: 'about founder career mentoring rachel' },
@@ -151,9 +155,11 @@
         });
       }, { rootMargin: '0px 0px -8% 0px' });
       var blocks = [];
-      Array.prototype.forEach.call(document.querySelectorAll('main section:not(.sc-hero):not(.hero-full):not(.page-intro) > .wrap > *'), function (b) {
+      Array.prototype.forEach.call(document.querySelectorAll('main section:not(.sc-hero):not(.cs-hero):not(.hero-full):not(.page-intro) > .wrap > *'), function (b) {
         // 사례 페이지 본문은 한 덩어리가 길어서 데모 화면과 항목(dt·dd)별로 나눠 떠오르게 한다
         if (b.classList.contains('case-body')) blocks.push.apply(blocks, b.querySelectorAll('.case-facts > *, .case-demo'));
+        // What we do(2026-11-16): 서비스 블록마다 따로
+        else if (b.classList.contains('wwd-list')) blocks.push.apply(blocks, b.children);
         else blocks.push(b);
       });
       blocks.forEach(function (b) {
@@ -161,6 +167,52 @@
         b.classList.add('sc-reveal');
         revealIo.observe(b);
       });
+    }
+
+    // 사례 재구성 화면 애니메이션(2026-11-16): [data-anim]이 화면에 35% 들어오면 한 번 재생, '다시 보기'로 다시 재생.
+    // JS 없음·움직임 줄이기에서는 html.js-anim을 붙이지 않아 처음부터 완성 상태(다시 보기 버튼도 숨김)
+    var anims = document.querySelectorAll('[data-anim]');
+    if (anims.length && !reduce && 'IntersectionObserver' in window) {
+      document.documentElement.classList.add('js-anim');
+      var animIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          en.target.classList.add('is-play');
+          animIo.unobserve(en.target);
+        });
+      }, { threshold: 0.35 });
+      Array.prototype.forEach.call(anims, function (a) { animIo.observe(a); });
+      Array.prototype.forEach.call(document.querySelectorAll('[data-anim-replay]'), function (btn) {
+        btn.hidden = false;
+        btn.addEventListener('click', function () {
+          var stage = btn.closest('.opsx-stage') || document;
+          Array.prototype.forEach.call(stage.querySelectorAll('[data-anim]'), function (a) {
+            a.classList.remove('is-play'); void a.offsetWidth; a.classList.add('is-play');
+          });
+        });
+      });
+    }
+
+    // 숫자 카운트업(2026-11-16, OGS 사례): [data-count-to]가 화면 50%에 들어오면 data-count-from → 값으로 1.2초. 움직임 줄이기·JS 없음은 HTML의 최종 값 그대로
+    var counts = document.querySelectorAll('[data-count-to]');
+    if (counts.length && !reduce && 'IntersectionObserver' in window) {
+      var fmt = function (el, v) { el.textContent = v.toFixed(+el.getAttribute('data-dec') || 0); };
+      Array.prototype.forEach.call(counts, function (el) { fmt(el, +el.getAttribute('data-count-from') || 0); });
+      var countIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (!en.isIntersecting) return;
+          countIo.unobserve(en.target);
+          var el = en.target, from = +el.getAttribute('data-count-from') || 0, to = +el.getAttribute('data-count-to'), t0 = null;
+          var step = function (ts) {
+            if (t0 === null) t0 = ts;
+            var p = Math.min((ts - t0) / 1200, 1), e = 1 - Math.pow(1 - p, 3);
+            fmt(el, from + (to - from) * e);
+            if (p < 1) requestAnimationFrame(step);
+          };
+          requestAnimationFrame(step);
+        });
+      }, { threshold: 0.5 });
+      Array.prototype.forEach.call(counts, function (el) { countIo.observe(el); });
     }
 
     /* ---------- 1) 검색 ---------- */

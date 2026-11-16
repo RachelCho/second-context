@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise Operations — Second Context</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="canonical" href="https://second-context.com/en/second-context-case-monitoring.html">
+<link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-monitoring.html">
+<link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-monitoring.html">
+<link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-monitoring.html">
+<script src="../assets/lang.js"></script>
+<meta name="description" content="Incident management UX for a global pharmaceutical company’s operations monitoring, restructuring scattered signals around severity and business impact.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Second Context">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:title" content="Enterprise Operations — Second Context">
+<meta property="og:description" content="Incident management UX for a global pharmaceutical company’s operations monitoring, restructuring scattered signals around severity and business impact.">
+<meta property="og:url" content="https://second-context.com/en/second-context-case-monitoring.html">
+<meta property="og:image" content="https://second-context.com/assets/og/work-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Second Context logo: two white open frames on black">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/second-context.css">
+</head>
+<body class="sc-dark cs-page">
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="./" class="logo" aria-label="Second Context home"><img src="../assets/second-context-logo-white.png" alt="second context" width="800" height="326"></a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span><span class="menu-toggle-text">Menu</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Main menu">
+      <a href="./#why-us" data-nav="why-us">Why Us</a>
+      <a aria-current="true" href="./#services" data-nav="services">What we do</a>
+      <a href="./#approach" data-nav="approach">Approach</a>
+      <a href="./#contact" data-nav="contact">Contact</a>
+      <a class="pill pill-light nav-cta" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener"><span class="nav-cta-text">Book a 30-minute consultation</span><span class="sr-only"> (opens in a new tab)</span></a>
+    </nav>
+    <nav class="lang" aria-label="Language">
+      <a href="../second-context-case-monitoring.html" lang="ko" hreflang="ko">한국어</a>
+      <span aria-hidden="true">/</span>
+      <a href="second-context-case-monitoring.html" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+    </nav>
+    <button type="button" class="search-open" aria-haspopup="dialog" aria-controls="search" aria-expanded="false"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">Search the site</span></button>
+  </div>
+</header>
+
+<div class="search" id="search" role="dialog" aria-modal="true" aria-labelledby="search-title" hidden>
+  <div class="wrap">
+    <div class="search-top">
+      <p class="search-title" id="search-title">Search the site</p>
+      <button type="button" class="search-close"><span>Close</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <form class="search-form" role="search" aria-label="Site search">
+      <label class="sr-only" for="search-input">Search the site</label>
+      <input id="search-input" type="search" autocomplete="off" placeholder="Search case studies, services, pages">
+      <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">Search</span></button>
+    </form>
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <ul class="search-results"></ul>
+  </div>
+</div>
+
+<main id="main">
+  <section class="cs-hero sc-light" id="case-monitoring" aria-labelledby="cs-title">
+    <div class="wrap">
+      <p class="cs-back"><a href="./#service-complex"><span aria-hidden="true">←</span> What we do</a></p>
+      <ul class="cs-tags" aria-label="Field and capability">
+        <li>Enterprise operations</li>
+        <li>From complex work to a clear product</li>
+        <li>Previous-role project</li>
+      </ul>
+      <h1 id="cs-title">Among scattered signals, the issue to handle first comes first.</h1>
+      <p class="lead">On a global pharmaceutical company’s operations monitoring platform, information scattered across 8 dashboards was rebuilt around severity and business impact, with criteria for showing AI insights by investigation priority.</p>
+      <ul class="cs-hero-metrics" aria-label="Key results">
+        <li><span class="cs-hero-num">30 min <span aria-hidden="true">→</span><span class="sr-only"> to </span> 3 min</span><span class="cs-hero-label">Incident investigation time reported in the project</span></li>
+        <li><span class="cs-hero-num">80% faster</span><span class="cs-hero-label">Incident triage time</span></li>
+        <li><span class="cs-hero-num">40% faster</span><span class="cs-hero-label">Ticket processing time in developers’ internal tools</span></li>
+      </ul>
+      <figure class="cs-cover">
+        <img src="../assets/images/case-operations-aisle-1536.jpg" srcset="../assets/images/case-operations-aisle-768.jpg 768w, ../assets/images/case-operations-aisle-1152.jpg 1152w, ../assets/images/case-operations-aisle-1536.jpg 1536w, ../assets/images/case-operations-aisle-2048.jpg 2048w" sizes="(max-width: 1343px) calc(100vw - 40px), 1280px" width="2400" height="1380" fetchpriority="high" alt="A long grey aisle lined on both sides with metal equipment cabinets" style="object-position:50% 50%">
+      </figure>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-intro" id="overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <div class="cs-split">
+        <div class="cs-split-head">
+          <p class="eyebrow">Overview</p>
+          <h2 class="cs-h2" id="overview-title">About the project</h2>
+        </div>
+        <div class="cs-split-body">
+          <dl class="cs-facts">
+            <dt>Context and challenge</dt>
+            <dd>An enterprise monitoring platform supporting vaccine operations, used by the company’s engineering teams. To investigate an incident, operators had to move between 8 dashboards to work out severity and impact.</dd>
+            <dt>Rachel’s role</dt>
+            <dd><ul><li>Joined as a contract Senior Product Designer through a UX design agency.</li><li>Conducted 15 stakeholder interviews to define how AI insights such as risk predictions, alerts, and confidence levels are surfaced and prioritized.</li></ul></dd>
+            <dt>Collaboration (public scope)</dt>
+            <dd>Designed a generative-AI incident management system with a global IT company’s AI/ML teams, translating model outputs into actionable signals for enterprise users.</dd>
+            <dt>Project type</dt>
+            <dd>Previous-role project · Contract through an agency · 2024</dd>
+          </dl>
+          <p class="cs-disclaimer">A project Rachel Cho delivered in a previous role. It covers only what can be shared publicly; screens and data are new examples created for illustration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-pr" id="problem" aria-label="Problem and design response">
+    <div class="wrap">
+      <div class="cs-pr-grid">
+        <div class="cs-pr-item">
+          <p class="eyebrow">Problem</p>
+          <p class="cs-statement">Investigating an incident meant moving across 8 dashboards and matching severity and impact by hand, so deciding where to start took time.</p>
+        </div>
+        <div class="cs-pr-item">
+          <p class="eyebrow">Solution</p>
+          <p class="cs-statement">The information architecture was rebuilt around severity and downstream impact, and AI insights are shown by investigation priority instead of all at the same weight.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-decisions" id="decisions" aria-labelledby="decisions-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Key decisions</p>
+        <h2 id="decisions-title">Key design decisions</h2>
+      </div>
+      <article class="cs-decision" aria-labelledby="decision-1-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">01</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-1-title">One flow around severity and impact, instead of 8 dashboards.</h3>
+            <p class="cs-desc">Because operators had to piece together severity and impact across 8 dashboards themselves, the information architecture was redesigned around severity and downstream impact.</p>
+            <p class="cs-diff"><span class="cs-diff-label">What changed for users</span> People decide what to investigate first from one list, without jumping between screens.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--wide">
+          <div class="opsx-stage">
+            <figure class="opsx-fig" role="group" aria-label="Recreated incident overview screen">
+              <figcaption class="opsx-cap"><span class="opsx-n">01</span><b>Incident Overview</b><span class="opsx-capd">Incidents with the highest severity and business impact sit at the top of the list.</span></figcaption>
+              <!--i18n:keep--><div class="opsx" data-anim>
+              <div class="opsx-top">
+                <p class="opsx-logo"><span class="opsx-mark" aria-hidden="true"></span>Command Center</p>
+                <p class="opsx-view">Explorer View <span aria-hidden="true">▾</span></p>
+                <p class="opsx-user"><span class="opsx-bell" aria-hidden="true"></span><span class="opsx-av" aria-hidden="true">JL</span><span class="opsx-btn">Report an Issue</span></p>
+              </div>
+              <div class="opsx-nav">
+                <span class="is-on">Triage Central</span><span>Workbench</span><span>Event Banner</span><span>Executive View</span><span>Event Search</span>
+                <span class="opsx-kw"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>Type a keyword</span>
+              </div>
+              <ul class="opsx-filters">
+                <li class="is-on">All Potential Issues <b>128</b></li><li>Critical Tickets <b>12</b></li><li>Empirical Data <b>34</b></li><li>Event Matching <b>6</b></li><li>Predictive Monitoring <b>9</b></li><li>Manually Created <b>3</b></li>
+              </ul>
+              <div class="opsx-main">
+                <div class="opsx-listwrap">
+                  <div class="opsx-listhead"><span>Last updated <b>2:41 PM ET</b></span><strong>List of Potential Issues</strong><span>Sorted by priority · Items per page <b>10</b></span></div>
+                  <table class="opsx-table">
+                    <thead><tr><th>Priority</th><th>Status</th><th>Ref No.</th><th>Impacted System</th><th>Created</th><th>Description</th><th>Owner</th></tr></thead>
+                    <tbody>
+                      <tr class="is-sel" style="--i:0"><td><span class="opsx-pr opsx-pr--1">P1</span></td><td><span class="opsx-st opsx-st--tri"></span>Triage in Progress</td><td>INC-20418</td><td class="opsx-sys">Label Management · Site B · PROD</td><td>Sep 06, 11:07 PM</td><td>Label print service unavailable · 2 teams blocked</td><td><span class="opsx-av">JL</span></td></tr>
+                      <tr style="--i:1"><td><span class="opsx-pr opsx-pr--1">P1</span></td><td><span class="opsx-st opsx-st--open"></span>Open</td><td>INC-20415</td><td class="opsx-sys">Cold Chain Tracking · Global · PROD</td><td>Sep 06, 10:42 PM</td><td>Shipment status not syncing · escalation pending</td><td><span class="opsx-av">MK</span></td></tr>
+                      <tr style="--i:2"><td><span class="opsx-pr opsx-pr--2">P2</span></td><td><span class="opsx-st opsx-st--open"></span>Open</td><td>INC-20409</td><td class="opsx-sys">Lab Data Platform · EU · PROD</td><td>Sep 06, 9:15 PM</td><td>Memory usage above 90% on srv-app-014</td><td><span class="opsx-av">RS</span></td></tr>
+                      <tr style="--i:3"><td><span class="opsx-pr opsx-pr--2">P2</span></td><td><span class="opsx-st opsx-st--open"></span>Open</td><td>INC-20402</td><td class="opsx-sys">Clinical Supply Portal · US · PROD</td><td>Sep 06, 7:58 PM</td><td>Disk available below 10% on srv-db-207</td><td><span class="opsx-av opsx-av--none">—</span></td></tr>
+                      <tr style="--i:4"><td><span class="opsx-pr opsx-pr--3">P3</span></td><td><span class="opsx-st opsx-st--mon"></span>Monitoring</td><td>INC-20397</td><td class="opsx-sys">Serialization Service · APAC · PROD</td><td>Sep 06, 6:20 PM</td><td>Status changed from Green to Amber</td><td><span class="opsx-av">TW</span></td></tr>
+                      <tr style="--i:5"><td><span class="opsx-pr opsx-pr--3">P3</span></td><td><span class="opsx-st opsx-st--mon"></span>Monitoring</td><td>INC-20391</td><td class="opsx-sys">Network Switch · Site D</td><td>Sep 06, 5:03 PM</td><td>Intermittent packet loss reported</td><td><span class="opsx-av">AN</span></td></tr>
+                    </tbody>
+                  </table>
+                  <div class="opsx-pager"><span>1–10 of 128</span><span class="opsx-pages"><i>First</i><i>«</i><i class="is-on">1</i><i>2</i><i>3</i><i>…</i><i>13</i><i>»</i><i>Last</i></span></div>
+                </div>
+                <aside class="opsx-detail">
+                  <p class="opsx-dk">INC-20418 · <span class="opsx-pr opsx-pr--1">P1 Critical</span></p>
+                  <p class="opsx-dt">Label print service unavailable at Site B</p>
+                  <dl class="opsx-dl">
+                    <dt>Status</dt><dd>Triage in Progress</dd>
+                    <dt>Impacted system</dt><dd>Label Management · PROD</dd>
+                    <dt>Business impact</dt><dd><b>2 of 4</b> packaging teams blocked</dd>
+                    <dt>Owner</dt><dd>J. Lee · GCC</dd>
+                    <dt>Duration</dt><dd>1h 34m</dd>
+                  </dl>
+                  <p class="opsx-dh">Investigation context</p>
+                  <ul class="opsx-ctx">
+                    <li><span>Grouped events</span><b>4</b></li>
+                    <li><span>Related incidents</span><b>3</b></li>
+                    <li><span>Open change requests</span><b>1</b></li>
+                    <li><span>Impacted business processes</span><b>2</b></li>
+                  </ul>
+                  <p class="opsx-dnote">“Print queue stalled after network switch restart.” <span>— latest note</span></p>
+                </aside>
+              </div>
+            </div><!--/i18n:keep-->
+            </figure>
+            <figure class="opsx-fig" role="group" aria-label="Recreated incident investigation and AI search screen">
+              <figcaption class="opsx-cap"><span class="opsx-n">02</span><b>Investigation · AI Search</b><span class="opsx-capd">Related records and AI search bring the investigation context for the selected incident into one place.</span></figcaption>
+              <!--i18n:keep--><div class="opsx opsx--inv" data-anim>
+              <div class="opsx-top">
+                <p class="opsx-logo"><span class="opsx-mark" aria-hidden="true"></span>Command Center</p>
+                <p class="opsx-view">Explorer View <span aria-hidden="true">▾</span></p>
+                <p class="opsx-user"><span class="opsx-bell" aria-hidden="true"></span><span class="opsx-av" aria-hidden="true">JL</span><span class="opsx-btn">Report an Issue</span></p>
+              </div>
+              <div class="opsx-evhead">
+                <p class="opsx-back">← Triage Central <span>/ Manufacturing / Label Management · Site B</span></p>
+                <p class="opsx-evtitle"><b>INC-20418</b> Label print service unavailable at Site B</p>
+                <ul class="opsx-evmeta"><li>Severity <b class="opsx-pr opsx-pr--1">P1 Critical</b></li><li>Status <b>Active</b></li><li>Duration <b>1h 34m</b></li><li>Last updated <b>2:41 PM ET</b></li><li class="opsx-viewing"><span class="opsx-av">MK</span><span class="opsx-av">RS</span> viewing</li></ul>
+                <p class="opsx-evtabs"><span>Event Details</span><span>Impact</span><span>Collaboration</span><span class="is-on">Related Records</span><span>Resolution</span></p>
+              </div>
+              <div class="opsx-main opsx-main--inv">
+                <div class="opsx-listwrap">
+                  <div class="opsx-impact">
+                    <p><span>Teams blocked</span><b>2 of 4</b></p>
+                    <p><span>Escalation emails</span><b>3 · no response</b></p>
+                    <p><span>Restoration</span><b>In progress</b></p>
+                  </div>
+                  <p class="opsx-dh">Related records</p>
+                  <table class="opsx-table opsx-table--rel">
+                    <thead><tr><th>ID</th><th>Title, brief description</th><th>Type</th></tr></thead>
+                    <tbody>
+                      <tr style="--i:0"><td>INC-20416</td><td>Print queue stalled on lbl-srv-03 after restart</td><td>Incident</td></tr>
+                      <tr style="--i:1"><td>INC-20411</td><td>Network availability monitor outage · Site B port 10143</td><td>Incident</td></tr>
+                      <tr style="--i:2"><td>RFC-8852</td><td>Switch firmware update · Site B (scheduled)</td><td>Change</td></tr>
+                      <tr style="--i:3"><td>EVT-55310</td><td>Packaging line 2 paused · labels unavailable</td><td>Event</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <aside class="opsx-ai">
+                  <p class="opsx-aih"><span class="opsx-spark" aria-hidden="true"></span>Super Analyst <span class="opsx-tag">AI · suggestion</span></p>
+                  <p class="opsx-q"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="opsx-qtext">Have we seen this failure pattern before?</span></p>
+                  <p class="opsx-thinking" aria-hidden="true"><i></i><i></i><i></i> Searching related records</p>
+                  <div class="opsx-answer">
+                    <p class="opsx-dh">Similar incidents · last 90 days</p>
+                    <ul class="opsx-sim">
+                      <li><span>Network switch unreachable · Site B</span><em>Resolved</em></li>
+                      <li><span>LAN issue impacting label printing · Site D</span><em>Resolved</em></li>
+                      <li><span>WAN connectivity issue · Site B</span><em>Resolved</em></li>
+                    </ul>
+                    <p class="opsx-dh">Incident notes · AI generated</p>
+                    <p class="opsx-note"><b>Possible recurring pattern</b> of network switch failures before label outages. <b>Firmware review</b> may be worth checking first.</p>
+                    <p class="opsx-follow">Ask a follow-up <span aria-hidden="true">→</span></p>
+                  </div>
+                </aside>
+              </div>
+            </div><!--/i18n:keep-->
+            </figure>
+            <div class="opsx-foot"><p class="cs-visual-note">White-label screens recreated from the original project’s structure · Sample data</p><button type="button" class="opsx-replay" data-anim-replay hidden>Replay</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-2-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">02</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-2-title">Put the issue to handle first, first.</h3>
+            <p class="cs-desc">Technical signals (anomaly scores) and business impact (blocked teams and owners) are read together to put the item to handle first at the top. Selecting an item shows affected teams, related signals, owners, and history in one place.</p>
+            <p class="cs-diff"><span class="cs-diff-label">What changed for users</span> Even with many alerts, investigation starts from the single most important item.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--full">
+          <div class="case-demo">
+<div class="demo" id="demo-monitoring" data-demo data-step="1" data-sel="a">
+              <div class="demo-bar">
+                <ol class="demo-steps" aria-label="Interaction steps">
+                  <li><button type="button" class="demo-step" data-go="1" aria-current="step"><span class="demo-n" aria-hidden="true">1</span>Many alerts</button></li>
+                  <li><button type="button" class="demo-step" data-go="2"><span class="demo-n" aria-hidden="true">2</span>Priority to the top</button></li>
+                  <li><button type="button" class="demo-step" data-go="3"><span class="demo-n" aria-hidden="true">3</span>Click to investigate</button></li>
+                </ol>
+                <div class="demo-motion">
+                  <button type="button" class="demo-ctl" data-play>Play motion</button>
+                  <button type="button" class="demo-ctl" data-stop disabled>Stop</button>
+                  <button type="button" class="demo-ctl" data-replay>Replay</button>
+                </div>
+              </div>
+              <div class="demo-frame" role="group" aria-label="Recreated incident priority screen">
+                <p class="demo-tag">Recreated for illustration · Sample data</p>
+                <div class="ui-head"><span class="ui-title">Incidents</span><span class="ui-sub" data-show="1">In order received</span><span class="ui-sub" data-show="2 3" hidden>In order of priority</span></div>
+                <p class="tri-rule" data-show="2 3" hidden>Criteria: technical signal (anomaly score) + business impact (blocked teams, owner assigned)</p>
+                <ul class="tri-list" aria-label="Sample incident list">
+                  <li class="tri-item" data-pos="1 2 2"><button type="button" class="tri-row" data-select="d" aria-controls="tri-detail"><span class="pri pri-2" data-show="2 3" hidden>P2</span><span class="tri-main"><span class="tri-name">Sample incident D · Rising server memory usage</span><span class="tri-meta">Anomaly score 0.66 · Teams blocked 0/5</span></span><span class="tri-time">09:12</span></button></li>
+                  <li class="tri-item" data-pos="2 3 3"><button type="button" class="tri-row" data-select="b" aria-controls="tri-detail"><span class="pri pri-2" data-show="2 3" hidden>P2</span><span class="tri-main"><span class="tri-name">Sample incident B · Backup job failing and retrying</span><span class="tri-meta">Anomaly score 0.38 · Teams blocked 1/5</span></span><span class="tri-time">09:20</span></button></li>
+                  <li class="tri-item" data-pos="3 1 1" data-hl="2"><button type="button" class="tri-row" data-select="a" aria-controls="tri-detail"><span class="pri pri-1" data-show="2 3" hidden>P1</span><span class="tri-main"><span class="tri-name">Sample incident A · Delivery tracking data sync delay</span><span class="tri-meta">Anomaly score 0.42 · Teams blocked 3/5 · No owner</span><span class="tri-why" data-show="2 3" hidden>The anomaly score is low, but 3 of 5 teams are blocked and no one owns it.</span></span><span class="tri-time">09:31</span></button></li>
+                  <li class="tri-item" data-pos="4 4 4"><button type="button" class="tri-row" data-select="c" aria-controls="tri-detail"><span class="pri pri-3" data-show="2 3" hidden>P3</span><span class="tri-main"><span class="tri-name">Sample incident C · More access requests</span><span class="tri-meta">Anomaly score 0.21 · Teams blocked 0/5</span></span><span class="tri-time">09:40</span></button></li>
+                </ul>
+                <div class="ui-panel tri-detail" id="tri-detail" data-show="3" hidden>
+                  <div data-detail="a" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-1">P1</span> Sample incident A · Escalate now</p>
+                    <dl class="ui-kv">
+                      <dt>Affected teams</dt><dd>Sample team 1 · Sample team 2 · Sample team 3 (3 of 5 teams)</dd>
+                      <dt>Related signals</dt><dd>Anomaly score 0.42 · Recurred 3× this week</dd>
+                      <dt>Owner</dt><dd>None yet — a responsible team needs to be assigned</dd>
+                      <dt>Records</dt><dd>2 related tickets · 1 earlier incident</dd>
+                    </dl>
+                  </div>
+                  <div data-detail="d" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-2">P2</span> Sample incident D · Monitor</p>
+                    <dl class="ui-kv">
+                      <dt>Affected teams</dt><dd>No teams blocked</dd>
+                      <dt>Related signals</dt><dd>Anomaly score 0.66 · Memory usage rising</dd>
+                      <dt>Owner</dt><dd>Sample owner 1 (SRE)</dd>
+                      <dt>Records</dt><dd>1 earlier incident</dd>
+                    </dl>
+                  </div>
+                  <div data-detail="b" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-2">P2</span> Sample incident B · Track and log</p>
+                    <dl class="ui-kv">
+                      <dt>Affected teams</dt><dd>Sample team 4 (1 of 5 teams)</dd>
+                      <dt>Related signals</dt><dd>Anomaly score 0.38 · 2 backup retries</dd>
+                      <dt>Owner</dt><dd>Sample owner 2 (GCC)</dd>
+                      <dt>Records</dt><dd>1 related ticket</dd>
+                    </dl>
+                  </div>
+                  <div data-detail="c" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-3">P3</span> Sample incident C · Log only</p>
+                    <dl class="ui-kv">
+                      <dt>Affected teams</dt><dd>No teams blocked</dd>
+                      <dt>Related signals</dt><dd>Anomaly score 0.21 · Request volume rising</dd>
+                      <dt>Owner</dt><dd>Sample owner 3 (GCC)</dd>
+                      <dt>Records</dt><dd>No related records</dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div class="demo-notes" aria-live="polite">
+                <p class="demo-note" data-note="1"><strong>1. Many alerts</strong> When alerts are listed in the order received, all with equal weight, responders have to work out for themselves what to check first.</p>
+                <p class="demo-note" data-note="2" hidden><strong>2. Priority to the top</strong> Even with a low anomaly score, an incident becomes P1 when several teams are blocked and no one owns it. This movement only demonstrates the principle; the real screen opens in this order from the start.</p>
+                <p class="demo-note" data-note="3" hidden><strong>3. Click to investigate</strong> Selecting an item shows affected teams, related signals, owner, and records in one place. Select another item to compare.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-3-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">03</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-3-title">AI insights aren’t listed at equal weight.</h3>
+            <p class="cs-desc">Rather than listing risk predictions, alerts, and confidence levels with equal weight, set criteria for showing them by investigation priority. Predictions are framed only as possibilities, with the related records behind them available to expand.</p>
+            <p class="cs-diff"><span class="cs-diff-label">What changed for users</span> People can check the evidence right away before deciding whether to trust an AI summary.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--full">
+          <div class="case-demo">
+<div class="demo" id="demo-forecast" data-demo data-step="1">
+              <div class="demo-bar">
+                <ol class="demo-steps" aria-label="Interaction steps">
+                  <li><button type="button" class="demo-step" data-go="1" aria-current="step"><span class="demo-n" aria-hidden="true">1</span>Gather related records</button></li>
+                  <li><button type="button" class="demo-step" data-go="2"><span class="demo-n" aria-hidden="true">2</span>Find the pattern</button></li>
+                  <li><button type="button" class="demo-step" data-go="3"><span class="demo-n" aria-hidden="true">3</span>Forecast summary</button></li>
+                </ol>
+                <div class="demo-motion">
+                  <button type="button" class="demo-ctl" data-play>Play motion</button>
+                  <button type="button" class="demo-ctl" data-stop disabled>Stop</button>
+                  <button type="button" class="demo-ctl" data-replay>Replay</button>
+                </div>
+              </div>
+              <div class="demo-frame" role="group" aria-label="Recreated AI forecast summary screen">
+                <p class="demo-tag">Recreated for illustration · Sample data</p>
+                <div class="ui-head"><span class="ui-title">Sample service X · Operations records</span><span class="ui-sub">Scope: related records connected for the project</span></div>
+                <section class="fc-summary" data-show="3" hidden aria-labelledby="fc-summary-title">
+                  <p class="fc-summary-title" id="fc-summary-title">AI summary</p>
+                  <dl class="fc-kv">
+                    <dt><span class="fc-kind">Observed</span>Recurring pattern</dt>
+                    <dd>In sample service X, processing delay alerts were followed by data update tickets and sync delay incidents, twice.</dd>
+                    <dt><span class="fc-kind fc-kind-pred">Forecast</span>Risk that may follow</dt>
+                    <dd>If the same alert appears again, this sequence may continue and could affect downstream work.</dd>
+                    <dt><span class="fc-kind">Evidence</span>Check related records</dt>
+                    <dd><button type="button" class="fc-toggle" data-expand aria-expanded="false" aria-controls="fc-evidence">View related records</button></dd>
+                  </dl>
+                  <div class="fc-evidence" id="fc-evidence" hidden>
+                    <p>These sample records support the summary. The same rows are marked in the table below.</p>
+                    <ol>
+                      <li>Operations data D-01 processing delay alert → Ticket T-01 data update delay question → Incident history E sync delay</li>
+                      <li>Operations data D-03 processing delay alert → Ticket T-03 missing report question → Incident history G sync delay</li>
+                    </ol>
+                    <p class="fc-caveat">A forecast is a possibility, not a confirmed outcome. Responders review the evidence and decide whether to act.</p>
+                  </div>
+                </section>
+                <table class="fc-table">
+                  <caption class="sr-only">Sample related records</caption>
+                  <thead><tr><th scope="col">Past operations data</th><th scope="col">Related tickets</th><th scope="col">Incident history</th></tr></thead>
+                  <tbody>
+                    <tr class="fc-pat" data-on="2 3"><td>D-01 Processing delay alert</td><td>T-01 Data update delay question</td><td>E Sync delay</td></tr>
+                    <tr><td>D-02 Disk usage alert</td><td>T-02 Access request</td><td>F Certificate renewal</td></tr>
+                    <tr class="fc-pat" data-on="2 3"><td>D-03 Processing delay alert</td><td>T-03 Missing report question</td><td>G Sync delay</td></tr>
+                  </tbody>
+                </table>
+                <p class="fc-common" data-show="2 3" hidden><span class="fc-kind">In common</span>Processing delay alert → data update ticket → sync delay recurred twice in the same order.</p>
+              </div>
+              <div class="demo-notes" aria-live="polite">
+                <p class="demo-note" data-note="1"><strong>1. Gather related records</strong> Past operations data, related tickets, and incident history connected for the project are brought together.</p>
+                <p class="demo-note" data-note="2" hidden><strong>2. Find the pattern</strong> What the records have in common is found, and sequences that recurred in the same order are marked.</p>
+                <p class="demo-note" data-note="3" hidden><strong>3. Forecast summary</strong> The AI summary above the records shows the result first. It separates the observed pattern from the forecast, and “View related records” shows the evidence.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-results" id="results" aria-labelledby="results-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Results</p>
+        <h2 id="results-title">Results and lessons</h2>
+      </div>
+      <div class="cs-results-grid">
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">Measured and reported results</h3>
+          <ul class="cs-metrics">
+            <li><span class="metric-kind">Work outcome</span><span class="cs-metric-value">30 min <span aria-hidden="true">→</span><span class="sr-only"> to </span> 3 min</span><span class="cs-metric-text">Incident investigation time reported in the project</span></li>
+            <li><span class="metric-kind">Work outcome</span><span class="cs-metric-value">80% faster</span><span class="cs-metric-text">Incident triage time after redesigning decision-support workflows and signal display</span></li>
+            <li><span class="metric-kind">Work outcome</span><span class="cs-metric-value">40% faster</span><span class="cs-metric-text">Ticket processing time in developers’ internal tools</span></li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">Research scope</h3>
+          <ul class="cs-metrics">
+            <li><span class="metric-kind">Research scope</span><span class="cs-metric-value">15</span><span class="cs-metric-text">Stakeholder interviews to define how AI insights are shown and prioritized</span></li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">What I learned</h3>
+          <p class="cs-learned">On signal-heavy screens, the starting point was agreeing with the team on how to order an investigation, not showing every piece of information. AI output also becomes an actionable signal when it appears within those criteria, together with its evidence.</p>
+        </div>
+      </div>
+      <p class="sc-note">Figures were measured and reported in the project; methods differ by metric. The demos are recreated for illustration, and the figures are not the result of any single demo.</p>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-next" id="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">More work</p>
+        <h2 id="next-title">Related case studies</h2>
+      </div>
+      <div class="story-grid">
+          <a class="story-card" href="second-context-case-healthcare.html">
+            <span class="story-media"><img src="../assets/images/case-healthcare-corridor-1152.jpg" srcset="../assets/images/case-healthcare-corridor-768.jpg 768w, ../assets/images/case-healthcare-corridor-1152.jpg 1152w, ../assets/images/case-healthcare-corridor-1536.jpg 1536w, ../assets/images/case-healthcare-corridor-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1600" loading="lazy" decoding="async" alt="" style="object-position:66% 50%"></span>
+            <span class="story-chip">Healthcare SaaS</span>
+            <span class="story-text"><span class="story-title">Healthcare Scheduling</span><span class="story-desc">Turning complex visit scheduling into clear next steps</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="story-card" href="second-context-case-identity.html">
+            <span class="story-media"><img src="../assets/images/case-identity-fingerprint-1152.jpg" srcset="../assets/images/case-identity-fingerprint-768.jpg 768w, ../assets/images/case-identity-fingerprint-1152.jpg 1152w, ../assets/images/case-identity-fingerprint-1536.jpg 1536w, ../assets/images/case-identity-fingerprint-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1350" loading="lazy" decoding="async" alt="" style="object-position:55% 50%"></span>
+            <span class="story-chip">Regulated mobile app</span>
+            <span class="story-text"><span class="story-title">Identity Verification</span><span class="story-desc">Identity verification that keeps moving, whatever happens</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+      </div>
+      <div class="cs-cta">
+        <a class="pill pill-light" href="./#contact">Send a project inquiry</a>
+        <a class="pill pill-ghost" href="./#services">Back to What we do</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="lets" data-rotator data-words="Understand|Design|Build|Collaborate" data-interval="2400">
+      <p class="lets-title" aria-hidden="true"><span><span class="lets-lead">Let’s</span><span class="lets-word is-in">Understand</span></span></p>
+      <p class="lets-sentence">Let’s understand, design, build, and collaborate.</p>
+      <div class="lets-actions">
+        <a class="lets-cta" href="./#contact"><span class="pill pill-light">Send a project inquiry</span><span class="circle-btn circle-btn--light"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <button type="button" class="lets-toggle" aria-pressed="false" hidden><span class="lets-toggle-text">Pause</span><span class="sr-only"> moving text</span></button>
+      </div>
+    </div>
+    <div class="footer-links">
+      <nav class="fl-col" aria-labelledby="fl-company">
+        <p class="fl-title" id="fl-company">Company</p>
+        <ul>
+          <li><a href="./#why-us" data-nav="why-us">Why Us</a></li>
+          <li><a href="./#services" data-nav="services">What we do</a></li>
+          <li><a href="./#approach" data-nav="approach">Approach</a></li>
+          <li><a href="./#contact" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="fl-col" aria-labelledby="fl-follow">
+        <p class="fl-title" id="fl-follow">Follow</p>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/second-context/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> — Second Context company page</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://github.com/RachelCho" target="_blank" rel="noopener">GitHub<span class="sr-only"> — Rachel Cho</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+      <form class="newsletter" data-endpoint="" novalidate aria-labelledby="nl-title">
+        <p class="fl-title" id="nl-title">Newsletter</p>
+        <label class="newsletter-label" for="nl-email">Email for the newsletter</label>
+        <div class="newsletter-field">
+          <input id="nl-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@company.com" aria-describedby="nl-status">
+          <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="sr-only">Subscribe to the newsletter</span></button>
+        </div>
+        <p class="newsletter-status" id="nl-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      <a href="./" class="footer-logo" aria-label="Second Context home"><img src="../assets/second-context-logo-white.png" alt="second context" width="800" height="326" loading="lazy"></a>
+      <nav class="lang lang-footer" aria-label="Language">
+        <a href="../second-context-case-monitoring.html" lang="ko" hreflang="ko">한국어</a>
+        <span aria-hidden="true">/</span>
+        <a href="second-context-case-monitoring.html" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+      </nav>
+      <p class="footer-copy">© Second Context <span data-year>2026</span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/case-demo.js" defer></script>
+
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

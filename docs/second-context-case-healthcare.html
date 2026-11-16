@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthcare Scheduling — Second Context</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="canonical" href="https://second-context.com/second-context-case-healthcare.html">
+<link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-healthcare.html">
+<link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-healthcare.html">
+<link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-healthcare.html">
+<script src="assets/lang.js"></script>
+<meta name="description" content="미국 홈헬스케어 SaaS의 방문 일정 관리를 예약 가능한 날짜, 명확한 상태, 확인할 수 있는 AI 추천으로 바꾼 사례.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Second Context">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="Healthcare Scheduling — Second Context">
+<meta property="og:description" content="미국 홈헬스케어 SaaS의 방문 일정 관리를 예약 가능한 날짜, 명확한 상태, 확인할 수 있는 AI 추천으로 바꾼 사례.">
+<meta property="og:url" content="https://second-context.com/second-context-case-healthcare.html">
+<meta property="og:image" content="https://second-context.com/assets/og/work-ko.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Second Context 로고: 검정 바탕의 흰 두 사각 프레임">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="assets/second-context.css">
+</head>
+<body class="sc-dark cs-page">
+
+<a class="skip" href="#main">본문 바로가기</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="./" class="logo" aria-label="Second Context 홈"><img src="assets/second-context-logo-white.png" alt="second context" width="800" height="326"></a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span><span class="menu-toggle-text">Menu</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="주요 메뉴">
+      <a href="./#why-us" data-nav="why-us">Why Us</a>
+      <a aria-current="true" href="./#services" data-nav="services">What we do</a>
+      <a href="./#approach" data-nav="approach">Approach</a>
+      <a href="./#contact" data-nav="contact">Contact</a>
+      <a class="pill pill-light nav-cta" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener"><span class="nav-cta-text">30분 상담 예약</span><span class="sr-only"> (새 탭에서 열림)</span></a>
+    </nav>
+    <nav class="lang" aria-label="언어 선택">
+      <a href="second-context-case-healthcare.html" lang="ko" hreflang="ko" aria-current="true">한국어</a>
+      <span aria-hidden="true">/</span>
+      <a href="en/second-context-case-healthcare.html" lang="en" hreflang="en"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+    </nav>
+    <button type="button" class="search-open" aria-haspopup="dialog" aria-controls="search" aria-expanded="false"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">사이트 검색</span></button>
+  </div>
+</header>
+
+<div class="search" id="search" role="dialog" aria-modal="true" aria-labelledby="search-title" hidden>
+  <div class="wrap">
+    <div class="search-top">
+      <p class="search-title" id="search-title">사이트 검색</p>
+      <button type="button" class="search-close"><span>닫기</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <form class="search-form" role="search" aria-label="사이트 검색">
+      <label class="sr-only" for="search-input">사이트 검색어</label>
+      <input id="search-input" type="search" autocomplete="off" placeholder="사례, 서비스, 페이지 검색">
+      <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">검색</span></button>
+    </form>
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <ul class="search-results"></ul>
+  </div>
+</div>
+
+<main id="main">
+  <!-- 사례 상세(2026-11-16): 첫 화면 → 프로젝트 소개 → 문제/설계 대응 → 핵심 설계 판단 → 결과와 배운 점 → 다음 행동.
+       대표 사진은 Unsplash 설명용 사진(assets/stock/CREDITS.md). 고객사 이름·로고·제품명·내부 식별자는 쓰지 않는다 -->
+  <section class="cs-hero sc-light" id="case-healthcare" aria-labelledby="cs-title">
+    <div class="wrap">
+      <p class="cs-back"><a href="./#service-complex"><span aria-hidden="true">←</span> What we do</a></p>
+      <ul class="cs-tags" aria-label="분야와 역량">
+        <li>헬스케어 SaaS</li>
+        <li>복잡한 업무를 명확한 제품으로</li>
+        <li>이전 경력 프로젝트</li>
+      </ul>
+      <h1 id="cs-title">복잡한 방문 일정을, <span class="tl">바로 판단할 수 있는 다음 단계로.</span></h1>
+      <p class="lead">미국 홈헬스케어 SaaS에서 자격·방문 빈도·인력 규칙이 겹친 일정 관리를, 예약 가능한 날짜와 명확한 상태, 사람이 확인하고 조정할 수 있는 AI 추천으로 바꿨습니다.</p>
+      <ul class="cs-hero-metrics" aria-label="주요 결과">
+        <li><span class="cs-hero-num">5.8 <span aria-hidden="true">→</span><span class="sr-only">에서</span> 8.2</span><span class="cs-hero-label">파일럿에서 측정한 일정 계획 자신감</span></li>
+        <li><span class="cs-hero-num">180초 <span aria-hidden="true">→</span><span class="sr-only">에서</span> 60초</span><span class="cs-hero-label">여러 개선을 함께 적용한 뒤의 작업 시간</span></li>
+        <li><span class="cs-hero-num">3,000명+</span><span class="cs-hero-label">AI 일정 추천을 사용하는 임상의</span></li>
+      </ul>
+      <figure class="cs-cover">
+        <img src="assets/images/case-healthcare-corridor-1536.jpg" srcset="assets/images/case-healthcare-corridor-768.jpg 768w, assets/images/case-healthcare-corridor-1152.jpg 1152w, assets/images/case-healthcare-corridor-1536.jpg 1536w, assets/images/case-healthcare-corridor-2048.jpg 2048w" sizes="(max-width: 1343px) calc(100vw - 40px), 1280px" width="2400" height="1600" fetchpriority="high" alt="밝은 병원 복도를 따라 장비를 밀며 걸어가는 파란 수술복 차림의 의료진 뒷모습" style="object-position:66% 50%">
+      </figure>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-intro" id="overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <div class="cs-split">
+        <div class="cs-split-head">
+          <p class="eyebrow">Overview</p>
+          <h2 class="cs-h2" id="overview-title">프로젝트 소개</h2>
+        </div>
+        <div class="cs-split-body">
+          <dl class="cs-facts">
+            <dt>사용 맥락과 과제</dt>
+            <dd>미국 홈헬스케어 운영팀이 임상의 방문 일정을 조정하는 AI 일정 관리 플랫폼입니다. 일정 담당자는 환자 자격·방문 빈도·인력 가용성을 함께 고려해야 했고, 이 과정에서 반복 문의와 혼란이 발생했습니다.</dd>
+            <dt>Rachel의 역할</dt>
+            <dd><ul><li>파운딩 디자이너(Senior Product Designer)로 참여했습니다.</li><li>CEO와 함께 핵심 AI 일정 플랫폼의 제품 디자인 비전과 전략을 정의하고, 비즈니스 목표를 0→1 단계의 엔드투엔드 디자인 방향으로 옮겼습니다.</li><li>CTO, 프런트엔드 엔지니어 6명과 함께 회사의 첫 Figma 디자인 시스템을 만들었습니다.</li></ul></dd>
+            <dt>공개 가능한 협업 범위</dt>
+            <dd>CEO·CTO·프런트엔드 엔지니어와 함께 일했고, 디자인·제품·엔지니어링이 함께 쓰는 회사의 첫 엔드투엔드 디자인 프로세스를 만들었습니다.</dd>
+            <dt>프로젝트 성격</dt>
+            <dd>이전 경력 프로젝트 · 미국 홈헬스케어 스타트업 · 2025–2026</dd>
+          </dl>
+          <p class="cs-disclaimer">Rachel Cho의 이전 경력에서 수행한 프로젝트입니다. 공개 가능한 범위의 경험을 소개하며, 화면과 데이터는 설명을 위해 새롭게 구성한 예시입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-pr" id="problem" aria-label="문제와 설계 대응">
+    <div class="wrap">
+      <div class="cs-pr-grid">
+        <div class="cs-pr-item">
+          <p class="eyebrow">Problem</p>
+          <p class="cs-statement">일정 담당자는 겹친 규칙을 머릿속으로 맞춰 보느라, 어떤 날짜에 방문을 잡을 수 있는지 바로 판단하기 어려웠습니다.</p>
+        </div>
+        <div class="cs-pr-item">
+          <p class="eyebrow">Solution</p>
+          <p class="cs-statement">규칙을 설명하기 전에 예약 가능한 날짜와 상태를 보여 주고, 제한 이유는 문장으로, AI 추천은 확인하고 조정할 수 있는 다음 행동으로 제시했습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-decisions" id="decisions" aria-labelledby="decisions-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Key decisions</p>
+        <h2 id="decisions-title">핵심 설계 판단</h2>
+      </div>
+      <article class="cs-decision" aria-labelledby="decision-1-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">01</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-1-title">규칙보다, 예약 가능한 날짜를 먼저.</h3>
+            <p class="cs-desc">자격·방문 빈도·인력 가용성 규칙이 겹쳐 반복 문의와 혼란이 생겼기 때문에, 규칙을 설명하는 대신 예약 가능한 날짜와 상태를 먼저 보여주도록 했습니다.</p>
+            <p class="cs-diff"><span class="cs-diff-label">사용자에게 생긴 차이</span> 규칙을 외우지 않아도, 달력에서 지금 고를 수 있는 날짜가 보입니다.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--full">
+          <div class="case-demo">
+<div class="demo" id="demo-healthcare" data-demo data-step="1">
+            <div class="demo-bar">
+              <ol class="demo-steps" aria-label="인터랙션 단계">
+                <li><button type="button" class="demo-step" data-go="1" aria-current="step"><span class="demo-n" aria-hidden="true">1</span>날짜 선택</button></li>
+                <li><button type="button" class="demo-step" data-go="2"><span class="demo-n" aria-hidden="true">2</span>제한 이유 확인</button></li>
+                <li><button type="button" class="demo-step" data-go="3"><span class="demo-n" aria-hidden="true">3</span>다음 행동</button></li>
+              </ol>
+              <div class="demo-motion">
+                <button type="button" class="demo-ctl" data-play>모션 재생</button>
+                <button type="button" class="demo-ctl" data-stop disabled>정지</button>
+                <button type="button" class="demo-ctl" data-replay>다시 보기</button>
+              </div>
+            </div>
+            <div class="demo-frame" role="group" aria-label="재구성한 방문 일정 화면">
+              <p class="demo-tag">설계 설명을 위한 재구성 · 예시 데이터</p>
+              <div class="ui-head"><span class="ui-title">방문 일정</span><span class="ui-sub">예시 환자 A</span></div>
+              <ul class="ui-legend" aria-label="상태 범례">
+                <li><span class="dot dot-ok" aria-hidden="true"></span>예약 가능</li>
+                <li><span class="dot dot-no" aria-hidden="true"></span>제한</li>
+                <li><span class="dot dot-pick" aria-hidden="true"></span>선택</li>
+              </ul>
+              <div class="ui-cal" role="table" aria-label="예시 달력 2주">
+                <div class="ui-cal-row ui-cal-dow" role="row"><span role="columnheader">월</span><span role="columnheader">화</span><span role="columnheader">수</span><span role="columnheader">목</span><span role="columnheader">금</span><span role="columnheader">토</span><span role="columnheader">일</span></div>
+                <div class="ui-cal-row" role="row">
+                  <span role="cell" class="day ok" data-hl="1">1</span><span role="cell" class="day ok" data-hl="1">2</span><span role="cell" class="day no">3</span><span role="cell" class="day ok" data-hl="1">4</span><span role="cell" class="day no">5</span><span role="cell" class="day off">6</span><span role="cell" class="day off">7</span>
+                </div>
+                <div class="ui-cal-row" role="row">
+                  <span role="cell" class="day ok" data-hl="1">8</span><span role="cell" class="day no">9</span><span role="cell" class="day no" data-pick="2 3">10</span><span role="cell" class="day ok" data-hl="1">11</span><span role="cell" class="day ok" data-hl="1 3" data-rec="3">12</span><span role="cell" class="day off">13</span><span role="cell" class="day off">14</span>
+                </div>
+              </div>
+              <div class="ui-panel" data-show="2">
+                <p class="ui-panel-title"><span class="dot dot-no" aria-hidden="true"></span>10일은 예약할 수 없습니다</p>
+                <p class="ui-reason" data-hl="2">이번 주 방문 횟수(2회)를 이미 모두 사용했습니다.</p>
+                <p class="ui-code"><span class="ui-strike">FREQ_LIMIT_WK</span> → 사용자가 이해할 수 있는 문장으로 표시</p>
+              </div>
+              <div class="ui-panel" data-show="3">
+                <p class="ui-panel-title">추천 일정: 12일(금) 오전</p>
+                <p class="ui-reason">방문 빈도와 담당 임상의 가능 시간을 함께 확인한 날짜입니다.</p>
+                <div class="ui-actions" data-hl="3"><span class="ui-btn ui-btn-fill">추천 확인</span><span class="ui-btn">다른 날짜 선택</span></div>
+              </div>
+            </div>
+            <div class="demo-notes" aria-live="polite">
+              <p class="demo-note" data-note="1"><strong>1. 날짜 선택</strong> 규칙을 먼저 설명하지 않고, 예약 가능한 날짜와 상태를 달력에서 바로 보여 줍니다.</p>
+              <p class="demo-note" data-note="2" hidden><strong>2. 제한 이유 확인</strong> 제한된 날짜를 고르면 내부 코드 대신 이유를 문장으로 알려 줍니다.</p>
+              <p class="demo-note" data-note="3" hidden><strong>3. 다음 행동</strong> AI 추천 일정을 보여 주되, 사용자가 확인하거나 다른 날짜로 조정한 뒤 확정합니다.</p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-2-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">02</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-2-title">내부 코드 대신, 이해할 수 있는 문장으로.</h3>
+            <p class="cs-desc">내부 코드는 사용자가 이해할 수 있는 문구로 바꿨습니다. 제한된 날짜를 고르면 무엇 때문에 막혔는지와 함께 다음에 할 일을 알려 줍니다.</p>
+            <p class="cs-diff"><span class="cs-diff-label">사용자에게 생긴 차이</span> 담당자에게 다시 묻지 않고도 제한 이유를 이해합니다.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--pair">
+          <div class="cs-pair">
+            <figure class="cs-mock" aria-labelledby="mock-before">
+              <p class="cs-mock-label" id="mock-before">이전 방식</p>
+              <div class="cs-mock-screen"><p class="cs-mock-row cs-mock-code">10 · <span>FREQ_LIMIT_WK</span></p><p class="cs-mock-muted">코드의 뜻을 알아야 다음 행동을 정할 수 있습니다.</p></div>
+            </figure>
+            <figure class="cs-mock cs-mock--after" aria-labelledby="mock-after">
+              <p class="cs-mock-label" id="mock-after">바꾼 방식</p>
+              <div class="cs-mock-screen"><p class="cs-mock-row"><strong>10일은 예약할 수 없습니다</strong></p><p class="cs-mock-text">이번 주 방문 횟수(2회)를 이미 모두 사용했습니다.</p><p class="cs-mock-action">가능한 날짜 보기 <span aria-hidden="true">→</span></p></div>
+            </figure>
+            <p class="cs-visual-note">설계 설명을 위한 재구성 · 예시 문구</p>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-3-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">03</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-3-title">AI 추천은, 확인하고 조정할 수 있게.</h3>
+            <p class="cs-desc">의사결정 속도와 확신을 함께 높이기 위해, AI가 만든 일정 추천을 어떻게 보여주고 검증하고 조정할지 정의했습니다.</p>
+            <p class="cs-diff"><span class="cs-diff-label">사용자에게 생긴 차이</span> 추천을 그대로 따르거나 다른 시간으로 바꾸는 결정을 사람이 내립니다.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--mixed">
+          <div class="opsx-stage wl-panel">
+            <figure class="opsx-fig" role="group" aria-label="재구성한 방문 일정·임상의 추천 화면">
+              <figcaption class="opsx-cap"><span class="opsx-n">White-label</span><b>Scheduling · Clinician Recommendation</b><span class="opsx-capd">방문 목록에서 배정이 필요한 방문을 고르면, 자격·거리·언어·환자 선호·업무량 조건을 함께 본 추천 임상의와 그 이유를 보여 줍니다.</span></figcaption>
+              <!--i18n:keep--><div class="opsx hcx" data-anim>
+              <div class="hcx-wrap">
+                <nav class="hcx-rail" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i><i></i><i></i></nav>
+                <aside class="hcx-patient">
+                  <div class="hcx-ph"><b>Sample Patient A</b><span>Male, 73</span></div>
+                  <p class="opsx-dh">Patient details</p>
+                  <dl class="opsx-dl"><dt>External ID</dt><dd>SP-000123</dd><dt>Region</dt><dd>North · Zone 2</dd><dt>Phone</dt><dd>(555) 010-0000</dd></dl>
+                  <p class="opsx-dh">Benefit period #1 (current)</p>
+                  <p>Oct 14 – Jan 13</p>
+                  <p class="opsx-dh">Frequencies</p>
+                  <ul class="hcx-freq"><li>RN 1x weekly for 1 wk</li><li>RN 2x weekly for 4 wks</li><li>SW 1x weekly for 1 wk</li></ul>
+                  <p class="opsx-dh">Office notes</p>
+                  <p class="hcx-note">Prefers morning visits.</p>
+                </aside>
+                <div class="hcx-main">
+                  <p class="opsx-evtabs"><span class="is-on">Scheduling</span><span>Preferences</span><span>Patient History</span></p>
+                  <div class="hcx-head"><b>Visits</b><span class="opsx-view">Benefit period · Oct 14 – Jan 13 ▾</span><span class="hcx-upd">Last updated 10:34 AM</span></div>
+                  <p class="hcx-disc"><span class="is-on">All Disciplines</span><span>RN</span><span>LPN</span><span>HHA</span><span>SW</span></p>
+                  <ul class="opsx-filters hcx-chips"><li class="is-on">All <b>16</b></li><li>Needs Assignment <b>4</b></li><li>Sent for Time <b>7</b></li><li>Completed <b>3</b></li><li>Needs Attention <b>1</b></li><li>Canceled <b>1</b></li></ul>
+                  <div class="hcx-tablewrap">
+                    <table class="opsx-table hcx-table">
+                      <thead><tr><th>Priority</th><th>Status</th><th>Service</th><th>Clinician</th><th>Date</th><th>Fulfillment window</th><th>Frequency</th></tr></thead>
+                      <tbody>
+                        <tr style="--i:0" class="is-sel"><td><span class="hcx-bars hcx-bars--3"><i></i><i></i><i></i></span></td><td>Needs Clinician</td><td>RN Routine Visit</td><td class="opsx-sys">Recommend ✦</td><td>No date</td><td>Oct 14 – Oct 19</td><td>1x/wk · 1 wk</td></tr>
+                        <tr style="--i:1"><td><span class="hcx-bars hcx-bars--2"><i></i><i></i><i></i></span></td><td>Needs Clinician</td><td>RN Routine Visit</td><td class="opsx-sys">Recommend ✦</td><td>No date</td><td>Oct 20 – Oct 26</td><td>2x/wk · 4 wks</td></tr>
+                        <tr style="--i:2"><td><span class="hcx-bars hcx-bars--2"><i></i><i></i><i></i></span></td><td>Sent for Time</td><td>SW Visit</td><td>Clinician C</td><td>Oct 22</td><td>Oct 20 – Oct 26</td><td>1x/wk · 1 wk</td></tr>
+                        <tr style="--i:3"><td><span class="hcx-bars hcx-bars--1"><i></i><i></i><i></i></span></td><td>Scheduled</td><td>Start of Care</td><td>Clinician A</td><td>Oct 14</td><td>Oct 14</td><td>Once</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="hcx-modal">
+                    <div class="hcx-mhead"><b>Clinician Recommendation</b><span aria-hidden="true">×</span></div>
+                    <p class="opsx-evtabs hcx-mtabs"><span class="is-on">Recommended</span><span>Not recommended</span></p>
+                    <table class="hcx-score">
+                      <thead><tr><th>Candidate</th><th>Continuity of service</th><th>License</th><th>Geography</th><th>Language</th><th>Patient preference</th><th>Caseload</th></tr></thead>
+                      <tbody>
+                        <tr class="is-pick" style="--i:0"><td><span class="hcx-radio"></span>Clinician A <em class="hcx-ai">✦ AI</em></td><td><s class="g">100</s></td><td><s class="g">100</s></td><td><s class="g">100</s></td><td><s class="g">100</s></td><td><s class="g">100</s></td><td><s class="a">49</s></td></tr>
+                        <tr style="--i:1"><td><span class="hcx-radio"></span>Clinician B</td><td><s class="a">49</s></td><td><s class="g">100</s></td><td><s class="g">100</s></td><td><s class="r">0</s></td><td><s class="g">100</s></td><td><s class="a">30</s></td></tr>
+                        <tr style="--i:2"><td><span class="hcx-radio"></span>Clinician C</td><td><s class="r">0</s></td><td><s class="r">0</s></td><td><s class="a">49</s></td><td><s class="r">0</s></td><td><s class="g">100</s></td><td><s class="a">49</s></td></tr>
+                      </tbody>
+                    </table>
+                    <p class="hcx-why">Why Clinician A: same clinician as the last visit, licensed for RN visits, 12 min from the patient, matches the morning preference.</p>
+                    <p class="hcx-mfoot"><span class="opsx-replay hcx-cancel">Cancel</span><span class="opsx-btn">Assign Clinician A</span></p>
+                  </div>
+                </div>
+              </div>
+            </div><!--/i18n:keep-->
+            </figure>
+            <div class="opsx-foot"><p class="cs-visual-note">원본 프로젝트 화면 구조를 바탕으로 다시 구성한 화이트라벨 화면 · 예시 데이터</p><button type="button" class="opsx-replay" data-anim-replay hidden>다시 보기</button></div>
+          </div>
+          <div class="cs-pair">
+            <figure class="cs-fig cs-fig--32"><img src="assets/images/case-healthcare-review-screen-1152.jpg" srcset="assets/images/case-healthcare-review-screen-768.jpg 768w, assets/images/case-healthcare-review-screen-1152.jpg 1152w, assets/images/case-healthcare-review-screen-1536.jpg 1536w" sizes="(max-width: 767px) calc(100vw - 40px), 640px" width="2400" height="1350" loading="lazy" decoding="async" alt="모니터 화면을 가리키며 함께 검토하는 팀"></figure>
+            <figure class="cs-fig cs-fig--32"><img src="assets/images/case-healthcare-wireframe-sketch-1152.jpg" srcset="assets/images/case-healthcare-wireframe-sketch-768.jpg 768w, assets/images/case-healthcare-wireframe-sketch-1152.jpg 1152w, assets/images/case-healthcare-wireframe-sketch-1536.jpg 1536w" sizes="(max-width: 767px) calc(100vw - 40px), 640px" width="2400" height="1800" loading="lazy" decoding="async" alt="포스트잇과 함께 종이에 화면 흐름 스케치를 그리는 손"></figure>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-results" id="results" aria-labelledby="results-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Results</p>
+        <h2 id="results-title">결과와 배운 점</h2>
+      </div>
+      <div class="cs-results-grid">
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">측정·보고된 결과</h3>
+          <ul class="cs-metrics">
+            <li><span class="metric-kind">사용자 평가</span><span class="cs-metric-value">5.8 <span aria-hidden="true">→</span><span class="sr-only">에서</span> 8.2</span><span class="cs-metric-text">파일럿에서 측정한 일정 계획 자신감</span></li>
+            <li><span class="metric-kind">업무 성과</span><span class="cs-metric-value">180초 <span aria-hidden="true">→</span><span class="sr-only">에서</span> 60초</span><span class="cs-metric-text">여러 개선이 함께 적용된 후의 작업 시간</span></li>
+            <li><span class="metric-kind">업무 성과</span><span class="cs-metric-value">35% 감소</span><span class="cs-metric-text">AI 보조 일정 워크플로의 수동 검증</span></li>
+            <li><span class="metric-kind">업무 성과</span><span class="cs-metric-value">50% 이상 단축</span><span class="cs-metric-text">디자인 시스템 도입 후 릴리스 주기</span></li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">도입 범위</h3>
+          <ul class="cs-metrics">
+            <li><span class="metric-kind">도입 범위</span><span class="cs-metric-value">3,000명 이상</span><span class="cs-metric-text">AI 일정 추천 경험을 사용하는 임상의</span></li>
+            <li><span class="metric-kind">도입 범위</span><span class="cs-metric-value">23명 전원</span><span class="cs-metric-text">디자인 시스템을 조직 표준으로 채택한 개발자</span></li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">배운 점</h3>
+          <p class="cs-learned">규칙이 많은 업무일수록 규칙을 먼저 설명하기보다 지금 고를 수 있는 선택을 보여 주는 편이 판단을 돕습니다. AI 추천도 사람이 확인하고 조정할 수 있을 때 실제 결정으로 이어진다는 점을 설계 원칙으로 삼았습니다.</p>
+        </div>
+      </div>
+      <p class="sc-note">수치는 프로젝트에서 측정·보고된 값으로, 여러 개선이 함께 적용된 결과입니다. 한 화면이나 한 사람의 단독 성과가 아닙니다.</p>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-next" id="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">More work</p>
+        <h2 id="next-title">관련 사례</h2>
+      </div>
+      <div class="story-grid">
+          <a class="story-card" href="second-context-case-monitoring.html">
+            <span class="story-media"><img src="assets/images/case-operations-aisle-1152.jpg" srcset="assets/images/case-operations-aisle-768.jpg 768w, assets/images/case-operations-aisle-1152.jpg 1152w, assets/images/case-operations-aisle-1536.jpg 1536w, assets/images/case-operations-aisle-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1380" loading="lazy" decoding="async" alt="" style="object-position:50% 50%"></span>
+            <span class="story-chip">엔터프라이즈 운영</span>
+            <span class="story-text"><span class="story-title">Enterprise Operations</span><span class="story-desc">많은 신호 속에서 먼저 대응할 문제 찾기</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="story-card" href="second-context-case-identity.html">
+            <span class="story-media"><img src="assets/images/case-identity-fingerprint-1152.jpg" srcset="assets/images/case-identity-fingerprint-768.jpg 768w, assets/images/case-identity-fingerprint-1152.jpg 1152w, assets/images/case-identity-fingerprint-1536.jpg 1536w, assets/images/case-identity-fingerprint-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1350" loading="lazy" decoding="async" alt="" style="object-position:55% 50%"></span>
+            <span class="story-chip">규제 산업 모바일 앱</span>
+            <span class="story-text"><span class="story-title">Identity Verification</span><span class="story-desc">상황이 달라도 이어지는 본인 인증 경험</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+      </div>
+      <div class="cs-cta">
+        <a class="pill pill-light" href="./#contact">프로젝트 문의하기</a>
+        <a class="pill pill-ghost" href="./#services">서비스 영역으로 돌아가기</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="lets" data-rotator data-words="Understand|Design|Build|Collaborate" data-interval="2400">
+      <p class="lets-title" aria-hidden="true"><span><span class="lets-lead">Let’s</span><span class="lets-word is-in">Understand</span></span></p>
+      <p class="lets-sentence">Let’s understand, design, build, and collaborate.</p>
+      <div class="lets-actions">
+        <a class="lets-cta" href="./#contact"><span class="pill pill-light">프로젝트 문의하기</span><span class="circle-btn circle-btn--light"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <button type="button" class="lets-toggle" aria-pressed="false" hidden><span class="lets-toggle-text">일시정지</span><span class="sr-only"> 움직이는 문구</span></button>
+      </div>
+    </div>
+    <div class="footer-links">
+      <nav class="fl-col" aria-labelledby="fl-company">
+        <p class="fl-title" id="fl-company">Company</p>
+        <ul>
+          <li><a href="./#why-us" data-nav="why-us">Why Us</a></li>
+          <li><a href="./#services" data-nav="services">What we do</a></li>
+          <li><a href="./#approach" data-nav="approach">Approach</a></li>
+          <li><a href="./#contact" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="fl-col" aria-labelledby="fl-follow">
+        <p class="fl-title" id="fl-follow">Follow</p>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/second-context/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> — Second Context 회사 페이지</span><span class="sr-only"> (새 탭에서 열림)</span></a></li>
+          <li><a href="https://github.com/RachelCho" target="_blank" rel="noopener">GitHub<span class="sr-only"> — Rachel Cho</span><span class="sr-only"> (새 탭에서 열림)</span></a></li>
+        </ul>
+      </nav>
+      <form class="newsletter" data-endpoint="" novalidate aria-labelledby="nl-title">
+        <p class="fl-title" id="nl-title">Newsletter</p>
+        <label class="newsletter-label" for="nl-email">뉴스레터 구독 이메일</label>
+        <div class="newsletter-field">
+          <input id="nl-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@company.com" aria-describedby="nl-status">
+          <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="sr-only">뉴스레터 구독 신청</span></button>
+        </div>
+        <p class="newsletter-status" id="nl-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      <a href="./" class="footer-logo" aria-label="Second Context 홈"><img src="assets/second-context-logo-white.png" alt="second context" width="800" height="326" loading="lazy"></a>
+      <nav class="lang lang-footer" aria-label="언어 선택">
+        <a href="second-context-case-healthcare.html" lang="ko" hreflang="ko" aria-current="true">한국어</a>
+        <span aria-hidden="true">/</span>
+        <a href="en/second-context-case-healthcare.html" lang="en" hreflang="en"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+      </nav>
+      <p class="footer-copy">© Second Context <span data-year>2026</span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/case-demo.js" defer></script>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

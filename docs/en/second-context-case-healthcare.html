@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Healthcare Scheduling — Second Context</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="canonical" href="https://second-context.com/en/second-context-case-healthcare.html">
+<link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-healthcare.html">
+<link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-healthcare.html">
+<link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-healthcare.html">
+<script src="../assets/lang.js"></script>
+<meta name="description" content="How visit scheduling for a U.S. home healthcare SaaS was turned into bookable dates, clear status, and AI recommendations people can check.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Second Context">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:title" content="Healthcare Scheduling — Second Context">
+<meta property="og:description" content="How visit scheduling for a U.S. home healthcare SaaS was turned into bookable dates, clear status, and AI recommendations people can check.">
+<meta property="og:url" content="https://second-context.com/en/second-context-case-healthcare.html">
+<meta property="og:image" content="https://second-context.com/assets/og/work-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Second Context logo: two white open frames on black">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/second-context.css">
+</head>
+<body class="sc-dark cs-page">
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="./" class="logo" aria-label="Second Context home"><img src="../assets/second-context-logo-white.png" alt="second context" width="800" height="326"></a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span><span class="menu-toggle-text">Menu</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Main menu">
+      <a href="./#why-us" data-nav="why-us">Why Us</a>
+      <a aria-current="true" href="./#services" data-nav="services">What we do</a>
+      <a href="./#approach" data-nav="approach">Approach</a>
+      <a href="./#contact" data-nav="contact">Contact</a>
+      <a class="pill pill-light nav-cta" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener"><span class="nav-cta-text">Book a 30-minute consultation</span><span class="sr-only"> (opens in a new tab)</span></a>
+    </nav>
+    <nav class="lang" aria-label="Language">
+      <a href="../second-context-case-healthcare.html" lang="ko" hreflang="ko">한국어</a>
+      <span aria-hidden="true">/</span>
+      <a href="second-context-case-healthcare.html" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+    </nav>
+    <button type="button" class="search-open" aria-haspopup="dialog" aria-controls="search" aria-expanded="false"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">Search the site</span></button>
+  </div>
+</header>
+
+<div class="search" id="search" role="dialog" aria-modal="true" aria-labelledby="search-title" hidden>
+  <div class="wrap">
+    <div class="search-top">
+      <p class="search-title" id="search-title">Search the site</p>
+      <button type="button" class="search-close"><span>Close</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <form class="search-form" role="search" aria-label="Site search">
+      <label class="sr-only" for="search-input">Search the site</label>
+      <input id="search-input" type="search" autocomplete="off" placeholder="Search case studies, services, pages">
+      <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">Search</span></button>
+    </form>
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <ul class="search-results"></ul>
+  </div>
+</div>
+
+<main id="main">
+  <section class="cs-hero sc-light" id="case-healthcare" aria-labelledby="cs-title">
+    <div class="wrap">
+      <p class="cs-back"><a href="./#service-complex"><span aria-hidden="true">←</span> What we do</a></p>
+      <ul class="cs-tags" aria-label="Field and capability">
+        <li>Healthcare SaaS</li>
+        <li>From complex work to a clear product</li>
+        <li>Previous-role project</li>
+      </ul>
+      <h1 id="cs-title">Complex visit scheduling, turned into a next step you can decide on.</h1>
+      <p class="lead">At a U.S. home healthcare SaaS, scheduling tangled in eligibility, visit-frequency, and staffing rules became bookable dates, clear status, and AI recommendations people can check and adjust.</p>
+      <ul class="cs-hero-metrics" aria-label="Key results">
+        <li><span class="cs-hero-num">5.8 <span aria-hidden="true">→</span><span class="sr-only"> to </span> 8.2</span><span class="cs-hero-label">Confidence in planning schedules, measured in the pilot</span></li>
+        <li><span class="cs-hero-num">180 sec <span aria-hidden="true">→</span><span class="sr-only"> to </span> 60 sec</span><span class="cs-hero-label">Task time after several improvements together</span></li>
+        <li><span class="cs-hero-num">3,000+</span><span class="cs-hero-label">Clinicians using AI scheduling recommendations</span></li>
+      </ul>
+      <figure class="cs-cover">
+        <img src="../assets/images/case-healthcare-corridor-1536.jpg" srcset="../assets/images/case-healthcare-corridor-768.jpg 768w, ../assets/images/case-healthcare-corridor-1152.jpg 1152w, ../assets/images/case-healthcare-corridor-1536.jpg 1536w, ../assets/images/case-healthcare-corridor-2048.jpg 2048w" sizes="(max-width: 1343px) calc(100vw - 40px), 1280px" width="2400" height="1600" fetchpriority="high" alt="A clinician in blue scrubs, seen from behind, wheeling equipment down a bright hospital corridor" style="object-position:66% 50%">
+      </figure>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-intro" id="overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <div class="cs-split">
+        <div class="cs-split-head">
+          <p class="eyebrow">Overview</p>
+          <h2 class="cs-h2" id="overview-title">About the project</h2>
+        </div>
+        <div class="cs-split-body">
+          <dl class="cs-facts">
+            <dt>Context and challenge</dt>
+            <dd>An AI scheduling platform that U.S. home healthcare operations teams use to coordinate clinician visits. Schedulers had to weigh patient eligibility, visit frequency, and staff availability together, which led to repeated questions and confusion.</dd>
+            <dt>Rachel’s role</dt>
+            <dd><ul><li>Joined as the founding designer (Senior Product Designer).</li><li>Defined the product design vision and strategy for the core AI scheduling platform with the CEO, translating business goals into end-to-end design direction from 0 to 1.</li><li>Built the company’s first Figma design system with the CTO and 6 front-end engineers.</li></ul></dd>
+            <dt>Collaboration (public scope)</dt>
+            <dd>Worked with the CEO, CTO, and front-end engineers, and established the company’s first end-to-end design process shared by design, product, and engineering.</dd>
+            <dt>Project type</dt>
+            <dd>Previous-role project · U.S. home healthcare startup · 2025–2026</dd>
+          </dl>
+          <p class="cs-disclaimer">A project Rachel Cho delivered in a previous role. It covers only what can be shared publicly; screens and data are new examples created for illustration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-pr" id="problem" aria-label="Problem and design response">
+    <div class="wrap">
+      <div class="cs-pr-grid">
+        <div class="cs-pr-item">
+          <p class="eyebrow">Problem</p>
+          <p class="cs-statement">Schedulers had to reconcile overlapping rules in their heads, so it was hard to tell right away which dates a visit could be booked on.</p>
+        </div>
+        <div class="cs-pr-item">
+          <p class="eyebrow">Solution</p>
+          <p class="cs-statement">Bookable dates and status come first, reasons for limits are written as sentences, and AI recommendations appear as a next step people can confirm or adjust.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-decisions" id="decisions" aria-labelledby="decisions-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Key decisions</p>
+        <h2 id="decisions-title">Key design decisions</h2>
+      </div>
+      <article class="cs-decision" aria-labelledby="decision-1-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">01</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-1-title">Bookable dates before rules.</h3>
+            <p class="cs-desc">Because overlapping eligibility, visit-frequency, and availability rules caused repeated questions and confusion, the design shows bookable dates and status first instead of explaining the rules.</p>
+            <p class="cs-diff"><span class="cs-diff-label">What changed for users</span> Without memorizing rules, people can see on the calendar which dates they can choose now.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--full">
+          <div class="case-demo">
+<div class="demo" id="demo-healthcare" data-demo data-step="1">
+            <div class="demo-bar">
+              <ol class="demo-steps" aria-label="Interaction steps">
+                <li><button type="button" class="demo-step" data-go="1" aria-current="step"><span class="demo-n" aria-hidden="true">1</span>Pick a date</button></li>
+                <li><button type="button" class="demo-step" data-go="2"><span class="demo-n" aria-hidden="true">2</span>See why it’s blocked</button></li>
+                <li><button type="button" class="demo-step" data-go="3"><span class="demo-n" aria-hidden="true">3</span>Next step</button></li>
+              </ol>
+              <div class="demo-motion">
+                <button type="button" class="demo-ctl" data-play>Play motion</button>
+                <button type="button" class="demo-ctl" data-stop disabled>Stop</button>
+                <button type="button" class="demo-ctl" data-replay>Replay</button>
+              </div>
+            </div>
+            <div class="demo-frame" role="group" aria-label="Recreated visit scheduling screen">
+              <p class="demo-tag">Recreated for illustration · Sample data</p>
+              <div class="ui-head"><span class="ui-title">Visit schedule</span><span class="ui-sub">Sample patient A</span></div>
+              <ul class="ui-legend" aria-label="Status legend">
+                <li><span class="dot dot-ok" aria-hidden="true"></span>Available</li>
+                <li><span class="dot dot-no" aria-hidden="true"></span>Blocked</li>
+                <li><span class="dot dot-pick" aria-hidden="true"></span>Selected</li>
+              </ul>
+              <div class="ui-cal" role="table" aria-label="Sample two-week calendar">
+                <div class="ui-cal-row ui-cal-dow" role="row"><span role="columnheader">Mon</span><span role="columnheader">Tue</span><span role="columnheader">Wed</span><span role="columnheader">Thu</span><span role="columnheader">Fri</span><span role="columnheader">Sat</span><span role="columnheader">Sun</span></div>
+                <div class="ui-cal-row" role="row">
+                  <span role="cell" class="day ok" data-hl="1">1</span><span role="cell" class="day ok" data-hl="1">2</span><span role="cell" class="day no">3</span><span role="cell" class="day ok" data-hl="1">4</span><span role="cell" class="day no">5</span><span role="cell" class="day off">6</span><span role="cell" class="day off">7</span>
+                </div>
+                <div class="ui-cal-row" role="row">
+                  <span role="cell" class="day ok" data-hl="1">8</span><span role="cell" class="day no">9</span><span role="cell" class="day no" data-pick="2 3">10</span><span role="cell" class="day ok" data-hl="1">11</span><span role="cell" class="day ok" data-hl="1 3" data-rec="3">12</span><span role="cell" class="day off">13</span><span role="cell" class="day off">14</span>
+                </div>
+              </div>
+              <div class="ui-panel" data-show="2">
+                <p class="ui-panel-title"><span class="dot dot-no" aria-hidden="true"></span>The 10th can’t be booked</p>
+                <p class="ui-reason" data-hl="2">This week’s visit limit (2 visits) has already been used.</p>
+                <p class="ui-code"><span class="ui-strike">FREQ_LIMIT_WK</span> → shown as a sentence users can understand</p>
+              </div>
+              <div class="ui-panel" data-show="3">
+                <p class="ui-panel-title">Recommended: Fri the 12th, morning</p>
+                <p class="ui-reason">This date fits both the visit frequency and the assigned clinician’s availability.</p>
+                <div class="ui-actions" data-hl="3"><span class="ui-btn ui-btn-fill">Confirm</span><span class="ui-btn">Choose another date</span></div>
+              </div>
+            </div>
+            <div class="demo-notes" aria-live="polite">
+              <p class="demo-note" data-note="1"><strong>1. Pick a date</strong> Instead of explaining the rules first, the calendar shows which dates are available and their status.</p>
+              <p class="demo-note" data-note="2" hidden><strong>2. See why it’s blocked</strong> Choosing a blocked date explains the reason in plain language instead of an internal code.</p>
+              <p class="demo-note" data-note="3" hidden><strong>3. Next step</strong> The AI-recommended date is shown, and the user confirms it or adjusts to another date before booking.</p>
+            </div>
+          </div>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-2-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">02</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-2-title">Plain sentences instead of internal codes.</h3>
+            <p class="cs-desc">Internal codes were replaced with wording users could understand. Choosing a blocked date explains what is blocking it and what to do next.</p>
+            <p class="cs-diff"><span class="cs-diff-label">What changed for users</span> People understand why a date is blocked without having to ask someone.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--pair">
+          <div class="cs-pair">
+            <figure class="cs-mock" aria-labelledby="mock-before">
+              <p class="cs-mock-label" id="mock-before">Before</p>
+              <div class="cs-mock-screen"><p class="cs-mock-row cs-mock-code">10 · <span>FREQ_LIMIT_WK</span></p><p class="cs-mock-muted">You need to know what the code means to decide what to do next.</p></div>
+            </figure>
+            <figure class="cs-mock cs-mock--after" aria-labelledby="mock-after">
+              <p class="cs-mock-label" id="mock-after">After</p>
+              <div class="cs-mock-screen"><p class="cs-mock-row"><strong>The 10th can’t be booked</strong></p><p class="cs-mock-text">This week’s visit limit (2 visits) has already been used.</p><p class="cs-mock-action">See available dates <span aria-hidden="true">→</span></p></div>
+            </figure>
+            <p class="cs-visual-note">Recreated for illustration · Sample copy</p>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-3-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">03</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-3-title">AI recommendations people can check and adjust.</h3>
+            <p class="cs-desc">To improve both decision speed and confidence, defined how AI-generated schedule recommendations are surfaced, validated, and adjusted.</p>
+            <p class="cs-diff"><span class="cs-diff-label">What changed for users</span> A person makes the call: accept the recommendation or switch to another time.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--mixed">
+          <div class="opsx-stage wl-panel">
+            <figure class="opsx-fig" role="group" aria-label="Recreated visit scheduling and clinician recommendation screen">
+              <figcaption class="opsx-cap"><span class="opsx-n">White-label</span><b>Scheduling · Clinician Recommendation</b><span class="opsx-capd">Choosing a visit that needs a clinician shows a recommendation that weighs license, distance, language, patient preference, and caseload together, with the reason.</span></figcaption>
+              <!--i18n:keep--><div class="opsx hcx" data-anim>
+              <div class="hcx-wrap">
+                <nav class="hcx-rail" aria-hidden="true"><i class="is-on"></i><i></i><i></i><i></i><i></i><i></i><i></i></nav>
+                <aside class="hcx-patient">
+                  <div class="hcx-ph"><b>Sample Patient A</b><span>Male, 73</span></div>
+                  <p class="opsx-dh">Patient details</p>
+                  <dl class="opsx-dl"><dt>External ID</dt><dd>SP-000123</dd><dt>Region</dt><dd>North · Zone 2</dd><dt>Phone</dt><dd>(555) 010-0000</dd></dl>
+                  <p class="opsx-dh">Benefit period #1 (current)</p>
+                  <p>Oct 14 – Jan 13</p>
+                  <p class="opsx-dh">Frequencies</p>
+                  <ul class="hcx-freq"><li>RN 1x weekly for 1 wk</li><li>RN 2x weekly for 4 wks</li><li>SW 1x weekly for 1 wk</li></ul>
+                  <p class="opsx-dh">Office notes</p>
+                  <p class="hcx-note">Prefers morning visits.</p>
+                </aside>
+                <div class="hcx-main">
+                  <p class="opsx-evtabs"><span class="is-on">Scheduling</span><span>Preferences</span><span>Patient History</span></p>
+                  <div class="hcx-head"><b>Visits</b><span class="opsx-view">Benefit period · Oct 14 – Jan 13 ▾</span><span class="hcx-upd">Last updated 10:34 AM</span></div>
+                  <p class="hcx-disc"><span class="is-on">All Disciplines</span><span>RN</span><span>LPN</span><span>HHA</span><span>SW</span></p>
+                  <ul class="opsx-filters hcx-chips"><li class="is-on">All <b>16</b></li><li>Needs Assignment <b>4</b></li><li>Sent for Time <b>7</b></li><li>Completed <b>3</b></li><li>Needs Attention <b>1</b></li><li>Canceled <b>1</b></li></ul>
+                  <div class="hcx-tablewrap">
+                    <table class="opsx-table hcx-table">
+                      <thead><tr><th>Priority</th><th>Status</th><th>Service</th><th>Clinician</th><th>Date</th><th>Fulfillment window</th><th>Frequency</th></tr></thead>
+                      <tbody>
+                        <tr style="--i:0" class="is-sel"><td><span class="hcx-bars hcx-bars--3"><i></i><i></i><i></i></span></td><td>Needs Clinician</td><td>RN Routine Visit</td><td class="opsx-sys">Recommend ✦</td><td>No date</td><td>Oct 14 – Oct 19</td><td>1x/wk · 1 wk</td></tr>
+                        <tr style="--i:1"><td><span class="hcx-bars hcx-bars--2"><i></i><i></i><i></i></span></td><td>Needs Clinician</td><td>RN Routine Visit</td><td class="opsx-sys">Recommend ✦</td><td>No date</td><td>Oct 20 – Oct 26</td><td>2x/wk · 4 wks</td></tr>
+                        <tr style="--i:2"><td><span class="hcx-bars hcx-bars--2"><i></i><i></i><i></i></span></td><td>Sent for Time</td><td>SW Visit</td><td>Clinician C</td><td>Oct 22</td><td>Oct 20 – Oct 26</td><td>1x/wk · 1 wk</td></tr>
+                        <tr style="--i:3"><td><span class="hcx-bars hcx-bars--1"><i></i><i></i><i></i></span></td><td>Scheduled</td><td>Start of Care</td><td>Clinician A</td><td>Oct 14</td><td>Oct 14</td><td>Once</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="hcx-modal">
+                    <div class="hcx-mhead"><b>Clinician Recommendation</b><span aria-hidden="true">×</span></div>
+                    <p class="opsx-evtabs hcx-mtabs"><span class="is-on">Recommended</span><span>Not recommended</span></p>
+                    <table class="hcx-score">
+                      <thead><tr><th>Candidate</th><th>Continuity of service</th><th>License</th><th>Geography</th><th>Language</th><th>Patient preference</th><th>Caseload</th></tr></thead>
+                      <tbody>
+                        <tr class="is-pick" style="--i:0"><td><span class="hcx-radio"></span>Clinician A <em class="hcx-ai">✦ AI</em></td><td><s class="g">100</s></td><td><s class="g">100</s></td><td><s class="g">100</s></td><td><s class="g">100</s></td><td><s class="g">100</s></td><td><s class="a">49</s></td></tr>
+                        <tr style="--i:1"><td><span class="hcx-radio"></span>Clinician B</td><td><s class="a">49</s></td><td><s class="g">100</s></td><td><s class="g">100</s></td><td><s class="r">0</s></td><td><s class="g">100</s></td><td><s class="a">30</s></td></tr>
+                        <tr style="--i:2"><td><span class="hcx-radio"></span>Clinician C</td><td><s class="r">0</s></td><td><s class="r">0</s></td><td><s class="a">49</s></td><td><s class="r">0</s></td><td><s class="g">100</s></td><td><s class="a">49</s></td></tr>
+                      </tbody>
+                    </table>
+                    <p class="hcx-why">Why Clinician A: same clinician as the last visit, licensed for RN visits, 12 min from the patient, matches the morning preference.</p>
+                    <p class="hcx-mfoot"><span class="opsx-replay hcx-cancel">Cancel</span><span class="opsx-btn">Assign Clinician A</span></p>
+                  </div>
+                </div>
+              </div>
+            </div><!--/i18n:keep-->
+            </figure>
+            <div class="opsx-foot"><p class="cs-visual-note">White-label screens recreated from the original project’s structure · Sample data</p><button type="button" class="opsx-replay" data-anim-replay hidden>Replay</button></div>
+          </div>
+          <div class="cs-pair">
+            <figure class="cs-fig cs-fig--32"><img src="../assets/images/case-healthcare-review-screen-1152.jpg" srcset="../assets/images/case-healthcare-review-screen-768.jpg 768w, ../assets/images/case-healthcare-review-screen-1152.jpg 1152w, ../assets/images/case-healthcare-review-screen-1536.jpg 1536w" sizes="(max-width: 767px) calc(100vw - 40px), 640px" width="2400" height="1350" loading="lazy" decoding="async" alt="A team reviewing a monitor together, one person pointing at the screen"></figure>
+            <figure class="cs-fig cs-fig--32"><img src="../assets/images/case-healthcare-wireframe-sketch-1152.jpg" srcset="../assets/images/case-healthcare-wireframe-sketch-768.jpg 768w, ../assets/images/case-healthcare-wireframe-sketch-1152.jpg 1152w, ../assets/images/case-healthcare-wireframe-sketch-1536.jpg 1536w" sizes="(max-width: 767px) calc(100vw - 40px), 640px" width="2400" height="1800" loading="lazy" decoding="async" alt="A hand sketching screen-flow wireframes on paper among sticky notes"></figure>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-results" id="results" aria-labelledby="results-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Results</p>
+        <h2 id="results-title">Results and lessons</h2>
+      </div>
+      <div class="cs-results-grid">
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">Measured and reported results</h3>
+          <ul class="cs-metrics">
+            <li><span class="metric-kind">User rating</span><span class="cs-metric-value">5.8 <span aria-hidden="true">→</span><span class="sr-only"> to </span> 8.2</span><span class="cs-metric-text">Confidence in planning schedules, measured in the pilot</span></li>
+            <li><span class="metric-kind">Work outcome</span><span class="cs-metric-value">180 sec <span aria-hidden="true">→</span><span class="sr-only"> to </span> 60 sec</span><span class="cs-metric-text">Task time after several improvements were applied together</span></li>
+            <li><span class="metric-kind">Work outcome</span><span class="cs-metric-value">35% less</span><span class="cs-metric-text">Manual validation in the AI-assisted scheduling workflow</span></li>
+            <li><span class="metric-kind">Work outcome</span><span class="cs-metric-value">50%+ faster</span><span class="cs-metric-text">Release cycles after the design system was adopted</span></li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">Adoption scope</h3>
+          <ul class="cs-metrics">
+            <li><span class="metric-kind">Adoption scope</span><span class="cs-metric-value">3,000+</span><span class="cs-metric-text">Clinicians using the AI scheduling recommendation experience</span></li>
+            <li><span class="metric-kind">Adoption scope</span><span class="cs-metric-value">All 23</span><span class="cs-metric-text">Developers who adopted the design system as the org-wide standard</span></li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">What I learned</h3>
+          <p class="cs-learned">In rule-heavy work, showing the choices available now helps people decide more than explaining the rules first. I also made it a design principle that AI recommendations turn into real decisions only when people can check and adjust them.</p>
+        </div>
+      </div>
+      <p class="sc-note">Figures were measured and reported in the project and reflect several improvements applied together, not the result of a single screen or person.</p>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-next" id="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">More work</p>
+        <h2 id="next-title">Related case studies</h2>
+      </div>
+      <div class="story-grid">
+          <a class="story-card" href="second-context-case-monitoring.html">
+            <span class="story-media"><img src="../assets/images/case-operations-aisle-1152.jpg" srcset="../assets/images/case-operations-aisle-768.jpg 768w, ../assets/images/case-operations-aisle-1152.jpg 1152w, ../assets/images/case-operations-aisle-1536.jpg 1536w, ../assets/images/case-operations-aisle-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1380" loading="lazy" decoding="async" alt="" style="object-position:50% 50%"></span>
+            <span class="story-chip">Enterprise operations</span>
+            <span class="story-text"><span class="story-title">Enterprise Operations</span><span class="story-desc">Finding the issue to handle first among many signals</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="story-card" href="second-context-case-identity.html">
+            <span class="story-media"><img src="../assets/images/case-identity-fingerprint-1152.jpg" srcset="../assets/images/case-identity-fingerprint-768.jpg 768w, ../assets/images/case-identity-fingerprint-1152.jpg 1152w, ../assets/images/case-identity-fingerprint-1536.jpg 1536w, ../assets/images/case-identity-fingerprint-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1350" loading="lazy" decoding="async" alt="" style="object-position:55% 50%"></span>
+            <span class="story-chip">Regulated mobile app</span>
+            <span class="story-text"><span class="story-title">Identity Verification</span><span class="story-desc">Identity verification that keeps moving, whatever happens</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+      </div>
+      <div class="cs-cta">
+        <a class="pill pill-light" href="./#contact">Send a project inquiry</a>
+        <a class="pill pill-ghost" href="./#services">Back to What we do</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="lets" data-rotator data-words="Understand|Design|Build|Collaborate" data-interval="2400">
+      <p class="lets-title" aria-hidden="true"><span><span class="lets-lead">Let’s</span><span class="lets-word is-in">Understand</span></span></p>
+      <p class="lets-sentence">Let’s understand, design, build, and collaborate.</p>
+      <div class="lets-actions">
+        <a class="lets-cta" href="./#contact"><span class="pill pill-light">Send a project inquiry</span><span class="circle-btn circle-btn--light"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <button type="button" class="lets-toggle" aria-pressed="false" hidden><span class="lets-toggle-text">Pause</span><span class="sr-only"> moving text</span></button>
+      </div>
+    </div>
+    <div class="footer-links">
+      <nav class="fl-col" aria-labelledby="fl-company">
+        <p class="fl-title" id="fl-company">Company</p>
+        <ul>
+          <li><a href="./#why-us" data-nav="why-us">Why Us</a></li>
+          <li><a href="./#services" data-nav="services">What we do</a></li>
+          <li><a href="./#approach" data-nav="approach">Approach</a></li>
+          <li><a href="./#contact" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="fl-col" aria-labelledby="fl-follow">
+        <p class="fl-title" id="fl-follow">Follow</p>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/second-context/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> — Second Context company page</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://github.com/RachelCho" target="_blank" rel="noopener">GitHub<span class="sr-only"> — Rachel Cho</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+      <form class="newsletter" data-endpoint="" novalidate aria-labelledby="nl-title">
+        <p class="fl-title" id="nl-title">Newsletter</p>
+        <label class="newsletter-label" for="nl-email">Email for the newsletter</label>
+        <div class="newsletter-field">
+          <input id="nl-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@company.com" aria-describedby="nl-status">
+          <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="sr-only">Subscribe to the newsletter</span></button>
+        </div>
+        <p class="newsletter-status" id="nl-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      <a href="./" class="footer-logo" aria-label="Second Context home"><img src="../assets/second-context-logo-white.png" alt="second context" width="800" height="326" loading="lazy"></a>
+      <nav class="lang lang-footer" aria-label="Language">
+        <a href="../second-context-case-healthcare.html" lang="ko" hreflang="ko">한국어</a>
+        <span aria-hidden="true">/</span>
+        <a href="second-context-case-healthcare.html" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+      </nav>
+      <p class="footer-copy">© Second Context <span data-year>2026</span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/case-demo.js" defer></script>
+
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

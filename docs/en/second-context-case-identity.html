@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Identity Verification — Second Context</title>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" href="../assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="canonical" href="https://second-context.com/en/second-context-case-identity.html">
+<link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-identity.html">
+<link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-identity.html">
+<link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-identity.html">
+<script src="../assets/lang.js"></script>
+<meta name="description" content="A mobile app case study redesigning mandatory identity verification (KYC) into a flow where the reason, current status, and next action are always visible.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Second Context">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="ko_KR">
+<meta property="og:title" content="Identity Verification — Second Context">
+<meta property="og:description" content="A mobile app case study redesigning mandatory identity verification (KYC) into a flow where the reason, current status, and next action are always visible.">
+<meta property="og:url" content="https://second-context.com/en/second-context-case-identity.html">
+<meta property="og:image" content="https://second-context.com/assets/og/work-en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Second Context logo: two white open frames on black">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="../assets/second-context.css">
+</head>
+<body class="sc-dark cs-page">
+
+<a class="skip" href="#main">Skip to main content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="./" class="logo" aria-label="Second Context home"><img src="../assets/second-context-logo-white.png" alt="second context" width="800" height="326"></a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span><span class="menu-toggle-text">Menu</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="Main menu">
+      <a href="./#why-us" data-nav="why-us">Why Us</a>
+      <a aria-current="true" href="./#services" data-nav="services">What we do</a>
+      <a href="./#approach" data-nav="approach">Approach</a>
+      <a href="./#contact" data-nav="contact">Contact</a>
+      <a class="pill pill-light nav-cta" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener"><span class="nav-cta-text">Book a 30-minute consultation</span><span class="sr-only"> (opens in a new tab)</span></a>
+    </nav>
+    <nav class="lang" aria-label="Language">
+      <a href="../second-context-case-identity.html" lang="ko" hreflang="ko">한국어</a>
+      <span aria-hidden="true">/</span>
+      <a href="second-context-case-identity.html" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+    </nav>
+    <button type="button" class="search-open" aria-haspopup="dialog" aria-controls="search" aria-expanded="false"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">Search the site</span></button>
+  </div>
+</header>
+
+<div class="search" id="search" role="dialog" aria-modal="true" aria-labelledby="search-title" hidden>
+  <div class="wrap">
+    <div class="search-top">
+      <p class="search-title" id="search-title">Search the site</p>
+      <button type="button" class="search-close"><span>Close</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <form class="search-form" role="search" aria-label="Site search">
+      <label class="sr-only" for="search-input">Search the site</label>
+      <input id="search-input" type="search" autocomplete="off" placeholder="Search case studies, services, pages">
+      <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">Search</span></button>
+    </form>
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <ul class="search-results"></ul>
+  </div>
+</div>
+
+<main id="main">
+  <section class="cs-hero sc-light" id="case-identity" aria-labelledby="cs-title">
+    <div class="wrap">
+      <p class="cs-back"><a href="./#service-trust"><span aria-hidden="true">←</span> What we do</a></p>
+      <ul class="cs-tags" aria-label="Field and capability">
+        <li>Regulated mobile app</li>
+        <li>An experience people can trust from the start</li>
+        <li>Previous-role project</li>
+      </ul>
+      <h1 id="cs-title">Mandatory identity verification, made into a step people understand.</h1>
+      <p class="lead">Many users dropped off at an identity verification (KYC) step that regulation made mandatory. Instead of removing the friction, the flow was redesigned so the reason, current status, and next action are always visible.</p>
+      <ul class="cs-hero-metrics" aria-label="Key results">
+        <li><span class="cs-hero-num">+95%</span><span class="cs-hero-label">Successful verification completion</span></li>
+        <li><span class="cs-hero-num">+25%</span><span class="cs-hero-label">First-transaction completion after verification</span></li>
+        <li><span class="cs-hero-num">−25%</span><span class="cs-hero-label">Verification-related support inquiries</span></li>
+      </ul>
+      <figure class="cs-cover">
+        <img src="../assets/images/case-identity-fingerprint-1536.jpg" srcset="../assets/images/case-identity-fingerprint-768.jpg 768w, ../assets/images/case-identity-fingerprint-1152.jpg 1152w, ../assets/images/case-identity-fingerprint-1536.jpg 1536w, ../assets/images/case-identity-fingerprint-2048.jpg 2048w" sizes="(max-width: 1343px) calc(100vw - 40px), 1280px" width="2400" height="1350" fetchpriority="high" alt="Two hands holding a phone above a keyboard, about to place a finger on a fingerprint verification screen" style="object-position:55% 50%">
+      </figure>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-intro" id="overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <div class="cs-split">
+        <div class="cs-split-head">
+          <p class="eyebrow">Overview</p>
+          <h2 class="cs-h2" id="overview-title">About the project</h2>
+        </div>
+        <div class="cs-split-body">
+          <dl class="cs-facts">
+            <dt>Context and challenge</dt>
+            <dd>In a mobile app in a regulated industry, people had to complete identity verification (KYC, Know Your Customer) before using the service. The step couldn’t be skipped, and many users dropped off right there.</dd>
+            <dt>Rachel’s role</dt>
+            <dd><ul><li>Led research, the status and exception logic of the verification flow, and UI design.</li><li>Co-owned the design system and handed components and states to engineering with annotations.</li></ul></dd>
+            <dt>Collaboration (public scope)</dt>
+            <dd>Worked with a product owner, product manager, business analyst, and developers, applying one set of principles to two markets with different identity-verification regulations.</dd>
+            <dt>Project type</dt>
+            <dd>Previous-role project · Client and product names are not disclosed</dd>
+          </dl>
+          <p class="cs-disclaimer">A project Rachel Cho delivered in a previous role. It covers only what can be shared publicly; screens and data are new examples created for illustration.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-pr" id="problem" aria-label="Problem and design response">
+    <div class="wrap">
+      <div class="cs-pr-grid">
+        <div class="cs-pr-item">
+          <p class="eyebrow">Problem</p>
+          <p class="cs-statement">What stopped people wasn’t scanning an ID. It was not knowing why it was needed, where things stood, or what to do if it failed.</p>
+        </div>
+        <div class="cs-pr-item">
+          <p class="eyebrow">Solution</p>
+          <p class="cs-statement">Explain why verification is needed up front, always show the current status, and offer one clear next action whenever something fails.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-decisions" id="decisions" aria-labelledby="decisions-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Key decisions</p>
+        <h2 id="decisions-title">Key design decisions</h2>
+      </div>
+      <article class="cs-decision" aria-labelledby="decision-1-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">01</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-1-title">Why, what triggered it, and how long—first.</h3>
+            <p class="cs-desc">Before verification starts, the screen explains why it’s needed, which action triggered it, and how long it will take. Instead of listing every document option, it shows only the recommended path available now.</p>
+            <p class="cs-diff"><span class="cs-diff-label">What changed for users</span> People start verifying after “Why do they need this?” has been answered.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--mixed">
+          <div class="opsx-stage wl-panel">
+            <figure class="opsx-fig" role="group" aria-label="Recreated four-screen identity verification flow">
+              <figcaption class="opsx-cap"><span class="opsx-n">White-label</span><b>Verification flow · 4 steps</b><span class="opsx-capd">Why and how → ID capture → email confirmation (with a way to fix a wrong email) → done, with details prefilled, in one continuous flow.</span></figcaption>
+              <!--i18n:keep--><div class="idvx" data-anim>
+              <ol class="idvx-flow">
+                <li class="idvx-step" style="--i:0">
+                  <p class="idvx-k">1 · Why and how</p>
+                  <div class="idvx-phone">
+                    <p class="idvx-bar"><span>9:41</span><span>Registration</span><span></span></p>
+                    <p class="idvx-h">Let’s get you verified</p>
+                    <p class="idvx-s">It only takes a couple of minutes.</p>
+                    <div class="idvx-icons"><span><i class="idvx-ico idvx-ico--id"></i>Government ID</span><span><i class="idvx-ico idvx-ico--face"></i>Selfie</span></div>
+                    <p class="idvx-why">Regulations require us to confirm your identity before you can use your account.</p>
+                    <p class="idvx-opt is-on">Driver’s license / ID card</p>
+                    <p class="idvx-opt">Passport card</p>
+                    <p class="idvx-opt">Passport</p>
+                  </div>
+                </li>
+                <li class="idvx-step" style="--i:1">
+                  <p class="idvx-k">2 · Capture</p>
+                  <div class="idvx-phone idvx-phone--cam">
+                    <p class="idvx-bar"><span>9:41</span><span>Scan ID</span><span>Cancel</span></p>
+                    <div class="idvx-frame"><div class="idvx-card"><i></i><b></b><b></b><b></b></div></div>
+                    <p class="idvx-guide">Hold steady — fit the card inside the frame</p>
+                    <p class="idvx-link">Change document type</p>
+                  </div>
+                </li>
+                <li class="idvx-step" style="--i:2">
+                  <p class="idvx-k">3 · Confirm email</p>
+                  <div class="idvx-phone">
+                    <p class="idvx-bar"><span>9:41</span><span>Register</span><span></span></p>
+                    <p class="idvx-h">Check your email</p>
+                    <p class="idvx-s">Enter the code we sent to s•••@mail.com</p>
+                    <p class="idvx-code"><span>5</span><span>6</span><span>7</span><span>8</span><span>2</span><span>3</span></p>
+                    <p class="idvx-s">Didn’t get a code? <u>Resend</u></p>
+                    <p class="idvx-fix">Used the wrong email? <b>Change email</b></p>
+                  </div>
+                </li>
+                <li class="idvx-step" style="--i:3">
+                  <p class="idvx-k">4 · Done</p>
+                  <div class="idvx-phone">
+                    <p class="idvx-bar"><span>9:41</span><span>Self enrollment</span><span></span></p>
+                    <p class="idvx-ok"><span aria-hidden="true">✓</span>You’re verified</p>
+                    <p class="idvx-s">We filled in what we could. Check and continue.</p>
+                    <p class="idvx-field"><span>Name</span>Sample User</p>
+                    <p class="idvx-field"><span>Email</span>s•••@mail.com</p>
+                    <p class="idvx-field"><span>Mobile</span>(555) 010-0000</p>
+                    <p class="idvx-cta">Continue</p>
+                  </div>
+                </li>
+              </ol>
+            </div><!--/i18n:keep-->
+            </figure>
+            <div class="opsx-foot"><p class="cs-visual-note">White-label screens recreated from the original project’s structure · Sample data</p><button type="button" class="opsx-replay" data-anim-replay hidden>Replay</button></div>
+          </div>
+          <div class="idv-stage">
+            <div class="idv-phone" role="group" aria-label="Recreated verification intro screen">
+              <p class="idv-title">We need to verify your identity</p>
+              <dl class="idv-why">
+                <dt>Why</dt><dd>Regulations require identity verification before you can use the service.</dd>
+                <dt>What triggered it</dt><dd>You just finished signing up.</dd>
+                <dt>Time needed</dt><dd>About 2 minutes · an ID and one selfie</dd>
+              </dl>
+              <p class="idv-btn">Start with your ID</p>
+              <p class="idv-link">Use a different document</p>
+            </div>
+            <p class="cs-visual-note">Recreated for illustration · Sample copy</p>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-2-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">02</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-2-title">Always show where things stand.</h3>
+            <p class="cs-desc">Verification status is split into four states—not started, in review, approved, action required—and shown the same way on every screen. During the 30–60 seconds of processing, the wait time is stated so a quiet screen doesn’t feel like failure.</p>
+            <p class="cs-diff"><span class="cs-diff-label">What changed for users</span> After submitting, people no longer wonder “Did it go through?”</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--pair">
+          <div class="cs-pair">
+            <figure class="cs-mock" role="group" aria-label="Recreated verification status display">
+              <p class="cs-mock-label">Four states</p>
+              <ol class="idv-status"><li class="idv-st idv-st--idle"><span class="idv-ico" aria-hidden="true"></span>Not started</li><li class="idv-st idv-st--wait"><span class="idv-ico" aria-hidden="true"></span>In review</li><li class="idv-st idv-st--ok"><span class="idv-ico" aria-hidden="true"></span>Approved</li><li class="idv-st idv-st--act"><span class="idv-ico" aria-hidden="true"></span>Action required</li></ol>
+              <p class="cs-mock-muted">States are told apart by icon shape and wording, not color alone.</p>
+            </figure>
+            <figure class="cs-mock" role="group" aria-label="Recreated processing screen">
+              <p class="cs-mock-label">Processing</p>
+              <div class="idv-wait"><span class="idv-spinner" aria-hidden="true"></span><p><strong>Checking your documents</strong></p><p>This usually takes 30–60 seconds. Checking continues if you close this screen.</p></div>
+            </figure>
+            <p class="cs-visual-note">Recreated for illustration · Sample copy</p>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-3-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">03</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-3-title">Even on failure, one next step.</h3>
+            <p class="cs-desc">Each failure message says what happened together with the one thing to do now. Blocking errors use red to stay distinct from warnings and guidance, and status is conveyed by wording and icons, not color alone.</p>
+            <p class="cs-diff"><span class="cs-diff-label">What changed for users</span> Even when blocked, people continue to the next step instead of starting over.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--full">
+          <div class="idv-stage">
+            <ul class="idv-fails">
+              <li><p class="idv-fail-title"><span class="idv-ico idv-ico--err" aria-hidden="true"></span>You’re offline</p><p>Says what to check, then offers a way back.</p><p class="idv-fail-action">Check connection and retry <span aria-hidden="true">→</span></p></li>
+              <li><p class="idv-fail-title"><span class="idv-ico idv-ico--err" aria-hidden="true"></span>A temporary server problem</p><p>Makes clear it isn’t the user’s fault.</p><p class="idv-fail-action">Try again shortly <span aria-hidden="true">→</span></p></li>
+              <li><p class="idv-fail-title"><span class="idv-ico idv-ico--err" aria-hidden="true"></span>An account already exists</p><p>Stops a duplicate account before it’s created.</p><p class="idv-fail-action">Sign in to your account <span aria-hidden="true">→</span></p></li>
+              <li><p class="idv-fail-title"><span class="idv-ico idv-ico--err" aria-hidden="true"></span>Used the wrong email?</p><p>Adds a way out where people could only resend the code.</p><p class="idv-fail-action">Change email <span aria-hidden="true">→</span></p></li>
+            </ul>
+            <p class="cs-visual-note">Recreated for illustration · Sample copy</p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-results" id="results" aria-labelledby="results-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Results</p>
+        <h2 id="results-title">Results and lessons</h2>
+      </div>
+      <div class="cs-results-grid">
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">Measured and reported results</h3>
+          <ul class="cs-metrics">
+            <li><span class="metric-kind">Usage metric</span><span class="cs-metric-value">+95%</span><span class="cs-metric-text">Successful verification completion</span></li>
+            <li><span class="metric-kind">Usage metric</span><span class="cs-metric-value">+25%</span><span class="cs-metric-text">First-transaction completion after verification</span></li>
+            <li><span class="metric-kind">Operations metric</span><span class="cs-metric-value">−25%</span><span class="cs-metric-text">Verification-related support inquiries</span></li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">Screens and flows that changed</h3>
+          <ul class="cs-list">
+            <li>An intro that gives the reason, trigger, and expected time before verification</li>
+            <li>Four verification states shown the same way on every screen</li>
+            <li>For each failure, what happened and one next action</li>
+            <li>A path to change a mistyped email</li>
+            <li>One set of principles applied to two markets with different regulations</li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">What I learned</h3>
+          <p class="cs-learned">Friction that regulation requires often can’t be removed. The core principle of this project was that when people know the reason, the current status, and the next action, the same step becomes a process they can accept.</p>
+        </div>
+      </div>
+      <p class="sc-note">Figures were measured and reported in the project after launch and reflect several design changes applied together. Screens are new examples created for illustration.</p>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-next" id="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">More work</p>
+        <h2 id="next-title">Related case studies</h2>
+      </div>
+      <div class="story-grid">
+          <a class="story-card" href="second-context-case-healthcare.html">
+            <span class="story-media"><img src="../assets/images/case-healthcare-corridor-1152.jpg" srcset="../assets/images/case-healthcare-corridor-768.jpg 768w, ../assets/images/case-healthcare-corridor-1152.jpg 1152w, ../assets/images/case-healthcare-corridor-1536.jpg 1536w, ../assets/images/case-healthcare-corridor-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1600" loading="lazy" decoding="async" alt="" style="object-position:66% 50%"></span>
+            <span class="story-chip">Healthcare SaaS</span>
+            <span class="story-text"><span class="story-title">Healthcare Scheduling</span><span class="story-desc">Turning complex visit scheduling into clear next steps</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="story-card" href="second-context-case-localization.html">
+            <span class="story-media"><img src="../assets/images/case-localization-team-meeting-1152.jpg" srcset="../assets/images/case-localization-team-meeting-768.jpg 768w, ../assets/images/case-localization-team-meeting-1152.jpg 1152w, ../assets/images/case-localization-team-meeting-1536.jpg 1536w, ../assets/images/case-localization-team-meeting-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1350" loading="lazy" decoding="async" alt="" style="object-position:45% 50%"></span>
+            <span class="story-chip">Product localization</span>
+            <span class="story-text"><span class="story-title">Product Localization</span><span class="story-desc">A product experience fitted to language and context of use</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+      </div>
+      <div class="cs-cta">
+        <a class="pill pill-light" href="./#contact">Send a project inquiry</a>
+        <a class="pill pill-ghost" href="./#services">Back to What we do</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="lets" data-rotator data-words="Understand|Design|Build|Collaborate" data-interval="2400">
+      <p class="lets-title" aria-hidden="true"><span><span class="lets-lead">Let’s</span><span class="lets-word is-in">Understand</span></span></p>
+      <p class="lets-sentence">Let’s understand, design, build, and collaborate.</p>
+      <div class="lets-actions">
+        <a class="lets-cta" href="./#contact"><span class="pill pill-light">Send a project inquiry</span><span class="circle-btn circle-btn--light"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <button type="button" class="lets-toggle" aria-pressed="false" hidden><span class="lets-toggle-text">Pause</span><span class="sr-only"> moving text</span></button>
+      </div>
+    </div>
+    <div class="footer-links">
+      <nav class="fl-col" aria-labelledby="fl-company">
+        <p class="fl-title" id="fl-company">Company</p>
+        <ul>
+          <li><a href="./#why-us" data-nav="why-us">Why Us</a></li>
+          <li><a href="./#services" data-nav="services">What we do</a></li>
+          <li><a href="./#approach" data-nav="approach">Approach</a></li>
+          <li><a href="./#contact" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="fl-col" aria-labelledby="fl-follow">
+        <p class="fl-title" id="fl-follow">Follow</p>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/second-context/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> — Second Context company page</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://github.com/RachelCho" target="_blank" rel="noopener">GitHub<span class="sr-only"> — Rachel Cho</span><span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </nav>
+      <form class="newsletter" data-endpoint="" novalidate aria-labelledby="nl-title">
+        <p class="fl-title" id="nl-title">Newsletter</p>
+        <label class="newsletter-label" for="nl-email">Email for the newsletter</label>
+        <div class="newsletter-field">
+          <input id="nl-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@company.com" aria-describedby="nl-status">
+          <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="sr-only">Subscribe to the newsletter</span></button>
+        </div>
+        <p class="newsletter-status" id="nl-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      <a href="./" class="footer-logo" aria-label="Second Context home"><img src="../assets/second-context-logo-white.png" alt="second context" width="800" height="326" loading="lazy"></a>
+      <nav class="lang lang-footer" aria-label="Language">
+        <a href="../second-context-case-identity.html" lang="ko" hreflang="ko">한국어</a>
+        <span aria-hidden="true">/</span>
+        <a href="second-context-case-identity.html" lang="en" hreflang="en" aria-current="true"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+      </nav>
+      <p class="footer-copy">© Second Context <span data-year>2026</span></p>
+    </div>
+  </div>
+</footer>
+
+
+<script src="../assets/site.js" defer></script>
+</body>
+</html>

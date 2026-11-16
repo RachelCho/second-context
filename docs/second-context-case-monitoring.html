@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise Operations — Second Context</title>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="canonical" href="https://second-context.com/second-context-case-monitoring.html">
+<link rel="alternate" hreflang="ko" href="https://second-context.com/second-context-case-monitoring.html">
+<link rel="alternate" hreflang="en" href="https://second-context.com/en/second-context-case-monitoring.html">
+<link rel="alternate" hreflang="x-default" href="https://second-context.com/second-context-case-monitoring.html">
+<script src="assets/lang.js"></script>
+<meta name="description" content="글로벌 제약사의 운영 모니터링에서 흩어진 신호를 심각도와 업무 영향 중심으로 다시 구성한 인시던트 관리 UX 사례.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Second Context">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:title" content="Enterprise Operations — Second Context">
+<meta property="og:description" content="글로벌 제약사의 운영 모니터링에서 흩어진 신호를 심각도와 업무 영향 중심으로 다시 구성한 인시던트 관리 UX 사례.">
+<meta property="og:url" content="https://second-context.com/second-context-case-monitoring.html">
+<meta property="og:image" content="https://second-context.com/assets/og/work-ko.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Second Context 로고: 검정 바탕의 흰 두 사각 프레임">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Noto+Sans+KR:wght@300;400;500;700&display=swap">
+<link rel="stylesheet" href="assets/second-context.css">
+</head>
+<body class="sc-dark cs-page">
+
+<a class="skip" href="#main">본문 바로가기</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a href="./" class="logo" aria-label="Second Context 홈"><img src="assets/second-context-logo-white.png" alt="second context" width="800" height="326"></a>
+    <button type="button" class="menu-toggle" aria-expanded="false" aria-controls="main-nav"><span class="menu-icon" aria-hidden="true"><i></i><i></i></span><span class="menu-toggle-text">Menu</span></button>
+    <nav class="main-nav" id="main-nav" aria-label="주요 메뉴">
+      <a href="./#why-us" data-nav="why-us">Why Us</a>
+      <a aria-current="true" href="./#services" data-nav="services">What we do</a>
+      <a href="./#approach" data-nav="approach">Approach</a>
+      <a href="./#contact" data-nav="contact">Contact</a>
+      <a class="pill pill-light nav-cta" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener"><span class="nav-cta-text">30분 상담 예약</span><span class="sr-only"> (새 탭에서 열림)</span></a>
+    </nav>
+    <nav class="lang" aria-label="언어 선택">
+      <a href="second-context-case-monitoring.html" lang="ko" hreflang="ko" aria-current="true">한국어</a>
+      <span aria-hidden="true">/</span>
+      <a href="en/second-context-case-monitoring.html" lang="en" hreflang="en"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+    </nav>
+    <button type="button" class="search-open" aria-haspopup="dialog" aria-controls="search" aria-expanded="false"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">사이트 검색</span></button>
+  </div>
+</header>
+
+<div class="search" id="search" role="dialog" aria-modal="true" aria-labelledby="search-title" hidden>
+  <div class="wrap">
+    <div class="search-top">
+      <p class="search-title" id="search-title">사이트 검색</p>
+      <button type="button" class="search-close"><span>닫기</span><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+    <form class="search-form" role="search" aria-label="사이트 검색">
+      <label class="sr-only" for="search-input">사이트 검색어</label>
+      <input id="search-input" type="search" autocomplete="off" placeholder="사례, 서비스, 페이지 검색">
+      <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="sr-only">검색</span></button>
+    </form>
+    <p class="search-status" role="status" aria-live="polite"></p>
+    <ul class="search-results"></ul>
+  </div>
+</div>
+
+<main id="main">
+  <!-- 사례 상세(2026-11-16): 첫 화면 → 프로젝트 소개 → 문제/설계 대응 → 핵심 설계 판단 → 결과와 배운 점 → 다음 행동.
+       대표 사진은 Unsplash 설명용 사진(assets/stock/CREDITS.md). 고객사 이름·로고·제품명·내부 식별자는 쓰지 않는다 -->
+  <section class="cs-hero sc-light" id="case-monitoring" aria-labelledby="cs-title">
+    <div class="wrap">
+      <p class="cs-back"><a href="./#service-complex"><span aria-hidden="true">←</span> What we do</a></p>
+      <ul class="cs-tags" aria-label="분야와 역량">
+        <li>엔터프라이즈 운영</li>
+        <li>복잡한 업무를 명확한 제품으로</li>
+        <li>이전 경력 프로젝트</li>
+      </ul>
+      <h1 id="cs-title">흩어진 신호 속에서, <span class="tl">먼저 대응할 문제가 먼저 보이도록.</span></h1>
+      <p class="lead">글로벌 제약사의 운영 모니터링 플랫폼에서 8개 대시보드에 흩어진 정보를 심각도와 업무 영향 중심으로 다시 구성하고, AI 인사이트를 조사 우선순위에 맞춰 보여 주는 기준을 정했습니다.</p>
+      <ul class="cs-hero-metrics" aria-label="주요 결과">
+        <li><span class="cs-hero-num">30분 <span aria-hidden="true">→</span><span class="sr-only">에서</span> 3분</span><span class="cs-hero-label">프로젝트에서 보고된 인시던트 조사 시간</span></li>
+        <li><span class="cs-hero-num">80% 단축</span><span class="cs-hero-label">인시던트 분류(triage) 시간</span></li>
+        <li><span class="cs-hero-num">40% 단축</span><span class="cs-hero-label">개발자 내부 도구의 티켓 처리 시간</span></li>
+      </ul>
+      <figure class="cs-cover">
+        <img src="assets/images/case-operations-aisle-1536.jpg" srcset="assets/images/case-operations-aisle-768.jpg 768w, assets/images/case-operations-aisle-1152.jpg 1152w, assets/images/case-operations-aisle-1536.jpg 1536w, assets/images/case-operations-aisle-2048.jpg 2048w" sizes="(max-width: 1343px) calc(100vw - 40px), 1280px" width="2400" height="1380" fetchpriority="high" alt="금속 장비 캐비닛이 양옆으로 길게 늘어선 회색 통로" style="object-position:50% 50%">
+      </figure>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-intro" id="overview" aria-labelledby="overview-title">
+    <div class="wrap">
+      <div class="cs-split">
+        <div class="cs-split-head">
+          <p class="eyebrow">Overview</p>
+          <h2 class="cs-h2" id="overview-title">프로젝트 소개</h2>
+        </div>
+        <div class="cs-split-body">
+          <dl class="cs-facts">
+            <dt>사용 맥락과 과제</dt>
+            <dd>백신 운영을 지원하는 엔터프라이즈 모니터링 플랫폼으로, 제약사 엔지니어링팀이 사용했습니다. 운영 담당자는 인시던트를 조사하기 위해 8개 대시보드를 오가며 심각도와 영향을 파악해야 했습니다.</dd>
+            <dt>Rachel의 역할</dt>
+            <dd><ul><li>UX 디자인 에이전시를 통해 계약 Senior Product Designer로 참여했습니다.</li><li>이해관계자 인터뷰 15회를 진행해 위험 예측·알림·신뢰도 같은 AI 인사이트를 어떻게 보여주고 우선순위를 정할지 정의했습니다.</li></ul></dd>
+            <dt>공개 가능한 협업 범위</dt>
+            <dd>글로벌 IT 기업의 AI/ML 팀과 협업해 생성형 AI 기반 인시던트 관리 시스템을 설계하고, 모델 출력을 엔터프라이즈 사용자가 행동할 수 있는 신호로 바꿨습니다.</dd>
+            <dt>프로젝트 성격</dt>
+            <dd>이전 경력 프로젝트 · 에이전시를 통한 계약 · 2024</dd>
+          </dl>
+          <p class="cs-disclaimer">Rachel Cho의 이전 경력에서 수행한 프로젝트입니다. 공개 가능한 범위의 경험을 소개하며, 화면과 데이터는 설명을 위해 새롭게 구성한 예시입니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-pr" id="problem" aria-label="문제와 설계 대응">
+    <div class="wrap">
+      <div class="cs-pr-grid">
+        <div class="cs-pr-item">
+          <p class="eyebrow">Problem</p>
+          <p class="cs-statement">인시던트를 조사하려면 8개 대시보드를 오가며 심각도와 영향을 직접 맞춰 봐야 해, 무엇부터 볼지 정하는 데 시간이 걸렸습니다.</p>
+        </div>
+        <div class="cs-pr-item">
+          <p class="eyebrow">Solution</p>
+          <p class="cs-statement">정보 구조를 심각도와 후속 영향 중심으로 다시 설계하고, AI 인사이트는 같은 무게로 나열하지 않고 조사 우선순위에 따라 보여 주었습니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-decisions" id="decisions" aria-labelledby="decisions-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Key decisions</p>
+        <h2 id="decisions-title">핵심 설계 판단</h2>
+      </div>
+      <article class="cs-decision" aria-labelledby="decision-1-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">01</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-1-title">8개 대시보드 대신, 심각도와 영향 중심의 한 흐름.</h3>
+            <p class="cs-desc">담당자가 8개 대시보드를 오가며 심각도와 영향을 직접 맞춰 봐야 했기 때문에, 정보 구조를 심각도와 후속 영향 중심으로 다시 설계했습니다.</p>
+            <p class="cs-diff"><span class="cs-diff-label">사용자에게 생긴 차이</span> 화면을 옮겨 다니지 않고, 한 목록에서 무엇부터 조사할지 정합니다.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--wide">
+          <div class="opsx-stage">
+            <figure class="opsx-fig" role="group" aria-label="재구성한 인시던트 개요 화면">
+              <figcaption class="opsx-cap"><span class="opsx-n">01</span><b>Incident Overview</b><span class="opsx-capd">많은 신호 중에서 심각도와 업무 영향이 큰 인시던트를 목록 맨 위에 둡니다.</span></figcaption>
+              <!--i18n:keep--><div class="opsx" data-anim>
+              <div class="opsx-top">
+                <p class="opsx-logo"><span class="opsx-mark" aria-hidden="true"></span>Command Center</p>
+                <p class="opsx-view">Explorer View <span aria-hidden="true">▾</span></p>
+                <p class="opsx-user"><span class="opsx-bell" aria-hidden="true"></span><span class="opsx-av" aria-hidden="true">JL</span><span class="opsx-btn">Report an Issue</span></p>
+              </div>
+              <div class="opsx-nav">
+                <span class="is-on">Triage Central</span><span>Workbench</span><span>Event Banner</span><span>Executive View</span><span>Event Search</span>
+                <span class="opsx-kw"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>Type a keyword</span>
+              </div>
+              <ul class="opsx-filters">
+                <li class="is-on">All Potential Issues <b>128</b></li><li>Critical Tickets <b>12</b></li><li>Empirical Data <b>34</b></li><li>Event Matching <b>6</b></li><li>Predictive Monitoring <b>9</b></li><li>Manually Created <b>3</b></li>
+              </ul>
+              <div class="opsx-main">
+                <div class="opsx-listwrap">
+                  <div class="opsx-listhead"><span>Last updated <b>2:41 PM ET</b></span><strong>List of Potential Issues</strong><span>Sorted by priority · Items per page <b>10</b></span></div>
+                  <table class="opsx-table">
+                    <thead><tr><th>Priority</th><th>Status</th><th>Ref No.</th><th>Impacted System</th><th>Created</th><th>Description</th><th>Owner</th></tr></thead>
+                    <tbody>
+                      <tr class="is-sel" style="--i:0"><td><span class="opsx-pr opsx-pr--1">P1</span></td><td><span class="opsx-st opsx-st--tri"></span>Triage in Progress</td><td>INC-20418</td><td class="opsx-sys">Label Management · Site B · PROD</td><td>Sep 06, 11:07 PM</td><td>Label print service unavailable · 2 teams blocked</td><td><span class="opsx-av">JL</span></td></tr>
+                      <tr style="--i:1"><td><span class="opsx-pr opsx-pr--1">P1</span></td><td><span class="opsx-st opsx-st--open"></span>Open</td><td>INC-20415</td><td class="opsx-sys">Cold Chain Tracking · Global · PROD</td><td>Sep 06, 10:42 PM</td><td>Shipment status not syncing · escalation pending</td><td><span class="opsx-av">MK</span></td></tr>
+                      <tr style="--i:2"><td><span class="opsx-pr opsx-pr--2">P2</span></td><td><span class="opsx-st opsx-st--open"></span>Open</td><td>INC-20409</td><td class="opsx-sys">Lab Data Platform · EU · PROD</td><td>Sep 06, 9:15 PM</td><td>Memory usage above 90% on srv-app-014</td><td><span class="opsx-av">RS</span></td></tr>
+                      <tr style="--i:3"><td><span class="opsx-pr opsx-pr--2">P2</span></td><td><span class="opsx-st opsx-st--open"></span>Open</td><td>INC-20402</td><td class="opsx-sys">Clinical Supply Portal · US · PROD</td><td>Sep 06, 7:58 PM</td><td>Disk available below 10% on srv-db-207</td><td><span class="opsx-av opsx-av--none">—</span></td></tr>
+                      <tr style="--i:4"><td><span class="opsx-pr opsx-pr--3">P3</span></td><td><span class="opsx-st opsx-st--mon"></span>Monitoring</td><td>INC-20397</td><td class="opsx-sys">Serialization Service · APAC · PROD</td><td>Sep 06, 6:20 PM</td><td>Status changed from Green to Amber</td><td><span class="opsx-av">TW</span></td></tr>
+                      <tr style="--i:5"><td><span class="opsx-pr opsx-pr--3">P3</span></td><td><span class="opsx-st opsx-st--mon"></span>Monitoring</td><td>INC-20391</td><td class="opsx-sys">Network Switch · Site D</td><td>Sep 06, 5:03 PM</td><td>Intermittent packet loss reported</td><td><span class="opsx-av">AN</span></td></tr>
+                    </tbody>
+                  </table>
+                  <div class="opsx-pager"><span>1–10 of 128</span><span class="opsx-pages"><i>First</i><i>«</i><i class="is-on">1</i><i>2</i><i>3</i><i>…</i><i>13</i><i>»</i><i>Last</i></span></div>
+                </div>
+                <aside class="opsx-detail">
+                  <p class="opsx-dk">INC-20418 · <span class="opsx-pr opsx-pr--1">P1 Critical</span></p>
+                  <p class="opsx-dt">Label print service unavailable at Site B</p>
+                  <dl class="opsx-dl">
+                    <dt>Status</dt><dd>Triage in Progress</dd>
+                    <dt>Impacted system</dt><dd>Label Management · PROD</dd>
+                    <dt>Business impact</dt><dd><b>2 of 4</b> packaging teams blocked</dd>
+                    <dt>Owner</dt><dd>J. Lee · GCC</dd>
+                    <dt>Duration</dt><dd>1h 34m</dd>
+                  </dl>
+                  <p class="opsx-dh">Investigation context</p>
+                  <ul class="opsx-ctx">
+                    <li><span>Grouped events</span><b>4</b></li>
+                    <li><span>Related incidents</span><b>3</b></li>
+                    <li><span>Open change requests</span><b>1</b></li>
+                    <li><span>Impacted business processes</span><b>2</b></li>
+                  </ul>
+                  <p class="opsx-dnote">“Print queue stalled after network switch restart.” <span>— latest note</span></p>
+                </aside>
+              </div>
+            </div><!--/i18n:keep-->
+            </figure>
+            <figure class="opsx-fig" role="group" aria-label="재구성한 인시던트 조사·AI 검색 화면">
+              <figcaption class="opsx-cap"><span class="opsx-n">02</span><b>Investigation · AI Search</b><span class="opsx-capd">선택한 인시던트의 관련 기록과 AI 검색으로 조사 맥락을 한곳에서 확인합니다.</span></figcaption>
+              <!--i18n:keep--><div class="opsx opsx--inv" data-anim>
+              <div class="opsx-top">
+                <p class="opsx-logo"><span class="opsx-mark" aria-hidden="true"></span>Command Center</p>
+                <p class="opsx-view">Explorer View <span aria-hidden="true">▾</span></p>
+                <p class="opsx-user"><span class="opsx-bell" aria-hidden="true"></span><span class="opsx-av" aria-hidden="true">JL</span><span class="opsx-btn">Report an Issue</span></p>
+              </div>
+              <div class="opsx-evhead">
+                <p class="opsx-back">← Triage Central <span>/ Manufacturing / Label Management · Site B</span></p>
+                <p class="opsx-evtitle"><b>INC-20418</b> Label print service unavailable at Site B</p>
+                <ul class="opsx-evmeta"><li>Severity <b class="opsx-pr opsx-pr--1">P1 Critical</b></li><li>Status <b>Active</b></li><li>Duration <b>1h 34m</b></li><li>Last updated <b>2:41 PM ET</b></li><li class="opsx-viewing"><span class="opsx-av">MK</span><span class="opsx-av">RS</span> viewing</li></ul>
+                <p class="opsx-evtabs"><span>Event Details</span><span>Impact</span><span>Collaboration</span><span class="is-on">Related Records</span><span>Resolution</span></p>
+              </div>
+              <div class="opsx-main opsx-main--inv">
+                <div class="opsx-listwrap">
+                  <div class="opsx-impact">
+                    <p><span>Teams blocked</span><b>2 of 4</b></p>
+                    <p><span>Escalation emails</span><b>3 · no response</b></p>
+                    <p><span>Restoration</span><b>In progress</b></p>
+                  </div>
+                  <p class="opsx-dh">Related records</p>
+                  <table class="opsx-table opsx-table--rel">
+                    <thead><tr><th>ID</th><th>Title, brief description</th><th>Type</th></tr></thead>
+                    <tbody>
+                      <tr style="--i:0"><td>INC-20416</td><td>Print queue stalled on lbl-srv-03 after restart</td><td>Incident</td></tr>
+                      <tr style="--i:1"><td>INC-20411</td><td>Network availability monitor outage · Site B port 10143</td><td>Incident</td></tr>
+                      <tr style="--i:2"><td>RFC-8852</td><td>Switch firmware update · Site B (scheduled)</td><td>Change</td></tr>
+                      <tr style="--i:3"><td>EVT-55310</td><td>Packaging line 2 paused · labels unavailable</td><td>Event</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <aside class="opsx-ai">
+                  <p class="opsx-aih"><span class="opsx-spark" aria-hidden="true"></span>Super Analyst <span class="opsx-tag">AI · suggestion</span></p>
+                  <p class="opsx-q"><svg aria-hidden="true" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg><span class="opsx-qtext">Have we seen this failure pattern before?</span></p>
+                  <p class="opsx-thinking" aria-hidden="true"><i></i><i></i><i></i> Searching related records</p>
+                  <div class="opsx-answer">
+                    <p class="opsx-dh">Similar incidents · last 90 days</p>
+                    <ul class="opsx-sim">
+                      <li><span>Network switch unreachable · Site B</span><em>Resolved</em></li>
+                      <li><span>LAN issue impacting label printing · Site D</span><em>Resolved</em></li>
+                      <li><span>WAN connectivity issue · Site B</span><em>Resolved</em></li>
+                    </ul>
+                    <p class="opsx-dh">Incident notes · AI generated</p>
+                    <p class="opsx-note"><b>Possible recurring pattern</b> of network switch failures before label outages. <b>Firmware review</b> may be worth checking first.</p>
+                    <p class="opsx-follow">Ask a follow-up <span aria-hidden="true">→</span></p>
+                  </div>
+                </aside>
+              </div>
+            </div><!--/i18n:keep-->
+            </figure>
+            <div class="opsx-foot"><p class="cs-visual-note">원본 프로젝트 화면 구조를 바탕으로 다시 구성한 화이트라벨 화면 · 예시 데이터</p><button type="button" class="opsx-replay" data-anim-replay hidden>다시 보기</button></div>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-2-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">02</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-2-title">먼저 대응할 문제를, 먼저 보이게.</h3>
+            <p class="cs-desc">기술 신호(이상 점수)와 업무 영향(막힌 팀·담당자)을 함께 보고 가장 먼저 대응할 항목을 맨 위에 둡니다. 항목을 고르면 영향받는 팀과 관련 신호, 담당자, 기록을 한곳에서 확인합니다.</p>
+            <p class="cs-diff"><span class="cs-diff-label">사용자에게 생긴 차이</span> 알림이 많아도, 지금 가장 중요한 한 건에서 조사를 시작합니다.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--full">
+          <div class="case-demo">
+<div class="demo" id="demo-monitoring" data-demo data-step="1" data-sel="a">
+              <div class="demo-bar">
+                <ol class="demo-steps" aria-label="인터랙션 단계">
+                  <li><button type="button" class="demo-step" data-go="1" aria-current="step"><span class="demo-n" aria-hidden="true">1</span>여러 알림</button></li>
+                  <li><button type="button" class="demo-step" data-go="2"><span class="demo-n" aria-hidden="true">2</span>우선 대응을 위로</button></li>
+                  <li><button type="button" class="demo-step" data-go="3"><span class="demo-n" aria-hidden="true">3</span>클릭 후 조사</button></li>
+                </ol>
+                <div class="demo-motion">
+                  <button type="button" class="demo-ctl" data-play>모션 재생</button>
+                  <button type="button" class="demo-ctl" data-stop disabled>정지</button>
+                  <button type="button" class="demo-ctl" data-replay>다시 보기</button>
+                </div>
+              </div>
+              <div class="demo-frame" role="group" aria-label="재구성한 인시던트 우선순위 화면">
+                <p class="demo-tag">설계 설명을 위한 재구성 · 예시 데이터</p>
+                <div class="ui-head"><span class="ui-title">인시던트</span><span class="ui-sub" data-show="1">들어온 순서</span><span class="ui-sub" data-show="2 3" hidden>우선 대응 순서</span></div>
+                <p class="tri-rule" data-show="2 3" hidden>판단 기준: 기술 신호(이상 점수) + 업무 영향(막힌 팀·담당자 배정)</p>
+                <ul class="tri-list" aria-label="예시 인시던트 목록">
+                  <li class="tri-item" data-pos="1 2 2"><button type="button" class="tri-row" data-select="d" aria-controls="tri-detail"><span class="pri pri-2" data-show="2 3" hidden>P2</span><span class="tri-main"><span class="tri-name">예시 인시던트 D · 서버 메모리 사용률 상승</span><span class="tri-meta">이상 점수 0.66 · 막힌 팀 0/5</span></span><span class="tri-time">09:12</span></button></li>
+                  <li class="tri-item" data-pos="2 3 3"><button type="button" class="tri-row" data-select="b" aria-controls="tri-detail"><span class="pri pri-2" data-show="2 3" hidden>P2</span><span class="tri-main"><span class="tri-name">예시 인시던트 B · 백업 작업 실패 재시도</span><span class="tri-meta">이상 점수 0.38 · 막힌 팀 1/5</span></span><span class="tri-time">09:20</span></button></li>
+                  <li class="tri-item" data-pos="3 1 1" data-hl="2"><button type="button" class="tri-row" data-select="a" aria-controls="tri-detail"><span class="pri pri-1" data-show="2 3" hidden>P1</span><span class="tri-main"><span class="tri-name">예시 인시던트 A · 배송 추적 데이터 동기화 지연</span><span class="tri-meta">이상 점수 0.42 · 막힌 팀 3/5 · 담당자 없음</span><span class="tri-why" data-show="2 3" hidden>이상 점수는 낮지만, 5개 팀 중 3개 팀의 업무가 막혔고 담당자가 없습니다.</span></span><span class="tri-time">09:31</span></button></li>
+                  <li class="tri-item" data-pos="4 4 4"><button type="button" class="tri-row" data-select="c" aria-controls="tri-detail"><span class="pri pri-3" data-show="2 3" hidden>P3</span><span class="tri-main"><span class="tri-name">예시 인시던트 C · 접속 권한 요청 증가</span><span class="tri-meta">이상 점수 0.21 · 막힌 팀 0/5</span></span><span class="tri-time">09:40</span></button></li>
+                </ul>
+                <div class="ui-panel tri-detail" id="tri-detail" data-show="3" hidden>
+                  <div data-detail="a" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-1">P1</span> 예시 인시던트 A · 즉시 에스컬레이션</p>
+                    <dl class="ui-kv">
+                      <dt>영향받는 팀</dt><dd>예시 팀 1 · 예시 팀 2 · 예시 팀 3 (5개 팀 중 3개)</dd>
+                      <dt>관련 신호</dt><dd>이상 점수 0.42 · 이번 주 3회 반복</dd>
+                      <dt>담당자</dt><dd>아직 없음 — 담당 팀 지정이 필요합니다</dd>
+                      <dt>기록</dt><dd>관련 티켓 2건 · 이전 인시던트 1건</dd>
+                    </dl>
+                  </div>
+                  <div data-detail="d" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-2">P2</span> 예시 인시던트 D · 모니터링</p>
+                    <dl class="ui-kv">
+                      <dt>영향받는 팀</dt><dd>업무가 막힌 팀 없음</dd>
+                      <dt>관련 신호</dt><dd>이상 점수 0.66 · 메모리 사용률 상승</dd>
+                      <dt>담당자</dt><dd>예시 담당자 1 (SRE)</dd>
+                      <dt>기록</dt><dd>이전 인시던트 1건</dd>
+                    </dl>
+                  </div>
+                  <div data-detail="b" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-2">P2</span> 예시 인시던트 B · 추적·기록 필요</p>
+                    <dl class="ui-kv">
+                      <dt>영향받는 팀</dt><dd>예시 팀 4 (5개 팀 중 1개)</dd>
+                      <dt>관련 신호</dt><dd>이상 점수 0.38 · 백업 재시도 2회</dd>
+                      <dt>담당자</dt><dd>예시 담당자 2 (GCC)</dd>
+                      <dt>기록</dt><dd>관련 티켓 1건</dd>
+                    </dl>
+                  </div>
+                  <div data-detail="c" hidden>
+                    <p class="ui-panel-title"><span class="pri pri-3">P3</span> 예시 인시던트 C · 기록만</p>
+                    <dl class="ui-kv">
+                      <dt>영향받는 팀</dt><dd>업무가 막힌 팀 없음</dd>
+                      <dt>관련 신호</dt><dd>이상 점수 0.21 · 요청 수 증가</dd>
+                      <dt>담당자</dt><dd>예시 담당자 3 (GCC)</dd>
+                      <dt>기록</dt><dd>관련 기록 없음</dd>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+              <div class="demo-notes" aria-live="polite">
+                <p class="demo-note" data-note="1"><strong>1. 여러 알림</strong> 들어온 순서대로 같은 무게로 나열하면, 무엇을 먼저 확인할지 담당자가 직접 판단해야 합니다.</p>
+                <p class="demo-note" data-note="2" hidden><strong>2. 우선 대응을 위로</strong> 이상 점수가 낮아도 여러 팀의 업무가 막히고 담당자가 없으면 P1로 올립니다. 이 이동은 원리를 보여 주는 시연이며, 실제 화면은 처음부터 이 순서로 열립니다.</p>
+                <p class="demo-note" data-note="3" hidden><strong>3. 클릭 후 조사</strong> 항목을 고르면 영향받는 팀·관련 신호·담당자·기록을 한곳에서 확인합니다. 다른 항목을 눌러 비교할 수 있습니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="cs-decision" aria-labelledby="decision-3-title">
+        <div class="cs-decision-head">
+          <span class="num-circle" aria-hidden="true">03</span>
+          <div class="cs-decision-text">
+            <h3 class="cs-h3" id="decision-3-title">AI 인사이트는, 같은 무게로 나열하지 않는다.</h3>
+            <p class="cs-desc">위험 예측·알림·신뢰도를 같은 무게로 나열하지 않고, 조사 우선순위에 따라 보여주는 기준을 정했습니다. 예측은 가능성으로만 쓰고, 근거가 된 관련 기록을 펼쳐 볼 수 있게 했습니다.</p>
+            <p class="cs-diff"><span class="cs-diff-label">사용자에게 생긴 차이</span> AI 요약을 믿을지 판단할 근거를 바로 확인합니다.</p>
+          </div>
+        </div>
+        <div class="cs-visual cs-visual--full">
+          <div class="case-demo">
+<div class="demo" id="demo-forecast" data-demo data-step="1">
+              <div class="demo-bar">
+                <ol class="demo-steps" aria-label="인터랙션 단계">
+                  <li><button type="button" class="demo-step" data-go="1" aria-current="step"><span class="demo-n" aria-hidden="true">1</span>관련 기록 수집</button></li>
+                  <li><button type="button" class="demo-step" data-go="2"><span class="demo-n" aria-hidden="true">2</span>패턴 분석</button></li>
+                  <li><button type="button" class="demo-step" data-go="3"><span class="demo-n" aria-hidden="true">3</span>예측 요약</button></li>
+                </ol>
+                <div class="demo-motion">
+                  <button type="button" class="demo-ctl" data-play>모션 재생</button>
+                  <button type="button" class="demo-ctl" data-stop disabled>정지</button>
+                  <button type="button" class="demo-ctl" data-replay>다시 보기</button>
+                </div>
+              </div>
+              <div class="demo-frame" role="group" aria-label="재구성한 AI 예측 요약 화면">
+                <p class="demo-tag">설계 설명을 위한 재구성 · 예시 데이터</p>
+                <div class="ui-head"><span class="ui-title">예시 서비스 X · 운영 기록</span><span class="ui-sub">분석 범위: 프로젝트에서 연결한 관련 기록</span></div>
+                <section class="fc-summary" data-show="3" hidden aria-labelledby="fc-summary-title">
+                  <p class="fc-summary-title" id="fc-summary-title">AI 요약</p>
+                  <dl class="fc-kv">
+                    <dt><span class="fc-kind">관찰</span>반복 패턴</dt>
+                    <dd>예시 서비스 X에서 처리 지연 경고 뒤에 데이터 반영 관련 티켓과 동기화 지연 인시던트가 두 번 이어졌습니다.</dd>
+                    <dt><span class="fc-kind fc-kind-pred">예측</span>앞으로 생길 수 있는 위험</dt>
+                    <dd>같은 경고가 다시 나타나면, 이 흐름이 이어져 후속 업무에 영향을 줄 가능성이 있습니다.</dd>
+                    <dt><span class="fc-kind">근거</span>관련 기록 확인</dt>
+                    <dd><button type="button" class="fc-toggle" data-expand aria-expanded="false" aria-controls="fc-evidence">관련 기록 보기</button></dd>
+                  </dl>
+                  <div class="fc-evidence" id="fc-evidence" hidden>
+                    <p>이 요약의 근거가 된 예시 기록입니다. 아래 표에도 같은 줄을 표시했습니다.</p>
+                    <ol>
+                      <li>운영 데이터 D-01 처리 지연 경고 → 티켓 T-01 데이터 반영 지연 문의 → 인시던트 이력 E 동기화 지연</li>
+                      <li>운영 데이터 D-03 처리 지연 경고 → 티켓 T-03 보고서 누락 문의 → 인시던트 이력 G 동기화 지연</li>
+                    </ol>
+                    <p class="fc-caveat">예측은 가능성이며 확정된 결과가 아닙니다. 대응 여부는 담당자가 근거를 확인한 뒤 판단합니다.</p>
+                  </div>
+                </section>
+                <table class="fc-table">
+                  <caption class="sr-only">예시 관련 기록</caption>
+                  <thead><tr><th scope="col">과거 운영 데이터</th><th scope="col">관련 티켓</th><th scope="col">인시던트 이력</th></tr></thead>
+                  <tbody>
+                    <tr class="fc-pat" data-on="2 3"><td>D-01 처리 지연 경고</td><td>T-01 데이터 반영 지연 문의</td><td>E 동기화 지연</td></tr>
+                    <tr><td>D-02 디스크 사용량 경고</td><td>T-02 접속 권한 요청</td><td>F 인증서 갱신</td></tr>
+                    <tr class="fc-pat" data-on="2 3"><td>D-03 처리 지연 경고</td><td>T-03 보고서 누락 문의</td><td>G 동기화 지연</td></tr>
+                  </tbody>
+                </table>
+                <p class="fc-common" data-show="2 3" hidden><span class="fc-kind">공통점</span>처리 지연 경고 → 데이터 반영 관련 티켓 → 동기화 지연이 같은 순서로 두 번 반복됐습니다.</p>
+              </div>
+              <div class="demo-notes" aria-live="polite">
+                <p class="demo-note" data-note="1"><strong>1. 관련 기록 수집</strong> 프로젝트에서 연결한 과거 운영 데이터·관련 티켓·인시던트 이력을 한곳에 모읍니다.</p>
+                <p class="demo-note" data-note="2" hidden><strong>2. 패턴 분석</strong> 기록 사이의 공통점을 찾아, 같은 순서로 반복된 흐름을 표시합니다.</p>
+                <p class="demo-note" data-note="3" hidden><strong>3. 예측 요약</strong> 분석 결과를 기록 목록 위 AI 요약에서 먼저 보여 줍니다. 관찰된 패턴과 예측을 나누고, ‘관련 기록 보기’로 근거를 확인합니다.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light sc-tone-ivory cs-results" id="results" aria-labelledby="results-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">Results</p>
+        <h2 id="results-title">결과와 배운 점</h2>
+      </div>
+      <div class="cs-results-grid">
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">측정·보고된 결과</h3>
+          <ul class="cs-metrics">
+            <li><span class="metric-kind">업무 성과</span><span class="cs-metric-value">30분 <span aria-hidden="true">→</span><span class="sr-only">에서</span> 3분</span><span class="cs-metric-text">프로젝트에서 보고된 인시던트 조사 시간</span></li>
+            <li><span class="metric-kind">업무 성과</span><span class="cs-metric-value">80% 단축</span><span class="cs-metric-text">의사결정 지원 흐름과 신호 표시를 다시 설계한 뒤의 인시던트 분류(triage) 시간</span></li>
+            <li><span class="metric-kind">업무 성과</span><span class="cs-metric-value">40% 단축</span><span class="cs-metric-text">개발자 내부 도구의 티켓 처리 시간</span></li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">리서치 범위</h3>
+          <ul class="cs-metrics">
+            <li><span class="metric-kind">리서치 범위</span><span class="cs-metric-value">15회</span><span class="cs-metric-text">AI 인사이트의 표시와 우선순위를 정하기 위한 이해관계자 인터뷰</span></li>
+          </ul>
+        </div>
+        <div class="cs-result-group">
+          <h3 class="cs-result-title">배운 점</h3>
+          <p class="cs-learned">신호가 많은 화면에서는 모든 정보를 보여 주는 것보다, 조사 순서를 정하는 기준을 팀과 함께 합의하는 일이 설계의 출발점이었습니다. AI 출력도 그 기준 안에서 근거와 함께 보여 줄 때 행동할 수 있는 신호가 됩니다.</p>
+        </div>
+      </div>
+      <p class="sc-note">수치는 프로젝트에서 측정·보고된 값이며, 측정 방식은 지표마다 다릅니다. 데모는 설계 설명을 위한 재구성으로, 수치를 데모 하나의 결과로 보지 않습니다.</p>
+    </div>
+  </section>
+
+  <section class="sc-section sc-light cs-next" id="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <div class="sc-head">
+        <p class="eyebrow">More work</p>
+        <h2 id="next-title">관련 사례</h2>
+      </div>
+      <div class="story-grid">
+          <a class="story-card" href="second-context-case-healthcare.html">
+            <span class="story-media"><img src="assets/images/case-healthcare-corridor-1152.jpg" srcset="assets/images/case-healthcare-corridor-768.jpg 768w, assets/images/case-healthcare-corridor-1152.jpg 1152w, assets/images/case-healthcare-corridor-1536.jpg 1536w, assets/images/case-healthcare-corridor-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1600" loading="lazy" decoding="async" alt="" style="object-position:66% 50%"></span>
+            <span class="story-chip">헬스케어 SaaS</span>
+            <span class="story-text"><span class="story-title">Healthcare Scheduling</span><span class="story-desc">복잡한 방문 일정을 명확한 다음 단계로</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+          <a class="story-card" href="second-context-case-identity.html">
+            <span class="story-media"><img src="assets/images/case-identity-fingerprint-1152.jpg" srcset="assets/images/case-identity-fingerprint-768.jpg 768w, assets/images/case-identity-fingerprint-1152.jpg 1152w, assets/images/case-identity-fingerprint-1536.jpg 1536w, assets/images/case-identity-fingerprint-2048.jpg 2048w" sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) 45vw, 620px" width="2400" height="1350" loading="lazy" decoding="async" alt="" style="object-position:55% 50%"></span>
+            <span class="story-chip">규제 산업 모바일 앱</span>
+            <span class="story-text"><span class="story-title">Identity Verification</span><span class="story-desc">상황이 달라도 이어지는 본인 인증 경험</span></span>
+            <span class="story-go" aria-hidden="true"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </a>
+      </div>
+      <div class="cs-cta">
+        <a class="pill pill-light" href="./#contact">프로젝트 문의하기</a>
+        <a class="pill pill-ghost" href="./#services">서비스 영역으로 돌아가기</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="lets" data-rotator data-words="Understand|Design|Build|Collaborate" data-interval="2400">
+      <p class="lets-title" aria-hidden="true"><span><span class="lets-lead">Let’s</span><span class="lets-word is-in">Understand</span></span></p>
+      <p class="lets-sentence">Let’s understand, design, build, and collaborate.</p>
+      <div class="lets-actions">
+        <a class="lets-cta" href="./#contact"><span class="pill pill-light">프로젝트 문의하기</span><span class="circle-btn circle-btn--light"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a>
+        <button type="button" class="lets-toggle" aria-pressed="false" hidden><span class="lets-toggle-text">일시정지</span><span class="sr-only"> 움직이는 문구</span></button>
+      </div>
+    </div>
+    <div class="footer-links">
+      <nav class="fl-col" aria-labelledby="fl-company">
+        <p class="fl-title" id="fl-company">Company</p>
+        <ul>
+          <li><a href="./#why-us" data-nav="why-us">Why Us</a></li>
+          <li><a href="./#services" data-nav="services">What we do</a></li>
+          <li><a href="./#approach" data-nav="approach">Approach</a></li>
+          <li><a href="./#contact" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav class="fl-col" aria-labelledby="fl-follow">
+        <p class="fl-title" id="fl-follow">Follow</p>
+        <ul>
+          <li><a href="https://www.linkedin.com/company/second-context/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> — Second Context 회사 페이지</span><span class="sr-only"> (새 탭에서 열림)</span></a></li>
+          <li><a href="https://github.com/RachelCho" target="_blank" rel="noopener">GitHub<span class="sr-only"> — Rachel Cho</span><span class="sr-only"> (새 탭에서 열림)</span></a></li>
+        </ul>
+      </nav>
+      <form class="newsletter" data-endpoint="" novalidate aria-labelledby="nl-title">
+        <p class="fl-title" id="nl-title">Newsletter</p>
+        <label class="newsletter-label" for="nl-email">뉴스레터 구독 이메일</label>
+        <div class="newsletter-field">
+          <input id="nl-email" type="email" name="email" autocomplete="email" inputmode="email" placeholder="name@company.com" aria-describedby="nl-status">
+          <button type="submit" class="circle-btn circle-btn--dark"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="sr-only">뉴스레터 구독 신청</span></button>
+        </div>
+        <p class="newsletter-status" id="nl-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+    <div class="footer-bottom">
+      <a href="./" class="footer-logo" aria-label="Second Context 홈"><img src="assets/second-context-logo-white.png" alt="second context" width="800" height="326" loading="lazy"></a>
+      <nav class="lang lang-footer" aria-label="언어 선택">
+        <a href="second-context-case-monitoring.html" lang="ko" hreflang="ko" aria-current="true">한국어</a>
+        <span aria-hidden="true">/</span>
+        <a href="en/second-context-case-monitoring.html" lang="en" hreflang="en"><span aria-hidden="true">EN</span><span class="sr-only">English</span></a>
+      </nav>
+      <p class="footer-copy">© Second Context <span data-year>2026</span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/case-demo.js" defer></script>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

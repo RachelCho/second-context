@@ -23,6 +23,12 @@ PAGES = {
     "second-context-contact.html": "second-context-contact.html",
     "second-context-about.html": "second-context-about.html",
     "second-context-work.html": "second-context-work.html",
+    # 사례 상세(2026-11-16): What we do 카드마다 독립 사례 페이지 + OGS 공개 사례
+    "second-context-case-healthcare.html": "second-context-case-healthcare.html",
+    "second-context-case-monitoring.html": "second-context-case-monitoring.html",
+    "second-context-case-identity.html": "second-context-case-identity.html",
+    "second-context-case-localization.html": "second-context-case-localization.html",
+    "second-context-case-ogs.html": "second-context-case-ogs.html",
 }
 KEEP = {"assets/lang.js"}  # 운영 전용판 유지
 
