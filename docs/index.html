@@ -42,6 +42,7 @@
       <a href="#services" data-nav="services">What we do</a>
       <a href="#approach" data-nav="approach">Approach</a>
       <a href="#contact" data-nav="contact">Contact</a>
+      <a href="second-context-services.html">Pricing</a>
       <a class="pill pill-light nav-cta" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener"><span class="nav-cta-text">30분 상담 예약</span><span class="sr-only"> (새 탭에서 열림)</span></a>
     </nav>
     <nav class="lang" aria-label="언어 선택">
@@ -208,6 +209,7 @@
           </div>
         </li>
       </ol>
+      <p class="cs-cta pr-home-cta"><a class="pill pill-light" href="second-context-services.html">서비스·가격 보기</a><a class="pill pill-ghost" href="second-context-ux-review.html">60분 집중 UX 리뷰 · US$200</a></p>
     </div>
   </section>
 
@@ -246,6 +248,24 @@
           <input type="hidden" name="_subject" value="Second Context 웹사이트 문의">
           <input type="hidden" name="language" value="한국어 페이지">
           <div class="field-grid">
+            <div class="field field-wide">
+              <label for="f-service">문의 유형</label>
+              <select id="f-service" name="service">
+                <option value="" data-key="" selected>문의 유형을 선택해 주세요</option>
+                <option value="60분 집중 UX 리뷰 (US$200)" data-key="review">60분 집중 UX 리뷰</option>
+                <option value="UX 진단 스프린트 범위 문의 (US$1,500부터)" data-key="sprint">UX 진단 스프린트</option>
+                <option value="복잡한 제품 흐름 개선 스프린트 (별도 견적)" data-key="project">복잡한 제품 흐름 개선 스프린트</option>
+                <option value="기타 문의" data-key="other">기타 문의</option>
+              </select>
+              <p class="field-help" id="f-service-help-review" data-service-note="review" hidden>리뷰 비용은 US$200입니다. 문의 접수 후 일정과 결제 방법을 안내드립니다.</p>
+              <p class="field-help" id="f-service-help-sprint" data-service-note="sprint" hidden>프로젝트 범위를 확인한 후 견적을 안내드립니다.</p>
+              <p class="field-help" id="f-service-help-project" data-service-note="project" hidden>목표와 일정에 맞춰 협업 범위를 제안드립니다.</p>
+            </div>
+            <fieldset class="field-choice field-wide">
+              <legend>상담 진행 언어</legend>
+              <label><input type="radio" name="consult_language" value="한국어" checked> 한국어</label>
+              <label><input type="radio" name="consult_language" value="English"> English</label>
+            </fieldset>
             <div class="field">
               <label for="f-name">이름 <span class="req" aria-hidden="true">*</span></label>
               <input id="f-name" name="name" type="text" autocomplete="name" placeholder="예: 홍길동" required aria-describedby="f-name-error">
@@ -320,6 +340,7 @@
           <li><a href="#services" data-nav="services">What we do</a></li>
           <li><a href="#approach" data-nav="approach">Approach</a></li>
           <li><a href="#contact" data-nav="contact">Contact</a></li>
+          <li><a href="second-context-services.html">Pricing</a></li>
         </ul>
       </nav>
       <nav class="fl-col" aria-labelledby="fl-follow">

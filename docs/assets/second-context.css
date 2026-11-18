@@ -2043,3 +2043,225 @@ html[lang="ko"] .ogs-dev-cap{word-break:keep-all}
 .ogs-dev--phone .ogs-dev-screen{aspect-ratio:9/17;width:100%}
 .ogs-dev--phone .ogs-dev-screen img{width:100%;max-height:100%;object-fit:contain}
 @media(max-width:1023px){.ogs-devices{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}.ogs-dev--desk{grid-column:1/-1}.ogs-dev--phone2{display:block}.ogs-dev--phone{max-width:220px;justify-self:center;width:100%}}
+/* 서비스·가격 / 60분 리뷰 / 예약·자료 안내(2026-11-16, 로컬 초안): edenspiekermann.com/figma처럼 요약 → 번호별 상세. 흰 섹션 토큰 */
+[hidden]{display:none!important}
+.sc-dark .pr-hero h1{max-width:16em;font-size:var(--fs-display);text-wrap:balance}
+.pr-usd{margin-top:var(--s4);color:#000;font-size:var(--fs-small);font-weight:600}
+.pr-usd::before{content:"";display:inline-block;width:8px;height:8px;margin-right:8px;border-radius:50%;background:#A83E20;vertical-align:1px}
+.sc-dark .pr-h2{max-width:18em;color:#000;font-size:var(--fs-h2);line-height:1.12;text-wrap:balance}
+.pr-sec .eyebrow{font-variant-numeric:tabular-nums}
+.pr-summary{padding-top:0}
+.pr-cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);list-style:none;margin:0;padding:0}
+.pr-card{position:relative;display:grid;gap:var(--s2);align-content:start;height:100%;padding:var(--s4);border-radius:var(--radius-card);background:#F4F4F2;color:#000;text-decoration:none;transition:background-color .2s ease,transform .2s ease}
+.pr-card:hover{background:#ECECE8}
+.pr-card:focus-visible{outline:3px solid #000;outline-offset:3px}
+.pr-card-name{font-size:var(--fs-item);font-weight:600;line-height:1.25}
+.pr-card-price{color:#A83E20;font-size:clamp(26px,1.4vw + 16px,40px);font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums} /* 6.2:1 큰 글자 */
+.pr-card-desc{color:#4D4D4D;font-size:var(--fs-small);line-height:var(--lh-small)}
+.pr-card-go{margin-top:auto;font-size:20px;transition:transform .2s ease}
+.pr-card:hover .pr-card-go{transform:translateX(4px)}
+.pr-price{margin-top:var(--s3);color:#A83E20;font-size:clamp(32px,2vw + 20px,56px);font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.pr-price span{color:#4D4D4D;font-size:var(--fs-body);font-weight:400;letter-spacing:0}
+.pr-facts{display:grid;grid-template-columns:minmax(140px,2fr) minmax(0,7fr);gap:0;margin:var(--s5) 0 0;border-top:1px solid var(--line)}
+.pr-facts dt,.pr-facts dd{margin:0;padding:var(--s3) 0;border-bottom:1px solid var(--line)}
+.pr-facts dt{padding-right:var(--s3);color:#000;font-size:var(--fs-small);font-weight:700}
+.pr-facts dd{font-size:var(--fs-body);line-height:var(--lh-body)}
+.pr-facts a{color:#000;text-decoration:underline;text-underline-offset:3px}
+.pr-list{margin:0;padding-left:1.1em;display:grid;gap:4px}
+.pr-list--x{list-style:none;padding:0;margin-top:var(--s4)}
+.pr-list--x li{display:flex;gap:10px;font-size:var(--fs-body)}
+.pr-list--x li::before{content:"✕";color:#A83E20;font-weight:700}
+.pr-note{max-width:var(--measure);margin-top:var(--s4);color:#4D4D4D;font-size:var(--fs-small);line-height:var(--lh-small)}
+.pr-cta{margin-top:var(--s4)}
+.pr-pay{max-width:var(--measure);margin-top:var(--s4);padding:var(--s3) var(--s4);border-left:3px solid #A83E20;border-radius:0 12px 12px 0;background:#fff;box-shadow:inset 0 0 0 1px rgba(0,0,0,.06)}
+.sc-tone-ivory .pr-pay{background:#fff}
+.pr-pay-k{color:#000;font-size:var(--fs-small);font-weight:700}
+.pr-pay p:not(.pr-pay-k){margin-top:4px;font-size:var(--fs-small);line-height:var(--lh-small);color:#30232E}
+.pr-faq{display:grid;margin-top:var(--s5);border-top:1px solid var(--line)}
+.pr-faq details{border-bottom:1px solid var(--line)}
+.pr-faq summary{display:flex;justify-content:space-between;gap:var(--s3);padding:var(--s3) 0;color:#000;font-size:var(--fs-item);font-weight:600;cursor:pointer;list-style:none}
+.pr-faq summary::-webkit-details-marker{display:none}
+.pr-faq summary::after{content:"+";font-weight:400;transition:transform .2s ease}
+.pr-faq details[open] summary::after{transform:rotate(45deg)}
+.pr-faq summary:focus-visible{outline:3px solid #000;outline-offset:2px}
+.pr-faq details p{max-width:var(--measure);padding-bottom:var(--s3);font-size:var(--fs-body);line-height:var(--lh-body)}
+.pr-faq a{color:#000;text-decoration:underline}
+.pr-meta{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);list-style:none;margin:var(--s5) 0 0;padding:var(--s4) 0 0;border-top:1px solid var(--line)}
+.pr-meta li{display:grid;gap:4px;color:#4D4D4D;font-size:var(--fs-small)}
+.pr-meta b{color:#000;font-size:clamp(24px,1.2vw + 16px,36px);font-weight:600;letter-spacing:-.01em}
+.pr-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s4);list-style:none;margin:var(--s5) 0 0;padding:0}
+.pr-steps li{display:grid;gap:var(--s1);align-content:start;padding-top:var(--s3);border-top:2px solid #000}
+.pr-steps b{color:#000;font-size:var(--fs-item)}
+.pr-steps span:not(.num-circle){font-size:var(--fs-small);line-height:var(--lh-small)}
+.pr-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s4) var(--s3);list-style:none;margin:var(--s5) 0 0;padding:0;counter-reset:f}
+.pr-flow li{position:relative;display:grid;gap:var(--s1);align-content:start;padding:var(--s4);border-radius:24px;background:#fff}
+.pr-flow-n{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:#000;color:#fff;font-weight:700}
+.pr-flow b{color:#000;font-size:var(--fs-item)}
+.pr-flow span:not(.pr-flow-n){font-size:var(--fs-small);line-height:var(--lh-small)}
+.pr-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s5);margin-top:var(--s5);align-items:start}
+.pr-two .pr-list{font-size:var(--fs-body);line-height:var(--lh-body)}
+.pr-warn{padding:var(--s4);border-radius:20px;background:#FDF1EC;color:#30232E;font-size:var(--fs-small);line-height:var(--lh-small)}
+.draft-flag{display:inline-block;padding:2px 10px;border:1.5px dashed #A83E20;border-radius:999px;color:#A83E20;font-size:12px;font-weight:700;white-space:nowrap;vertical-align:1px}
+.pr-draft-note{margin-top:var(--s4);color:#4D4D4D;font-size:var(--fs-small)}
+.pr-pending{max-width:var(--measure);margin-top:var(--s5);padding:var(--s4);border:1.5px dashed #A83E20;border-radius:20px;background:#FFF9F6}
+.pr-pending > p{margin:var(--s2) 0;font-size:var(--fs-body);line-height:var(--lh-body)}
+.pr-home-cta{margin-top:var(--s6)}
+html[lang="ko"] .pr-sec :is(p,dd,li,summary),html[lang="ko"] .pr-hero .lead{word-break:keep-all}
+/* 문의 폼: 문의 유형·상담 언어 */
+.inquiry-form select{width:100%;min-height:46px;padding:0 14px;border:1px solid var(--field-border);border-radius:4px;background:#fff;color:#30232E;font:inherit;font-size:16px}
+.sc-dark .inquiry-form select{border-radius:12px}
+.field-help{margin-top:8px;color:var(--body);font-size:14px;line-height:1.55}
+.field-choice{display:flex;flex-wrap:wrap;align-items:center;gap:8px 20px;margin:0;padding:0;border:0}
+.field-choice legend{width:100%;margin-bottom:8px;font-weight:600;font-size:15px}
+.sc-dark .field-choice legend{color:#fff}
+.field-choice label{display:inline-flex;align-items:center;gap:8px;min-height:44px;cursor:pointer}
+.field-choice input{width:20px;height:20px;accent-color:#F0845C}
+@media(max-width:1023px){.pr-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-steps,.pr-meta{grid-template-columns:repeat(2,minmax(0,1fr))}.pr-flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:767px){.pr-cards,.pr-flow,.pr-two{grid-template-columns:1fr}.pr-facts{grid-template-columns:1fr}.pr-facts dt{padding-bottom:0;border-bottom:0}.pr-facts dd{padding-top:6px}}
+@media(max-width:600px){.pr-steps,.pr-meta{grid-template-columns:1fr 1fr}}
+/* 서비스·가격 결과물: 설명과 전달 기한을 별도 블록으로(2026-11-16), 사이 8px */
+.pr-facts dd > p{margin:0}
+.pr-facts dd > p + p{margin-top:8px}
+
+/* 문의 폼 간격·입력창(2026-11-16): 제목 행 → 첫 칸 32 · 라벨 → 입력 12 · 입력 → 보조 문구·오류 8 · 칸 사이 24, 모든 폭 같은 위계.
+   원인: select가 .field input 규칙에서 빠져 margin-top 0으로 라벨에 붙었고, 기본 포커스 외곽선(3px + 간격 3px)이 라벨까지 닿았다.
+   입력 칸은 밝은 토큰(--plum #30232E)이라 전역 :focus-visible 외곽선이 어두운 폼 바탕에서 보이지 않았다 → 폼 안에서만 색을 정한다 */
+.inquiry-form .field-grid{gap:24px;margin-top:32px}
+.inquiry-form .field label{font-size:16px;line-height:1.4}
+.inquiry-form .field :is(input,textarea,select){display:block;width:100%;min-height:56px;margin-top:12px;padding:14px 16px;
+  border:1px solid #8C858E;border-radius:12px;background-color:#fff;color:#30232E;font:inherit;font-size:17px;line-height:1.5}
+.inquiry-form .field textarea{height:160px;min-height:120px}
+/* select: 기본 화살표 대신 같은 높이의 직접 그린 화살표(플럼, 흰 바탕 14.9:1) */
+.inquiry-form .field select{appearance:none;-webkit-appearance:none;padding-right:48px;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16' fill='none' stroke='%2330232E' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 6l4.5 4.5L12.5 6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;background-size:16px}
+/* 아직 고르지 않은 상태는 placeholder와 같은 회색(#7A737C, 흰 바탕 4.59:1) */
+.inquiry-form .field select:has(option[value=""]:checked){color:#7A737C}
+.inquiry-form .field select option{color:#30232E}
+/* 기본 테두리 #8C858E(1px) ↔ 포커스: 플럼 2px 테두리 + 바깥 외곽선(라벨과 7px 떨어짐) */
+.inquiry-form .field :is(input,textarea,select):focus{border-color:#30232E;box-shadow:inset 0 0 0 1px #30232E}
+.inquiry-form .field :is(input,textarea,select):focus-visible{outline:3px solid #fff;outline-offset:2px}
+.sc-light .inquiry-form .field :is(input,textarea,select):focus-visible{outline-color:#000}
+/* 오류는 포커스 중에도 오렌지 테두리 유지(흰 바탕 6.22:1), 문구로도 알림 */
+.inquiry-form .field [aria-invalid="true"],.inquiry-form .field [aria-invalid="true"]:focus{border-color:#A83E20;box-shadow:inset 0 0 0 1px #A83E20}
+.inquiry-form .field-help,.inquiry-form .field-error{margin-top:8px}
+.inquiry-form .field-help{font-size:15px;line-height:1.55}
+/* 상담 진행 언어: 라디오 줄 높이 44px 안에서 legend와 12px 정도 떨어져 보인다 */
+.inquiry-form .field-choice legend{margin-bottom:0;font-size:16px;line-height:1.4}
+@media(max-width:600px){.sc-dark .inquiry-form{padding:32px 24px}}
+
+/* 서비스·가격 02~04: 이 단계에서 얻는 것(2026-11-16) — 리뷰는 판단, 진단은 우선순위, 개선 스프린트는 설계로 구분 */
+.pr-buy{max-width:var(--measure);margin-top:var(--s3);color:#000;font-size:var(--fs-item);font-weight:600;line-height:1.4;text-wrap:balance}
+.pr-buy-k{display:block;margin-bottom:var(--s1);color:#4D4D4D;font-size:var(--fs-small);font-weight:700;line-height:1.4}
+html[lang="ko"] .pr-buy{word-break:keep-all}
+/* 요약 카드: 이름 길이가 달라도(04는 두~세 줄) 번호·이름·가격·설명·화살표 시작선을 subgrid로 맞춘다(여러 열일 때만) */
+@media(min-width:768px){
+  .pr-cards > li{display:grid;grid-row:span 5;grid-template-rows:subgrid;row-gap:var(--s2)}
+  .pr-cards .pr-card{grid-row:span 5;grid-template-rows:subgrid;row-gap:var(--s2);align-content:normal}
+  .pr-cards .pr-card-go{align-self:end}
+}
+/* 요약 카드 가격이 두 줄일 때 줄 사이 여백(2026-11-18 사용자 요청 두 차례): 본문 행간 1.7 → 1.35 → 큰 제목처럼 1.1 */
+.pr-card-price{line-height:1.1}
+/* 결제 링크 연결 전·후 문구 전환(booking-config.js): 숨김 상태가 다른 display 규칙에 덮이지 않게 */
+[data-paid-pending][hidden],[data-paid-ready][hidden],[data-paid-review-link][hidden]{display:none!important}
+
+/* ── 서비스·가격 한눈에 보기 + 상세 슬라이더(2026-11-18 사용자 요청: 간결하게, 애니메이션·스크롤 슬라이더) ──
+   1) 요약: 단계 레일(대화 → 판단 → 우선순위 → 설계, 장식) + 카드 4장(이름·가격·얻는 것·핵심 두 가지). 화면에 들어오면 레일이 채워지고 카드가 차례로 떠오른다(site.js data-anim)
+   2) 상세: 네 패널 가로 스크롤 슬라이더(pricing.js). 가운데 패널 강조, 나머지는 살짝 작게(투명도는 쓰지 않아 글자 대비 유지)
+   JS 없음·움직임 줄이기: 처음부터 완성 상태, 슬라이더는 가로 스크롤만 */
+.pr-rail{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--s3);list-style:none;margin:0 0 var(--s3);padding:0}
+.pr-rail::before,.pr-rail::after{content:"";position:absolute;left:var(--s4);right:0;top:7px;height:2px;border-radius:2px;background:rgba(0,0,0,.1)}
+.pr-rail::after{background:#DA613E;transform-origin:left;transform:scaleX(1)} /* 장식 오렌지: 선만 */
+.pr-rail li{position:relative;z-index:1;display:flex;align-items:center;gap:var(--s1);padding-left:var(--s4)}
+.pr-rail li::before{content:"";flex:none;width:16px;height:16px;border:2px solid #DA613E;border-radius:50%;background:#DA613E;box-shadow:0 0 0 4px #fff}
+.pr-rail-k{padding-right:var(--s1);background:#fff;color:#000;font-size:var(--fs-small);font-weight:700;line-height:1.2}
+.pr-chips{display:flex;flex-wrap:wrap;align-content:start;gap:var(--s1)}
+.pr-chip{padding:4px 12px;border:1px solid rgba(0,0,0,.16);border-radius:999px;background:#fff;color:#30232E;font-size:13px;line-height:1.5}
+.pr-card{transition:background-color .2s ease,transform .25s ease,box-shadow .25s ease}
+@media(hover:hover){.pr-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -24px rgba(0,0,0,.35)}}
+@media(min-width:768px){
+  .pr-cards > li{grid-row:span 6}
+  .pr-cards .pr-card{grid-row:span 6}
+}
+@media(max-width:1023px){.pr-rail{display:none}}
+/* 등장: 레일 채우기 1.1초, 점 차례로, 카드 0.08초 간격 */
+.js-anim .pr-glance .pr-rail::after{transform:scaleX(0);transition:transform 1.1s cubic-bezier(.2,.7,.2,1) .15s}
+.js-anim .pr-glance.is-play .pr-rail::after{transform:scaleX(1)}
+.js-anim .pr-glance .pr-rail li::before{background:#fff;transition:background-color .3s ease}
+.js-anim .pr-glance.is-play .pr-rail li::before{background:#DA613E}
+.js-anim .pr-glance .pr-rail li:nth-child(2)::before{transition-delay:.45s}
+.js-anim .pr-glance .pr-rail li:nth-child(3)::before{transition-delay:.75s}
+.js-anim .pr-glance .pr-rail li:nth-child(4)::before{transition-delay:1.05s}
+.js-anim .pr-glance .pr-cards > li{opacity:0;transform:translateY(24px);transition:opacity .5s cubic-bezier(.2,.7,.2,1),transform .5s cubic-bezier(.2,.7,.2,1)}
+.js-anim .pr-glance.is-play .pr-cards > li{opacity:1;transform:none}
+.js-anim .pr-glance .pr-cards > li:nth-child(2){transition-delay:.08s}
+.js-anim .pr-glance .pr-cards > li:nth-child(3){transition-delay:.16s}
+.js-anim .pr-glance .pr-cards > li:nth-child(4){transition-delay:.24s}
+
+/* 상세 슬라이더 */
+.pr-slider{margin-top:var(--s5)}
+.pr-slider-nav{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--s3)}
+.pr-slider-nav[hidden]{display:none}
+.pr-tabs{display:flex;flex-wrap:wrap;gap:var(--s1)}
+.pr-tabs button{display:inline-flex;align-items:center;gap:var(--s1);min-height:44px;padding:6px 16px 6px 6px;border:1px solid rgba(0,0,0,.24);border-radius:999px;background:#fff;color:#000;font:inherit;font-size:15px;font-weight:600;line-height:1.3;cursor:pointer;transition:background-color .2s ease,color .2s ease,border-color .2s ease}
+.pr-tab-n{display:grid;place-items:center;flex:none;width:30px;height:30px;border:1.5px solid #A83E20;border-radius:50%;color:#A83E20;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
+.pr-tabs button:hover{border-color:#000}
+.pr-tabs button[aria-current="true"]{border-color:#000;background:#000;color:#fff}
+.pr-tabs button[aria-current="true"] .pr-tab-n{border-color:#F0845C;color:#F0845C} /* 검정 위 8.16:1 */
+.pr-arrows{display:flex;gap:var(--s1)}
+.pr-arrow{display:grid;place-items:center;width:48px;height:48px;border:1px solid #000;border-radius:50%;background:#fff;color:#000;cursor:pointer;transition:background-color .2s ease,color .2s ease}
+.pr-arrow:hover:not(:disabled){background:#000;color:#fff}
+.pr-arrow:disabled{border-color:rgba(0,0,0,.2);color:rgba(0,0,0,.35);cursor:default}
+.pr-tabs button:focus-visible,.pr-arrow:focus-visible,.pr-track:focus-visible,.pr-more summary:focus-visible{outline:3px solid #000;outline-offset:3px}
+.pr-progress{grid-column:1 / -1;height:3px;border-radius:3px;background:rgba(0,0,0,.12);overflow:hidden}
+.pr-progress span{display:block;height:100%;background:#000;transform-origin:left;transform:scaleX(0);transition:transform .12s linear}
+.pr-track{position:relative;display:flex;align-items:flex-start;gap:var(--s3);margin:var(--s2) calc(-1 * var(--s2)) 0;padding:var(--s3) var(--s2) var(--s4);overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--s2);overscroll-behavior-x:contain}
+.js-slider .pr-track{scrollbar-width:none}
+.js-slider .pr-track::-webkit-scrollbar{display:none}
+.pr-panel{flex:0 0 min(86%, 980px);scroll-snap-align:start;display:grid;gap:var(--s4);align-content:start;padding:var(--s5);border-radius:32px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.06);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease}
+.js-slider .pr-panel:not(.is-active){transform:scale(.95)}
+.js-slider .pr-panel.is-active{box-shadow:0 0 0 1px rgba(0,0,0,.08),0 28px 56px -28px rgba(0,0,0,.3)}
+.pr-panel-head{display:grid;gap:var(--s2);justify-items:start}
+.pr-panel-title{color:#000;font-size:var(--fs-h3);font-weight:600;line-height:1.2;text-wrap:balance}
+.pr-panel .pr-price{margin-top:0;font-size:clamp(28px,1.6vw + 18px,44px);line-height:1.15}
+.pr-panel .pr-buy{margin-top:var(--s1)}
+.pr-panel-body{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s4);padding-top:var(--s4);border-top:1px solid var(--line)}
+.pr-k{margin-bottom:var(--s1);color:#000;font-size:var(--fs-small);font-weight:700}
+.pr-col{color:#30232E;font-size:var(--fs-body);line-height:var(--lh-body)}
+.pr-col > p + p{margin-top:8px}
+.pr-more{border-top:1px solid var(--line)}
+.pr-more summary{display:inline-flex;align-items:center;gap:var(--s1);min-height:44px;margin-top:var(--s1);color:#000;font-size:var(--fs-small);font-weight:700;cursor:pointer;list-style:none}
+.pr-more summary::-webkit-details-marker{display:none}
+.pr-more summary::before{content:"+";display:grid;place-items:center;width:24px;height:24px;border:1px solid #000;border-radius:50%;font-weight:400;line-height:1;transition:transform .2s ease}
+.pr-more[open] summary::before{transform:rotate(45deg)}
+.pr-more .pr-facts{margin-top:var(--s1)}
+.pr-panel :is(.pr-pay,.pr-note,.pr-cta){margin-top:0}
+.pr-more .pr-note{margin-top:var(--s2)}
+html[lang="ko"] .pr-panel :is(.pr-col,.pr-chip,.pr-panel-title){word-break:keep-all}
+html[lang="ko"] .pr-card-desc{word-break:keep-all}
+@media(max-width:767px){
+  .pr-slider-nav{grid-template-columns:1fr auto}
+  .pr-tabs button{padding:6px}
+  .pr-tab-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .pr-panel{flex-basis:88%;padding:var(--s4) var(--s3);border-radius:24px}
+  .pr-panel-body{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .pr-card,.pr-panel,.pr-progress span,.pr-more summary::before{transition:none}
+  .pr-card:hover,.js-slider .pr-panel:not(.is-active){transform:none}
+}
+/* 레일: 점과 글자 사이로 선이 보이지 않게 글자 바탕이 양옆을 덮는다 */
+.pr-rail li{gap:0}
+.pr-rail-k{padding:0 var(--s1)}
+/* 767px 이하 요약 카드: 이름 | 가격 한 줄 → 얻는 것 → 핵심 두 가지(번호 원·화살표 생략)로 짧게 */
+@media(max-width:767px){
+  .pr-cards{gap:var(--s2)}
+  .pr-card{grid-template-columns:minmax(0,1fr) auto;align-items:baseline;gap:var(--s1) var(--s2);padding:var(--s3)}
+  .pr-card > .num-circle,.pr-card-go{display:none}
+  .pr-card-name{font-size:18px}
+  .pr-card-price{font-size:22px;text-align:right;white-space:nowrap}
+  .pr-card-desc,.pr-chips{grid-column:1 / -1}
+  .pr-chips{margin-top:4px}
+}
+[data-sprint-pending][hidden],[data-sprint-ready][hidden],[data-sprint-link][hidden]{display:none!important}
+[data-project-pending][hidden],[data-project-ready][hidden],[data-project-link][hidden]{display:none!important}

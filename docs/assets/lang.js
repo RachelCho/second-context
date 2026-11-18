@@ -17,7 +17,7 @@
   // 1) 다음 방문: 한국어 기본 주소로 왔는데 영어를 골라 둔 경우에만 영어 페이지로 바꾼다
   // (영어 페이지는 같은 폴더의 en/ 아래 같은 파일 이름. 상대 경로라 로컬 미리보기에서도 같은 서버에 머문다)
   if (cur === 'ko' && get('localStorage', KEY) === 'en') {
-    location.replace(location.pathname.replace(/[^\/]*$/, function (n) { return 'en/' + n; }) + location.hash);
+    location.replace(location.pathname.replace(/[^\/]*$/, function (n) { return 'en/' + n; }) + location.search + location.hash);
     return;
   }
 
@@ -37,6 +37,11 @@
       Array.prototype.forEach.call(document.querySelectorAll('#inquiry .field input, #inquiry .field textarea'), function (el) {
         if (el.value) fields[el.id] = el.value;
       });
+      // 문의 유형·상담 언어(2026-11-16): 언어와 무관한 키(data-key, 선택한 순서)로 넘긴다
+      var svcEl = document.getElementById('f-service');
+      if (svcEl) fields.__svc = svcEl.options[svcEl.selectedIndex].getAttribute('data-key');
+      var langs = document.querySelectorAll('#inquiry input[name="consult_language"]');
+      Array.prototype.forEach.call(langs, function (r, i) { if (r.checked) fields.__clang = i; });
       var open = Array.prototype.map.call(document.querySelectorAll('details[id][open]'), function (d) { return d.id; });
       var demos = {};
       var counted = Array.prototype.map.call(document.querySelectorAll('[data-countup][data-counted][id]'), function (l) { return l.id; });
@@ -86,6 +91,14 @@
       var el = document.getElementById(id);
       if (el && !el.value) el.value = st.fields[id];
     });
+    var f = st.fields || {};
+    var svcEl = document.getElementById('f-service');
+    if (svcEl && f.__svc) {
+      Array.prototype.forEach.call(svcEl.options, function (o) { if (o.getAttribute('data-key') === f.__svc) o.selected = true; });
+      svcEl.dispatchEvent(new Event('change'));
+    }
+    var langs = document.querySelectorAll('#inquiry input[name="consult_language"]');
+    if (typeof f.__clang === 'number' && langs[f.__clang]) langs[f.__clang].checked = true;
     if (location.hash || st.atTop || !st.anchor) return;
     var el = document.getElementById(st.anchor);
     if (!el) return;

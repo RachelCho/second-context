@@ -63,6 +63,33 @@
     failure: 'Your message couldn’t be sent. What you entered is still on this page. Please try again.'
   };
 
+  /* 문의 유형(2026-11-16): 서비스 페이지 버튼이 ?service=review처럼 넘겨 준 유형을 미리 고르고,
+     유형별 짧은 안내를 select 아래에 보여 준다(aria-describedby로 연결). 메일 제목에도 유형을 붙인다.
+     첫 항목 "문의 유형을 선택해 주세요"는 값이 비어 있어 제목에 붙이지 않는다 */
+  var service = document.getElementById('f-service');
+  var subject = form.querySelector('input[name="_subject"]');
+  var baseSubject = subject ? subject.value : '';
+  function syncService() {
+    if (!service) return;
+    var key = service.options[service.selectedIndex].getAttribute('data-key');
+    var shown = '';
+    Array.prototype.forEach.call(form.querySelectorAll('[data-service-note]'), function (n) {
+      n.hidden = !key || n.getAttribute('data-service-note') !== key;
+      if (!n.hidden) shown = n.id;
+    });
+    if (shown) service.setAttribute('aria-describedby', shown);
+    else service.removeAttribute('aria-describedby');
+    if (subject) subject.value = service.value ? baseSubject + ' — ' + service.value : baseSubject;
+  }
+  if (service) {
+    var want = (location.search.match(/[?&]service=([a-z-]+)/) || [])[1];
+    if (want) {
+      Array.prototype.forEach.call(service.options, function (o) { if (o.getAttribute('data-key') === want) o.selected = true; });
+    }
+    service.addEventListener('change', syncService);
+    syncService();
+  }
+
   var status = form.querySelector('.form-status');
   var button = form.querySelector('button[type="submit"]');
   var fields = Array.prototype.slice.call(form.querySelectorAll('.field input, .field textarea'));
@@ -140,6 +167,7 @@
       if (!res.ok) throw new Error('HTTP ' + res.status);
       // 서버가 성공(2xx)을 돌려준 뒤에만 입력을 비운다
       form.reset();
+      syncService();
       fields.forEach(function (el) { setError(el, ''); });
       setStatus(T.success, 'success');
     }).catch(function () {

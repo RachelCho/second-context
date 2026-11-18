@@ -29,6 +29,10 @@ PAGES = {
     "second-context-case-identity.html": "second-context-case-identity.html",
     "second-context-case-localization.html": "second-context-case-localization.html",
     "second-context-case-ogs.html": "second-context-case-ogs.html",
+    # 서비스·가격(2026-11-18): 가격·60분 리뷰·예약 안내(예약 안내는 noindex)
+    "second-context-services.html": "second-context-services.html",
+    "second-context-ux-review.html": "second-context-ux-review.html",
+    "second-context-booking-policy.html": "second-context-booking-policy.html",
 }
 KEEP = {"assets/lang.js"}  # 운영 전용판 유지
 

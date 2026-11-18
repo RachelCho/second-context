@@ -18,6 +18,7 @@
 - 비밀키·토큰을 HTML·JS·Git에 넣지 않는다. Formspree 폼 주소는 공개용 주소다
 
 - 디자인 원본(2026-11-11): 다크 리디자인부터 화면·문구·CSS·JS는 my-portfolio에서 고친다(규칙은 my-portfolio CLAUDE.md의 "Second Context 다크 리디자인"이 최우선). 고친 뒤 my-portfolio에서 `python3 tools/sc_chrome.py . && python3 tools/build_en_pages.py .`, 이 저장소에서 `python3 tools/sync_from_portfolio.py ../my-portfolio docs`. docs/의 페이지를 직접 고치면 다음 동기화 때 덮어쓴다(404.html·sitemap.xml·robots.txt·CNAME만 이 저장소에서 관리)
+- 서비스·가격(2026-11-18 운영 반영): second-context-services.html · second-context-ux-review.html · second-context-booking-policy.html(noindex, sitemap 제외)을 sync_from_portfolio.py PAGES에 추가. build_en_pages.py에 PRICING 목록·PRICING_PAGES·PRICING_EXTRA 번역 표를 my-portfolio에서 옮겼다(번역 표를 바꾸면 my-portfolio 표를 그대로 옮기고, 운영 전용 부분 BASE·index.html·href/url만 유지). Stripe 결제 링크 3개(60분 리뷰 US$200 · UX 진단 스프린트 · 복잡한 제품 흐름 개선 스프린트, 뒤 둘은 견적 확정 후 금액 입력)는 assets/booking-config.js. 운영 lang.js에도 문의 유형·상담 언어 전달과 영어 이동 시 ?query 유지를 반영
 - OG 이미지·파비콘은 my-portfolio의 tools/make_brand_icons.py(검정 바탕 + 흰 두 사각 프레임)에서 만든 것을 복사한다. 예전 글자 카드용 make_og_images.py는 지웠다
 
 ## 브랜드·구현 규칙 (my-portfolio CLAUDE.md에서 옮김, 필수)

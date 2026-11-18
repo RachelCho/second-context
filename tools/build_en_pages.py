@@ -9,6 +9,9 @@ BASE = "https://second-context.com/"
 PAGES = ["index.html", "second-context-approach.html", "second-context-contact.html", "second-context-about.html", "second-context-work.html"]
 # 사례 상세(2026-11-16): 홈 What we do 카드마다 독립 사례 페이지. 번역은 아래 CASE_PAGES(사례 페이지 공통, 있는 문구만 적용)
 CASES = ["second-context-case-healthcare.html", "second-context-case-monitoring.html", "second-context-case-identity.html", "second-context-case-localization.html", "second-context-case-ogs.html"]
+# 서비스·가격 / 60분 리뷰 / 예약·자료 안내(2026-11-18 운영 반영). 번역은 PRICING_PAGES + PRICING_EXTRA(있는 문구만 적용)
+PRICING = ["second-context-services.html", "second-context-ux-review.html", "second-context-booking-policy.html"]
+PAGES += PRICING
 PAGES += CASES
 
 
@@ -32,6 +35,7 @@ def head_links(page):
 OG_IMAGE = {PAGES[0]: "home", PAGES[1]: "approach", PAGES[2]: "contact", PAGES[3]: "home", PAGES[4]: "work"}
 OG_IMAGE.update({c: "work" for c in CASES})
 OG_IMAGE["second-context-case-ogs.html"] = "ogs"  # 공개 사례: 바둑판 OG 이미지
+OG_IMAGE.update({p: "home" for p in PRICING})
 OG_RE = re.compile(r'(<meta (?:property="og:|name="twitter:)[^>]*>\n)+')
 DESC_RE = re.compile(r'<meta name="description" content="[^"]*">\n')
 
@@ -890,6 +894,7 @@ CASE_PAGES = [
     ('결과와 배운 점', 'Results and lessons'),
     ('관련 사례', 'Related case studies'),
     ('서비스 영역으로 돌아가기', 'Back to What we do'),
+    ('서비스·가격 보기', 'See services and pricing'),
     ('사용자 기반', 'User base'),
     ('기능', 'Features'),
     ('배우기 쉬움', 'Easy to learn'),
@@ -1000,6 +1005,236 @@ CASE_PAGES = [
     ('전통적인 아시아 전략 게임 바둑을 글로벌 사용자가 쉽게 이해하고 즐길 수 있도록 Online Go Server의 온보딩·탐색·매치메이킹을 재설계한 Globalization 사례.', 'A Globalization case study redesigning Online Go Server’s onboarding, navigation, and matchmaking so international players can understand and enjoy Go, a traditional Asian strategy game.'),
 ]
 
+PRICING_PAGES = [
+    ('운영자 확정 필요', 'Pending operator confirmation'),
+    ('가격은 미국 달러(USD) 기준이며, 결제도 USD로 진행합니다.', 'Prices are in US dollars (USD), and payment is made in USD.'),
+    ('온라인 결제 연결 준비 중입니다. 신청 후 진행 가능 일정과 결제 방법을 안내드립니다.', 'Online payment isn’t connected yet. After you apply, we’ll send available times and how to pay.'),
+    ('신청은 예약 확정이나 결제 완료를 의미하지 않습니다.', 'Applying doesn’t confirm a booking or complete a payment.'),
+    ('상담과 리뷰는 한국어 또는 영어로 진행합니다. 예약 화면의 언어와 관계없이 원하는 진행 언어를 선택할 수 있습니다.', 'Calls and reviews are held in Korean or English. You can choose either, whatever language the booking page is shown in.'),
+    ('프로젝트 문의</a>', 'Ask about a project</a>'),
+    ('이런 팀에 맞습니다', 'Who it’s for'),
+    ('포함', 'Included'),
+    ('결과물', 'Deliverables'),
+    ('진행 기간', 'Timeline'),
+    ('별도 범위', 'Not included'),
+    ('가격이 달라지는 요인', 'What changes the price'),
+    ('결제 안내', 'Payment'),
+    # 서비스·가격 한눈에 보기·상세 슬라이더(2026-11-18). 짧은 문구는 태그까지 묶어 다른 문장을 바꾸지 않게
+    ('<span class="pr-rail-k">대화</span>', '<span class="pr-rail-k">Talk</span>'),
+    ('<span class="pr-rail-k">판단</span>', '<span class="pr-rail-k">Judgment</span>'),
+    ('<span class="pr-rail-k">우선순위</span>', '<span class="pr-rail-k">Priorities</span>'),
+    ('<span class="pr-rail-k">설계</span>', '<span class="pr-rail-k">Design</span>'),
+    ('<span class="pr-chip">30분 화상</span>', '<span class="pr-chip">30-minute video call</span>'),
+    ('<span class="pr-chip">진행 방식 제안</span>', '<span class="pr-chip">A suggested way forward</span>'),
+    ('<span class="pr-chip">60분 화상 리뷰</span>', '<span class="pr-chip">60-minute video review</span>'),
+    ('<span class="pr-chip">2영업일 내 서면 요약</span>', '<span class="pr-chip">Summary in 2 business days</span>'),
+    ('<span class="pr-chip">흐름 1~2개 · 화면 최대 10개</span>', '<span class="pr-chip">1–2 flows · up to 10 screens</span>'),
+    ('<span class="pr-chip">약 1~2주</span>', '<span class="pr-chip">About 1–2 weeks</span>'),
+    ('<span class="pr-chip">흐름·화면·프로토타입</span>', '<span class="pr-chip">Flows, screens, prototypes</span>'),
+    ('<span class="pr-chip">범위·일정 사전 합의</span>', '<span class="pr-chip">Scope and timeline agreed upfront</span>'),
+    ('<p class="eyebrow">자세히 보기</p>', '<p class="eyebrow">In detail</p>'),
+    ('포함 범위와 결과물', 'What’s included and what you get'),
+    ('<summary>자세한 조건</summary>', '<summary>More details</summary>'),
+    ('aria-label="서비스 선택"', 'aria-label="Choose a service"'),
+    ('aria-label="이전 서비스"', 'aria-label="Previous service"'),
+    ('aria-label="다음 서비스"', 'aria-label="Next service"'),
+    ('aria-label="서비스 상세"', 'aria-label="Service details"'),
+    # FAQ 한국에서 결제(2026-11-18 사용자 제공 문구 그대로)
+    ('한국에서도 결제할 수 있나요?', 'Can I pay from South Korea?'),
+    ('네. 60분 UX 리뷰는 Stripe에서 해외 온라인 결제가 가능한 Visa 또는 Mastercard로 결제하실 수 있습니다. 결제 화면에 USD가 표시되면 카드사 환율과 해외 결제 수수료가 적용될 수 있습니다. 원화 결제를 원하시거나 카드 결제가 어려우시면 결제 전에 문의해 주세요. 스프린트는 작업 범위와 최종 금액을 확정한 뒤 결제 안내를 보내드립니다.', 'Yes. You can pay for the 60-minute UX Review through Stripe with a Visa or Mastercard enabled for international online payments. If checkout shows USD, your card issuer’s exchange rate and any foreign transaction fees may apply. If you’d prefer to pay in KRW or have trouble with your card, please contact us before paying. For sprint projects, we’ll send payment instructions after we agree on the scope and final price.'),
+    # Stripe 결제 링크가 연결됐을 때([data-paid-ready]) 보이는 문구(2026-11-18)
+    ('아래 버튼을 누르면 Stripe 결제 페이지가 새 탭에서 열립니다. 결제 후 남겨주신 이메일로 일정과 자료 공유 방법을 안내드립니다.', 'The button below opens a Stripe checkout page in a new tab. After payment, we’ll email you about scheduling and how to share your materials.'),
+    ('60분 집중 UX 리뷰는 Stripe 결제 링크로 미리 결제합니다. 결제 후 일정과 자료 공유 방법을 이메일로 안내드립니다.', 'The 60-minute focused UX review is paid in advance through a Stripe payment link. After payment, we’ll email you about scheduling and how to share your materials.'),
+    # UX 진단 스프린트 Stripe 결제 링크(2026-11-18, 금액 직접 입력 · 견적 확정 후 결제)
+    ('UX 진단 스프린트는 범위 확정 후 결제 방법을 안내드립니다.', 'For the UX diagnostic sprint, we’ll explain how to pay once the scope is confirmed.'),
+    # 복잡한 제품 흐름 개선 스프린트 Stripe 결제 링크(2026-11-18, 금액 직접 입력 · 견적 확정 후 결제)
+    ('복잡한 제품 흐름 개선 스프린트는 범위 확정 후 결제 방법을 안내드립니다.', 'For the complex product flow improvement sprint, we’ll explain how to pay once the scope is confirmed.'),
+    ('복잡한 제품 흐름 개선 스프린트는 범위와 견적이 확정된 뒤 Stripe 결제 링크로 안내받은 금액을 결제합니다.', 'For the complex product flow improvement sprint, you pay the quoted amount through a Stripe payment link once the scope and quote are confirmed.'),
+    ('<p data-project-pending>결제는 범위 확정 후 안내드립니다.</p>', '<p data-project-pending>Payment details follow once scope is confirmed.</p>'),
+    ('UX 진단 스프린트는 범위와 견적이 확정된 뒤 Stripe 결제 링크로 안내받은 금액을 결제합니다.', 'For the UX diagnostic sprint, you pay the quoted amount through a Stripe payment link once the scope and quote are confirmed.'),
+    ('범위와 견적이 확정되면, 안내받은 금액을 ‘견적 확정 후 결제’ 버튼에서 Stripe로 결제합니다. 금액은 결제 화면에서 직접 입력합니다.', 'Once the scope and quote are confirmed, pay the quoted amount through Stripe with the ‘Pay your confirmed quote’ button. You enter the amount on the checkout page.'),
+    ('<p data-sprint-pending>결제는 범위 확정 후 안내드립니다.</p>', '<p data-sprint-pending>Payment details follow once scope is confirmed.</p>'),
+    ('견적 확정 후 결제<span class="sr-only">', 'Pay your confirmed quote<span class="sr-only">'),
+    ('60분 집중 UX 리뷰는 Stripe 결제 링크로 결제합니다. 결제 후 일정과 자료 공유 방법을 이메일로 안내드립니다.', 'The 60-minute focused UX review is paid through a Stripe payment link. After payment, we’ll email you about scheduling and how to share your materials.'),
+    ('<b data-paid-ready hidden>결제</b>', '<b data-paid-ready hidden>Payment</b>'),
+    ('‘UX 리뷰 결제하기’ 버튼에서 Stripe로 US$200를 결제합니다.', 'Pay US$200 through Stripe with the ‘Pay US$200 for a UX review’ button.'),
+    ('<b data-paid-ready hidden>일정 안내</b>', '<b data-paid-ready hidden>Scheduling</b>'),
+    ('결제 후 남겨주신 이메일로 가능한 일정과 진행 언어를 확인합니다.', 'After payment, we’ll email you to confirm a time and the language for the session.'),
+    ('서비스와 가격 — Second Context', 'Services and pricing — Second Context'),
+    ('무료 30분 상담, 60분 집중 UX 리뷰(US$200), UX 진단 스프린트(US$1,500부터), 복잡한 제품 흐름 개선 스프린트(별도 견적). 가격은 USD 기준입니다.', 'Free 30-minute call, 60-minute focused UX review (US$200), UX diagnostic sprint (from US$1,500), and complex product flow improvement sprint (custom quote). Prices in USD.'),
+    ('필요한 만큼, <span class="tl">지금 단계에 맞춰 시작합니다.</span>', 'Start where you are, with the scope you need.'),
+    ('짧은 대화부터 전문가 판단, 진단과 우선순위, 구체적인 개선 설계까지. 지금 필요한 판단의 크기에 맞는 방식을 고르세요.', 'From a short call to expert judgment, a prioritized diagnosis, or concrete improvement design, pick the format that fits the decision in front of you.'),
+    ('무료 30분 상담', 'Free 30-minute call'),
+    ('무료', 'Free'),
+    ('제품과 고민을 나누고 맞는 진행 방식을 정합니다.', 'Talk through your product and challenges, and find the right way to work together.'),
+    ('60분 집중 UX 리뷰', '60-minute focused UX review'),
+    ('특정 문제에 대한 전문가 판단', 'Expert judgment on a specific problem'),
+    ('UX 진단 스프린트', 'UX diagnostic sprint'),
+    ('US$1,500부터', 'From US$1,500'),
+    ('무엇을 먼저 고쳐야 하는지에 대한 진단·우선순위', 'A diagnosis of what to fix first, with priorities'),
+    ('별도 견적', 'Custom quote'),
+    ('선정한 문제를 어떻게 바꿀지에 대한 구체적인 설계', 'Concrete design for how to change the problems you’ve selected'),
+    ('서비스 요약', 'Service summary'),
+    ('30분 화상', '30-minute video call'),
+    ('제품과 목표 시장, 현재 고민을 먼저 나누고 맞는 협업 범위를 정하고 싶은 팀', 'Teams that want to share their product, target market, and challenges first, then decide on the right scope'),
+    ('제품·목표 시장·현재 고민에 대한 30분 대화', 'A 30-minute conversation about your product, market, and challenges'),
+    ('지금 단계에 맞는 진행 방식 제안', 'A suggested way to proceed that fits your stage'),
+    ('별도 결과물은 없으며, 대화 후 맞는 진행 방식을 안내합니다.', 'There’s no written deliverable; after the call, we’ll suggest how to proceed.'),
+    ('60분 화상 리뷰 + 서면 요약', '60-minute video review + written summary'),
+    ('특정 제품 흐름이나 화면에 대해 외부 전문가의 판단과 개선 우선순위가 필요한 파운더·PM·제품팀', 'Founders, PMs, and product teams who need an outside expert’s judgment and improvement priorities on a specific flow or set of screens'),
+    ('핵심 사용자 흐름 1개 또는 주요 화면 최대 5개', 'One core user flow, or up to 5 key screens'),
+    ('사전 자료 검토 최대 30분', 'Up to 30 minutes of review before the call'),
+    ('한국어 또는 영어로 진행하는 60분 화상 리뷰', 'A 60-minute video review in Korean or English'),
+    ('<p>핵심 문제, 권고 사항, 개선 우선순위와 다음 행동을 정리한 서면 요약.</p>', '<p>A written summary of key problems, recommendations, improvement priorities, and next steps.</p>'),
+    ('<p class="pr-due">통화 후 2영업일 이내 전달합니다. (조건 초안)</p>', '<p class="pr-due">Delivered within 2 business days after the call (draft terms).</p>'),
+    ('세션 녹화, 완성 디자인, 개발, 사용자 테스트, 무제한 후속 상담', 'Session recording, finished design, development, user testing, unlimited follow-up calls'),
+    ('전환율 향상 등 특정 성과를 보장하지 않습니다.', 'We don’t guarantee specific outcomes such as conversion gains.'),
+    ('리뷰 자세히 보기', 'About the review'),
+    ('리뷰 신청 문의', 'Apply for a review'),
+    ('UX 리뷰 결제하기 · US$200', 'Pay US$200 for a UX review'),
+    ('심층 UX 진단 · 개선 설계는 포함하지 않습니다', 'In-depth UX diagnosis · improvement design not included'),
+    ('<span class="pr-buy-k">이 단계에서 얻는 것</span>', '<span class="pr-buy-k">What you get</span>'),
+    ('핵심 흐름과 주요 화면의 문제를 깊이 살펴보고, 무엇부터 고칠지 근거를 갖고 정하고 싶은 팀', 'Teams that want a deeper look at their key flows and screens, and an evidence-based view of what to fix first'),
+    ('제품 1개, 플랫폼 1개', '1 product, 1 platform'),
+    ('핵심 사용자 흐름 1~2개', '1–2 core user flows'),
+    ('주요 화면 최대 10개', 'Up to 10 key screens'),
+    ('결과 설명 통화 60분', 'A 60-minute walkthrough call'),
+    ('화면 주석과 문제 설명', 'Screen annotations and problem descriptions'),
+    ('사용자 영향과 개선 우선순위', 'User impact and improvement priorities'),
+    ('구체적인 권고', 'Specific recommendations'),
+    ('자료와 범위 확정 후 약 1~2주', 'About 1–2 weeks after materials and scope are confirmed'),
+    ('추가 화면·흐름·플랫폼', 'Additional screens, flows, or platforms'),
+    ('사용자 역할과 예외 상황의 복잡성', 'Complexity of user roles and edge cases'),
+    ('경쟁사 분석', 'Competitive analysis'),
+    ('와이어프레임·프로토타입', 'Wireframes or prototypes'),
+    ('추가 회의·수정·구현 지원', 'Extra meetings, revisions, or implementation support'),
+    ('기본 범위를 넘는 작업은 시작 전에 별도 견적으로 합의합니다. 결제는 범위 확정 후 안내드립니다.', 'Anything beyond the base scope is agreed as a separate quote before we start. Payment details follow once scope is confirmed.'),
+    ('진단 범위 문의', 'Ask about sprint scope'),
+    ('선정한 문제 범위에 따라', 'Based on the problems selected'),
+    ('리뷰나 진단으로 고칠 문제를 정했고, 복잡한 제품 흐름을 실제로 어떻게 바꿀지 구체적인 설계가 필요한 팀', 'Teams that already know what to fix, from a review or diagnosis, and need concrete design for how to change a complex product flow'),
+    ('<li>선정한 문제와 개선 범위 정의</li>', '<li>Defining the selected problems and improvement scope</li>'),
+    ('<li>사용자 흐름과 화면 설계</li>', '<li>User flow and screen design</li>'),
+    ('<li>프로토타입</li>', '<li>Prototypes</li>'),
+    ('<li>디자인 의도·요구사항·예외 상황 정리</li>', '<li>Documenting design intent, requirements, and edge cases</li>'),
+    ('범위와 일정은 시작 전에 함께 정합니다.', 'We agree on scope and timeline together before we start.'),
+    ('>개선 스프린트 문의</a>', '>Ask about an improvement sprint</a>'),
+    ('진행 방식 보기', 'See how we work'),
+    ('복잡한 제품 흐름 개선 스프린트', 'Complex product flow improvement sprint'),
+    ('가격은 어떤 통화인가요?', 'What currency are prices in?'),
+    ('모든 가격은 미국 달러(USD) 기준이며, 결제도 USD로 진행합니다. 한국어·영어 페이지의 가격은 같습니다.', 'All prices are in US dollars (USD), and payment is in USD. Prices are the same on the Korean and English pages.'),
+    ('결제는 어떻게 하나요?', 'How do I pay?'),
+    ('상담은 어떤 언어로 진행하나요?', 'What language are sessions in?'),
+    ('리뷰 세션을 녹화해 주나요?', 'Will the review be recorded?'),
+    ('세션 녹화는 기본 제공에 포함되지 않습니다.', 'Session recording isn’t included by default.'),
+    ('NDA를 체결할 수 있나요?', 'Can we sign an NDA?'),
+    ('필요한 경우 자료를 공유하기 전에 문의해 주세요.', 'If you need one, please ask before sharing any materials.'),
+    ('특정 성과를 보장하나요?', 'Do you guarantee results?'),
+    ('전환율 향상 등 특정 성과는 보장하지 않습니다. 근거 있는 판단과 우선순위를 드립니다.', 'We don’t guarantee specific outcomes such as conversion gains. You get grounded judgment and clear priorities.'),
+    ('취소·변경·환불 기준은 어떻게 되나요?', 'What are the cancellation, rescheduling, and refund terms?'),
+    ('유료 예약을 열기 전에 확정해 <a href="second-context-booking-policy.html">예약·취소·자료 처리 안내</a>에 게시합니다. 그 전까지는 신청 후 개별 안내드립니다.', 'They’ll be finalized and posted on <a href="second-context-booking-policy.html">Booking, cancellation, and materials</a> before paid booking opens. Until then, we’ll explain them individually after you apply.'),
+    ('자주 묻는 질문', 'Frequently asked questions'),
+    ('60분 집중 UX 리뷰 — Second Context', '60-minute focused UX review — Second Context'),
+    ('US$200. 핵심 흐름 1개 또는 화면 최대 5개를 사전 검토하고 60분 화상 리뷰 후 2영업일 이내 서면 요약을 드립니다.', 'US$200. We review one core flow or up to five screens, hold a 60-minute video review, and send a written summary within 2 business days.'),
+    ('USD 결제', 'Paid in USD'),
+    ('<b>60분</b>', '<b>60 min</b>'),
+    ('화상 리뷰', 'Video review'),
+    ('한국어 · 영어', 'Korean · English'),
+    ('진행 언어 선택', 'Your choice of language'),
+    ('2영업일', '2 business days'),
+    ('서면 요약(초안 조건)', 'Written summary (draft terms)'),
+    ('외부 전문가의 눈으로, <span class="tl">무엇부터 고칠지 정합니다.</span>', 'An outside expert’s eye on what to fix first.'),
+    ('특정 제품 흐름이나 화면에 대해 판단과 개선 우선순위가 필요한 파운더·PM·제품팀을 위한 집중 리뷰입니다.', 'A focused review for founders, PMs, and product teams who need judgment and improvement priorities on a specific flow or set of screens.'),
+    ('범위', 'Scope'),
+    ('사전 검토', 'Pre-review'),
+    ('보내 주신 자료를 최대 30분 동안 미리 검토합니다', 'Up to 30 minutes reviewing your materials before the call'),
+    ('60분 화상 리뷰', '60-minute video review'),
+    ('한국어 또는 영어로 함께 화면을 보며 문제와 선택지를 이야기합니다', 'We go through the screens together in Korean or English, discussing problems and options'),
+    ('서면 요약', 'Written summary'),
+    ('핵심 문제·권고·개선 우선순위·다음 행동 — 통화 후 2영업일 이내 전달(초안 조건)', 'Key problems, recommendations, improvement priorities, and next steps — within 2 business days (draft terms)'),
+    ('포함 내용', 'What’s included'),
+    ('문의 폼에서 ‘60분 집중 UX 리뷰’와 진행 언어를 선택해 보내 주세요.', 'Choose ‘60-minute focused UX review’ and your preferred language in the inquiry form.'),
+    ('일정·결제 안내', 'Schedule and payment'),
+    ('가능한 일정과 결제 방법을 이메일로 안내드립니다. 결제 후 예약이 확정됩니다.', 'We’ll email available times and how to pay. Your booking is confirmed after payment.'),
+    ('자료 공유', 'Share materials'),
+    ('제품 URL, 검토할 화면이나 프로토타입, 대상 사용자와 현재 고민을 보내 주세요.', 'Send your product URL, the screens or prototype to review, target users, and current questions.'),
+    ('최대 30분 동안 자료를 미리 살펴봅니다.', 'We review your materials for up to 30 minutes.'),
+    ('함께 화면을 보며 문제와 우선순위를 이야기합니다.', 'We walk through the screens together, discussing problems and priorities.'),
+    ('통화 후 2영업일 이내에 요약을 보내드립니다(초안 조건).', 'We send the summary within 2 business days after the call (draft terms).'),
+    ('진행 순서', 'How it works'),
+    ('제품 URL', 'Product URL'),
+    ('검토할 화면 또는 프로토타입', 'The screens or prototype to review'),
+    ('대상 사용자', 'Target users'),
+    ('검토할 흐름과 현재 고민', 'The flow to review and your current questions'),
+    ('상담 후 결정하고 싶은 사항', 'What you want to decide after the session'),
+    ('실제 개인정보·결제정보·비밀번호는 보내지 마세요. 익명화한 화면, 예시 데이터, 안전한 데모 자료로 충분합니다.<br>NDA가 필요하면 자료를 공유하기 전에 문의해 주세요.', 'Please don’t send real personal data, payment details, or passwords. Anonymized screens, sample data, or a safe demo are enough.<br>If you need an NDA, ask before sharing materials.'),
+    ('준비할 자료', 'What to prepare'),
+    ('세션 녹화(기본 제공에 포함되지 않음)', 'Session recording (not included by default)'),
+    ('완성 디자인', 'Finished design work'),
+    ('개발', 'Development'),
+    ('사용자 테스트', 'User testing'),
+    ('무제한 후속 상담', 'Unlimited follow-up calls'),
+    ('전환율 향상 등 특정 성과를 보장하지 않습니다. 더 깊은 진단이 필요하면 UX 진단 스프린트를, 구체적인 개선 설계까지 필요하면 복잡한 제품 흐름 개선 스프린트를 문의해 주세요.', 'We don’t guarantee specific outcomes such as conversion gains. For a deeper diagnosis, ask about the UX diagnostic sprint; for concrete improvement design, ask about the complex product flow improvement sprint.'),
+    ('UX 진단 스프린트 보기', 'See the UX diagnostic sprint'),
+    ('포함하지 않는 것', 'Not included'),
+    ('예약·취소·자료 처리 안내', 'Booking, cancellation, and materials'),
+    ('신청과 결제', 'Apply and pay'),
+    ('예약·취소·자료 처리 안내 — Second Context', 'Booking, cancellation, and materials — Second Context'),
+    ('Second Context 상담·리뷰의 예약 방법, 결제, 일정 변경·취소·환불, 자료 공유와 처리 안내(확정 전 초안).', 'How booking, payment, rescheduling, cancellation, refunds, and shared materials work for Second Context calls and reviews (draft pending confirmation).'),
+    ('예약부터 자료 처리까지, <span class="tl">미리 알려 드립니다.</span>', 'Booking to materials, explained up front.'),
+    ('상담과 리뷰를 신청하기 전에 확인해 주세요. 표시된 항목은 유료 예약을 열기 전에 확정해 이 페이지에 안내합니다.', 'Please review this before applying. Marked items will be finalized and posted here before paid booking opens.'),
+    ('— 아직 정해지지 않아 확정 후 안내할 항목', '— not yet decided; will be posted once finalized'),
+    ('Calendly에서 바로 예약합니다. <a href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">30분 상담 예약<span class="sr-only"> (새 탭에서 열림)</span></a>', 'Book directly on Calendly. <a href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener">Book a 30-minute consultation<span class="sr-only"> (새 탭에서 열림)</span></a>'),
+    ('<a href="second-context-contact.html?service=review#inquiry">리뷰 신청 문의</a> 후, 가능한 일정과 결제 방법을 안내드립니다. 결제 후 예약이 확정됩니다.', '<a href="second-context-contact.html?service=review#inquiry">Apply for a review</a>, and we’ll send available times and how to pay. Your booking is confirmed after payment.'),
+    ('UX 진단 스프린트·프로젝트', 'UX diagnostic sprint and projects'),
+    ('문의 후 범위와 견적을 합의한 뒤 시작합니다.', 'We start after agreeing on scope and a quote.'),
+    ('진행 언어', 'Language'),
+    ('예약 방법', 'How to book'),
+    ('통화', 'Currency'),
+    ('현재 상태', 'Current status'),
+    ('결제', 'Payment'),
+    ('일정 변경이 가능한 시점과 횟수', 'When and how many times you can reschedule'),
+    ('취소 시점별 환불 기준', 'Refunds depending on when you cancel'),
+    ('예약 시간에 참석하지 못한 경우의 처리', 'What happens if you miss the session'),
+    ('서면 요약 전달 후 환불 가능 여부', 'Whether refunds apply after the summary is delivered'),
+    ('유료 예약을 열기 전에 아래 기준을 확정해 이 페이지에 게시합니다. 그 전까지는 신청 후 개별 안내드립니다.', 'These terms will be finalized and posted here before paid booking opens. Until then, we’ll explain them individually after you apply.'),
+    ('일정 변경·취소·환불', 'Rescheduling, cancellation, and refunds'),
+    ('요청하는 자료', 'What we’ll ask for'),
+    ('보내지 말아 주세요', 'Please don’t send'),
+    ('실제 개인정보, 결제정보, 비밀번호. 익명화한 화면, 예시 데이터, 안전한 데모 자료로 충분합니다.', 'Real personal data, payment details, or passwords. Anonymized screens, sample data, or a safe demo are enough.'),
+    ('NDA', 'NDA'),
+    ('녹화', 'Recording'),
+    ('세션 녹화는 기본 제공에 포함되지 않습니다. 녹화 조건은 확정 후 안내합니다. ', 'Session recording isn’t included by default. Recording terms will be posted once finalized. '),
+    ('자료 보관·삭제', 'Keeping and deleting materials'),
+    ('보관 기간과 삭제 방법은 확정 후 안내합니다. ', 'How long materials are kept and how they’re deleted will be posted once finalized. '),
+    ('홍보·포트폴리오 사용', 'Use in marketing or portfolio'),
+    ('고객 자료와 결과물을 홍보나 포트폴리오에 쓸 권한은 자동으로 생기지 않습니다. 사용 조건은 확정 후 안내합니다. ', 'No permission to use your materials or deliverables in marketing or a portfolio is granted automatically. Terms will be posted once finalized. '),
+    ('자료 공유와 처리', 'Sharing and handling materials'),
+    ('통화 후 2영업일 이내 서면 요약(초안 조건)', 'A written summary within 2 business days after the call (draft terms)'),
+    ('자료와 범위 확정 후 약 1~2주, 결과 설명 통화 60분', 'About 1–2 weeks after materials and scope are confirmed, plus a 60-minute walkthrough call'),
+    ('결과물 전달', 'Deliverables'),
+]
+
+# 문의 폼 문의 유형·상담 언어, 홈·Approach·사례의 서비스·가격 링크(2026-11-16)
+PRICING_EXTRA = [
+    ('<label for="f-service">문의 유형</label>', '<label for="f-service">Inquiry type</label>'),
+    # 폼 전송 값(value)은 이전과 같고, 화면에 보이는 선택 항목만 짧게(2026-11-16)
+    ('60분 집중 UX 리뷰 (US$200)', '60-minute focused UX review (US$200)'),
+    ('UX 진단 스프린트 범위 문의 (US$1,500부터)', 'UX diagnostic sprint scope (from US$1,500)'),
+    ('복잡한 제품 흐름 개선 스프린트 (별도 견적)', 'Complex product flow improvement sprint (custom quote)'),
+    ('>문의 유형을 선택해 주세요</option>', '>Select an inquiry type</option>'),
+    ('data-key="review">60분 집중 UX 리뷰</option>', 'data-key="review">60-minute UX review</option>'),
+    ('data-key="sprint">UX 진단 스프린트</option>', 'data-key="sprint">UX diagnostic sprint</option>'),
+    ('data-key="project">복잡한 제품 흐름 개선 스프린트</option>', 'data-key="project">Complex product flow improvement sprint</option>'),
+    ('리뷰 비용은 US$200입니다. 문의 접수 후 일정과 결제 방법을 안내드립니다.', 'The review costs US$200. We’ll follow up with scheduling and payment instructions.'),
+    ('프로젝트 범위를 확인한 후 견적을 안내드립니다.', 'We’ll confirm the scope and provide a quote.'),
+    ('목표와 일정에 맞춰 협업 범위를 제안드립니다.', 'We’ll propose a scope based on your goals and timeline.'),
+    ('기타 문의', 'Other inquiry'),
+    ('<legend>상담 진행 언어</legend>', '<legend>Consultation language</legend>'),
+    ('<label><input type="radio" name="consult_language" value="한국어" checked> 한국어</label>\n              <label><input type="radio" name="consult_language" value="English"> English</label>',
+     '<label><input type="radio" name="consult_language" value="한국어"> 한국어</label>\n              <label><input type="radio" name="consult_language" value="English" checked> English</label>'),
+    ('60분 집중 UX 리뷰 · US$200', '60-minute focused UX review · US$200'),
+]
+
 PATHS = [
     ('href="favicon.ico"', 'href="../favicon.ico"'),
     ('href="assets/', 'href="../assets/'),
@@ -1011,8 +1246,9 @@ PATHS = [
 
 TABLE = {PAGES[0]: HOME, PAGES[1]: APPROACH, PAGES[2]: CONTACT, PAGES[3]: ABOUT, PAGES[4]: WORK_INDEX}
 TABLE.update({c: [] for c in CASES})
+TABLE.update({p: [] for p in PRICING})
 # 이전 사례 페이지 표(WORK: 데모 문구)는 이제 사례 페이지들이 나눠 쓴다. 사례 공통 표와 함께 페이지에 있는 문구만 적용
-SHARED = CASE_TEXT + WORK + CASE_PAGES
+SHARED = CASE_TEXT + WORK + CASE_PAGES + PRICING_PAGES + PRICING_EXTRA
 KEEP = re.compile(r'<!--i18n:keep-->.*?<!--/i18n:keep-->', re.S)  # 비교 자료처럼 두 언어에서 그대로 두는 부분
 
 for page in PAGES:
@@ -1028,7 +1264,9 @@ for page in PAGES:
     for i, k in enumerate(kept):
         e = e.replace(k, f'@@KEEP{i}@@', 1)
     # 사례 문구는 이 페이지에 있는 것만 페이지 표에 더한다 (홈 요약·사례 상세가 같은 번역을 공유)
-    table = TABLE[page] + [(ko, en) for ko, en in SHARED if ko in s and ko not in dict(TABLE[page])]
+    # 서비스·가격 문구 중 짧은 것(8자 미만)은 그 세 페이지에만 적용한다(다른 페이지의 긴 문장 일부를 바꾸지 않게)
+    shared = SHARED if page in PRICING else CASE_TEXT + WORK + CASE_PAGES + PRICING_EXTRA + [(ko, en) for ko, en in PRICING_PAGES if len(ko) >= 8]
+    table = TABLE[page] + [(ko, en) for ko, en in shared if ko in s and ko not in dict(TABLE[page])]
     # 홈 #contact에는 문의 페이지와 같은 문의 폼이 있다: 문의 페이지 번역 중 홈에 있는 문구만 더한다
     if page == PAGES[0]:
         table += [(ko, en) for ko, en in CONTACT if ko in s and ko not in dict(table)]

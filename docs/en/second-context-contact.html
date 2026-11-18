@@ -42,6 +42,7 @@
       <a href="./#services" data-nav="services">What we do</a>
       <a href="./#approach" data-nav="approach">Approach</a>
       <a aria-current="true" href="./#contact" data-nav="contact">Contact</a>
+      <a href="second-context-services.html">Pricing</a>
       <a class="pill pill-light nav-cta" href="https://calendly.com/yeagyeong/meeting-with-rachel-cho" target="_blank" rel="noopener"><span class="nav-cta-text">Book a 30-minute consultation</span><span class="sr-only"> (opens in a new tab)</span></a>
     </nav>
     <nav class="lang" aria-label="Language">
@@ -86,6 +87,24 @@
           <input type="hidden" name="_subject" value="Second Context website inquiry">
           <input type="hidden" name="language" value="English page">
           <div class="field-grid">
+            <div class="field field-wide">
+              <label for="f-service">Inquiry type</label>
+              <select id="f-service" name="service">
+                <option value="" data-key="" selected>Select an inquiry type</option>
+                <option value="60-minute focused UX review (US$200)" data-key="review">60-minute UX review</option>
+                <option value="UX diagnostic sprint scope (from US$1,500)" data-key="sprint">UX diagnostic sprint</option>
+                <option value="Complex product flow improvement sprint (custom quote)" data-key="project">Complex product flow improvement sprint</option>
+                <option value="Other inquiry" data-key="other">Other inquiry</option>
+              </select>
+              <p class="field-help" id="f-service-help-review" data-service-note="review" hidden>The review costs US$200. We’ll follow up with scheduling and payment instructions.</p>
+              <p class="field-help" id="f-service-help-sprint" data-service-note="sprint" hidden>We’ll confirm the scope and provide a quote.</p>
+              <p class="field-help" id="f-service-help-project" data-service-note="project" hidden>We’ll propose a scope based on your goals and timeline.</p>
+            </div>
+            <fieldset class="field-choice field-wide">
+              <legend>Consultation language</legend>
+              <label><input type="radio" name="consult_language" value="한국어"> 한국어</label>
+              <label><input type="radio" name="consult_language" value="English" checked> English</label>
+            </fieldset>
             <div class="field">
               <label for="f-name">Name <span class="req" aria-hidden="true">*</span></label>
               <input id="f-name" name="name" type="text" autocomplete="name" placeholder="e.g., Alex Kim" required aria-describedby="f-name-error">
@@ -159,6 +178,7 @@
           <li><a href="./#services" data-nav="services">What we do</a></li>
           <li><a href="./#approach" data-nav="approach">Approach</a></li>
           <li><a href="./#contact" data-nav="contact">Contact</a></li>
+          <li><a href="second-context-services.html">Pricing</a></li>
         </ul>
       </nav>
       <nav class="fl-col" aria-labelledby="fl-follow">
