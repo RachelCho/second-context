@@ -337,8 +337,15 @@
         var endpoint = nl.getAttribute('data-endpoint');
         if (!endpoint) { say(T.nlOff, 'off'); return; }
         busy = true; nlBtn.setAttribute('aria-disabled', 'true'); say(T.nlSending, 'sending');
-        fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ email: v, language: lang }) })
-          .then(function (r) { if (!r.ok) throw new Error(r.status); say(T.nlOk, 'ok'); nl.reset(); })
+        /* 2026-11-20: MailerLite 임베드 폼 주소. 폼 형식(fields[email])으로 보내고,
+           실패해도 HTTP 200이 오므로 본문의 success가 true일 때만 성공으로 표시한다 */
+        var body = new URLSearchParams();
+        body.append('fields[email]', v);
+        body.append('ml-submit', '1');
+        body.append('anticsrf', 'true');
+        fetch(endpoint, { method: 'POST', headers: { 'Accept': 'application/json' }, body: body })
+          .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+          .then(function (d) { if (!d || d.success !== true) throw new Error('rejected'); say(T.nlOk, 'ok'); nl.reset(); })
           .catch(function () { say(T.nlFail, 'error'); })
           .then(function () { busy = false; nlBtn.removeAttribute('aria-disabled'); });
       });
